@@ -46,7 +46,9 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapInternalRoutes()
     {
         Route::group([
-            'middleware' => ['web','auth'],
+            'middleware' => ['web',
+//                'auth'
+            ],
             'namespace' => $this->namespace_internal,
             'prefix' => 'internal',
             'as' => 'Internal::',

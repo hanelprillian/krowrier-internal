@@ -15,6 +15,7 @@ class RouteServiceProvider extends ServiceProvider
      * @var string
      */
     protected $namespace = 'App\Http\Controllers';
+    protected $namespace_internal = 'App\Http\Controllers\Internal';
 
     /**
      * Define your route model bindings, pattern filters, etc.
@@ -36,10 +37,23 @@ class RouteServiceProvider extends ServiceProvider
     public function map()
     {
         $this->mapApiRoutes();
-
         $this->mapWebRoutes();
+        $this->mapInternalRoutes();
 
         //
+    }
+
+    protected function mapInternalRoutes()
+    {
+        Route::group([
+            'middleware' => ['web','auth'],
+            'namespace' => $this->namespace_internal,
+            'prefix' => 'internal',
+            'as' => 'Internal::',
+        ], function ($router) {
+            require base_path('routes/Internal/main.php');
+            require base_path('routes/Internal/master.php');
+        });
     }
 
     /**

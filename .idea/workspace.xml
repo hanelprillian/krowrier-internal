@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c83c229e-a460-4b06-aa34-53bdc3cf4928" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/public/images/logo.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/template.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/template.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/sass/template.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/template.scss" afterDir="false" />
@@ -69,25 +68,27 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="layout.blade.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="layout.blade.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/internal/layout.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="156">
-              <caret line="63" column="67" selection-start-line="63" selection-start-column="67" selection-end-line="63" selection-end-column="67" />
+            <state relative-caret-position="308">
+              <caret line="2162" column="10" lean-forward="true" selection-start-line="2162" selection-start-column="10" selection-end-line="2162" selection-end-column="10" />
               <folding>
                 <element signature="e#864#924#0#HTML" expanded="true" />
-                <element signature="n#div#2;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#div#3;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#header#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="template.scss" pinned="false" current-in-tab="true">
+      <file leaf-file-name="template.scss" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/sass/template.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="166">
-              <caret line="6520" column="12" selection-start-line="6520" selection-start-column="12" selection-end-line="6520" selection-end-column="12" />
+            <state relative-caret-position="108">
+              <caret line="6519" column="26" lean-forward="true" selection-start-line="6519" selection-start-column="26" selection-end-line="6519" selection-end-column="26" />
               <folding>
                 <element signature="e#125273#125516#2" expanded="true" />
                 <element signature="e#126478#126727#2" expanded="true" />
@@ -136,8 +137,8 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/Internal/MainCtrl.php" />
         <option value="$PROJECT_DIR$/webpack.mix.js" />
         <option value="$PROJECT_DIR$/resources/js/app.js" />
-        <option value="$PROJECT_DIR$/resources/views/internal/layout.blade.php" />
         <option value="$PROJECT_DIR$/resources/sass/template.scss" />
+        <option value="$PROJECT_DIR$/resources/views/internal/layout.blade.php" />
       </list>
     </option>
   </component>
@@ -243,7 +244,7 @@
       <path value="$PROJECT_DIR$/vendor/monolog/monolog" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-10" />
     <option name="width" value="1295" />
     <option name="height" value="680" />
@@ -413,15 +414,15 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1550041100424</updated>
-      <workItem from="1550041106231" duration="9688000" />
+      <workItem from="1550041106231" duration="10322000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9688000" />
+    <option name="totallyTimeSpent" value="10322000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -765,25 +766,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/internal/layout.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/sass/template.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="63" column="67" selection-start-line="63" selection-start-column="67" selection-end-line="63" selection-end-column="67" />
+        <state relative-caret-position="108">
+          <caret line="6519" column="26" lean-forward="true" selection-start-line="6519" selection-start-column="26" selection-end-line="6519" selection-end-column="26" />
           <folding>
-            <element signature="e#864#924#0#HTML" expanded="true" />
-            <element signature="n#div#2;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#3;n#body#0;n#html#0;n#!!top" />
+            <element signature="e#125273#125516#2" expanded="true" />
+            <element signature="e#126478#126727#2" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/sass/template.scss">
+    <entry file="file://$PROJECT_DIR$/resources/views/internal/layout.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="166">
-          <caret line="6520" column="12" selection-start-line="6520" selection-start-column="12" selection-end-line="6520" selection-end-column="12" />
+        <state relative-caret-position="308">
+          <caret line="2162" column="10" lean-forward="true" selection-start-line="2162" selection-start-column="10" selection-end-line="2162" selection-end-column="10" />
           <folding>
-            <element signature="e#125273#125516#2" expanded="true" />
-            <element signature="e#126478#126727#2" expanded="true" />
+            <element signature="e#864#924#0#HTML" expanded="true" />
+            <element signature="n#header#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" />
           </folding>
         </state>
       </provider>

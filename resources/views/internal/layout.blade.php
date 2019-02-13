@@ -38,7 +38,7 @@ Author: SAEROX
 <!-- Begin Preloader -->
 <div id="preloader">
     <div class="canvas">
-        <img src="assets/img/logo.png" alt="logo" class="loader-logo">
+        <img src="{{asset('images/logo.png')}}" alt="logo" class="loader-logo">
         <div class="spinner"></div>
     </div>
 </div>
@@ -59,9 +59,9 @@ Author: SAEROX
             <div class="navbar-holder d-flex align-items-center align-middle justify-content-between">
                 <!-- Begin Logo -->
                 <div class="navbar-header">
-                    <a href="db-default.html" class="navbar-brand">
+                    <a href="{{url('/')}}" class="navbar-brand">
                         <div class="brand-image brand-big">
-                            <img src="assets/img/logo-big.png" alt="logo" class="logo-big">
+                            <img src="{{asset('images/logo.png')}}" alt="logo" class="logo-big">
                         </div>
                         <div class="brand-image brand-small">
                             <img src="assets/img/logo.png" alt="logo" class="logo-small">

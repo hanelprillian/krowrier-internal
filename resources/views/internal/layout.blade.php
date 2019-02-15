@@ -199,25 +199,10 @@ Author: SAEROX
                 <nav class="side-navbar box-scroll sidebar-scroll">
                     <!-- Begin Main Navigation -->
                     <ul class="list-unstyled">
-                        <li class="active"><a href="#dropdown-db" aria-expanded="true" data-toggle="collapse"><i class="la la-columns"></i><span>Dashboard</span></a>
-                            <ul id="dropdown-db" class="collapse list-unstyled show pt-0">
-                                <li><a class="active" href="db-default.html">Default</a></li>
-                                <li><a href="db-clean.html">Clean</a></li>
-                                <li><a href="db-compact.html">Compact</a></li>
-                                <li><a href="db-modern.html">Modern</a></li>
-                                <li><a href="db-social.html">Social</a></li>
-                                <li><a href="db-smarthome.html">Smarthome</a></li>
-                                <li><a href="db-all.html">All</a></li>
-                            </ul>
+                        <li class="active">
+                            <a href="#"><i class="la la-columns"></i><span>Dashboard</span></a>
                         </li>
-                        <li><a href="#dropdown-app" aria-expanded="false" data-toggle="collapse"><i class="la la-puzzle-piece"></i><span>Applications</span></a>
-                            <ul id="dropdown-app" class="collapse list-unstyled pt-0">
-                                <li><a href="app-calendar.html">Calendar</a></li>
-                                <li><a href="app-chat.html">Chat</a></li>
-                                <li><a href="app-mail.html">Mail</a></li>
-                                <li><a href="app-contact.html">Contact</a></li>
-                            </ul>
-                        </li>
+
                         <li><a href="components-widgets.html"><i class="la la-spinner"></i><span>Widgets</span></a></li>
                     </ul>
                     <span class="heading">Components</span>
@@ -664,7 +649,41 @@ Author: SAEROX
     <!-- End Modal -->
 </div>
 <!-- Begin Vendor Js -->
+<script src="{{asset('js/vendor.js')}}"></script>
 <script src="{{asset('js/app.js')}}"></script>
+
+<script>
+    // ------------------------------------------------------- //
+    // Sidebar Functionality
+    // ------------------------------------------------------ //
+    $('#toggle-btn').on('click', function (e) {
+        e.preventDefault();
+        $(this).toggleClass('active');
+
+        $('.side-navbar').toggleClass('shrinked');
+        $('.content-inner').toggleClass('active');
+
+        if ($(window).outerWidth() > 1183) {
+            if ($('#toggle-btn').hasClass('active')) {
+                $('.navbar-header .brand-small').hide();
+                $('.navbar-header .brand-big').show();
+            } else {
+                $('.navbar-header .brand-small').show();
+                $('.navbar-header .brand-big').hide();
+            }
+        }
+
+        if ($(window).outerWidth() < 1183) {
+            $('.navbar-header .brand-small').show();
+        }
+    });
+    // Close dropdown after click
+    $(function () {
+        $(".side-navbar li a").click(function(event) {
+            $(".collapse").collapse('hide');
+        });
+    });
+</script>
 <!-- End Vendor Js -->
 <!-- End Page Snippets -->
 </body>

@@ -5,14 +5,6 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-require('./bootstrap');
-require('./plugin/nicescroll.min');
-require('./plugin/chart.min');
-require('moment');
-require('./plugin/fullcalendar.min');
-require('./plugin/daterangepicker');
-require('./plugin');
-
 window.Vue = require('vue');
 
 /**

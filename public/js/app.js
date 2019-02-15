@@ -856,11 +856,7 @@ var staticRenderFns = [
               _vm._v("Dashboard")
             ]),
             _vm._v(" "),
-            _c("div", [
-              _c("div", { staticClass: "page-header-tools" }, [
-                _vm._v("\n                        hehe\n                    ")
-              ])
-            ])
+            _c("div", [_c("div", { staticClass: "page-header-tools" })])
           ])
         ])
       ]),

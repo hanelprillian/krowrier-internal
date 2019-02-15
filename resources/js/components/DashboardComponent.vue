@@ -14,7 +14,7 @@
                     <h2 class="page-header-title">Dashboard</h2>
                     <div>
                         <div class="page-header-tools">
-                            hehe
+
                         </div>
                     </div>
                 </div>

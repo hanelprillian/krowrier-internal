@@ -1,12 +1,5 @@
 <template>
     <div class="container-fluid">
-        <div id="preloader">
-            <div class="canvas">
-                <img src="images/logo.png" alt="logo" class="loader-logo">
-                <div class="spinner"></div>
-            </div>
-        </div>
-
         <!-- Begin Page Header-->
         <div class="row">
             <div class="page-header">

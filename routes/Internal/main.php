@@ -10,7 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', [
     'uses' => 'MainCtrl@index'
 ]);
+Route::get('/{any}', 'MainCtrl@index')->where('any', '.*');
+
+

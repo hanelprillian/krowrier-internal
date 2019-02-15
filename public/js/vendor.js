@@ -54100,12 +54100,13 @@ if (token) {
   // Preloader
   // ------------------------------------------------------ //
 
-  $(window).on("load", function () {
+  window.destroyLoading = function () {
     $(".loader").fadeOut();
     $("#preloader").delay(200).fadeOut("slow");
-  }); // ------------------------------------------------------- //
+  }; // ------------------------------------------------------- //
   // Dynamic Height
   // ------------------------------------------------------ //	
+
 
   $(window).resize(function () {
     var height = $(this).height() - $(".header").height() + $(".main-footer").height();

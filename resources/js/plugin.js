@@ -1,14 +1,16 @@
 (function ($) {
-
 	'use strict';
-	
+
     // ------------------------------------------------------- //
     // Preloader
     // ------------------------------------------------------ //
-	$(window).on("load", function () {
-		$(".loader").fadeOut();
-		$("#preloader").delay(200).fadeOut("slow");
-	});
+
+    window.destroyLoading = function ()
+    {
+        $(".loader").fadeOut();
+        $("#preloader").delay(200).fadeOut("slow");
+    };
+
 	
     // ------------------------------------------------------- //
     // Dynamic Height

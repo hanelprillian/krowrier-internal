@@ -25,6 +25,7 @@
         "vue-template-compiler": "^2.6.6"
     },
     "dependencies": {
-        "moment": "^2.24.0"
+        "moment": "^2.24.0",
+        "nprogress": "^0.2.0"
     }
 }

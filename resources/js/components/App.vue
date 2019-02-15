@@ -143,20 +143,22 @@
                     <nav class="side-navbar box-scroll sidebar-scroll">
                         <!-- Begin Main Navigation -->
                         <ul class="list-unstyled">
-                            <li class="active">
-                                <router-link :to="{ path: '/internal' }"><i class="la la-columns"></i>Dashboard</router-link>
-                            </li>
+                            <router-link tag="li" :to="{ path: '/internal' }" >
+                                <a><i class="la la-columns"></i>Dashboard</a>
+                            </router-link>
+
                             <li>
                                 <a href="#dropdown-master-data" aria-expanded="false" data-toggle="collapse">
                                     <i class="la la-list-alt"></i>Master Data
                                 </a>
                                 <ul id="dropdown-master-data" class="collapse list-unstyled pt-0">
-                                    <li>
-                                        <a href="#">Service Package</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Data Hub</a>
-                                    </li>
+                                    <router-link tag="li" :to="{ path: '/internal/service-package' }">
+                                        <a>Service Package</a>
+                                    </router-link>
+
+                                    <router-link tag="li" :to="{ path: '/internal/hub' }">
+                                        <a>Data Hub</a>
+                                    </router-link>
                                 </ul>
                             </li>
                             <li>

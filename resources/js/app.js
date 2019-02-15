@@ -8,6 +8,7 @@
 window.Vue = require('vue');
 window.VueRouter = require('vue-router').default;
 window.NProgress = require('nprogress/nprogress');
+window.swal = require('sweetalert2');
 
 //components
 window.Dashboard = require('./components/DashboardComponent').default;
@@ -25,33 +26,51 @@ window.App = require('./components/App').default;
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.use(VueRouter);
-const rootIntenral = '/internal';
+const rootInternal = '/internal';
 
 const router = new VueRouter({
     mode: 'history',
     routes: [
         {
-            path: rootIntenral+'/',
+            path: rootInternal+'/',
             name: 'internal->home',
             component: Dashboard
         },
         {
-            path: rootIntenral+'/example',
-            name: 'internal->example',
-            component: require('./components/ExampleComponent').default,
+            path: rootInternal+'/service-package',
+            name: 'internal->service_package',
+            component: require('./components/ServicePackage/Index').default,
+        },
+        {
+            path: rootInternal+'/service-package/new',
+            name: 'internal->service_package->new',
+            component: require('./components/ServicePackage/Form').default,
+            props: { mode: 'add' }
+        },
+        {
+            path: rootInternal+'/service-package/:id',
+            name: 'internal->service_package->form',
+            component: require('./components/ServicePackage/Form').default,
+            props: { mode: 'edit' }
+        },
+        {
+            path: rootInternal+'/hub',
+            name: 'internal->hub',
+            component: require('./components/Hub/Index').default,
         },
     ],
+    linkActiveClass: "active",
 });
 router.beforeResolve((to, from, next) => {
     if (to.name) {
         NProgress.start()
     }
     next()
-})
+});
 
 router.afterEach((to, from) => {
     NProgress.done()
-})
+});
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

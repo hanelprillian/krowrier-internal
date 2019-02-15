@@ -13,7 +13,7 @@
                 </div>
                 <br>
                 <div>
-                    <button @click="$router.go(-1)" class="btn btn-outline-secondary">Back</button>
+                    <button @click="$router.push('/internal/service-package')" class="btn btn-outline-secondary">Back</button>
                 </div>
             </div>
         </div>

@@ -12,3 +12,4 @@ require('moment');
 require('./plugin/fullcalendar.min');
 require('./plugin/daterangepicker');
 require('./plugin');
+require('./plugin/bootstrap-select.min');

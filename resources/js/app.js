@@ -14,6 +14,7 @@ window.swal = require('sweetalert2');
 window.Dashboard = require('./components/DashboardComponent').default;
 window.App = require('./components/App').default;
 
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -57,6 +58,35 @@ const router = new VueRouter({
             path: rootInternal+'/hub',
             name: 'internal->hub',
             component: require('./components/Hub/Index').default,
+        },
+        {
+            path: rootInternal+'/hub/new',
+            name: 'internal->hub->new',
+            component: require('./components/Hub/Form').default,
+            props: { mode: 'add' }
+        },
+        {
+            path: rootInternal+'/hub/:id',
+            name: 'internal->hub->form',
+            component: require('./components/Hub/Form').default,
+            props: { mode: 'edit' }
+        },
+        {
+            path: rootInternal+'/user',
+            name: 'internal->user',
+            component: require('./components/User/Index').default
+        },
+        {
+            path: rootInternal+'/user/new',
+            name: 'internal->user->new',
+            component: require('./components/User/Form').default,
+            props: { mode: 'add' }
+        },
+        {
+            path: rootInternal+'/user/:id',
+            name: 'internal->user->edit',
+            component: require('./components/User/Form').default,
+            props: { mode: 'edit' }
         },
     ],
     linkActiveClass: "active",

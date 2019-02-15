@@ -4,10 +4,10 @@
         <div class="row">
             <div class="page-header">
                 <div class="d-flex align-items-center">
-                    <h2 class="page-header-title">Data Hub</h2>
+                    <h2 class="page-header-title">Data User</h2>
                     <div>
                         <div class="page-header-tools">
-                            <router-link tag="button" to="/internal/hub/new" class="btn btn-primary ripple">Tambah</router-link>
+                            <router-link tag="button" to="/internal/user/new" class="btn btn-primary ripple">Tambah</router-link>
                         </div>
                     </div>
                 </div>
@@ -36,7 +36,8 @@
                                         </div>
                                     </th>
                                     <th>Name</th>
-                                    <th>Type</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
                                     <th>Address</th>
                                     <th>Actions</th>
                                 </tr>
@@ -49,9 +50,10 @@
                                             <label for="cb10"></label>
                                         </div>
                                     </td>
-                                    <td>Stasiun Gambir</td>
-                                    <td>Stasiun Kereta</td>
-                                    <td>Jl. Merdeka Timur</td>
+                                    <td>Jhonny Prillian</td>
+                                    <td>hanelp97@gmail.com</td>
+                                    <td>081282892093</td>
+                                    <td>Puri Permata Blok G1 no 6</td>
                                     <td class="td-actions">
                                         <a href="#"><i class="la la-edit edit"></i></a>
                                         <a href="#"><i class="la la-close delete"></i></a>

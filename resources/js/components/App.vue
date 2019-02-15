@@ -183,9 +183,9 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li>
-                                <router-link :to="{ path: '/internal/example' }"><i class="la la-users"></i>Users</router-link>
-                            </li>
+                            <router-link tag="li" :to="{ path: '/internal/user' }">
+                                <a><i class="la la-users"></i>Users</a>
+                            </router-link>
                         </ul>
                         <!--<span class="heading">Transaction & Booking</span>-->
                         <!-- End Main Navigation -->

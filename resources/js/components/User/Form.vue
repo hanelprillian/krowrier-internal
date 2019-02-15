@@ -4,7 +4,7 @@
         <div class="row">
             <div class="page-header">
                 <div class="d-flex align-items-center">
-                    <h2 class="page-header-title">{{mode == 'add' ? 'New' : 'Edit'}} Hub</h2>
+                    <h2 class="page-header-title">{{mode == 'add' ? 'New' : 'Edit'}} User</h2>
                     <div>
                         <div class="page-header-tools">
 
@@ -13,7 +13,7 @@
                 </div>
                 <br>
                 <div>
-                    <button @click="$router.push('/internal/hub')" class="btn btn-outline-secondary">Back</button>
+                    <button @click="$router.push('/internal/user')" class="btn btn-outline-secondary">Back</button>
                 </div>
             </div>
         </div>
@@ -25,35 +25,38 @@
                     <div class="widget-body">
                         <form class="form-horizontal">
                             <div class="form-group row d-flex align-items-center mb-5">
-                                <label class="col-lg-2 form-control-label">Name</label>
+                                <label class="col-lg-2 form-control-label">Email</label>
                                 <div class="col-lg-4">
-                                    <input type="text" class="form-control">
+                                    <input type="email" class="form-control" placeholder="Email">
                                 </div>
                             </div>
                             <div class="form-group row d-flex align-items-center mb-5">
-                                <label class="col-lg-2 form-control-label">Type</label>
+                                <label class="col-lg-2 form-control-label">Password</label>
+                                <div class="col-lg-3">
+                                    <input type="password" class="form-control" placeholder="Password">
+                                </div>
+                                <div class="col-lg-3">
+                                    <input type="password" class="form-control" placeholder="Confirmation Password">
+                                </div>
+                            </div>
+                            <hr>
+                            <br>
+                            <div class="form-group row d-flex align-items-center mb-5">
+                                <label class="col-lg-2 form-control-label">First Name</label>
                                 <div class="col-lg-4">
-                                    <select class="selectpicker" v-model="selected">
-                                        <option :value="type.value" v-for="type in listHubType">{{type.label}}</option>
-                                    </select>
+                                    <input type="text" class="form-control" placeholder="First Name">
                                 </div>
                             </div>
                             <div class="form-group row d-flex align-items-center mb-5">
-                                <label class="col-lg-2 form-control-label">Long</label>
+                                <label class="col-lg-2 form-control-label">Last Name</label>
                                 <div class="col-lg-4">
-                                    <input type="text" class="form-control">
-                                </div>
-                            </div>
-                            <div class="form-group row d-flex align-items-center mb-5">
-                                <label class="col-lg-2 form-control-label">Lat</label>
-                                <div class="col-lg-4">
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" placeholder="Last Name">
                                 </div>
                             </div>
                             <div class="form-group row d-flex align-items-center mb-5">
                                 <label class="col-lg-2 form-control-label">Address</label>
                                 <div class="col-lg-5">
-                                    <textarea name="" id="" class="form-control" rows="5"></textarea>
+                                    <textarea name="" id="" class="form-control" placeholder="Address" rows="5"></textarea>
                                 </div>
                             </div>
                             <div class="form-group row d-flex align-items-center mb-5">
@@ -77,11 +80,10 @@
         data()
         {
             return {
-                selected: 'TRAIN_STATION',
-                listHubType: [
+                listIdentityType: [
                     {
-                        label: 'Train Station',
-                        value: 'TRAIN_STATION',
+                        label: 'KTP',
+                        value: 'KTP',
                     }
                 ]
             }
@@ -101,7 +103,7 @@
                     confirmButtonText: 'OK'
                 }).then(function () {
                     setTimeout(function () {
-                        self.$router.push('/internal/hub');
+                        self.$router.push('/internal/user');
                     }, 500);
                 })
             }

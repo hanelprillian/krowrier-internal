@@ -4,7 +4,7 @@
         <div class="row">
             <div class="page-header">
                 <div class="d-flex align-items-center">
-                    <h2 class="page-header-title">Customer</h2>
+                    <h2 class="page-header-title">Feeder Courier</h2>
                     <div>
                         <div class="page-header-tools">
                         </div>
@@ -35,6 +35,7 @@
                                         </div>
                                     </th>
                                     <th>Name</th>
+                                    <th>Vehicle</th>
                                     <th>ID Number</th>
                                     <th>ID Type</th>
                                     <th>Email</th>
@@ -53,6 +54,7 @@
                                         </div>
                                     </td>
                                     <td>Jhonny Prillian</td>
+                                    <td>Pickup Car</td>
                                     <td>365454465767</td>
                                     <td>KTP</td>
                                     <td>hanelp97@gmail.com</td>
@@ -62,7 +64,7 @@
                                         <span class="badge-text success">Active</span>
                                     </td>
                                     <td class="td-actions">
-                                        <router-link tag="a" to="/internal/customer/1">
+                                        <router-link tag="a" to="/internal/feeder-courier/1">
                                             <i class="la la-edit edit"></i>
                                         </router-link>
                                         <a href="#"><i class="la la-close delete"></i></a>

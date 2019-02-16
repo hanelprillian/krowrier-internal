@@ -175,12 +175,12 @@
                                     <router-link tag="li" :to="{ path: '/internal/customer' }">
                                         <a>Customer</a>
                                     </router-link>
-                                    <li>
-                                        <a href="#">Feeder</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Courier</a>
-                                    </li>
+                                    <router-link tag="li" :to="{ path: '/internal/feeder-courier' }">
+                                        <a>Feeder Courier</a>
+                                    </router-link>
+                                    <router-link tag="li" :to="{ path: '/internal/courier' }">
+                                        <a>Courier</a>
+                                    </router-link>
                                 </ul>
                             </li>
                             <router-link tag="li" :to="{ path: '/internal/user' }">

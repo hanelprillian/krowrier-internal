@@ -88,6 +88,40 @@ const router = new VueRouter({
             props: { mode: 'edit' }
         },
         {
+            path: rootInternal+'/courier',
+            name: 'internal->courier',
+            component: require('./components/Courier/Index').default
+        },
+        {
+            path: rootInternal+'/courier/new',
+            name: 'internal->courier->new',
+            component: require('./components/Courier/Form').default,
+            props: { mode: 'add' }
+        },
+        {
+            path: rootInternal+'/courier/:id',
+            name: 'internal->courier->edit',
+            component: require('./components/Courier/Form').default,
+            props: { mode: 'edit' }
+        },
+        {
+            path: rootInternal+'/feeder-courier',
+            name: 'internal->feeder_courier',
+            component: require('./components/FeederCourier/Index').default
+        },
+        {
+            path: rootInternal+'/feeder-courier/new',
+            name: 'internal->feeder_courier->new',
+            component: require('./components/FeederCourier/Form').default,
+            props: { mode: 'add' }
+        },
+        {
+            path: rootInternal+'/feeder-courier/:id',
+            name: 'internal->feeder_courier->edit',
+            component: require('./components/FeederCourier/Form').default,
+            props: { mode: 'edit' }
+        },
+        {
             path: rootInternal+'/user',
             name: 'internal->user',
             component: require('./components/User/Index').default
@@ -113,7 +147,6 @@ router.beforeResolve((to, from, next) => {
     }
     next()
 });
-
 router.afterEach((to, from) => {
     NProgress.done()
 });

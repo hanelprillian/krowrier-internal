@@ -4,7 +4,7 @@
         <div class="row">
             <div class="page-header">
                 <div class="d-flex align-items-center">
-                    <h2 class="page-header-title">Customer</h2>
+                    <h2 class="page-header-title">Courier</h2>
                     <div>
                         <div class="page-header-tools">
                         </div>
@@ -62,7 +62,7 @@
                                         <span class="badge-text success">Active</span>
                                     </td>
                                     <td class="td-actions">
-                                        <router-link tag="a" to="/internal/customer/1">
+                                        <router-link tag="a" to="/internal/courier/1">
                                             <i class="la la-edit edit"></i>
                                         </router-link>
                                         <a href="#"><i class="la la-close delete"></i></a>

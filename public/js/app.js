@@ -757,6 +757,451 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -779,7 +1224,7 @@ __webpack_require__.r(__webpack_exports__);
         confirmButtonText: 'OK'
       }).then(function () {
         setTimeout(function () {
-          self.$router.push('/internal/courier');
+          self.$router.push('/internal/booking');
         }, 500);
       });
     }
@@ -7647,7 +8092,7 @@ var render = function() {
       _c("div", { staticClass: "page-header" }, [
         _c("div", { staticClass: "d-flex align-items-center" }, [
           _c("h2", { staticClass: "page-header-title" }, [
-            _vm._v(_vm._s(_vm.mode == "add" ? "New" : "Detail") + " Courier")
+            _vm._v(_vm._s(_vm.mode == "add" ? "New" : "Detail") + " Booking")
           ]),
           _vm._v(" "),
           _vm._m(0)
@@ -7662,7 +8107,7 @@ var render = function() {
               staticClass: "btn btn-outline-secondary",
               on: {
                 click: function($event) {
-                  return _vm.$router.push("/internal/courier")
+                  return _vm.$router.push("/internal/booking")
                 }
               }
             },
@@ -7673,7 +8118,11 @@ var render = function() {
             "button",
             {
               staticClass: "btn btn-outline-primary float-right",
-              on: { click: _vm.Submit }
+              on: {
+                click: function($event) {
+                  return _vm.Submit()
+                }
+              }
             },
             [_vm._v("Save")]
           )
@@ -7691,40 +8140,9 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", [
       _c("div", { staticClass: "page-header-tools" }, [
-        _c("div", { staticClass: "form-group" }, [
-          _c("div", { staticClass: "btn-group mr-1 mb-2" }, [
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-sm btn-success",
-                attrs: { type: "button" }
-              },
-              [_vm._v("Active")]
-            ),
-            _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass:
-                  "btn btn-success btn-sm dropdown-toggle d-flex align-items-center",
-                attrs: {
-                  "data-toggle": "dropdown",
-                  "aria-haspopup": "true",
-                  "aria-expanded": "false"
-                }
-              },
-              [_c("i", { staticClass: "la la-angle-down mr-0" })]
-            ),
-            _vm._v(" "),
-            _c("div", { staticClass: "dropdown-menu" }, [
-              _c("a", { staticClass: "dropdown-item", attrs: { href: "#" } }, [
-                _vm._v("Suspend")
-              ])
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "clearfix" })
+        _c("span", { staticClass: "badge-text-small success" }, [
+          _vm._v("Complete")
+        ])
       ])
     ])
   },
@@ -7734,6 +8152,832 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "row flex-row" }, [
       _c("div", { staticClass: "col-xl-12" }, [
+        _c("div", { staticClass: "widget widget-default" }, [
+          _c("div", { staticClass: "widget-body" }, [
+            _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "col-md-6" }, [
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { staticClass: "form-control-label" }, [
+                    _vm._v("Booking Number")
+                  ]),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "form-control-static" }, [
+                    _vm._v(
+                      "\n                                    BK190201GHJ\n                                "
+                    )
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-md-6" }, [
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { staticClass: "form-control-label" }, [
+                    _vm._v(
+                      "\n                                    Date\n                                "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "form-control-static" }, [
+                    _c("span", [_vm._v("14-02-2019")])
+                  ])
+                ])
+              ])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "widget widget-default" }, [
+          _c("div", { staticClass: "widget-body" }, [
+            _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "col-md-5" }, [
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", [_c("span", [_vm._v("Customer")])]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-control-static" }, [
+                    _c("div", { staticClass: "row" }, [
+                      _c("div", { staticClass: "col-md-12" }, [
+                        _c("div", { staticClass: "form-group" }, [
+                          _c("label", { staticClass: "form-control-label" }, [
+                            _vm._v(
+                              "\n                                                    Name\n                                                "
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("p", { staticClass: "form-control-static" }, [
+                            _vm._v(
+                              "\n                                                    Jhonny Prillian\n                                                "
+                            )
+                          ])
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-md-12" }, [
+                        _c("div", { staticClass: "form-group" }, [
+                          _c("label", { staticClass: "form-control-label" }, [
+                            _vm._v(
+                              "\n                                                    Origin Address\n                                                "
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("p", { staticClass: "form-control-static" }, [
+                            _vm._v(
+                              "\n                                                    DKI JAKARTA\n                                                "
+                            )
+                          ])
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-md-12" }, [
+                        _c("div", { staticClass: "form-group" }, [
+                          _c("label", { staticClass: "form-control-label" }, [
+                            _vm._v(
+                              "\n                                                    Phone\n                                                "
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("p", { staticClass: "form-control-static" }, [
+                            _vm._v(
+                              "\n                                                    081380011003\n                                                "
+                            )
+                          ])
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-md-12" }, [
+                        _c("div", { staticClass: "form-group" }, [
+                          _c("label", { staticClass: "form-control-label" }, [
+                            _vm._v(
+                              "\n                                                    Pickup Address\n                                                "
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("p", { staticClass: "form-control-static" }, [
+                            _vm._v(
+                              "\n                                                    Kalideres\n                                                "
+                            )
+                          ])
+                        ])
+                      ])
+                    ])
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-md-1" }, [
+                _c("i", {
+                  staticClass: "fas fa-arrow-right",
+                  staticStyle: { "margin-top": "50%", "font-size": "13pt" }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-md-5" }, [
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", [_c("span", [_vm._v("Receiver")])]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-control-static" }, [
+                    _c("div", { staticClass: "row" }, [
+                      _c("div", { staticClass: "col-md-12" }, [
+                        _c("div", { staticClass: "form-group" }, [
+                          _c("label", { staticClass: "form-control-label" }, [
+                            _vm._v(
+                              "\n                                                    Name\n                                                "
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("p", { staticClass: "form-control-static" }, [
+                            _vm._v(
+                              "\n                                                    rio Pro\n                                                "
+                            )
+                          ])
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-md-12" }, [
+                        _c("div", { staticClass: "form-group" }, [
+                          _c("label", { staticClass: "form-control-label" }, [
+                            _vm._v(
+                              "\n                                                    Destination Address\n                                                "
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("p", { staticClass: "form-control-static" }, [
+                            _vm._v(
+                              "\n                                                    Bogor, Ciawi\n                                                "
+                            )
+                          ])
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-md-12" }, [
+                        _c("div", { staticClass: "form-group" }, [
+                          _c("label", { staticClass: "form-control-label" }, [
+                            _vm._v(
+                              "\n                                                    Phone\n                                                "
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("p", { staticClass: "form-control-static" }, [
+                            _vm._v(
+                              "\n                                                    082380011133\n                                                "
+                            )
+                          ])
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-md-12" }, [
+                        _c("div", { staticClass: "form-group" }, [
+                          _c("label", { staticClass: "form-control-label" }, [
+                            _vm._v(
+                              "\n                                                    Destination Address\n                                                "
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("p", { staticClass: "form-control-static" }, [
+                            _vm._v(
+                              "\n                                                    Jln moch yamin sh\n                                                "
+                            )
+                          ])
+                        ])
+                      ])
+                    ])
+                  ])
+                ])
+              ])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "widget" }, [
+          _c("div", { staticClass: "widget-body" }, [
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", [_c("span", [_vm._v("Data Barang")])]),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-control-static" }, [
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col-md-4" }, [
+                    _c("div", { staticClass: "form-group" }, [
+                      _c("label", [
+                        _c("small", [
+                          _vm._v(
+                            "\n                                                Jenis Transportasi\n                                            "
+                          )
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-control-static" }, [
+                        _vm._v(
+                          "\n                                            Udara\n                                        "
+                        )
+                      ])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-md-4" }, [
+                    _c("div", { staticClass: "form-group" }, [
+                      _c("label", {}, [
+                        _c("small", [
+                          _vm._v(
+                            "\n                                                Paket Booking\n                                            "
+                          )
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-control-static" }, [
+                        _c("span", [_vm._v("(DTD) Reguler")])
+                      ])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-md-4" }, [
+                    _c("div", { staticClass: "form-group" }, [
+                      _c("label", {}, [
+                        _c("small", [
+                          _vm._v(
+                            "\n                                                Komoditas\n                                            "
+                          )
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-control-static" }, [
+                        _c("span", [_vm._v("General")])
+                      ])
+                    ])
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("hr"),
+              _vm._v(" "),
+              _c("div", [
+                _c("div", { staticClass: "col-md-12" }, [
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("span", { staticStyle: { "font-size": "12pt" } }, [
+                      _vm._v("Barang ke "),
+                      _c("strong", [_vm._v("#1")])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("div", [
+                    _c("div", { staticClass: "form-group" }, [
+                      _c("label", [
+                        _c("small", [
+                          _vm._v(
+                            "\n                                                Nama Barang\n                                            "
+                          )
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-control-static" }, [
+                        _vm._v(
+                          "\n                                            Buku\n                                            "
+                        ),
+                        _c("br"),
+                        _c("br"),
+                        _vm._v(" "),
+                        _c("small", [
+                          _c("strong", [_vm._v("Berat: ")]),
+                          _vm._v(
+                            "\n                                                50 Kg  \n                                                "
+                          ),
+                          _c("strong", [_vm._v("Panjang: ")]),
+                          _vm._v(
+                            "\n                                                100.00 cm  \n                                                "
+                          ),
+                          _c("strong", [_vm._v("Lebar: ")]),
+                          _vm._v(
+                            "\n                                                200.00 cm  \n                                                "
+                          ),
+                          _c("strong", [_vm._v("Tinggi: ")]),
+                          _vm._v(
+                            "\n                                                30.00 cm  \n                                                "
+                          ),
+                          _c("strong", [_vm._v("Jumlah: ")]),
+                          _vm._v(
+                            "\n                                                100  \n                                            "
+                          )
+                        ])
+                      ])
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "clearfix" }),
+                _vm._v(" "),
+                _c("hr")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "clearfix" }),
+              _vm._v(" "),
+              _c("hr"),
+              _vm._v(" "),
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-md-4 col-sm-4" }, [
+                  _c("small", [_vm._v("Jumlah Barang")]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "text" }, [
+                    _c("strong", [
+                      _vm._v(
+                        "\n                                        100\n                                    "
+                      )
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-md-4 col-sm-4" }, [
+                  _c("small", { staticClass: "text-success" }, [
+                    _vm._v("Total Berat")
+                  ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "text text-success" }, [
+                    _c("strong", [
+                      _vm._v(
+                        "\n                                        50.00 Kg\n                                    "
+                      )
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-md-4 col-sm-4" }, [
+                  _c("small", { staticClass: "text-success" }, [
+                    _vm._v("Total Berat Kubik")
+                  ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "text text-success" }, [
+                    _c("strong", [
+                      _vm._v(
+                        "\n                                        100.00 Kg\n                                    "
+                      )
+                    ])
+                  ])
+                ])
+              ])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "widget" }, [
+          _c("table", { staticClass: "table table-compact" }, [
+            _c("tbody", [
+              _c("tr", [
+                _c("th", { attrs: { width: "60%" } }, [
+                  _c("div", { staticClass: "text-right" }, [
+                    _vm._v(
+                      "\n                                Minimum Tarif\n                                "
+                    ),
+                    _c("br"),
+                    _vm._v(" "),
+                    _c("small", [
+                      _vm._v(
+                        "\n                                    per 0 Kg\n                                "
+                      )
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("td", { attrs: { width: "30%" } }, [
+                  _c("div", { staticClass: "text-left" }, [_vm._v(" 0.00")])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("tr", [
+                _c("th", [
+                  _c("div", { staticClass: "text-right" }, [
+                    _vm._v(
+                      "\n                                Tarif Pengiriman\n                                "
+                    ),
+                    _c("br"),
+                    _vm._v(" "),
+                    _c("small", [
+                      _vm._v(
+                        "\n                                    per\n                                    100.00\n                                    Kg\n                                "
+                      )
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("td", [
+                  _c("div", { staticClass: "text-left" }, [_vm._v(" 0.00")])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("tr", [
+                _c("th", [
+                  _c("div", { staticClass: "text-right" }, [
+                    _vm._v("Biaya lainnya")
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("td", [
+                  _c("div", { staticClass: "text-left" }, [_vm._v(" 0.00")])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("tr", [
+                _c("th", [
+                  _c("h4", { staticClass: "text-right" }, [
+                    _vm._v("Grand Total")
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("td", [
+                  _c("h4", [
+                    _c("div", { staticClass: "text-left" }, [_vm._v("  0.00 ")])
+                  ])
+                ])
+              ])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "widget" }, [
+          _c("div", { staticClass: "tab-content" }, [
+            _c(
+              "div",
+              {
+                staticClass: "tab-pane fade in",
+                attrs: { id: "OtherCharges" }
+              },
+              [
+                _c("div", { staticClass: "col-md-12" }, [
+                  _c("h4", { staticClass: "pull-left" }, [
+                    _c("i", { staticClass: "fas fa-th-list" }),
+                    _vm._v(
+                      "   Biaya Lainnya  \n                                "
+                    ),
+                    _c(
+                      "a",
+                      {
+                        attrs: {
+                          href: "#",
+                          "data-toggle": "tooltip",
+                          title: "Refresh"
+                        }
+                      },
+                      [_c("i", { staticClass: "fas fa-sync-alt" })]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "clearfix" }),
+                  _vm._v(" "),
+                  _c("br")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "clearfix" }),
+                _vm._v(" "),
+                _c("div", { staticClass: "widget" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "table-responsive scrollHorizontal",
+                      staticStyle: { overflow: "scroll" }
+                    },
+                    [
+                      _c(
+                        "table",
+                        {
+                          staticClass:
+                            "table table-compact table-header-color table-striped",
+                          staticStyle: { "min-width": "1000px" }
+                        },
+                        [
+                          _c("thead", [
+                            _c("tr", [
+                              _c("th", { staticStyle: { "min-width": "5px" } }),
+                              _vm._v(" "),
+                              _c(
+                                "th",
+                                { staticStyle: { "min-width": "100px" } },
+                                [_vm._v("Nama")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "th",
+                                { staticStyle: { "min-width": "100px" } },
+                                [_vm._v("Biaya")]
+                              )
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("tbody", [
+                            _c("tr", [
+                              _c(
+                                "td",
+                                {
+                                  staticClass: "oaerror strip-warning",
+                                  attrs: { colspan: "3" }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                                            Tidak ada list biaya lainnya\n                                        "
+                                  )
+                                ]
+                              )
+                            ])
+                          ])
+                        ]
+                      )
+                    ]
+                  )
+                ])
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "tab-pane fade in", attrs: { id: "Notes" } },
+              [
+                _c("div", { staticClass: "widget" }, [
+                  _c("div", { staticClass: "widget-heading" }, [
+                    _c("div", { staticClass: "pull-left" }, [
+                      _vm._v(
+                        "\n                                    Biaya Lainnya\n                                    "
+                      ),
+                      _c(
+                        "a",
+                        {
+                          attrs: {
+                            href: "#",
+                            "data-toggle": "tooltip",
+                            title: "Refresh"
+                          }
+                        },
+                        [_c("i", { staticClass: "fas fa-sync-alt" })]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "clearfix" })
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "table-responsive scrollHorizontal",
+                      staticStyle: { overflow: "scroll" }
+                    },
+                    [
+                      _c(
+                        "table",
+                        {
+                          staticClass:
+                            "table table-compact table-header-color table-striped",
+                          staticStyle: { "min-width": "1000px" }
+                        },
+                        [
+                          _c("thead", [
+                            _c("tr", [
+                              _c("th", { staticStyle: { "min-width": "5px" } }),
+                              _vm._v(" "),
+                              _c(
+                                "th",
+                                { staticStyle: { "min-width": "100px" } },
+                                [_vm._v("Nama")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "th",
+                                { staticStyle: { "min-width": "100px" } },
+                                [_vm._v("Biaya")]
+                              )
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("tbody", [
+                            _c("tr", [
+                              _c(
+                                "td",
+                                {
+                                  staticClass: "oaerror strip-warning",
+                                  attrs: { colspan: "3" }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                                            Tidak ada list biaya lainnya\n                                        "
+                                  )
+                                ]
+                              )
+                            ])
+                          ])
+                        ]
+                      )
+                    ]
+                  )
+                ])
+              ]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "clearfix" })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "widget has-shadow" }, [
+          _c("div", { staticClass: "widget-header" }, [
+            _c("span", [_vm._v("Customer Information")])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "widget-body" }, [
+            _c("form", { staticClass: "form-horizontal" }, [
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-md-6" }, [
+                  _c(
+                    "div",
+                    { staticClass: "form-group align-items-center mb-5" },
+                    [
+                      _c("label", { staticClass: "form-control-label" }, [
+                        _vm._v("Email")
+                      ]),
+                      _vm._v(" "),
+                      _c("p", { staticClass: "form-control-static" }, [
+                        _vm._v(
+                          "\n                                        hanelp97@gmail.com\n                                    "
+                        )
+                      ])
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-md-6" }, [
+                  _c(
+                    "div",
+                    { staticClass: "form-group align-items-center mb-5" },
+                    [
+                      _c("label", { staticClass: "form-control-label" }, [
+                        _vm._v("User")
+                      ]),
+                      _vm._v(" "),
+                      _c("p", { staticClass: "form-control-static" }, [
+                        _vm._v(
+                          "\n                                        Jhonny Prillian\n                                    "
+                        )
+                      ])
+                    ]
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("hr"),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v(" "),
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-md-6" }, [
+                  _c(
+                    "div",
+                    { staticClass: "form-group align-items-center mb-5" },
+                    [
+                      _c("label", { staticClass: "form-control-label" }, [
+                        _vm._v("Identity Type")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          staticClass: "selectpicker form-control",
+                          attrs: { name: "" }
+                        },
+                        [
+                          _c("option", { attrs: { value: "KTP" } }, [
+                            _vm._v("KTP")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "SIM" } }, [
+                            _vm._v("SIM")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "PASSPORT" } }, [
+                            _vm._v("Passport")
+                          ])
+                        ]
+                      )
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-md-6" }, [
+                  _c(
+                    "div",
+                    { staticClass: "form-group align-items-center mb-5" },
+                    [
+                      _c("label", { staticClass: "form-control-label" }, [
+                        _vm._v("Identity Number")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        staticClass: "form-control",
+                        attrs: {
+                          type: "text",
+                          value: "35674545487",
+                          placeholder: "Identity Number"
+                        }
+                      })
+                    ]
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-md-6" }, [
+                  _c(
+                    "div",
+                    { staticClass: "form-group align-items-center mb-5" },
+                    [
+                      _c("label", { staticClass: "form-control-label" }, [
+                        _vm._v("Phone")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        staticClass: "form-control",
+                        attrs: {
+                          type: "text",
+                          value: "081282829092",
+                          placeholder: "Phone"
+                        }
+                      })
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "form-group align-items-center mb-5" },
+                    [
+                      _c("label", { staticClass: "form-control-label" }, [
+                        _vm._v("Birth")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        staticClass: "datpicker form-control",
+                        attrs: { type: "text", placeholder: "Birth" }
+                      })
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-md-6" }, [
+                  _c(
+                    "div",
+                    { staticClass: "form-group align-items-center mb-5" },
+                    [
+                      _c("label", { staticClass: "form-control-label" }, [
+                        _vm._v("Gender")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          staticClass: "selectpicker form-control",
+                          attrs: { name: "" }
+                        },
+                        [
+                          _c("option", { attrs: { value: "M" } }, [
+                            _vm._v("Male")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "F" } }, [
+                            _vm._v("Female")
+                          ])
+                        ]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "form-group align-items-center mb-5" },
+                    [
+                      _c("label", { staticClass: "form-control-label" }, [
+                        _vm._v("Address")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "textarea",
+                        {
+                          staticClass: "form-control",
+                          attrs: {
+                            name: "",
+                            id: "",
+                            placeholder: "Address",
+                            rows: "5"
+                          }
+                        },
+                        [_vm._v("Komp puri permata blok g1 no 6 cipondoh")]
+                      )
+                    ]
+                  )
+                ])
+              ])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
         _c("div", { staticClass: "widget has-shadow" }, [
           _c("div", { staticClass: "widget-header" }, [
             _c("span", [_vm._v("Courier Information")])

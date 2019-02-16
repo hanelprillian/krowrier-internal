@@ -7,14 +7,14 @@
                     <h2 class="page-header-title">{{mode == 'add' ? 'New' : 'Detail'}} Booking</h2>
                     <div>
                         <div class="page-header-tools">
-                            <span class="badge-text-small success">Complete</span>
+                            <span class="badge-text badge-text-small success">Complete</span>
                         </div>
                     </div>
                 </div>
                 <br>
                 <div>
                     <button @click="$router.push('/internal/booking')" class="btn btn-outline-secondary">Back</button>
-                    <button @click="Submit()" class="btn btn-outline-primary float-right">Save</button>
+                    <!--<button @click="Submit()" class="btn btn-outline-primary float-right">Save</button>-->
                 </div>
             </div>
         </div>
@@ -158,52 +158,194 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="widget widget-default">
+                    <div class="widget-header">
+                        Courier Information
+                    </div>
+                    <div class="widget-body">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>
+                                        <span>
+                                            Feeder
+                                            &nbsp; <small class="badge-text badge-text-small success bg-gradient-02">Pickup</small>
+                                        </span>
+                                    </label>
+                                    <div class="form-control-static">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="form-control-label">
+                                                        Name
+                                                    </label>
+                                                    <p class="form-control-static">
+                                                        Laenaldi Saputri
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="form-control-label">
+                                                        Pickup Address
+                                                    </label>
+                                                    <p class="form-control-static">
+                                                        Bojong nangka
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="form-control-label">
+                                                        Phone
+                                                    </label>
+                                                    <p class="form-control-static">
+                                                        081380011003
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="form-control-label">
+                                                        Vehicle
+                                                    </label>
+                                                    <p class="form-control-static">
+                                                        Motor Cycle
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>
+                                        <span>Courier</span>
+                                    </label>
+                                    <div class="form-control-static">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="form-control-label">
+                                                        Name
+                                                    </label>
+                                                    <p class="form-control-static">
+                                                        Maemunah
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="form-control-label">
+                                                        Origin Hub
+                                                    </label>
+                                                    <p class="form-control-static">
+                                                        Stasiun Gambir
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="form-control-label">
+                                                        Destination Hub
+                                                    </label>
+                                                    <p class="form-control-static">
+                                                        Stasiun Bogor
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="form-control-label">
+                                                        Phone
+                                                    </label>
+                                                    <p class="form-control-static">
+                                                        081380011003
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>
+                                        <span>
+                                            Feeder
+                                            &nbsp; <small class="badge-text badge-text-small success bg-gradient-03">Delivery</small>
+                                        </span>
+                                    </label>
+                                    <div class="form-control-static">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="form-control-label">
+                                                        Name
+                                                    </label>
+                                                    <p class="form-control-static">
+                                                        Handoko
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="form-control-label">
+                                                        Delivery Address
+                                                    </label>
+                                                    <p class="form-control-static">
+                                                        Taman bunga matahari
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="form-control-label">
+                                                        Phone
+                                                    </label>
+                                                    <p class="form-control-static">
+                                                        081380011003
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="form-control-label">
+                                                        Vehicle
+                                                    </label>
+                                                    <p class="form-control-static">
+                                                        Motor Cycle
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="widget">
                     <div class="widget-body">
                         <div class="form-group">
                             <label>
-                                <span>Data Barang</span>
+                                <span>Booking Item</span>
                             </label>
+                            <br>
                             <br>
                             <div class="form-control-static">
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label>
-                                                <small>
-                                                    Jenis Transportasi
-                                                </small>
+                                            <label class="form-control-label">
+                                                Service Package
                                             </label>
                                             <div class="form-control-static">
-                                                Udara
+                                                One day service
                                             </div>
-
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label class="">
-                                                <small>
-                                                    Paket Booking
-                                                </small>
-                                            </label>
-                                            <div class="form-control-static">
-                                                <span>(DTD) Reguler</span>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label class="">
-                                                <small>
-                                                    Komoditas
-                                                </small>
-                                            </label>
-                                            <div class="form-control-static">
-                                                <span>General</span>
-                                            </div>
-
                                         </div>
                                     </div>
                                 </div>
@@ -212,30 +354,20 @@
                             <div>
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <span style="font-size: 12pt">Barang ke <strong>#1</strong> </span>
-
+                                        <span style="font-size: 12pt">Item <strong>#1</strong> </span>
                                     </div>
                                     <br>
-
                                     <div>
                                         <div class="form-group">
-                                            <label>
-                                                <small>
-                                                    Nama Barang
-                                                </small>
+                                            <label class="form-control-label">
+                                                Item
                                             </label>
                                             <div class="form-control-static">
                                                 Buku
                                                 <br><br>
                                                 <small>
-                                                    <strong>Berat: </strong>
+                                                    <strong>Weight: </strong>
                                                     50 Kg &nbsp;
-                                                    <strong>Panjang: </strong>
-                                                    100.00 cm &nbsp;
-                                                    <strong>Lebar: </strong>
-                                                    200.00 cm &nbsp;
-                                                    <strong>Tinggi: </strong>
-                                                    30.00 cm &nbsp;
                                                     <strong>Jumlah: </strong>
                                                     100 &nbsp;
                                                 </small>
@@ -251,29 +383,20 @@
                             <hr>
                             <div class="row">
                                 <div class="col-md-4 col-sm-4">
-                                    <small>Jumlah Barang</small>
+                                    <small>Total Item</small>
                                     <br>
                                     <div class="text">
                                         <strong>
-                                            100
+                                            1
                                         </strong>
                                     </div>
                                 </div>
                                 <div class="col-md-4 col-sm-4">
-                                    <small class="text-success">Total Berat</small>
+                                    <small class="text-success">Total Weight</small>
                                     <br>
                                     <div class="text text-success">
                                         <strong>
-                                            50.00 Kg
-                                        </strong>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 col-sm-4">
-                                    <small class="text-success">Total Berat Kubik</small>
-                                    <br>
-                                    <div class="text text-success">
-                                        <strong>
-                                            100.00 Kg
+                                            1 Kg
                                         </strong>
                                     </div>
                                 </div>
@@ -283,274 +406,38 @@
                 </div>
                 <div class="widget">
                     <table class="table table-compact">
-                        <tbody><tr>
-                            <th width="60%">
-                                <div class="text-right">
-                                    Minimum Tarif
-                                    <br>
-                                    <small>
-                                        per 0 Kg
-                                    </small>
-                                </div>
-                            </th>
-                            <td width="30%">
-                                <div class="text-left"> 0.00</div>
-                            </td>
-                        </tr>
+                        <tbody>
                         <tr>
                             <th>
                                 <div class="text-right">
-                                    Tarif Pengiriman
+                                    Charges
                                     <br>
                                     <small>
-                                        per
-                                        100.00
-                                        Kg
+                                        1 Kg
                                     </small>
                                 </div>
                             </th>
                             <td>
-                                <div class="text-left"> 0.00</div>
+                                <div class="text-left"> 9000</div>
                             </td>
                         </tr>
                         <tr>
-                            <th><div class="text-right">Biaya lainnya</div></th>
+                            <th><div class="text-right">Other Charges</div></th>
                             <td>
                                 <div class="text-left"> 0.00</div>
                             </td>
                         </tr>
                         <tr>
-                            <th><h4 class="text-right">Grand Total</h4></th>
+                            <th><h4 class="text-right">Total Charges</h4></th>
                             <td>
                                 <h4>
-                                    <div class="text-left">  0.00 </div>
+                                    <div class="text-left">  Rp. 9000 </div>
                                 </h4>
                             </td>
                         </tr>
-                        </tbody></table>
+                        </tbody>
+                    </table>
                 </div>
-
-                <div class="widget">
-                    <div class="tab-content">
-                        <div id="OtherCharges" class="tab-pane fade in">
-                            <div class="col-md-12">
-                                <h4 class="pull-left"><i class="fas fa-th-list"></i> &nbsp; Biaya Lainnya &nbsp;
-                                    <a href="#" data-toggle="tooltip" title="Refresh">
-                                        <i class="fas fa-sync-alt"></i>
-                                    </a>
-                                </h4>
-                                <div class="clearfix"></div>
-                                <br>
-                            </div>
-                            <div class="clearfix"></div>
-                            <div class="widget">
-                                <div class="table-responsive scrollHorizontal" style="overflow: scroll">
-                                    <table class="table table-compact table-header-color table-striped" style="min-width: 1000px;">
-                                        <thead>
-                                        <tr>
-                                            <th style="min-width: 5px"></th>
-                                            <th style="min-width: 100px">Nama</th>
-                                            <th style="min-width: 100px">Biaya</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr>
-                                            <td colspan="3" class="oaerror strip-warning">
-                                                Tidak ada list biaya lainnya
-                                            </td>
-                                        </tr>
-
-
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="Notes" class="tab-pane fade in">
-                            <div class="widget">
-                                <div class="widget-heading">
-                                    <div class="pull-left">
-                                        Biaya Lainnya
-                                        <a href="#" data-toggle="tooltip" title="Refresh">
-                                            <i class="fas fa-sync-alt"></i>
-                                        </a>
-                                    </div>
-
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div class="table-responsive scrollHorizontal" style="overflow: scroll">
-                                    <table class="table table-compact table-header-color table-striped" style="min-width: 1000px;">
-                                        <thead>
-                                        <tr>
-                                            <th style="min-width: 5px"></th>
-                                            <th style="min-width: 100px">Nama</th>
-                                            <th style="min-width: 100px">Biaya</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr>
-                                            <td colspan="3" class="oaerror strip-warning">
-                                                Tidak ada list biaya lainnya
-                                            </td>
-                                        </tr>
-
-
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                </div>
-                <!-- Form -->
-                <div class="widget has-shadow">
-                    <div class="widget-header">
-                        <span>Customer Information</span>
-                    </div>
-                    <div class="widget-body">
-                        <form class="form-horizontal">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group align-items-center mb-5">
-                                        <label class="form-control-label">Email</label>
-                                        <p class="form-control-static">
-                                            hanelp97@gmail.com
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group align-items-center mb-5">
-                                        <label class="form-control-label">User</label>
-                                        <p class="form-control-static">
-                                            Jhonny Prillian
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <hr>
-                            <br>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group align-items-center mb-5">
-                                        <label class="form-control-label">Identity Type</label>
-                                        <select name="" class="selectpicker form-control">
-                                            <option value="KTP">KTP</option>
-                                            <option value="SIM">SIM</option>
-                                            <option value="PASSPORT">Passport</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group align-items-center mb-5">
-                                        <label class="form-control-label">Identity Number</label>
-                                        <input type="text" class="form-control" value="35674545487" placeholder="Identity Number">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group align-items-center mb-5">
-                                        <label class="form-control-label">Phone</label>
-                                        <input type="text" class="form-control" value="081282829092" placeholder="Phone">
-                                    </div>
-                                    <div class="form-group align-items-center mb-5">
-                                        <label class="form-control-label">Birth</label>
-                                        <input type="text" class="datpicker form-control" placeholder="Birth">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group align-items-center mb-5">
-                                        <label class="form-control-label">Gender</label>
-                                        <select name="" class="selectpicker form-control">
-                                            <option value="M">Male</option>
-                                            <option value="F">Female</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group align-items-center mb-5">
-                                        <label class="form-control-label">Address</label>
-                                        <textarea name="" id="" class="form-control" placeholder="Address" rows="5">Komp puri permata blok g1 no 6 cipondoh</textarea>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <!-- End Form -->
-                <!-- Form -->
-                <div class="widget has-shadow">
-                    <div class="widget-header">
-                        <span>Courier Information</span>
-                    </div>
-                    <div class="widget-body">
-                        <form class="form-horizontal">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group align-items-center mb-5">
-                                        <label class="form-control-label">Email</label>
-                                        <p class="form-control-static">
-                                            hanelp97@gmail.com
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group align-items-center mb-5">
-                                        <label class="form-control-label">User</label>
-                                        <p class="form-control-static">
-                                            Jhonny Prillian
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <hr>
-                            <br>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group align-items-center mb-5">
-                                        <label class="form-control-label">Identity Type</label>
-                                        <select name="" class="selectpicker form-control">
-                                            <option value="KTP">KTP</option>
-                                            <option value="SIM">SIM</option>
-                                            <option value="PASSPORT">Passport</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group align-items-center mb-5">
-                                        <label class="form-control-label">Identity Number</label>
-                                        <input type="text" class="form-control" value="35674545487" placeholder="Identity Number">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group align-items-center mb-5">
-                                        <label class="form-control-label">Phone</label>
-                                        <input type="text" class="form-control" value="081282829092" placeholder="Phone">
-                                    </div>
-                                    <div class="form-group align-items-center mb-5">
-                                        <label class="form-control-label">Birth</label>
-                                        <input type="text" class="datpicker form-control" placeholder="Birth">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group align-items-center mb-5">
-                                        <label class="form-control-label">Gender</label>
-                                        <select name="" class="selectpicker form-control">
-                                            <option value="M">Male</option>
-                                            <option value="F">Female</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group align-items-center mb-5">
-                                        <label class="form-control-label">Address</label>
-                                        <textarea name="" id="" class="form-control" placeholder="Address" rows="5">Komp puri permata blok g1 no 6 cipondoh</textarea>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <!-- End Form -->
             </div>
         </div>
         <!-- End Row -->

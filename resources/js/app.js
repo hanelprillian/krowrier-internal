@@ -121,6 +121,26 @@ const router = new VueRouter({
             component: require('./components/FeederCourier/Form').default,
             props: { mode: 'edit' }
         },
+
+        // booking
+        {
+            path: rootInternal+'/booking',
+            name: 'internal->booking',
+            component: require('./components/Booking/Index').default
+        },
+        {
+            path: rootInternal+'/booking/new',
+            name: 'internal->booking->new',
+            component: require('./components/Booking/Form').default,
+            props: { mode: 'add' }
+        },
+        {
+            path: rootInternal+'/booking/:id',
+            name: 'internal->booking->edit',
+            component: require('./components/Booking/Form').default,
+            props: { mode: 'edit' }
+        },
+
         {
             path: rootInternal+'/user',
             name: 'internal->user',

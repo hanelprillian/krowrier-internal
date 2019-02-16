@@ -172,9 +172,9 @@
                                     <li>
                                         <a href="#">Booking Progress</a>
                                     </li>
-                                    <li>
-                                        <a href="#">Customer</a>
-                                    </li>
+                                    <router-link tag="li" :to="{ path: '/internal/customer' }">
+                                        <a>Customer</a>
+                                    </router-link>
                                     <li>
                                         <a href="#">Feeder</a>
                                     </li>

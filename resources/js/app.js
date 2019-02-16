@@ -14,147 +14,6 @@ window.swal = require('sweetalert2');
 window.Dashboard = require('./components/DashboardComponent').default;
 window.App = require('./components/App').default;
 
-Vue.directive('selectpicker', {
-    twoWay: true,
-    params: ['select-key','option-value','option-label','populate-options-key','api-selected','api-selected-label','api-selected-value','api','api-url','api-options-value','api-options-text', 'api-custom-content', 'api-custom-content-type', 'api-custom-content-subtext-1', 'api-custom-content-subtext-2'],
-    paramWatchers: {
-        apiUrl: function (val, oldVal)
-        {
-            if(this.params.api == 'true')
-            {
-                this.load("",true);
-            }
-        }
-    },
-    load:function (val, api)
-    {
-        let self = this;
-        let ret = $(this.el).selectpicker({
-            style: ' btn-sm'
-        });
-
-        if(self.params.populateOptionsKey)
-        {
-            // 1. first, after load data, send event with key
-            // broadcast.$emit('selectepicker:populateOptions:key', dtd_pricing);
-            //
-            // 2. in html like this
-            // populate-options-key="data-dtd"
-            // option-label="rates"
-            // option-value="id"
-
-            broadcast.$on('selectepicker:populateOptions:' + self.params.populateOptionsKey,  (data) =>
-            {
-                ret.html('');
-                ret.append('<option value="">(please select)</option>').selectpicker('refresh');
-
-                if(Array.isArray(data))
-                {
-                    _.forEach(data, function (v, k)
-                    {
-                        if(v[self.params.optionValue] == val)
-                            ret.append('<option value="'+v[self.params.optionValue]+'" selected>'+v[self.params.optionLabel]+'</option>').selectpicker('refresh');
-                        else
-                            ret.append('<option value="'+v[self.params.optionValue]+'">'+v[self.params.optionLabel]+'</option>').selectpicker('refresh');
-                    });
-                }
-                else
-                {
-                    if(data[self.params.optionValue] == val)
-                        ret.append('<option value="'+data[self.params.optionValue]+'" selected>'+data[self.params.optionLabel]+'</option>').selectpicker('refresh');
-                    else
-                        ret.append('<option value="'+data[self.params.optionValue]+'">'+data[self.params.optionLabel]+'</option>').selectpicker('refresh');
-                }
-            });
-        }
-
-        // broadcast.$on('selectepicker:selected:' + self.params.selectKey,  (data, valueCol, labelCol) =>
-        // {
-        //     ret.html('');
-        //     ret.append('<option value="'+data[valueCol]+'" selected>'+data[labelCol]+'</option>').selectpicker('refresh');
-        // });
-
-        if(api)
-        {
-            // #EXAMPLE USING
-            // api="true"
-            // api-url="url('admin/debtor/api?action=get_all_debtor&select=code,name')"
-            // api-options-value="code"
-            // api-options-text="name"
-            //:api-url-param="formData.module"
-            // data-live-search="true"
-            let url = self.params.apiUrl;
-
-            let options = {
-                ajax: {
-                    url: url,
-                    type    : 'GET',
-                    dataType: 'json',
-                    data    : {
-                        q: '@{{{q}}}'
-                    }
-                },
-                locale        : {
-                    emptyTitle: 'Select and Begin Typing'
-                },
-                requestDelay:300,
-                cache:true,
-                // log           : 3,
-                preprocessData: function (data)
-                {
-                    let i, l = data.length, array = [];
-                    if (l) {
-                        for (i = 0; i < l; i++)
-                        {
-                            let r = data[i];
-                            let content = null;
-
-                            array.push($.extend(true, r, {
-                                value: r[self.params.apiOptionsValue],
-                                text : r[self.params.apiOptionsText],
-                                data : {
-                                    content: content
-                                }
-                            }))
-                        }
-                    }
-
-                    return array;
-                },
-                preserveSelectedPosition:'after',
-                preserveSelected:true
-            };
-            ret.ajaxSelectPicker(options);
-        }
-
-        if(self.params.apiSelected)
-        {
-            ret.html('<option value="'+self.params.apiSelectedValue+'" selected>'+self.params.apiSelectedLabel+'</option>').selectpicker('refresh');
-        }
-
-        if(val != null)
-        {
-            ret.selectpicker('val', val);
-        }
-
-        return ret;
-    },
-    bind: function()
-    {
-        this.load();
-    },
-    update: function(nv, ov)
-    {
-        let api = false;
-
-        if(this.params.api == 'true')
-        {
-            api = true;
-        }
-
-        return this.load(nv, api);
-    }
-});
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -209,6 +68,23 @@ const router = new VueRouter({
             path: rootInternal+'/hub/:id',
             name: 'internal->hub->form',
             component: require('./components/Hub/Form').default,
+            props: { mode: 'edit' }
+        },
+        {
+            path: rootInternal+'/customer',
+            name: 'internal->customer',
+            component: require('./components/Customer/Index').default
+        },
+        {
+            path: rootInternal+'/customer/new',
+            name: 'internal->customer->new',
+            component: require('./components/Customer/Form').default,
+            props: { mode: 'add' }
+        },
+        {
+            path: rootInternal+'/customer/:id',
+            name: 'internal->customer->edit',
+            component: require('./components/Customer/Form').default,
             props: { mode: 'edit' }
         },
         {

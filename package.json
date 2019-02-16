@@ -29,6 +29,7 @@
         "moment": "^2.24.0",
         "nprogress": "^0.2.0",
         "sweetalert2": "^8.0.7",
-        "vue-bootstrap-selectpicker": "^1.0.6"
+        "vue-bootstrap-selectpicker": "^1.0.6",
+        "vue2-google-maps": "^0.10.6"
     }
 }

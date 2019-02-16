@@ -33,7 +33,7 @@
                             <div class="form-group row d-flex align-items-center mb-5">
                                 <label class="col-lg-2 form-control-label">Type</label>
                                 <div class="col-lg-4">
-                                    <select class="selectpicker" v-model="selected">
+                                    <select class="selectpicker" ref="select" v-model="selected">
                                         <option :value="type.value" v-for="type in listHubType">{{type.label}}</option>
                                     </select>
                                 </div>
@@ -74,10 +74,11 @@
 
 <script>
     export default {
+
         data()
         {
             return {
-                selected: 'TRAIN_STATION',
+                selected: '',
                 listHubType: [
                     {
                         label: 'Train Station',
@@ -106,8 +107,22 @@
                 })
             }
         },
-        mounted() {
-            $('.selectpicker').selectpicker();
+        mounted()
+        {
+            let self = this;
+            setTimeout(function () {
+                self.listHubType = [{
+                    label: 'Bus Station',
+                    value: 'BUS_STATION',
+                },{
+                    label: 'Train Station',
+                    value: 'TRAIN_STATION',
+                }];
+            },2000);
+        },
+        updated ()
+        {
+            $(this.$refs.select).selectpicker('refresh')
         }
     }
 </script>

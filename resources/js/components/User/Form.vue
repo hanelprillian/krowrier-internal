@@ -54,6 +54,27 @@
                                 </div>
                             </div>
                             <div class="form-group row d-flex align-items-center mb-5">
+                                <label class="col-lg-2 form-control-label">Phone</label>
+                                <div class="col-lg-4">
+                                    <input type="text" class="form-control" placeholder="Phone">
+                                </div>
+                            </div>
+                            <div class="form-group row d-flex align-items-center mb-5">
+                                <label class="col-lg-2 form-control-label">Birth</label>
+                                <div class="col-lg-4">
+                                    <input type="text" class="datpicker form-control" placeholder="Birth">
+                                </div>
+                            </div>
+                            <div class="form-group row d-flex align-items-center mb-5">
+                                <label class="col-lg-2 form-control-label">Gender</label>
+                                <div class="col-lg-4">
+                                    <select name="" class="selectpicker">
+                                        <option value="M">Male</option>
+                                        <option value="F">Female</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row d-flex align-items-center mb-5">
                                 <label class="col-lg-2 form-control-label">Address</label>
                                 <div class="col-lg-5">
                                     <textarea name="" id="" class="form-control" placeholder="Address" rows="5"></textarea>
@@ -110,6 +131,12 @@
         },
         mounted() {
             $('.selectpicker').selectpicker();
+            $('.datpicker').daterangepicker({
+                singleDatePicker: true,
+                locale: {
+                    format: 'MM/DD/YYYY'
+                }
+            });
         }
     }
 </script>

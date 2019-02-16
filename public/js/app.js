@@ -983,7 +983,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      selected: 'TRAIN_STATION',
+      selected: '',
       listHubType: [{
         label: 'Train Station',
         value: 'TRAIN_STATION'
@@ -1009,7 +1009,19 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   mounted: function mounted() {
-    $('.selectpicker').selectpicker();
+    var self = this;
+    setTimeout(function () {
+      self.listHubType = [{
+        label: 'Bus Station',
+        value: 'BUS_STATION'
+      }, {
+        label: 'Train Station',
+        value: 'TRAIN_STATION'
+      }];
+    }, 2000);
+  },
+  updated: function updated() {
+    $(this.$refs.select).selectpicker('refresh');
   }
 });
 
@@ -1400,6 +1412,27 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -1429,6 +1462,12 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     $('.selectpicker').selectpicker();
+    $('.datpicker').daterangepicker({
+      singleDatePicker: true,
+      locale: {
+        format: 'MM/DD/YYYY'
+      }
+    });
   }
 });
 
@@ -7009,6 +7048,7 @@ var render = function() {
                             expression: "selected"
                           }
                         ],
+                        ref: "select",
                         staticClass: "selectpicker",
                         on: {
                           change: function($event) {
@@ -7743,6 +7783,12 @@ var render = function() {
               _vm._v(" "),
               _vm._m(5),
               _vm._v(" "),
+              _vm._m(6),
+              _vm._v(" "),
+              _vm._m(7),
+              _vm._v(" "),
+              _vm._m(8),
+              _vm._v(" "),
               _c(
                 "div",
                 {
@@ -7869,6 +7915,70 @@ var staticRenderFns = [
             staticClass: "form-control",
             attrs: { type: "text", placeholder: "Last Name" }
           })
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "form-group row d-flex align-items-center mb-5" },
+      [
+        _c("label", { staticClass: "col-lg-2 form-control-label" }, [
+          _vm._v("Phone")
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-lg-4" }, [
+          _c("input", {
+            staticClass: "form-control",
+            attrs: { type: "text", placeholder: "Phone" }
+          })
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "form-group row d-flex align-items-center mb-5" },
+      [
+        _c("label", { staticClass: "col-lg-2 form-control-label" }, [
+          _vm._v("Birth")
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-lg-4" }, [
+          _c("input", {
+            staticClass: "datpicker form-control",
+            attrs: { type: "text", placeholder: "Birth" }
+          })
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "form-group row d-flex align-items-center mb-5" },
+      [
+        _c("label", { staticClass: "col-lg-2 form-control-label" }, [
+          _vm._v("Gender")
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-lg-4" }, [
+          _c("select", { staticClass: "selectpicker", attrs: { name: "" } }, [
+            _c("option", { attrs: { value: "M" } }, [_vm._v("Male")]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "F" } }, [_vm._v("Female")])
+          ])
         ])
       ]
     )
@@ -22768,6 +22878,123 @@ window.swal = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2
 
 window.Dashboard = __webpack_require__(/*! ./components/DashboardComponent */ "./resources/js/components/DashboardComponent.vue").default;
 window.App = __webpack_require__(/*! ./components/App */ "./resources/js/components/App.vue").default;
+Vue.directive('selectpicker', {
+  twoWay: true,
+  params: ['select-key', 'option-value', 'option-label', 'populate-options-key', 'api-selected', 'api-selected-label', 'api-selected-value', 'api', 'api-url', 'api-options-value', 'api-options-text', 'api-custom-content', 'api-custom-content-type', 'api-custom-content-subtext-1', 'api-custom-content-subtext-2'],
+  paramWatchers: {
+    apiUrl: function apiUrl(val, oldVal) {
+      if (this.params.api == 'true') {
+        this.load("", true);
+      }
+    }
+  },
+  load: function load(val, api) {
+    var self = this;
+    var ret = $(this.el).selectpicker({
+      style: ' btn-sm'
+    });
+
+    if (self.params.populateOptionsKey) {
+      // 1. first, after load data, send event with key
+      // broadcast.$emit('selectepicker:populateOptions:key', dtd_pricing);
+      //
+      // 2. in html like this
+      // populate-options-key="data-dtd"
+      // option-label="rates"
+      // option-value="id"
+      broadcast.$on('selectepicker:populateOptions:' + self.params.populateOptionsKey, function (data) {
+        ret.html('');
+        ret.append('<option value="">(please select)</option>').selectpicker('refresh');
+
+        if (Array.isArray(data)) {
+          _.forEach(data, function (v, k) {
+            if (v[self.params.optionValue] == val) ret.append('<option value="' + v[self.params.optionValue] + '" selected>' + v[self.params.optionLabel] + '</option>').selectpicker('refresh');else ret.append('<option value="' + v[self.params.optionValue] + '">' + v[self.params.optionLabel] + '</option>').selectpicker('refresh');
+          });
+        } else {
+          if (data[self.params.optionValue] == val) ret.append('<option value="' + data[self.params.optionValue] + '" selected>' + data[self.params.optionLabel] + '</option>').selectpicker('refresh');else ret.append('<option value="' + data[self.params.optionValue] + '">' + data[self.params.optionLabel] + '</option>').selectpicker('refresh');
+        }
+      });
+    } // broadcast.$on('selectepicker:selected:' + self.params.selectKey,  (data, valueCol, labelCol) =>
+    // {
+    //     ret.html('');
+    //     ret.append('<option value="'+data[valueCol]+'" selected>'+data[labelCol]+'</option>').selectpicker('refresh');
+    // });
+
+
+    if (api) {
+      // #EXAMPLE USING
+      // api="true"
+      // api-url="url('admin/debtor/api?action=get_all_debtor&select=code,name')"
+      // api-options-value="code"
+      // api-options-text="name"
+      //:api-url-param="formData.module"
+      // data-live-search="true"
+      var url = self.params.apiUrl;
+      var options = {
+        ajax: {
+          url: url,
+          type: 'GET',
+          dataType: 'json',
+          data: {
+            q: '@{{{q}}}'
+          }
+        },
+        locale: {
+          emptyTitle: 'Select and Begin Typing'
+        },
+        requestDelay: 300,
+        cache: true,
+        // log           : 3,
+        preprocessData: function preprocessData(data) {
+          var i,
+              l = data.length,
+              array = [];
+
+          if (l) {
+            for (i = 0; i < l; i++) {
+              var r = data[i];
+              var content = null;
+              array.push($.extend(true, r, {
+                value: r[self.params.apiOptionsValue],
+                text: r[self.params.apiOptionsText],
+                data: {
+                  content: content
+                }
+              }));
+            }
+          }
+
+          return array;
+        },
+        preserveSelectedPosition: 'after',
+        preserveSelected: true
+      };
+      ret.ajaxSelectPicker(options);
+    }
+
+    if (self.params.apiSelected) {
+      ret.html('<option value="' + self.params.apiSelectedValue + '" selected>' + self.params.apiSelectedLabel + '</option>').selectpicker('refresh');
+    }
+
+    if (val != null) {
+      ret.selectpicker('val', val);
+    }
+
+    return ret;
+  },
+  bind: function bind() {
+    this.load();
+  },
+  update: function update(nv, ov) {
+    var api = false;
+
+    if (this.params.api == 'true') {
+      api = true;
+    }
+
+    return this.load(nv, api);
+  }
+});
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue

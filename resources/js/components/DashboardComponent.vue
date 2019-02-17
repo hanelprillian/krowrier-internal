@@ -238,8 +238,16 @@
 </template>
 
 <script>
-    export default {
-        mounted() {
+    export default
+    {
+        mounted()
+        {
+            db.collection("user").onSnapshot((data) =>
+            {
+                data.forEach((doc) => {
+                    console.log(doc.id, ' => ', doc.data());
+                })
+            })
         }
     }
 </script>

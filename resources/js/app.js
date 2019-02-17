@@ -10,6 +10,22 @@ window.VueRouter = require('vue-router').default;
 window.NProgress = require('nprogress/nprogress');
 window.swal = require('sweetalert2');
 
+//firebase
+window.firebase = require('firebase');
+
+var config = {
+    apiKey: "AIzaSyAq1vd-KfTT7IF7FH7PTozE2Tru3Pk8Bvw",
+    authDomain: "krowrier.firebaseapp.com",
+    databaseURL: "https://krowrier.firebaseio.com",
+    projectId: "krowrier",
+    storageBucket: "krowrier.appspot.com",
+    messagingSenderId: "698990288301"
+};
+
+firebase.initializeApp(config);
+
+window.db = firebase.firestore();
+
 //components
 window.Dashboard = require('./components/DashboardComponent').default;
 window.App = require('./components/App').default;

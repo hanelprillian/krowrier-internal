@@ -65,6 +65,8 @@
 									</tr>
 								</tbody>
 							</table>
+
+							<button class="btn btn-primary" @click.prevent="loadMore()">Load more</button>
 						</div>
 					</div>
 					<!-- End Widget Body -->
@@ -115,7 +117,17 @@
 	export default {
 		data() {
 			return {
-				dataUser: []
+				dataUser: [],
+
+				paging: {
+					user_per_page: 1,
+					end: false,
+					loading: false
+				},
+				ref: {
+					users: null,
+					usersNext: null
+				}
 			};
 		},
 
@@ -129,17 +141,56 @@
 			loadUsers() {
 				let self = this;
 
-				db.collection("user").onSnapshot(
-					q => {
-						self.dataUser = [];
-						q.forEach(doc => {
-							self.dataUser.push(doc.data());
+				this.ref.users = db
+					.collection("user")
+					.orderBy("created_at", "desc");
+
+				const firstPage = this.ref.users.limit(this.paging.user_per_page);
+				this.handleUsers(firstPage);
+			},
+
+			loadMore() {
+				if (this.paging.end) {
+					return;
+				}
+
+				this.paging.loading = true;
+				this.handleUsers(this.ref.usersNext).then(documentSnapshots => {
+					this.paging.loading = false;
+
+					if (documentSnapshots.empty) this.paging.end = true;
+				});
+			},
+
+			handleUsers(ref) {
+				return new Promise((resolve, reject) => {
+					ref.get().then(documentSnapshots => {
+						if (documentSnapshots.empty) {
+							this.paging.end = true;
+							resolve(documentSnapshots);
+						}
+
+						documentSnapshots.forEach(doc => {
+							let userData = doc.data();
+							userData.id = doc.id;
+							this.dataUser.push(userData);
 						});
-					},
-					err => {}
-				);
+
+						const lastVisible =
+							documentSnapshots.docs[documentSnapshots.size - 1];
+
+						if (!lastVisible) return;
+
+						this.ref.usersNext = this.ref.users
+							.startAfter(lastVisible)
+							.limit(this.paging.user_per_page);
+
+						resolve(documentSnapshots);
+					});
+				});
 			}
 		},
+
 		mounted() {}
 	};
 </script>

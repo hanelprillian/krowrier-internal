@@ -52459,10 +52459,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      dataUser: []
+      dataUser: [],
+      paging: {
+        user_per_page: 1,
+        end: false,
+        loading: false
+      },
+      ref: {
+        users: null,
+        usersNext: null
+      }
     };
   },
   beforeRouteEnter: function beforeRouteEnter(to, from, next) {
@@ -52473,12 +52484,45 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     loadUsers: function loadUsers() {
       var self = this;
-      db.collection("user").onSnapshot(function (q) {
-        self.dataUser = [];
-        q.forEach(function (doc) {
-          self.dataUser.push(doc.data());
+      this.ref.users = db.collection("user").orderBy("created_at", "desc");
+      var firstPage = this.ref.users.limit(this.paging.user_per_page);
+      this.handleUsers(firstPage);
+    },
+    loadMore: function loadMore() {
+      var _this = this;
+
+      if (this.paging.end) {
+        return;
+      }
+
+      this.paging.loading = true;
+      this.handleUsers(this.ref.usersNext).then(function (documentSnapshots) {
+        _this.paging.loading = false;
+        if (documentSnapshots.empty) _this.paging.end = true;
+      });
+    },
+    handleUsers: function handleUsers(ref) {
+      var _this2 = this;
+
+      return new Promise(function (resolve, reject) {
+        ref.get().then(function (documentSnapshots) {
+          if (documentSnapshots.empty) {
+            _this2.paging.end = true;
+            resolve(documentSnapshots);
+          }
+
+          documentSnapshots.forEach(function (doc) {
+            var userData = doc.data();
+            userData.id = doc.id;
+
+            _this2.dataUser.push(userData);
+          });
+          var lastVisible = documentSnapshots.docs[documentSnapshots.size - 1];
+          if (!lastVisible) return;
+          _this2.ref.usersNext = _this2.ref.users.startAfter(lastVisible).limit(_this2.paging.user_per_page);
+          resolve(documentSnapshots);
         });
-      }, function (err) {});
+      });
     }
   },
   mounted: function mounted() {}
@@ -62043,7 +62087,21 @@ var render = function() {
                     }),
                     0
                   )
-                ])
+                ]),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-primary",
+                    on: {
+                      click: function($event) {
+                        $event.preventDefault()
+                        return _vm.loadMore()
+                      }
+                    }
+                  },
+                  [_vm._v("Load more")]
+                )
               ]
             )
           ]),
@@ -76855,172 +76913,11 @@ window.db = firebase.firestore(); //components
 
 window.Dashboard = __webpack_require__(/*! ./components/DashboardComponent */ "./resources/js/components/DashboardComponent.vue").default;
 window.App = __webpack_require__(/*! ./components/App */ "./resources/js/components/App.vue").default;
-/**
- * The following block of code may be used to automatically register your
- * Vue components. It will recursively scan this directory for the Vue
- * components and automatically register them with their "basename".
- *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
- */
-// const files = require.context('./', true, /\.vue$/i)
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.use(VueRouter);
-var rootInternal = '/internal';
-var router = new VueRouter({
-  mode: 'history',
-  routes: [{
-    path: rootInternal + '/',
-    name: 'internal->home',
-    component: Dashboard
-  }, {
-    path: rootInternal + '/service-package',
-    name: 'internal->service_package',
-    component: __webpack_require__(/*! ./components/ServicePackage/Index */ "./resources/js/components/ServicePackage/Index.vue").default
-  }, {
-    path: rootInternal + '/service-package/new',
-    name: 'internal->service_package->new',
-    component: __webpack_require__(/*! ./components/ServicePackage/Form */ "./resources/js/components/ServicePackage/Form.vue").default,
-    props: {
-      mode: 'add'
-    }
-  }, {
-    path: rootInternal + '/service-package/:id',
-    name: 'internal->service_package->form',
-    component: __webpack_require__(/*! ./components/ServicePackage/Form */ "./resources/js/components/ServicePackage/Form.vue").default,
-    props: {
-      mode: 'edit'
-    }
-  }, {
-    path: rootInternal + '/hub',
-    name: 'internal->hub',
-    component: __webpack_require__(/*! ./components/Hub/Index */ "./resources/js/components/Hub/Index.vue").default
-  }, {
-    path: rootInternal + '/hub/new',
-    name: 'internal->hub->new',
-    component: __webpack_require__(/*! ./components/Hub/Form */ "./resources/js/components/Hub/Form.vue").default,
-    props: {
-      mode: 'add'
-    }
-  }, {
-    path: rootInternal + '/hub/:id',
-    name: 'internal->hub->form',
-    component: __webpack_require__(/*! ./components/Hub/Form */ "./resources/js/components/Hub/Form.vue").default,
-    props: {
-      mode: 'edit'
-    }
-  }, {
-    path: rootInternal + '/customer',
-    name: 'internal->customer',
-    component: __webpack_require__(/*! ./components/Customer/Index */ "./resources/js/components/Customer/Index.vue").default
-  }, {
-    path: rootInternal + '/customer/new',
-    name: 'internal->customer->new',
-    component: __webpack_require__(/*! ./components/Customer/Form */ "./resources/js/components/Customer/Form.vue").default,
-    props: {
-      mode: 'add'
-    }
-  }, {
-    path: rootInternal + '/customer/:id',
-    name: 'internal->customer->edit',
-    component: __webpack_require__(/*! ./components/Customer/Form */ "./resources/js/components/Customer/Form.vue").default,
-    props: {
-      mode: 'edit'
-    }
-  }, {
-    path: rootInternal + '/courier',
-    name: 'internal->courier',
-    component: __webpack_require__(/*! ./components/Courier/Index */ "./resources/js/components/Courier/Index.vue").default
-  }, {
-    path: rootInternal + '/courier/new',
-    name: 'internal->courier->new',
-    component: __webpack_require__(/*! ./components/Courier/Form */ "./resources/js/components/Courier/Form.vue").default,
-    props: {
-      mode: 'add'
-    }
-  }, {
-    path: rootInternal + '/courier/:id',
-    name: 'internal->courier->edit',
-    component: __webpack_require__(/*! ./components/Courier/Form */ "./resources/js/components/Courier/Form.vue").default,
-    props: {
-      mode: 'edit'
-    }
-  }, {
-    path: rootInternal + '/feeder-courier',
-    name: 'internal->feeder_courier',
-    component: __webpack_require__(/*! ./components/FeederCourier/Index */ "./resources/js/components/FeederCourier/Index.vue").default
-  }, {
-    path: rootInternal + '/feeder-courier/new',
-    name: 'internal->feeder_courier->new',
-    component: __webpack_require__(/*! ./components/FeederCourier/Form */ "./resources/js/components/FeederCourier/Form.vue").default,
-    props: {
-      mode: 'add'
-    }
-  }, {
-    path: rootInternal + '/feeder-courier/:id',
-    name: 'internal->feeder_courier->edit',
-    component: __webpack_require__(/*! ./components/FeederCourier/Form */ "./resources/js/components/FeederCourier/Form.vue").default,
-    props: {
-      mode: 'edit'
-    }
-  }, // booking
-  {
-    path: rootInternal + '/booking',
-    name: 'internal->booking',
-    component: __webpack_require__(/*! ./components/Booking/Index */ "./resources/js/components/Booking/Index.vue").default
-  }, {
-    path: rootInternal + '/booking/new',
-    name: 'internal->booking->new',
-    component: __webpack_require__(/*! ./components/Booking/Form */ "./resources/js/components/Booking/Form.vue").default,
-    props: {
-      mode: 'add'
-    }
-  }, {
-    path: rootInternal + '/booking/:id',
-    name: 'internal->booking->edit',
-    component: __webpack_require__(/*! ./components/Booking/Form */ "./resources/js/components/Booking/Form.vue").default,
-    props: {
-      mode: 'edit'
-    }
-  }, {
-    path: rootInternal + '/user',
-    name: 'internal->user',
-    component: __webpack_require__(/*! ./components/User/Index */ "./resources/js/components/User/Index.vue").default
-  }, {
-    path: rootInternal + '/user/new',
-    name: 'internal->user->new',
-    component: __webpack_require__(/*! ./components/User/Form */ "./resources/js/components/User/Form.vue").default,
-    props: {
-      mode: 'add'
-    }
-  }, {
-    path: rootInternal + '/user/:id',
-    name: 'internal->user->edit',
-    component: __webpack_require__(/*! ./components/User/Form */ "./resources/js/components/User/Form.vue").default,
-    props: {
-      mode: 'edit'
-    }
-  }],
-  linkActiveClass: "active"
-});
-router.beforeResolve(function (to, from, next) {
-  if (to.name) {
-    NProgress.start();
-  }
-
-  next();
-});
-router.afterEach(function (to, from) {
-  NProgress.done();
-});
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
+var router = __webpack_require__(/*! ./route */ "./resources/js/route.js").default;
 
 var app = new Vue({
-  el: '#app',
+  el: "#app",
   components: {
     App: App
   },
@@ -78130,6 +78027,167 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Index_vue_vue_type_template_id_6294eb19___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
+
+/***/ }),
+
+/***/ "./resources/js/route.js":
+/*!*******************************!*\
+  !*** ./resources/js/route.js ***!
+  \*******************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+Vue.use(VueRouter);
+var rootInternal = "/internal";
+var router = new VueRouter({
+  mode: "history",
+  routes: [{
+    path: rootInternal + "/",
+    name: "internal->home",
+    component: Dashboard
+  }, {
+    path: rootInternal + "/service-package",
+    name: "internal->service_package",
+    component: __webpack_require__(/*! ./components/ServicePackage/Index */ "./resources/js/components/ServicePackage/Index.vue").default
+  }, {
+    path: rootInternal + "/service-package/new",
+    name: "internal->service_package->new",
+    component: __webpack_require__(/*! ./components/ServicePackage/Form */ "./resources/js/components/ServicePackage/Form.vue").default,
+    props: {
+      mode: "add"
+    }
+  }, {
+    path: rootInternal + "/service-package/:id",
+    name: "internal->service_package->form",
+    component: __webpack_require__(/*! ./components/ServicePackage/Form */ "./resources/js/components/ServicePackage/Form.vue").default,
+    props: {
+      mode: "edit"
+    }
+  }, {
+    path: rootInternal + "/hub",
+    name: "internal->hub",
+    component: __webpack_require__(/*! ./components/Hub/Index */ "./resources/js/components/Hub/Index.vue").default
+  }, {
+    path: rootInternal + "/hub/new",
+    name: "internal->hub->new",
+    component: __webpack_require__(/*! ./components/Hub/Form */ "./resources/js/components/Hub/Form.vue").default,
+    props: {
+      mode: "add"
+    }
+  }, {
+    path: rootInternal + "/hub/:id",
+    name: "internal->hub->form",
+    component: __webpack_require__(/*! ./components/Hub/Form */ "./resources/js/components/Hub/Form.vue").default,
+    props: {
+      mode: "edit"
+    }
+  }, {
+    path: rootInternal + "/customer",
+    name: "internal->customer",
+    component: __webpack_require__(/*! ./components/Customer/Index */ "./resources/js/components/Customer/Index.vue").default
+  }, {
+    path: rootInternal + "/customer/new",
+    name: "internal->customer->new",
+    component: __webpack_require__(/*! ./components/Customer/Form */ "./resources/js/components/Customer/Form.vue").default,
+    props: {
+      mode: "add"
+    }
+  }, {
+    path: rootInternal + "/customer/:id",
+    name: "internal->customer->edit",
+    component: __webpack_require__(/*! ./components/Customer/Form */ "./resources/js/components/Customer/Form.vue").default,
+    props: {
+      mode: "edit"
+    }
+  }, {
+    path: rootInternal + "/courier",
+    name: "internal->courier",
+    component: __webpack_require__(/*! ./components/Courier/Index */ "./resources/js/components/Courier/Index.vue").default
+  }, {
+    path: rootInternal + "/courier/new",
+    name: "internal->courier->new",
+    component: __webpack_require__(/*! ./components/Courier/Form */ "./resources/js/components/Courier/Form.vue").default,
+    props: {
+      mode: "add"
+    }
+  }, {
+    path: rootInternal + "/courier/:id",
+    name: "internal->courier->edit",
+    component: __webpack_require__(/*! ./components/Courier/Form */ "./resources/js/components/Courier/Form.vue").default,
+    props: {
+      mode: "edit"
+    }
+  }, {
+    path: rootInternal + "/feeder-courier",
+    name: "internal->feeder_courier",
+    component: __webpack_require__(/*! ./components/FeederCourier/Index */ "./resources/js/components/FeederCourier/Index.vue").default
+  }, {
+    path: rootInternal + "/feeder-courier/new",
+    name: "internal->feeder_courier->new",
+    component: __webpack_require__(/*! ./components/FeederCourier/Form */ "./resources/js/components/FeederCourier/Form.vue").default,
+    props: {
+      mode: "add"
+    }
+  }, {
+    path: rootInternal + "/feeder-courier/:id",
+    name: "internal->feeder_courier->edit",
+    component: __webpack_require__(/*! ./components/FeederCourier/Form */ "./resources/js/components/FeederCourier/Form.vue").default,
+    props: {
+      mode: "edit"
+    }
+  }, // booking
+  {
+    path: rootInternal + "/booking",
+    name: "internal->booking",
+    component: __webpack_require__(/*! ./components/Booking/Index */ "./resources/js/components/Booking/Index.vue").default
+  }, {
+    path: rootInternal + "/booking/new",
+    name: "internal->booking->new",
+    component: __webpack_require__(/*! ./components/Booking/Form */ "./resources/js/components/Booking/Form.vue").default,
+    props: {
+      mode: "add"
+    }
+  }, {
+    path: rootInternal + "/booking/:id",
+    name: "internal->booking->edit",
+    component: __webpack_require__(/*! ./components/Booking/Form */ "./resources/js/components/Booking/Form.vue").default,
+    props: {
+      mode: "edit"
+    }
+  }, {
+    path: rootInternal + "/user",
+    name: "internal->user",
+    component: __webpack_require__(/*! ./components/User/Index */ "./resources/js/components/User/Index.vue").default
+  }, {
+    path: rootInternal + "/user/new",
+    name: "internal->user->new",
+    component: __webpack_require__(/*! ./components/User/Form */ "./resources/js/components/User/Form.vue").default,
+    props: {
+      mode: "add"
+    }
+  }, {
+    path: rootInternal + "/user/:id",
+    name: "internal->user->edit",
+    component: __webpack_require__(/*! ./components/User/Form */ "./resources/js/components/User/Form.vue").default,
+    props: {
+      mode: "edit"
+    }
+  }],
+  linkActiveClass: "active"
+});
+router.beforeResolve(function (to, from, next) {
+  if (to.name) {
+    NProgress.start();
+  }
+
+  next();
+});
+router.afterEach(function (to, from) {
+  NProgress.done();
+});
+/* harmony default export */ __webpack_exports__["default"] = (router);
 
 /***/ }),
 

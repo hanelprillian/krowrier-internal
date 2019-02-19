@@ -52215,20 +52215,30 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "login",
   data: function data() {
     return {
+      loading: false,
+      error: false,
       email: "",
       password: ""
     };
   },
   methods: {
     login: function login() {
+      var _this = this;
+
+      this.loading = true;
       firebase.auth().signInWithEmailAndPassword(this.email, this.password).then(function (user) {
+        _this.error = false;
         window.location = "/internal";
       }, function (err) {
-        alert("Oops. " + err.message);
+        _this.loading = false;
+        _this.error = true;
+        console.log("Oops. " + err.message);
       });
     }
   }
@@ -61647,6 +61657,14 @@ var render = function() {
                   _vm._v(" "),
                   _c("br"),
                   _vm._v(" "),
+                  _vm.error
+                    ? _c("div", { staticClass: "alert alert-outline-danger" }, [
+                        _vm._v("Wrong username or password")
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
                   _c("form", [
                     _c("div", { staticClass: "group material-input" }, [
                       _c("input", {
@@ -61713,7 +61731,8 @@ var render = function() {
                       {
                         staticClass: "btn btn-lg btn-gradient-01",
                         attrs: {
-                          disabled: _vm.email == "" || _vm.password == ""
+                          disabled:
+                            _vm.email == "" || _vm.password == "" || _vm.loading
                         },
                         on: {
                           click: function($event) {
@@ -61721,7 +61740,7 @@ var render = function() {
                           }
                         }
                       },
-                      [_vm._v("Sign In")]
+                      [_vm._v(_vm._s(_vm.loading ? "Loading..." : "Sign In"))]
                     )
                   ])
                 ]

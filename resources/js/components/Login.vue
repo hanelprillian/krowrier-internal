@@ -17,6 +17,8 @@
 						<div role="tabpanel" class="tab-pane show active" id="singin" aria-labelledby="singin-tab">
 							<h3>Internal Login</h3>
 							<br>
+							<div class="alert alert-outline-danger" v-if="error">Wrong username or password</div>
+							<br>
 							<form>
 								<div class="group material-input">
 									<input type="text" v-model="email">
@@ -45,9 +47,9 @@
 							<div class="sign-btn text-center">
 								<button
 									@click="login()"
-									:disabled="email == '' || password == ''"
+									:disabled="email == '' || password == '' || loading"
 									class="btn btn-lg btn-gradient-01"
-								>Sign In</button>
+								>{{loading ? 'Loading...' : 'Sign In'}}</button>
 							</div>
 						</div>
 						<!-- End Sign In -->
@@ -66,21 +68,28 @@
 		name: "login",
 		data() {
 			return {
+				loading: false,
+				error: false,
 				email: "",
 				password: ""
 			};
 		},
 		methods: {
-			login: function() {
+			login() {
+				this.loading = true;
+
 				firebase
 					.auth()
 					.signInWithEmailAndPassword(this.email, this.password)
 					.then(
 						user => {
+							this.error = false;
 							window.location = "/internal";
 						},
 						err => {
-							alert("Oops. " + err.message);
+							this.loading = false;
+							this.error = true;
+							console.log("Oops. " + err.message);
 						}
 					);
 			}

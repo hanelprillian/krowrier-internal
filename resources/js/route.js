@@ -5,9 +5,18 @@ const router = new VueRouter({
     mode: "history",
     routes: [
         {
+            path: rootInternal + "/auth/login",
+            name: "login",
+            component: LoginComponent
+        },
+
+        {
             path: rootInternal + "/",
             name: "internal->home",
-            component: Dashboard
+            component: DashboardComponent,
+            meta: {
+                requiresAuth: true
+            }
         },
         {
             path: rootInternal + "/service-package",
@@ -113,11 +122,13 @@ const router = new VueRouter({
             component: require("./components/Booking/Form").default,
             props: { mode: "edit" }
         },
-
         {
             path: rootInternal + "/user",
             name: "internal->user",
-            component: require("./components/User/Index").default
+            component: require("./components/User/Index").default,
+            meta: {
+                requiresAuth: true
+            }
         },
         {
             path: rootInternal + "/user/new",
@@ -134,11 +145,17 @@ const router = new VueRouter({
     ],
     linkActiveClass: "active"
 });
+
 router.beforeResolve((to, from, next) => {
     if (to.name) {
         NProgress.start();
     }
-    next();
+
+    const requiresAuth = to.matched.some((r) => r.meta.requiresAuth);
+    const currentUser = firebase.auth().currentUser;
+
+    if (requiresAuth && !currentUser) next(rootInternal + "/auth/login");
+    else next();
 });
 router.afterEach((to, from) => {
     NProgress.done();

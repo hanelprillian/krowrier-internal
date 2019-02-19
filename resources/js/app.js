@@ -26,13 +26,22 @@ firebase.initializeApp(config);
 window.db = firebase.firestore();
 
 //components
-window.Dashboard = require("./components/DashboardComponent").default;
+window.DashboardComponent = require("./components/DashboardComponent").default;
+window.LoginComponent = require("./components/Login").default;
 window.App = require("./components/App").default;
 
 const router = require("./route").default;
 
-const app = new Vue({
-    el: "#app",
-    components: { App },
-    router
+let app = "";
+
+firebase.auth().onAuthStateChanged(() => {
+    window.IsLogged = firebase.auth().currentUser ? true : false;
+
+    if (!app) {
+        app = new Vue({
+            el: "#app",
+            components: { App },
+            router
+        });
+    }
 });

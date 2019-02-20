@@ -163,7 +163,7 @@
 						<nav class="side-navbar box-scroll sidebar-scroll">
 							<!-- Begin Main Navigation -->
 							<ul class="list-unstyled">
-								<router-link tag="li" :to="{ path: '/internal' }">
+								<router-link tag="li" :to="{ path: '/internal/home' }">
 									<a>
 										<i class="la la-columns"></i>Dashboard
 									</a>

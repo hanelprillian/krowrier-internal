@@ -29,17 +29,17 @@
 							<table class="table table-hover mb-0">
 								<thead>
 									<tr>
-										<th>
+										<th width="1%">
 											<div class="styled-checkbox mt-2">
 												<input type="checkbox" name="check-all" id="check-all">
 												<label for="check-all"></label>
 											</div>
 										</th>
-										<th>Name</th>
-										<th>Email</th>
-										<th>Phone</th>
-										<th>Address</th>
-										<th>Actions</th>
+										<th width="20%">Name</th>
+										<th width="20%">Email</th>
+										<th width="10%">Phone</th>
+										<th width="40%">Address</th>
+										<th width="10%">Actions</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -63,45 +63,20 @@
 											</a>
 										</td>
 									</tr>
+									<tr v-if="!paging.end">
+										<td colspan="6">
+											<button class="btn btn-block" @click.prevent="loadMore()">Load more</button>
+										</td>
+									</tr>
 								</tbody>
 							</table>
-
-							<button class="btn btn-primary" @click.prevent="loadMore()">Load more</button>
 						</div>
 					</div>
 					<!-- End Widget Body -->
 					<!-- Begin Widget Footer -->
 					<div class="widget-footer d-flex align-items-center">
 						<div class="mr-auto p-2">
-							<span class="display-items">Showing 1-30 / 150 Results</span>
-						</div>
-						<div class="p-2">
-							<nav aria-label="...">
-								<ul class="pagination justify-content-end">
-									<li class="page-item disabled">
-										<span class="page-link">
-											<i class="ion-chevron-left"></i>
-										</span>
-									</li>
-									<li class="page-item">
-										<a class="page-link" href="#">1</a>
-									</li>
-									<li class="page-item active">
-										<span class="page-link">
-											2
-											<span class="sr-only">(current)</span>
-										</span>
-									</li>
-									<li class="page-item">
-										<a class="page-link" href="#">3</a>
-									</li>
-									<li class="page-item">
-										<a class="page-link" href="#">
-											<i class="ion-chevron-right"></i>
-										</a>
-									</li>
-								</ul>
-							</nav>
+							<span class="display-items">Showing 1-{{dataUser.length}} / {{total_data}} Results</span>
 						</div>
 					</div>
 					<!-- End Widget Footer -->
@@ -120,7 +95,8 @@
 				dataUser: [],
 
 				paging: {
-					user_per_page: 1,
+					total_data: 0,
+					user_per_page: 10,
 					end: false,
 					loading: false
 				},
@@ -139,6 +115,7 @@
 
 		methods: {
 			loadUsers() {
+				console.log(db.collection("user").get());
 				let self = this;
 
 				this.ref.users = db
@@ -150,15 +127,17 @@
 			},
 
 			loadMore() {
-				if (this.paging.end) {
+				let self = this;
+
+				if (self.paging.end) {
 					return;
 				}
 
 				this.paging.loading = true;
 				this.handleUsers(this.ref.usersNext).then(documentSnapshots => {
-					this.paging.loading = false;
+					self.paging.loading = false;
 
-					if (documentSnapshots.empty) this.paging.end = true;
+					if (documentSnapshots.empty) self.paging.end = true;
 				});
 			},
 

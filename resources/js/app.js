@@ -5,6 +5,10 @@
  */
 
 window.Vue = require("vue");
+import Vuelidate from "vuelidate";
+
+Vue.use(Vuelidate);
+
 window.VueRouter = require("vue-router").default;
 window.NProgress = require("nprogress/nprogress");
 window.swal = require("sweetalert2");

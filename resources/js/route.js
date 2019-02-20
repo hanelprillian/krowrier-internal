@@ -9,9 +9,12 @@ const router = new VueRouter({
             name: "login",
             component: LoginComponent
         },
-
         {
             path: rootInternal + "/",
+            redirect: rootInternal + "/home"
+        },
+        {
+            path: rootInternal + "/home",
             name: "internal->home",
             component: DashboardComponent,
             meta: {

@@ -76,7 +76,7 @@
 					<!-- Begin Widget Footer -->
 					<div class="widget-footer d-flex align-items-center">
 						<div class="mr-auto p-2">
-							<span class="display-items">Showing 1-{{dataUser.length}} / {{total_data}} Results</span>
+							<span class="display-items">Showing 1-{{dataUser.length}} Results</span>
 						</div>
 					</div>
 					<!-- End Widget Footer -->

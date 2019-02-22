@@ -218,7 +218,9 @@
 					</div>
 					<!-- End Left Sidebar -->
 					<div class="content-inner">
-						<router-view></router-view>
+						<transition name="fade" mode="out-in">
+							<router-view></router-view>
+						</transition>
 
 						<!-- Begin Page Footer-->
 						<footer class="main-footer">
@@ -608,9 +610,11 @@
 	export default {
 		data() {
 			return {
-				IsLogged: IsLogged
+				IsLogged: IsLogged,
+				transitionName: "slide-left"
 			};
 		},
+
 		methods: {
 			logout() {
 				firebase
@@ -621,6 +625,7 @@
 					});
 			}
 		},
+
 		mounted() {
 			// ------------------------------------------------------- //
 			// Sidebar Functionality
@@ -654,3 +659,4 @@
 		}
 	};
 </script>
+

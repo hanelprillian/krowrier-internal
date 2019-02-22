@@ -1,26 +1,32 @@
-
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url("https://fonts.googleapis.com/css?family=Nunito");
 
 // Variables
-@import 'variables';
-@import '~nprogress/nprogress';
+@import "variables";
+@import "~nprogress/nprogress";
 
 // Bootstrap
-@import '~bootstrap/scss/bootstrap';
+@import "~bootstrap/scss/bootstrap";
 @import "bootstrap-select.min.css";
 
-
 .navbar-laravel {
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
-.valign-top
-{
-  vertical-align: top !important;
+.valign-top {
+    vertical-align: top !important;
 }
-.valign-mid
-{
-  vertical-align: middle;
+.valign-mid {
+    vertical-align: middle;
+}
+
+.invalid-msg {
+    margin: 0;
+    font-size: 0.95rem;
+    color: #fe195e !important;
+}
+
+.invalid-field {
+    border: 1px solid #fe195e !important;
 }

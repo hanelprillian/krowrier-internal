@@ -10757,3 +10757,13 @@ a.text-dark:focus {
   vertical-align: middle;
 }
 
+.invalid-msg {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #fe195e !important;
+}
+
+.invalid-field {
+  border: 1px solid #fe195e !important;
+}
+

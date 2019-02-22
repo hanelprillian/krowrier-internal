@@ -35,13 +35,13 @@
 }
 
 .fade-enter-active {
-  transition: opacity 500ms ease;
+  transition: opacity 300ms ease;
 }
 
 .fade-leave {}
 
 .fade-leave-active {
-  transition: opacity 500ms ease;
+  transition: opacity 300ms ease;
   opacity: 0;
 }
     </style>

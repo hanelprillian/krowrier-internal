@@ -25,6 +25,9 @@
 						:lat="-6.2184634"
 						:long="106.8171466"
 					></map-picker>
+					<div v-if="$v.lat.$dirty || $v.long.$dirty" class="invalid-msg widget-body">
+						<div v-if="!$v.lat.required || !$v.long.required">Please pick location</div>
+					</div>
 				</div>
 
 				<!-- Form -->
@@ -34,22 +37,41 @@
 							<div class="form-group row d-flex align-items-center mb-5">
 								<label class="col-lg-2 form-control-label">Name</label>
 								<div class="col-lg-4">
-									<input type="text" class="form-control" v-model="name">
+									<input
+										type="text"
+										class="form-control"
+										:class="{'invalid-field': $v.name.$error}"
+										v-model.trim="$v.name.$model"
+									>
+									<div v-if="$v.name.$dirty" class="invalid-msg">
+										<div v-if="!$v.name.required">Name is required</div>
+									</div>
 								</div>
 							</div>
 							<div class="form-group row d-flex align-items-center mb-5">
 								<label class="col-lg-2 form-control-label">Type</label>
 								<div class="col-lg-4">
-									<select class="selectpicker" ref="select" v-model="type">
+									<select class="selectpicker" ref="select" v-model.trim="$v.type.$model">
 										<option :value="type.value" v-for="type in listHubType">{{type.label}}</option>
 									</select>
+									<div v-if="$v.type.$dirty" class="invalid-msg">
+										<div v-if="!$v.type.required">Name is required</div>
+									</div>
 								</div>
 							</div>
 
 							<div class="form-group row d-flex align-items-center mb-5">
 								<label class="col-lg-2 form-control-label">Address</label>
 								<div class="col-lg-5">
-									<textarea v-model="address" id class="form-control" rows="5"></textarea>
+									<textarea
+										v-model.trim="$v.address.$model"
+										:class="{'invalid-field': $v.address.$error}"
+										class="form-control"
+										rows="5"
+									></textarea>
+									<div v-if="$v.address.$dirty" class="invalid-msg">
+										<div v-if="!$v.address.required">Name is required</div>
+									</div>
 								</div>
 							</div>
 							<div class="form-group row d-flex align-items-center mb-5">
@@ -70,6 +92,8 @@
 
 <script>
 	import MapPicker from "../_Widget/MapsPicker";
+	import { required } from "vuelidate/lib/validators";
+
 	export default {
 		data() {
 			return {
@@ -91,6 +115,24 @@
 			};
 		},
 
+		validations: {
+			name: {
+				required
+			},
+			lat: {
+				required
+			},
+			long: {
+				required
+			},
+			type: {
+				required
+			},
+			address: {
+				required
+			}
+		},
+
 		components: {
 			MapPicker
 		},
@@ -107,18 +149,43 @@
 			Submit() {
 				let self = this;
 
-				swal.fire({
-					// show error popup
-					title: "Saved",
-					text: "Your data saved",
-					type: "success",
-					confirmButtonColor: "#3085d6",
-					confirmButtonText: "OK"
-				}).then(function() {
-					setTimeout(function() {
-						self.$router.push("/internal/hub");
-					}, 500);
-				});
+				this.$v.$touch();
+
+				if (this.$v.$invalid) {
+					return;
+				}
+
+				db.collection("hub")
+					.add({
+						name: this.name,
+						lat: this.lat,
+						long: this.long,
+						address: this.address,
+						type: this.type,
+						status: 1,
+						created_at: moment().valueOf(),
+						updated_at: moment().valueOf()
+					})
+					.then(function(docRef) {
+						swal.fire({
+							// show error popup
+							title: "Saved",
+							text: "Your data saved",
+							type: "success",
+							confirmButtonColor: "#3085d6",
+							confirmButtonText: "OK"
+						}).then(function() {
+							self.$router.push("/internal/hub");
+						});
+					})
+					.catch(function(error) {
+						swal.fire({
+							title: "Error",
+							text: "Your data not saved saved",
+							type: "erorr"
+						});
+						console.error("Error adding document: ", error);
+					});
 			}
 		},
 		mounted() {

@@ -2548,9 +2548,19 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Widget_MapsPicker__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../_Widget/MapsPicker */ "./resources/js/components/_Widget/MapsPicker.vue");
-/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuelidate/lib/validators */ "./node_modules/vuelidate/lib/validators/index.js");
-/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Widget_MapsPicker__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../_Widget/MapsPicker */ "./resources/js/components/_Widget/MapsPicker.vue");
+/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuelidate/lib/validators */ "./node_modules/vuelidate/lib/validators/index.js");
+/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+//
+//
 //
 //
 //
@@ -2648,11 +2658,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      dataLoaded: false,
       name: "",
       lat: "",
       long: "",
       type: "",
       address: "",
+      created_at: "",
       listHubType: [{
         label: "Train Station",
         value: "TRAIN_STATION"
@@ -2664,23 +2676,23 @@ __webpack_require__.r(__webpack_exports__);
   },
   validations: {
     name: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["required"]
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__["required"]
     },
     lat: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["required"]
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__["required"]
     },
     long: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["required"]
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__["required"]
     },
     type: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["required"]
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__["required"]
     },
     address: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["required"]
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__["required"]
     }
   },
   components: {
-    MapPicker: _Widget_MapsPicker__WEBPACK_IMPORTED_MODULE_0__["default"]
+    MapPicker: _Widget_MapsPicker__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   props: ["mode"],
   methods: {
@@ -2690,6 +2702,50 @@ __webpack_require__.r(__webpack_exports__);
       this.address = data.infoText.formatted_address;
       this.name = data.infoText.name ? data.infoText.name : null;
     },
+    FetchData: function () {
+      var _FetchData = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(id) {
+        var _this = this;
+
+        var ref;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return db.collection("hub").doc(id);
+
+              case 2:
+                ref = _context.sent;
+                ref.get().then(function (doc) {
+                  if (doc.exists) {
+                    _this.name = doc.data().name;
+                    _this.address = doc.data().address;
+                    _this.type = doc.data().type;
+                    _this.lat = doc.data().lat;
+                    _this.long = doc.data().long;
+                    _this.created_at = doc.data().created_at;
+                    _this.dataLoaded = true;
+                  } else {
+                    _this.$router.push("/internal/hub");
+                  }
+                });
+
+              case 4:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, this);
+      }));
+
+      function FetchData(_x) {
+        return _FetchData.apply(this, arguments);
+      }
+
+      return FetchData;
+    }(),
     Submit: function Submit() {
       var self = this;
       this.$v.$touch();
@@ -2698,16 +2754,32 @@ __webpack_require__.r(__webpack_exports__);
         return;
       }
 
-      db.collection("hub").add({
+      var data = db.collection("hub");
+      var formData = {
         name: this.name,
         lat: this.lat,
         long: this.long,
         address: this.address,
         type: this.type,
-        status: 1,
-        created_at: moment().valueOf(),
-        updated_at: moment().valueOf()
-      }).then(function (docRef) {
+        status: 1
+      };
+      var method = "add";
+
+      if (self.mode == "edit" && self.$route.params.id) {
+        data = db.collection("hub").doc(self.$route.params.id);
+        method = "set";
+        formData = Object.assign(formData, {
+          created_at: this.created_at,
+          updated_at: moment().valueOf()
+        });
+      } else {
+        formData = Object.assign(formData, {
+          created_at: moment().valueOf(),
+          updated_at: moment().valueOf()
+        });
+      }
+
+      data[method](formData).then(function (docRef) {
         swal.fire({
           // show error popup
           title: "Saved",
@@ -2730,6 +2802,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     var self = this;
+    if (self.mode == "edit" && self.$route.params.id) self.FetchData(self.$route.params.id);
     $(this.$refs.select).selectpicker();
   },
   updated: function updated() {
@@ -3613,7 +3686,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -3643,11 +3715,20 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   props: {
+    address: {
+      type: String
+    },
     lat: {
+      default: -6.2184634,
       type: Number
     },
     long: {
+      default: 106.8171466,
       type: Number
+    },
+    marked: {
+      default: false,
+      type: Boolean
     },
     markerMode: {
       default: "default"
@@ -3729,6 +3810,19 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var self = this;
     self.geolocate();
+
+    if (this.marked) {
+      var marker = {
+        lat: this.lat,
+        lng: this.long
+      };
+      this.markers.push({
+        position: marker,
+        infoText: {
+          formatted_address: this.address
+        }
+      });
+    }
   }
 });
 
@@ -9032,16 +9126,30 @@ var render = function() {
           "div",
           { staticClass: "widget has-shadow" },
           [
-            _c("map-picker", {
-              attrs: {
-                "marker-mode": "reset",
-                lat: -6.2184634,
-                long: 106.8171466
-              },
-              on: { getMarkedData: _vm.getMarkedData }
-            }),
+            _vm.dataLoaded || _vm.mode != "edit"
+              ? _c("map-picker", {
+                  attrs: {
+                    "marker-mode": "reset",
+                    marked:
+                      _vm.mode == "edit" && _vm.$route.params.id ? true : false,
+                    address:
+                      _vm.mode == "edit" && _vm.$route.params.id
+                        ? _vm.address
+                        : "",
+                    lat:
+                      _vm.mode == "edit" && _vm.$route.params.id
+                        ? _vm.lat
+                        : -6.2184634,
+                    long:
+                      _vm.mode == "edit" && _vm.$route.params.id
+                        ? _vm.long
+                        : 106.8171466
+                  },
+                  on: { getMarkedData: _vm.getMarkedData }
+                })
+              : _vm._e(),
             _vm._v(" "),
-            _vm.$v.lat.$dirty || _vm.$v.long.$dirty
+            _vm.$v.lat.$dirty && _vm.$v.long.$dirty
               ? _c("div", { staticClass: "invalid-msg widget-body" }, [
                   !_vm.$v.lat.required || !_vm.$v.long.required
                     ? _c("div", [_vm._v("Please pick location")])
@@ -10550,7 +10658,7 @@ var render = function() {
         {
           ref: "mymap",
           staticStyle: { width: "100%", height: "400px" },
-          attrs: { center: _vm.center, zoom: 12 },
+          attrs: { center: _vm.center, zoom: 16 },
           on: { click: _vm.getPosition }
         },
         [
@@ -10592,13 +10700,9 @@ var render = function() {
           })
         ],
         2
-      ),
-      _vm._v(" "),
-      _vm._l(_vm.formatedAddresses, function(address) {
-        return _c("div", { key: address }, [_vm._v("jaa " + _vm._s(address))])
-      })
+      )
     ],
-    2
+    1
   )
 }
 var staticRenderFns = []

@@ -20,16 +20,18 @@
 			<div class="col-xl-12">
 				<div class="widget has-shadow">
 					<map-picker
+						v-if="dataLoaded || mode != 'edit'"
 						@getMarkedData="getMarkedData"
 						marker-mode="reset"
-						:lat="-6.2184634"
-						:long="106.8171466"
+						:marked="mode == 'edit' && $route.params.id ? true : false"
+						:address="mode == 'edit' && $route.params.id ? address : ''"
+						:lat="mode == 'edit' && $route.params.id ? lat : -6.2184634"
+						:long="mode == 'edit' && $route.params.id ? long : 106.8171466"
 					></map-picker>
-					<div v-if="$v.lat.$dirty || $v.long.$dirty" class="invalid-msg widget-body">
+					<div v-if="$v.lat.$dirty && $v.long.$dirty" class="invalid-msg widget-body">
 						<div v-if="!$v.lat.required || !$v.long.required">Please pick location</div>
 					</div>
 				</div>
-
 				<!-- Form -->
 				<div class="widget has-shadow">
 					<div class="widget-body">
@@ -97,11 +99,13 @@
 	export default {
 		data() {
 			return {
+				dataLoaded: false,
 				name: "",
 				lat: "",
 				long: "",
 				type: "",
 				address: "",
+				created_at: "",
 				listHubType: [
 					{
 						label: "Train Station",
@@ -146,6 +150,24 @@
 				this.address = data.infoText.formatted_address;
 				this.name = data.infoText.name ? data.infoText.name : null;
 			},
+
+			async FetchData(id) {
+				const ref = await db.collection("hub").doc(id);
+				ref.get().then(doc => {
+					if (doc.exists) {
+						this.name = doc.data().name;
+						this.address = doc.data().address;
+						this.type = doc.data().type;
+						this.lat = doc.data().lat;
+						this.long = doc.data().long;
+						this.created_at = doc.data().created_at;
+						this.dataLoaded = true;
+					} else {
+						this.$router.push("/internal/hub");
+					}
+				});
+			},
+
 			Submit() {
 				let self = this;
 
@@ -155,17 +177,34 @@
 					return;
 				}
 
-				db.collection("hub")
-					.add({
-						name: this.name,
-						lat: this.lat,
-						long: this.long,
-						address: this.address,
-						type: this.type,
-						status: 1,
+				let data = db.collection("hub");
+
+				let formData = {
+					name: this.name,
+					lat: this.lat,
+					long: this.long,
+					address: this.address,
+					type: this.type,
+					status: 1
+				};
+
+				let method = "add";
+
+				if (self.mode == "edit" && self.$route.params.id) {
+					data = db.collection("hub").doc(self.$route.params.id);
+					method = "set";
+					formData = Object.assign(formData, {
+						created_at: this.created_at,
+						updated_at: moment().valueOf()
+					});
+				} else {
+					formData = Object.assign(formData, {
 						created_at: moment().valueOf(),
 						updated_at: moment().valueOf()
-					})
+					});
+				}
+
+				data[method](formData)
 					.then(function(docRef) {
 						swal.fire({
 							// show error popup
@@ -190,6 +229,10 @@
 		},
 		mounted() {
 			let self = this;
+
+			if (self.mode == "edit" && self.$route.params.id)
+				self.FetchData(self.$route.params.id);
+
 			$(this.$refs.select).selectpicker();
 		},
 		updated() {

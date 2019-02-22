@@ -13,7 +13,7 @@
 			@click="getPosition"
 			ref="mymap"
 			:center="center"
-			:zoom="12"
+			:zoom="16"
 			style="width:100%;  height: 400px;"
 		>
 			<gmap-info-window
@@ -33,7 +33,6 @@
 				@click="toggleInfoWindow(m,index)"
 			></GmapMarker>
 		</GmapMap>
-		<div v-for="address in formatedAddresses" :key="address">jaa {{ address }}</div>
 	</div>
 </template>
 
@@ -65,11 +64,20 @@
 		},
 
 		props: {
+			address: {
+				type: String
+			},
 			lat: {
+				default: -6.2184634,
 				type: Number
 			},
 			long: {
+				default: 106.8171466,
 				type: Number
+			},
+			marked: {
+				default: false,
+				type: Boolean
 			},
 			markerMode: {
 				default: "default"
@@ -161,6 +169,20 @@
 		mounted() {
 			let self = this;
 			self.geolocate();
+
+			if (this.marked) {
+				const marker = {
+					lat: this.lat,
+					lng: this.long
+				};
+
+				this.markers.push({
+					position: marker,
+					infoText: {
+						formatted_address: this.address
+					}
+				});
+			}
 		}
 	};
 </script>

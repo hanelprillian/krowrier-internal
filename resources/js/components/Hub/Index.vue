@@ -25,7 +25,7 @@
 					<!-- End Widget Header -->
 					<!-- Begin Widget Body -->
 					<div class="widget-body">
-						<div class="table-responsive table-scroll padding-right-10" style="max-height:520px;">
+						<div class="table-responsive table-scroll padding-right-10">
 							<table class="table table-hover mb-0">
 								<thead>
 									<tr>

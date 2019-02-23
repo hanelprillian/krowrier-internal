@@ -168,8 +168,6 @@
 		},
 		mounted() {
 			let self = this;
-			self.geolocate();
-
 			if (this.marked) {
 				const marker = {
 					lat: this.lat,
@@ -182,6 +180,8 @@
 						formatted_address: this.address
 					}
 				});
+			} else {
+				self.geolocate();
 			}
 		}
 	};

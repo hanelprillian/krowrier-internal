@@ -3809,7 +3809,6 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     var self = this;
-    self.geolocate();
 
     if (this.marked) {
       var marker = {
@@ -3822,6 +3821,8 @@ __webpack_require__.r(__webpack_exports__);
           formatted_address: this.address
         }
       });
+    } else {
+      self.geolocate();
     }
   }
 });
@@ -9431,10 +9432,7 @@ var render = function() {
           _c("div", { staticClass: "widget-body" }, [
             _c(
               "div",
-              {
-                staticClass: "table-responsive table-scroll padding-right-10",
-                staticStyle: { "max-height": "520px" }
-              },
+              { staticClass: "table-responsive table-scroll padding-right-10" },
               [
                 _c("table", { staticClass: "table table-hover mb-0" }, [
                   _vm._m(1),
@@ -14106,13 +14104,19 @@ var router = new VueRouter({
   }, {
     path: rootInternal + "/service-package",
     name: "internal->service_package",
-    component: __webpack_require__(/*! ./components/ServicePackage/Index */ "./resources/js/components/ServicePackage/Index.vue").default
+    component: __webpack_require__(/*! ./components/ServicePackage/Index */ "./resources/js/components/ServicePackage/Index.vue").default,
+    meta: {
+      requiresAuth: true
+    }
   }, {
     path: rootInternal + "/service-package/new",
     name: "internal->service_package->new",
     component: __webpack_require__(/*! ./components/ServicePackage/Form */ "./resources/js/components/ServicePackage/Form.vue").default,
     props: {
       mode: "add"
+    },
+    meta: {
+      requiresAuth: true
     }
   }, {
     path: rootInternal + "/service-package/:id",
@@ -14120,17 +14124,26 @@ var router = new VueRouter({
     component: __webpack_require__(/*! ./components/ServicePackage/Form */ "./resources/js/components/ServicePackage/Form.vue").default,
     props: {
       mode: "edit"
+    },
+    meta: {
+      requiresAuth: true
     }
   }, {
     path: rootInternal + "/hub",
     name: "internal->hub",
-    component: __webpack_require__(/*! ./components/Hub/Index */ "./resources/js/components/Hub/Index.vue").default
+    component: __webpack_require__(/*! ./components/Hub/Index */ "./resources/js/components/Hub/Index.vue").default,
+    meta: {
+      requiresAuth: true
+    }
   }, {
     path: rootInternal + "/hub/new",
     name: "internal->hub->new",
     component: __webpack_require__(/*! ./components/Hub/Form */ "./resources/js/components/Hub/Form.vue").default,
     props: {
       mode: "add"
+    },
+    meta: {
+      requiresAuth: true
     }
   }, {
     path: rootInternal + "/hub/:id",
@@ -14138,17 +14151,26 @@ var router = new VueRouter({
     component: __webpack_require__(/*! ./components/Hub/Form */ "./resources/js/components/Hub/Form.vue").default,
     props: {
       mode: "edit"
+    },
+    meta: {
+      requiresAuth: true
     }
   }, {
     path: rootInternal + "/customer",
     name: "internal->customer",
-    component: __webpack_require__(/*! ./components/Customer/Index */ "./resources/js/components/Customer/Index.vue").default
+    component: __webpack_require__(/*! ./components/Customer/Index */ "./resources/js/components/Customer/Index.vue").default,
+    meta: {
+      requiresAuth: true
+    }
   }, {
     path: rootInternal + "/customer/new",
     name: "internal->customer->new",
     component: __webpack_require__(/*! ./components/Customer/Form */ "./resources/js/components/Customer/Form.vue").default,
     props: {
       mode: "add"
+    },
+    meta: {
+      requiresAuth: true
     }
   }, {
     path: rootInternal + "/customer/:id",
@@ -14156,17 +14178,26 @@ var router = new VueRouter({
     component: __webpack_require__(/*! ./components/Customer/Form */ "./resources/js/components/Customer/Form.vue").default,
     props: {
       mode: "edit"
+    },
+    meta: {
+      requiresAuth: true
     }
   }, {
     path: rootInternal + "/courier",
     name: "internal->courier",
-    component: __webpack_require__(/*! ./components/Courier/Index */ "./resources/js/components/Courier/Index.vue").default
+    component: __webpack_require__(/*! ./components/Courier/Index */ "./resources/js/components/Courier/Index.vue").default,
+    meta: {
+      requiresAuth: true
+    }
   }, {
     path: rootInternal + "/courier/new",
     name: "internal->courier->new",
     component: __webpack_require__(/*! ./components/Courier/Form */ "./resources/js/components/Courier/Form.vue").default,
     props: {
       mode: "add"
+    },
+    meta: {
+      requiresAuth: true
     }
   }, {
     path: rootInternal + "/courier/:id",
@@ -14174,17 +14205,26 @@ var router = new VueRouter({
     component: __webpack_require__(/*! ./components/Courier/Form */ "./resources/js/components/Courier/Form.vue").default,
     props: {
       mode: "edit"
+    },
+    meta: {
+      requiresAuth: true
     }
   }, {
     path: rootInternal + "/feeder-courier",
     name: "internal->feeder_courier",
-    component: __webpack_require__(/*! ./components/FeederCourier/Index */ "./resources/js/components/FeederCourier/Index.vue").default
+    component: __webpack_require__(/*! ./components/FeederCourier/Index */ "./resources/js/components/FeederCourier/Index.vue").default,
+    meta: {
+      requiresAuth: true
+    }
   }, {
     path: rootInternal + "/feeder-courier/new",
     name: "internal->feeder_courier->new",
     component: __webpack_require__(/*! ./components/FeederCourier/Form */ "./resources/js/components/FeederCourier/Form.vue").default,
     props: {
       mode: "add"
+    },
+    meta: {
+      requiresAuth: true
     }
   }, {
     path: rootInternal + "/feeder-courier/:id",
@@ -14192,18 +14232,27 @@ var router = new VueRouter({
     component: __webpack_require__(/*! ./components/FeederCourier/Form */ "./resources/js/components/FeederCourier/Form.vue").default,
     props: {
       mode: "edit"
+    },
+    meta: {
+      requiresAuth: true
     }
   }, // booking
   {
     path: rootInternal + "/booking",
     name: "internal->booking",
-    component: __webpack_require__(/*! ./components/Booking/Index */ "./resources/js/components/Booking/Index.vue").default
+    component: __webpack_require__(/*! ./components/Booking/Index */ "./resources/js/components/Booking/Index.vue").default,
+    meta: {
+      requiresAuth: true
+    }
   }, {
     path: rootInternal + "/booking/new",
     name: "internal->booking->new",
     component: __webpack_require__(/*! ./components/Booking/Form */ "./resources/js/components/Booking/Form.vue").default,
     props: {
       mode: "add"
+    },
+    meta: {
+      requiresAuth: true
     }
   }, {
     path: rootInternal + "/booking/:id",
@@ -14211,6 +14260,9 @@ var router = new VueRouter({
     component: __webpack_require__(/*! ./components/Booking/Form */ "./resources/js/components/Booking/Form.vue").default,
     props: {
       mode: "edit"
+    },
+    meta: {
+      requiresAuth: true
     }
   }, {
     path: rootInternal + "/user",
@@ -14225,6 +14277,9 @@ var router = new VueRouter({
     component: __webpack_require__(/*! ./components/User/Form */ "./resources/js/components/User/Form.vue").default,
     props: {
       mode: "add"
+    },
+    meta: {
+      requiresAuth: true
     }
   }, {
     path: rootInternal + "/user/:id",
@@ -14232,6 +14287,9 @@ var router = new VueRouter({
     component: __webpack_require__(/*! ./components/User/Form */ "./resources/js/components/User/Form.vue").default,
     props: {
       mode: "edit"
+    },
+    meta: {
+      requiresAuth: true
     }
   }],
   linkActiveClass: "active"

@@ -25,6 +25,24 @@
 					<!-- End Widget Header -->
 					<!-- Begin Widget Body -->
 					<div class="widget-body">
+						<div class="row">
+							<div class="col-md-6"></div>
+							<div class="col-md-6">
+								<div class="form-inline float-right">
+									<div class="form-group">
+										<label for>Search</label>&nbsp;&nbsp;
+										<input
+											type="text"
+											v-model="search.keyword"
+											class="form-control"
+											@keyup="searchLoad()"
+										>
+									</div>
+								</div>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+						<br>
 						<div class="table-responsive table-scroll padding-right-10">
 							<table class="table table-hover mb-0">
 								<thead>
@@ -57,7 +75,7 @@
 												<i class="la la-edit edit"></i>
 											</router-link>
 
-											<a href="#">
+											<a href="#" @click.prevent="deleteData(d.id, d.name)">
 												<i class="la la-close delete"></i>
 											</a>
 										</td>
@@ -93,6 +111,10 @@
 			return {
 				data: [],
 
+				search: {
+					keyword: ""
+				},
+
 				paging: {
 					total_data: 0,
 					data_per_page: 10,
@@ -107,10 +129,25 @@
 		},
 
 		methods: {
+			searchLoad: _.debounce(function() {
+				this.loadData();
+			}, 500),
+
 			loadData() {
 				let self = this;
 
-				this.ref.data = db.collection("hub").orderBy("created_at", "desc");
+				self.data = [];
+
+				this.ref.data = db.collection("hub");
+
+				if (this.search.keyword != "") {
+					this.ref.data = this.ref.data
+						.orderBy("name", "asc")
+						.startAt(this.search.keyword)
+						.endAt(this.search.keyword + "\uf8ff");
+				} else {
+					this.ref.data.orderBy("created_at", "desc");
+				}
 
 				const firstPage = this.ref.data.limit(this.paging.data_per_page);
 				this.handledata(firstPage);
@@ -158,6 +195,54 @@
 						resolve(documentSnapshots);
 					});
 				});
+			},
+
+			deleteData(id, data_name) {
+				if (id) {
+					swal.fire({
+						title: "Delete Hub ?",
+						html:
+							"Your data " +
+							data_name +
+							" will permanently delete from database ?",
+						type: "question",
+						showCancelButton: true,
+						confirmButtonColor: "#3085d6",
+						cancelButtonColor: "#d33",
+						confirmButtonText: "Yes"
+					}).then(result => {
+						if (result.value) {
+							db.collection("booking")
+								.where("origin_hub_id", "==", id)
+								.limit(1)
+								.get()
+								.then(snap => {
+									if (snap.size == 0) {
+										db.collection("booking")
+											.where("destination_hub_id", "==", id)
+											.limit(1)
+											.get()
+											.then(snap => {
+												if (snap.size == 0) {
+													db.collection("hub")
+														.doc(id)
+														.delete()
+														.then(() => {
+															this.loadData();
+														})
+														.catch(error => {
+															alert(
+																"Error removing document: ",
+																error
+															);
+														});
+												}
+											});
+									}
+								});
+						}
+					});
+				}
 			}
 		},
 		async created() {

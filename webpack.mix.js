@@ -1,5 +1,5 @@
-const mix = require('laravel-mix');
-
+const mix = require("laravel-mix");
+mix.browserSync("krowrier-internal.oo");
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -11,8 +11,13 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    .js('resources/js/vendor.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css')
-    .sass('resources/sass/template.scss', 'public/css')
-;
+mix.js("resources/js/app.js", "public/js")
+    .js("resources/js/vendor.js", "public/js")
+    .sass("resources/sass/app.scss", "public/css")
+    .sass("resources/sass/template.scss", "public/css");
+
+if (mix.inProduction()) {
+    mix.version();
+} else {
+    mix.sourceMaps();
+}

@@ -85,13 +85,10 @@
 						</form>
 					</div>
 				</div>
-				<!-- End Form -->
 			</div>
 		</div>
-		<!-- End Row -->
 	</div>
 </template>
-
 <script>
 	import MapPicker from "../_Widget/MapsPicker";
 	import { required } from "vuelidate/lib/validators";
@@ -192,9 +189,8 @@
 
 				if (self.mode == "edit" && self.$route.params.id) {
 					data = db.collection("hub").doc(self.$route.params.id);
-					method = "set";
+					method = "update";
 					formData = Object.assign(formData, {
-						created_at: this.created_at,
 						updated_at: moment().valueOf()
 					});
 				} else {

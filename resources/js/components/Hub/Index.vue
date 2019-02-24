@@ -197,7 +197,41 @@
 				});
 			},
 
-			deleteData(id, data_name) {
+			async _deleteAction(id) {
+				var total_booking = 0;
+				await db
+					.collection("booking")
+					.where("origin_hub_id", "==", id)
+					.limit(1)
+					.get()
+					.then(snap => {
+						total_booking += snap.size;
+					});
+				await db
+					.collection("booking")
+					.where("destination_hub_id", "==", id)
+					.limit(1)
+					.get()
+					.then(snap => {
+						total_booking += snap.size;
+					});
+
+				if (total_booking > 0) {
+					swal.fire("Delete Fail", "This HUB already used", "error");
+					return;
+				}
+				db.collection("hub")
+					.doc(id)
+					.delete()
+					.then(() => {
+						this.loadData();
+					})
+					.catch(error => {
+						alert("Error removing document: ", error);
+					});
+			},
+
+			async deleteData(id, data_name) {
 				if (id) {
 					swal.fire({
 						title: "Delete Hub ?",
@@ -212,42 +246,14 @@
 						confirmButtonText: "Yes"
 					}).then(result => {
 						if (result.value) {
-							db.collection("booking")
-								.where("origin_hub_id", "==", id)
-								.limit(1)
-								.get()
-								.then(snap => {
-									if (snap.size == 0) {
-										db.collection("booking")
-											.where("destination_hub_id", "==", id)
-											.limit(1)
-											.get()
-											.then(snap => {
-												if (snap.size == 0) {
-													db.collection("hub")
-														.doc(id)
-														.delete()
-														.then(() => {
-															this.loadData();
-														})
-														.catch(error => {
-															alert(
-																"Error removing document: ",
-																error
-															);
-														});
-												}
-											});
-									}
-								});
+							this._deleteAction(id);
 						}
 					});
 				}
 			}
 		},
-		async created() {
+		async mounted() {
 			await this.loadData();
-		},
-		mounted() {}
+		}
 	};
 </script>

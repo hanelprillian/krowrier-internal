@@ -16,7 +16,7 @@
 										<img src="/images/logo.png" alt="logo" class="logo-big">
 									</div>
 									<div class="brand-image brand-small">
-										<img src="/images/logo.png" alt="logo" class="logo-small">
+										<img src="/images/logo-small.png" alt="logo" class="logo-small">
 									</div>
 								</a>
 								<!-- Toggle Button -->
@@ -639,6 +639,7 @@
 
 				if ($(window).outerWidth() > 1183) {
 					if ($("#toggle-btn").hasClass("active")) {
+						$(".navbar-header .brand-small").hide();
 						$(".navbar-header .brand-big").show();
 					} else {
 						$(".navbar-header .brand-small").show();

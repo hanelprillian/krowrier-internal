@@ -223,12 +223,18 @@
 					});
 			}
 		},
-		mounted() {
+
+		beforeRouteEnter(to, from, next) {
+			next(vm => {
+				if (vm.mode == "edit" && vm.$route.params.id)
+					vm.FetchData(vm.$route.params.id);
+			});
+		},
+		async created() {
 			let self = this;
+		},
 
-			if (self.mode == "edit" && self.$route.params.id)
-				self.FetchData(self.$route.params.id);
-
+		async mounted() {
 			$(this.$refs.select).selectpicker();
 		},
 		updated() {

@@ -53,12 +53,12 @@
 										<td>{{user.fullname}}</td>
 										<td>{{user.email}}</td>
 										<td>{{user.phone}}</td>
-										<td>{{user.address}}</td>
+										<td>{{ user.address}}</td>
 										<td class="td-actions">
 											<a href="#">
 												<i class="la la-edit edit"></i>
 											</a>
-											<a href="#">
+											<a href="#" @click.prevent="deleteUser()" v-if="current_user.uid != user.id">
 												<i class="la la-close delete"></i>
 											</a>
 										</td>
@@ -92,6 +92,7 @@
 	export default {
 		data() {
 			return {
+				current_user: firebase.auth().currentUser,
 				dataUser: [],
 
 				paging: {

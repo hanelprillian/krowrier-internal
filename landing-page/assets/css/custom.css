@@ -1,0 +1,35 @@
+body {
+}
+
+.navbar-dark .navbar-brand {
+  /*font-weight: 100;*/
+  font-size: 40px;
+  font-family: 'Baloo';
+}
+
+.navbar-dark .navbar-brand {
+}
+
+.nav-item {
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  margin-right: 5px;
+}
+
+#top-menu {
+  margin-left: 30px;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: #fff;
+}
+
+a {
+  color: 002BFF;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #727376 !important;
+}
+

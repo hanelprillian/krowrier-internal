@@ -1,3 +1,10 @@
-body {
+.home-phone-krowrier {
+    background: url("../img/min-phone-split.png");
+    position: absolute;
+    width: 631px;
+    height: 612px;
+    right: 0;
+    bottom: 10px;
+    background-size: 631px 612px;
+    background-repeat: no-repeat;
 }
-

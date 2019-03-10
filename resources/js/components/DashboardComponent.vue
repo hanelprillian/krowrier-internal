@@ -14,8 +14,45 @@
 		<!-- End Page Header -->
 		<!-- Begin Row -->
 		<div class="row flex-row">
-			<!-- Begin Facebook -->
-			<div class="col-xl-4 col-md-6 col-sm-6">
+			<div class="col-xl-3 col-md-6 col-sm-6">
+				<div class="widget widget-12 has-shadow">
+					<div class="widget-body">
+						<div class="media">
+							<div class="align-self-center ml-5 mr-5">
+								<i class="ion-ios-contact"></i>
+							</div>
+
+							<div class="media-body align-self-center">
+								<div class="title">Total Users</div>
+								<div class="number" style="font-size:11pt">
+									<span v-if="total_data.users.loading">Calculating...</span>
+									<span v-if="!total_data.users.loading">{{ total_data.users.data }}</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xl-3 col-md-6 col-sm-6">
+				<div class="widget widget-12 has-shadow">
+					<div class="widget-body">
+						<div class="media">
+							<div class="align-self-center ml-5 mr-5">
+								<i class="ion-ios-contact"></i>
+							</div>
+
+							<div class="media-body align-self-center">
+								<div class="title">Total Customers</div>
+								<div class="number" style="font-size:11pt">
+									<span v-if="total_data.customers.loading">Calculating...</span>
+									<span v-if="!total_data.customers.loading">{{ total_data.customers.data }}</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xl-3 col-md-6 col-sm-6">
 				<div class="widget widget-12 has-shadow">
 					<div class="widget-body">
 						<div class="media">
@@ -25,13 +62,15 @@
 
 							<div class="media-body align-self-center">
 								<div class="title text-facebook">Total Booking</div>
-								<div class="number">10,865</div>
+								<div class="number" style="font-size:11pt">
+									<span v-if="total_data.bookings.loading">Calculating...</span>
+									<span v-if="!total_data.bookings.loading">{{ total_data.bookings.data }}</span>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			<!-- End Facebook -->
 		</div>
 		<!-- End Row -->
 		<div class="row flex-row">
@@ -272,7 +311,63 @@
 
 <script>
 	export default {
+		data() {
+			return {
+				total_data: {
+					users: {
+						data: 0,
+						loading: true
+					},
+					bookings: {
+						data: 0,
+						loading: true
+					},
+					customers: {
+						data: 0,
+						loading: true
+					}
+				}
+			};
+		},
+
+		methods: {
+			async initCounter() {
+				this.total_data.users.loading = true;
+
+				await db
+					.collection("user")
+					.get()
+					.then(snap => {
+						this.total_data.users.data = snap.size;
+					});
+
+				this.total_data.users.loading = false;
+
+				this.total_data.bookings.loading = true;
+
+				await db
+					.collection("booking")
+					.get()
+					.then(snap => {
+						this.total_data.bookings.data = snap.size;
+					});
+
+				this.total_data.bookings.loading = false;
+
+				this.total_data.customers.loading = true;
+
+				await db
+					.collection("customer")
+					.get()
+					.then(snap => {
+						this.total_data.customers.data = snap.size;
+					});
+
+				this.total_data.customers.loading = false;
+			}
+		},
 		async mounted() {
+			this.initCounter();
 			let token = null;
 
 			// console.log(await func.getUserToken());

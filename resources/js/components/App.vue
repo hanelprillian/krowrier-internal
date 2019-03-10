@@ -178,8 +178,8 @@
 											<a>Service Package</a>
 										</router-link>
 
-										<router-link tag="li" :to="{ path: '/internal/hub' }">
-											<a>Data Hub</a>
+										<router-link tag="li" :to="{ path: '/internal/drop-point' }">
+											<a>Drop Point</a>
 										</router-link>
 									</ul>
 								</li>

@@ -21,3 +21,5 @@ window.VueRouter = require("vue-router").default;
 window.VueGoogleMaps = require("vue2-google-maps");
 
 window.firebase = require("firebase");
+window.FireStoreParser = require("firestore-parser");
+window.axios = require("axios");

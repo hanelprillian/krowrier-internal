@@ -272,6 +272,10 @@
 
 <script>
 	export default {
-		mounted() {}
+		async mounted() {
+			let token = null;
+
+			// console.log(await func.getUserToken());
+		}
 	};
 </script>

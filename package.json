@@ -29,6 +29,7 @@
     "dependencies": {
         "bootstrap-select": "^1.13.5",
         "firebase": "^5.8.3",
+        "firestore-parser": "^0.8.6",
         "moment": "^2.24.0",
         "nprogress": "^0.2.0",
         "sweetalert2": "^8.0.7",

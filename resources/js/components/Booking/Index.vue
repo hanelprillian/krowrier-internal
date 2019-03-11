@@ -53,14 +53,14 @@
 											<span class="text-primary">{{ d.code_booking }}</span>
 											<br>
 											<small v-if="d.status == 0" class="badge-text info badge-text-small">Progress</small>
-											<small v-if="d.status == 1" class="badge-text success badge-text-small">Done</small>
+											<small v-if="d.status == 1" class="badge-text success badge-text-small">Complete</small>
 										</td>
 										<td class="valign-top">{{ d.user.name }}</td>
 										<!-- <td class="valign-top">One day service</td> -->
 										<td class="valign-top">{{ d.pickup_address }}</td>
 										<td class="valign-top">{{ d.destination_address }}</td>
 										<td class="valign-top td-actions">
-											<router-link tag="a" to="/internal/booking/1">
+											<router-link :to="{path:'/internal/booking/'+d.id}">
 												<i class="la la-edit edit"></i>
 											</router-link>
 											<a href="#">

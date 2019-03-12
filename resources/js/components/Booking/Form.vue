@@ -171,7 +171,7 @@
 								</div>
 							</div>
 							<div class="col-md-4">
-								<!-- <div class="form-group">
+								<div class="form-group">
 									<label>
 										<span>Courier</span>
 									</label>
@@ -180,30 +180,18 @@
 											<div class="col-md-12">
 												<div class="form-group">
 													<label class="form-control-label">Name</label>
-													<p class="form-control-static">Maemunah</p>
-												</div>
-											</div>
-											<div class="col-md-12">
-												<div class="form-group">
-													<label class="form-control-label">Origin Hub</label>
-													<p class="form-control-static">Stasiun Gambir</p>
-												</div>
-											</div>
-											<div class="col-md-12">
-												<div class="form-group">
-													<label class="form-control-label">Destination Hub</label>
-													<p class="form-control-static">Stasiun Bogor</p>
+													<p class="form-control-static">{{ data.courier_user ? data.courier_user.name : "-" }}</p>
 												</div>
 											</div>
 											<div class="col-md-12">
 												<div class="form-group">
 													<label class="form-control-label">Phone</label>
-													<p class="form-control-static">081380011003</p>
+													<p class="form-control-static">{{ data.courier_user ? data.courier_user.phone : "-" }}</p>
 												</div>
 											</div>
 										</div>
 									</div>
-								</div>-->
+								</div>
 							</div>
 							<div class="col-md-4">
 								<div class="form-group">
@@ -404,6 +392,7 @@
 							feeder_origin: null,
 							feeder_origin_user: null,
 							courier: null,
+							courier_user: null,
 							feeder_destination: null,
 							feeder_destination_user: null
 						});
@@ -426,6 +415,35 @@
 						}
 
 						if (
+							data.courier_id != "" &&
+							typeof data.courier_id !== "undefined"
+						) {
+							await db
+								.collection("courier")
+								.doc(data.courier_id)
+								.get()
+								.then(async doc1 => {
+									if (
+										doc1.exists &&
+										doc1.data().user_id != "" &&
+										typeof doc1.data().user_id !== "undefined"
+									) {
+										await db
+											.collection("user")
+											.doc(doc1.data().user_id)
+											.get()
+											.then(async doc2 => {
+												if (doc2.exists) {
+													this.data.courier_user = await doc2.data();
+												}
+											});
+
+										this.data.courier = await doc1.data();
+									}
+								});
+						}
+
+						if (
 							data.origin_feeder_id != "" &&
 							typeof data.origin_feeder_id !== "undefined"
 						) {
@@ -434,13 +452,17 @@
 								.doc(data.origin_feeder_id)
 								.get()
 								.then(async doc1 => {
-									if (doc1.exists && doc1.data().user_id != "") {
+									if (
+										doc1.exists &&
+										doc1.data().user_id != "" &&
+										typeof doc1.data().user_id !== "undefined"
+									) {
 										await db
 											.collection("user")
 											.doc(doc1.data().user_id)
 											.get()
 											.then(async doc2 => {
-												if (doc1.exists) {
+												if (doc2.exists) {
 													this.data.feeder_origin_user = await doc2.data();
 												}
 											});
@@ -469,7 +491,7 @@
 											.doc(doc1.data().user_id)
 											.get()
 											.then(async doc2 => {
-												if (doc1.exists) {
+												if (doc2.exists) {
 													this.data.feeder_destination_user = await doc2.data();
 												}
 											});

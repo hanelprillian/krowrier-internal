@@ -259,7 +259,9 @@
 									<div class="col-md-4">
 										<div class="form-group">
 											<label class="form-control-label">Service Package</label>
-											<div class="form-control-static">One day service</div>
+											<div
+												class="form-control-static"
+											>{{ data.service_package ? data.service_package.name : "-" }}</div>
 										</div>
 									</div>
 								</div>
@@ -380,6 +382,11 @@
 		methods: {
 			async FetchData(id) {
 				const ref = await db.collection("booking").doc(id);
+				const refItem = await db
+					.collection("booking")
+					.doc(id)
+					.collection("booking_item");
+
 				ref.get().then(async doc => {
 					if (doc.exists) {
 						let data = await doc.data();
@@ -388,16 +395,33 @@
 						);
 
 						this.data = Object.assign(data, {
+							service_package: null,
 							user: null,
 							feeder_origin: null,
 							feeder_origin_user: null,
 							courier: null,
 							courier_user: null,
 							feeder_destination: null,
-							feeder_destination_user: null
+							feeder_destination_user: null,
+							items: []
 						});
 
 						this.dataLoaded = true;
+
+						if (
+							data.service_package_id != "" &&
+							typeof data.service_package_id !== "undefined"
+						) {
+							await db
+								.collection("service_package")
+								.doc(data.service_package_id)
+								.get()
+								.then(async doc1 => {
+									if (doc1.exists) {
+										this.data.service_package = await doc1.data();
+									}
+								});
+						}
 
 						if (
 							data.user_id != "" &&
@@ -500,6 +524,18 @@
 									}
 								});
 						}
+
+						refItem.get().then(async itemDoc => {
+							if (itemDoc.empty) {
+								return;
+							}
+
+							itemDoc.forEach(async doc => {
+								this.data.items.push(doc.data());
+							});
+						});
+
+						console.log(this.data);
 					} else {
 						this.$router.push("/internal/booking");
 					}

@@ -267,26 +267,29 @@
 								</div>
 							</div>
 							<hr>
-							<div>
+							<div class="text-grey-dark" v-if="data.items_loading">Loading Items....</div>
+							<div class="alert alert-warning" v-if="data.items.length == 0 && !data.items_loading">No Item</div>
+							<div v-for="item in data.items">
 								<div class="col-md-12">
 									<div class="form-group">
 										<span style="font-size: 12pt">
-											Item
-											<strong>#1</strong>
+											Booking Item
+											<strong>#{{ $index }}</strong>
 										</span>
 									</div>
 									<br>
 									<div>
 										<div class="form-group">
 											<label class="form-control-label">Item</label>
-											<div class="form-control-static">Buku
+											<div class="form-control-static">
+												{{ item.name }}
 												<br>
 												<br>
 												<small>
 													<strong>Weight:</strong>
-													50 Kg &nbsp;
+													{{ item.weight }} Kg &nbsp;
 													<strong>Jumlah:</strong>
-													100 &nbsp;
+													{{ item.quantity }} &nbsp;
 												</small>
 											</div>
 										</div>
@@ -303,14 +306,14 @@
 									<small>Total Item</small>
 									<br>
 									<div class="text">
-										<strong>1</strong>
+										<strong>{{ data.total_items }}</strong>
 									</div>
 								</div>
 								<div class="col-md-4 col-sm-4">
 									<small class="text-success">Total Weight</small>
 									<br>
 									<div class="text text-success">
-										<strong>1 Kg</strong>
+										<strong>{{ data.total_weights }} Kg</strong>
 									</div>
 								</div>
 							</div>
@@ -320,7 +323,7 @@
 				<div class="widget">
 					<table class="table table-compact">
 						<tbody>
-							<tr>
+							<!-- <tr>
 								<th>
 									<div class="text-right">Charges
 										<br>
@@ -338,14 +341,14 @@
 								<td>
 									<div class="text-left">0.00</div>
 								</td>
-							</tr>
+							</tr>-->
 							<tr>
 								<th>
 									<h4 class="text-right">Total Charges</h4>
 								</th>
 								<td>
 									<h4>
-										<div class="text-left">Rp. 9000</div>
+										<div class="text-left">Rp. {{ data.total_charges }}</div>
 									</h4>
 								</td>
 							</tr>
@@ -403,7 +406,10 @@
 							courier_user: null,
 							feeder_destination: null,
 							feeder_destination_user: null,
-							items: []
+							items_loading: true,
+							items: [],
+							total_items: 0,
+							total_weights: 0
 						});
 
 						this.dataLoaded = true;
@@ -532,10 +538,14 @@
 
 							itemDoc.forEach(async doc => {
 								this.data.items.push(doc.data());
+								this.data.total_items++;
+								this.data.total_weights += parseFloat(
+									doc.data().weight
+								);
 							});
-						});
 
-						console.log(this.data);
+							this.data.items_loading = false;
+						});
 					} else {
 						this.$router.push("/internal/booking");
 					}

@@ -4,9 +4,10 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+window.func = require("./lib/func");
 import Vuelidate from "vuelidate";
 Vue.use(Vuelidate);
-
+window.VueGoogleMaps = require("vue2-google-maps");
 Vue.use(VueGoogleMaps, {
     load: {
         key: "AIzaSyBZyzX8NH7rJ_-GUSsgNlrW-FtvFY546us",

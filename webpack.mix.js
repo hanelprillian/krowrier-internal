@@ -1,5 +1,11 @@
 const mix = require("laravel-mix");
-mix.browserSync("krowrier-internal.oo");
+const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
+    .BundleAnalyzerPlugin;
+
+module.exports = {
+    plugins: [new BundleAnalyzerPlugin()]
+};
+// mix.browserSync("krowrier-internal.oo");
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -13,6 +19,7 @@ mix.browserSync("krowrier-internal.oo");
 
 mix.js("resources/js/app.js", "public/js")
     .js("resources/js/vendor.js", "public/js")
+    .js("resources/js/template.js", "public/js")
     .sass("resources/sass/app.scss", "public/css")
     .sass("resources/sass/template.scss", "public/css");
 

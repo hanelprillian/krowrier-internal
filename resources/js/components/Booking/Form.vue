@@ -28,7 +28,7 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label class="form-control-label">Booking Number</label>
-									<p class="form-control-static">{{ data.code_booking }}</p>
+									<p class="form-control-static">{{ dataLoaded ? data.code_booking : 'Loading...' }}</p>
 								</div>
 							</div>
 							<div class="col-md-6">
@@ -56,13 +56,13 @@
 											<div class="col-md-12">
 												<div class="form-group">
 													<label class="form-control-label">Name</label>
-													<p class="form-control-static">{{ data.user.name }}</p>
+													<p class="form-control-static">{{ data.user ? data.user.name : "" }}</p>
 												</div>
 											</div>
 											<div class="col-md-12">
 												<div class="form-group">
 													<label class="form-control-label">Phone</label>
-													<p class="form-control-static">{{ data.user.phone }}</p>
+													<p class="form-control-static">{{ data.user ? data.user.phone : ""}}</p>
 												</div>
 											</div>
 											<div class="col-md-12">
@@ -137,25 +137,33 @@
 											<div class="col-md-12">
 												<div class="form-group">
 													<label class="form-control-label">Name</label>
-													<p class="form-control-static">{{ data.feeder_origin_user.name }}</p>
+													<p
+														class="form-control-static"
+													>{{ data.feeder_origin_user ? data.feeder_origin_user.name : "-"}}</p>
 												</div>
 											</div>
 											<div class="col-md-12">
 												<div class="form-group">
 													<label class="form-control-label">Phone</label>
-													<p class="form-control-static">{{ data.feeder_origin_user.phone }}</p>
+													<p
+														class="form-control-static"
+													>{{ data.feeder_origin_user ? data.feeder_origin_user.phone : "-" }}</p>
 												</div>
 											</div>
 											<div class="col-md-12">
 												<div class="form-group">
 													<label class="form-control-label">Vehicle</label>
-													<p class="form-control-static">{{ data.feeder_origin.vehicle_name }}</p>
+													<p
+														class="form-control-static"
+													>{{ data.feeder_origin_user ? data.feeder_origin.vehicle_name : "-"}}</p>
 												</div>
 											</div>
 											<div class="col-md-12">
 												<div class="form-group">
 													<label class="form-control-label">Vehicle License Number</label>
-													<p class="form-control-static">{{ data.feeder_origin.vehicle_licence_number }}</p>
+													<p
+														class="form-control-static"
+													>{{ data.feeder_origin_user ? data.feeder_origin.vehicle_licence_number : "-"}}</p>
 												</div>
 											</div>
 										</div>
@@ -213,25 +221,33 @@
 											<div class="col-md-12">
 												<div class="form-group">
 													<label class="form-control-label">Name</label>
-													<p class="form-control-static">{{ data.feeder_destination_user.name }}</p>
+													<p
+														class="form-control-static"
+													>{{ data.feeder_destination_user ? data.feeder_destination_user.name : "-" }}</p>
 												</div>
 											</div>
 											<div class="col-md-12">
 												<div class="form-group">
 													<label class="form-control-label">Phone</label>
-													<p class="form-control-static">{{ data.feeder_destination_user.phone }}</p>
+													<p
+														class="form-control-static"
+													>{{ data.feeder_destination_user ? data.feeder_destination_user.phone : "-"}}</p>
 												</div>
 											</div>
 											<div class="col-md-12">
 												<div class="form-group">
 													<label class="form-control-label">Vehicle</label>
-													<p class="form-control-static">{{ data.feeder_destination.vehicle_name }}</p>
+													<p
+														class="form-control-static"
+													>{{ data.feeder_destination ? data.feeder_destination.vehicle_name : "-" }}</p>
 												</div>
 											</div>
 											<div class="col-md-12">
 												<div class="form-group">
 													<label class="form-control-label">Vehicle License Number</label>
-													<p class="form-control-static">{{ data.feeder_destination.vehicle_licence_number }}</p>
+													<p
+														class="form-control-static"
+													>{{ data.feeder_destination ? data.feeder_destination.vehicle_licence_number : "-" }}</p>
 												</div>
 											</div>
 										</div>
@@ -357,13 +373,8 @@
 		data() {
 			return {
 				dataLoaded: false,
+				dataUserLoaded: false,
 				data: {
-					user: {},
-					feeder_origin: {},
-					feeder_origin_user: {},
-					courier: {},
-					feeder_destination: {},
-					feeder_destination_user: {},
 					status: "",
 					consignee_name: "",
 					destination_address: "",
@@ -383,67 +394,90 @@
 				const ref = await db.collection("booking").doc(id);
 				ref.get().then(async doc => {
 					if (doc.exists) {
-						let data = doc.data();
-						await db
-							.collection("user")
-							.doc(data.user_id)
-							.get()
-							.then(doc1 => {
-								if (doc1.exists) {
-									this.data.user = doc1.data();
-								}
-							});
-
-						await db
-							.collection("feeder")
-							.doc(data.origin_feeder_id)
-							.get()
-							.then(async doc1 => {
-								if (doc1.exists) {
-									await db
-										.collection("user")
-										.doc(doc1.data().user_id)
-										.get()
-										.then(doc2 => {
-											if (doc1.exists) {
-												this.data.feeder_origin_user = doc2.data();
-											}
-										});
-
-									this.data.feeder_origin = doc1.data();
-								}
-							});
-
-						await db
-							.collection("feeder")
-							.doc(data.destination_feeder_id)
-							.get()
-							.then(async doc1 => {
-								if (doc1.exists) {
-									await db
-										.collection("user")
-										.doc(doc1.data().user_id)
-										.get()
-										.then(doc2 => {
-											if (doc1.exists) {
-												this.data.feeder_destination_user = doc2.data();
-											}
-										});
-
-									this.data.feeder_destination = doc1.data();
-								}
-							});
-
-						this.data.code_booking = doc.data().code_booking;
-						this.data.status = doc.data().status;
-						this.data.consignee_name = doc.data().consignee_name;
-						this.data.pickup_address = doc.data().pickup_address;
-						this.data.destination_address = doc.data().destination_address;
-						this.data.status = doc.data().status;
-						this.data.created_at = moment(doc.data().created_at).format(
+						let data = await doc.data();
+						data.created_at = moment(data.created_at).format(
 							"DD MMMM YYYY, HH mm"
 						);
+
+						this.data = Object.assign(data, {
+							user: null,
+							feeder_origin: null,
+							feeder_origin_user: null,
+							courier: null,
+							feeder_destination: null,
+							feeder_destination_user: null
+						});
+
 						this.dataLoaded = true;
+
+						if (
+							data.user_id != "" &&
+							typeof data.user_id !== "undefined"
+						) {
+							await db
+								.collection("user")
+								.doc(data.user_id)
+								.get()
+								.then(async doc1 => {
+									if (doc1.exists) {
+										this.data.user = await doc1.data();
+									}
+								});
+						}
+
+						if (
+							data.origin_feeder_id != "" &&
+							typeof data.origin_feeder_id !== "undefined"
+						) {
+							await db
+								.collection("feeder")
+								.doc(data.origin_feeder_id)
+								.get()
+								.then(async doc1 => {
+									if (doc1.exists && doc1.data().user_id != "") {
+										await db
+											.collection("user")
+											.doc(doc1.data().user_id)
+											.get()
+											.then(async doc2 => {
+												if (doc1.exists) {
+													this.data.feeder_origin_user = await doc2.data();
+												}
+											});
+
+										this.data.feeder_origin = await doc1.data();
+									}
+								});
+						}
+
+						if (
+							data.destination_feeder_id != "" &&
+							typeof data.destination_feeder_id !== "undefined"
+						) {
+							await db
+								.collection("feeder")
+								.doc(data.destination_feeder_id)
+								.get()
+								.then(async doc1 => {
+									if (
+										doc1.exists &&
+										doc1.data().user_id != "" &&
+										typeof doc1.data().user_id !== "undefined"
+									) {
+										await db
+											.collection("user")
+											.doc(doc1.data().user_id)
+											.get()
+											.then(async doc2 => {
+												if (doc1.exists) {
+													this.data.feeder_destination_user = await doc2.data();
+												}
+											});
+
+										this.data.feeder_destination = await doc1.data();
+									}
+								});
+						}
 					} else {
 						this.$router.push("/internal/booking");
 					}

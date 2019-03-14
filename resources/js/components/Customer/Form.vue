@@ -9,9 +9,12 @@
 						<div class="page-header-tools">
 							<div class="form-group">
 								<div class="btn-group mr-1 mb-2">
-									<button type="button" class="btn btn-sm btn-success">Active</button>
+									<button type="button" v-if="data.user.status == 1" class="btn btn-sm btn-success">Active</button>
+									<button type="button" v-if="data.user.status == 0" class="btn btn-sm btn-warning">Pending</button>
+									<button type="button" v-if="data.user.status == 2" class="btn btn-sm btn-danger">Suspended</button>
 									<a
-										class="btn btn-success btn-sm dropdown-toggle d-flex align-items-center"
+										class="btn btn-sm dropdown-toggle d-flex align-items-center"
+										:class="{'btn-success' : data.user.status == 1, 'btn-danger' : data.user.status == 2, 'btn-warning' : data.user.status == 0}"
 										data-toggle="dropdown"
 										aria-haspopup="true"
 										aria-expanded="false"
@@ -152,6 +155,7 @@
 						gender: "",
 						phone: "",
 						birth: "",
+						status: "",
 						address: ""
 					}
 				},
@@ -209,6 +213,7 @@
 								gender: "",
 								phone: "",
 								birth: "",
+								status: "",
 								address: ""
 							}
 						});
@@ -237,6 +242,7 @@
 										this.data.user.address = data.address || "";
 										this.data.user.birth = data.birth || "";
 										this.data.user.phone = data.phone || "";
+										this.data.user.status = data.status || "";
 									}
 								});
 						}

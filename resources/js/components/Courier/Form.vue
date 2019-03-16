@@ -41,7 +41,6 @@
 				<div class="widget has-shadow">
 					<div class="widget-header">
 						<span>Courier Information</span>
-						<span class="badge-text badge-text-small info bg-gradient-05 float-right">Personal</span>
 					</div>
 					<div class="widget-body">
 						<form class="form-horizontal">
@@ -61,30 +60,6 @@
 							</div>
 							<hr>
 							<br>
-							<div class="row">
-								<div class="col-md-6">
-									<div class="form-group align-items-center mb-5">
-										<label class="form-control-label">Identity Type</label>
-										<select name class="selectpicker form-control" v-model="data.user.identity_type">
-											<option value="KTP">KTP</option>
-											<option value="SIM">SIM</option>
-											<option value="PASSPORT">Passport</option>
-										</select>
-									</div>
-								</div>
-								<div class="col-md-6">
-									<div class="form-group align-items-center mb-5">
-										<label class="form-control-label">Identity Number</label>
-										<input
-											type="text"
-											class="form-control"
-											value
-											v-model="data.user.identity_number"
-											placeholder="Identity Number"
-										>
-									</div>
-								</div>
-							</div>
 							<div class="row">
 								<div class="col-md-6">
 									<div class="form-group align-items-center mb-5">
@@ -127,9 +102,72 @@
 					</div>
 				</div>
 				<!-- End Form -->
+				<!-- Form -->
+				<div class="widget has-shadow">
+					<div class="widget-header">
+						<span>Courier File</span>
+					</div>
+					<div class="widget-body">
+						<form class="form-horizontal">
+							<div class="row">
+								<div class="col-md-3">
+									<div class="form-group align-items-center mb-5">
+										<label class="form-control-label">KTP</label>
+										<p class="form-control-static">
+											<a @click.prevent class="pop">
+												<img
+													v-if="data.ktp_file != ''"
+													width="200px"
+													class="img-thumbnail"
+													:src="data.ktp_file"
+													alt
+												>
+											</a>
+										</p>
+									</div>
+								</div>
+								<div class="col-md-3">
+									<div class="form-group align-items-center mb-5">
+										<label class="form-control-label">Photo</label>
+										<a @click.prevent class="pop">
+											<img
+												v-if="data.photo_file != ''"
+												width="200px"
+												class="img-thumbnail"
+												:src="data.photo_file"
+												alt
+											>
+										</a>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+				<!-- End Form -->
 			</div>
 		</div>
 		<!-- End Row -->
+		<div
+			class="modal fade"
+			id="imagemodal"
+			tabindex="-1"
+			role="dialog"
+			aria-labelledby="myModalLabel"
+			aria-hidden="true"
+		>
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-body">
+						<button type="button" class="close" data-dismiss="modal">
+							<span aria-hidden="true">&times;</span>
+							<span class="sr-only">Close</span>
+						</button>
+						<img src class="imagepreview" style="width: 100%;">
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 </template>
 
@@ -195,7 +233,7 @@
 			async FetchData(id) {
 				const ref = await db.collection("courier").doc(id);
 
-				ref.get().then(async doc => {
+				ref.onSnapshot(async doc => {
 					if (doc.exists) {
 						let data = await doc.data();
 
@@ -223,8 +261,7 @@
 							await db
 								.collection("user")
 								.doc(data.user_id)
-								.get()
-								.then(async doc1 => {
+								.onSnapshot(async doc1 => {
 									if (doc1.exists) {
 										let data = await doc1.data();
 										this.data.user.email = data.email || "";
@@ -240,8 +277,6 @@
 									}
 								});
 						}
-
-						console.log(this.data.user);
 					} else {
 						this.$router.push("/internal/courier");
 					}
@@ -319,6 +354,16 @@
 		},
 		async mounted() {
 			let self = this;
+
+			$(".pop").on("click", function() {
+				$(".imagepreview").attr(
+					"src",
+					$(this)
+						.find("img")
+						.attr("src")
+				);
+				$("#imagemodal").modal("show");
+			});
 
 			$(".selectpicker").selectpicker();
 

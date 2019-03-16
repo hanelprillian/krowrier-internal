@@ -532,10 +532,6 @@
 						}
 
 						refItem.get().then(async itemDoc => {
-							if (itemDoc.empty) {
-								return;
-							}
-
 							itemDoc.forEach(async doc => {
 								this.data.items.push(doc.data());
 								this.data.total_items++;

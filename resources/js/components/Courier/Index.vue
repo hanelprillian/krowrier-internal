@@ -34,8 +34,6 @@
 											</div>
 										</th>
 										<th>Name</th>
-										<th>ID Number</th>
-										<th>ID Type</th>
 										<th>Email</th>
 										<th>Phone</th>
 										<th>Address</th>
@@ -52,14 +50,16 @@
 											</div>
 										</td>
 										<td>{{ d.user.name }}</td>
-										<td>{{ d.user.identity_number?d.user.identity_number:"-" }}</td>
-										<td>{{ d.user.identity_type?d.user.identity_type:"-" }}</td>
 										<td>{{ d.user.email }}</td>
 										<td>{{ d.user.phone }}</td>
 										<td>{{ d.user.address }}</td>
 										<td>
-											<small v-if="d.user.status == 0" class="badge-text warning badge-text-small">Suspend</small>
-											<small v-if="d.user.status == 1" class="badge-text success badge-text-small">Active</small>
+											<small
+												v-if="d.is_active == 0"
+												class="badge-text text-dark warning badge-text-small"
+											>Pending</small>
+											<small v-if="d.is_active == 1" class="badge-text success badge-text-small">Active</small>
+											<small v-if="d.is_active == 2" class="badge-text danger badge-text-small">Suspended</small>
 										</td>
 										<td class="td-actions">
 											<router-link tag="a" :to="'/internal/courier/'+d.id">

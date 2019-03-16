@@ -44,7 +44,7 @@
 				<div class="widget has-shadow">
 					<div class="widget-header">
 						<span>Customer Information</span>
-						<span class="badge-text badge-text-small info bg-gradient-05 float-right">Personal</span>
+						<!-- <span class="badge-text badge-text-small info bg-gradient-05 float-right">Personal</span> -->
 					</div>
 					<div class="widget-body">
 						<form class="form-horizontal">
@@ -64,30 +64,6 @@
 							</div>
 							<hr>
 							<br>
-							<div class="row">
-								<div class="col-md-6">
-									<div class="form-group align-items-center mb-5">
-										<label class="form-control-label">Identity Type</label>
-										<select name class="selectpicker form-control" v-model="data.user.identity_type">
-											<option value="KTP">KTP</option>
-											<option value="SIM">SIM</option>
-											<option value="PASSPORT">Passport</option>
-										</select>
-									</div>
-								</div>
-								<div class="col-md-6">
-									<div class="form-group align-items-center mb-5">
-										<label class="form-control-label">Identity Number</label>
-										<input
-											type="text"
-											class="form-control"
-											value
-											v-model="data.user.identity_number"
-											placeholder="Identity Number"
-										>
-									</div>
-								</div>
-							</div>
 							<div class="row">
 								<div class="col-md-6">
 									<div class="form-group align-items-center mb-5">

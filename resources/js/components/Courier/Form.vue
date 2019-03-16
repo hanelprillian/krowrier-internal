@@ -234,8 +234,6 @@
 						user_id: "",
 						email: "",
 						name: "",
-						identity_type: "",
-						identity_number: "",
 						gender: "",
 						phone: "",
 						birth: "",
@@ -301,8 +299,6 @@
 								user_id: "",
 								email: "",
 								name: "",
-								identity_type: "",
-								identity_number: "",
 								gender: "",
 								phone: "",
 								birth: "",
@@ -326,10 +322,6 @@
 										let data = await doc1.data();
 										this.data.user.email = data.email || "";
 										this.data.user.name = data.name || "";
-										this.data.user.identity_type =
-											data.identity_type || "";
-										this.data.user.identity_number =
-											data.identity_number || "";
 										this.data.user.gender = data.gender || "";
 										this.data.user.address = data.address || "";
 										this.data.user.birth = data.birth || "";
@@ -361,8 +353,6 @@
 				let data = db.collection("user");
 
 				let formData = {
-					identity_type: this.data.user.identity_type,
-					identity_number: this.data.user.identity_number,
 					phone: this.data.user.phone,
 					birth: this.data.user.birth,
 					gender: this.data.user.gender,

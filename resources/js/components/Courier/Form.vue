@@ -591,10 +591,12 @@
 					});
 			},
 
-			SetStatus(status, text) {
+			async SetStatus(status, text) {
 				let self = this;
 
-				let data = db.collection("courier").doc(self.$route.params.id);
+				let data = await db
+					.collection("courier")
+					.doc(self.$route.params.id);
 
 				let formData = {
 					is_active: status
@@ -607,7 +609,7 @@
 					confirmButtonColor: "#3085d6",
 					cancelButtonColor: "#d33",
 					confirmButtonText: "Yes"
-				}).then(result => {
+				}).then(async result => {
 					if (result.value) {
 						let method = "update";
 
@@ -625,7 +627,7 @@
 							}
 						});
 
-						data[method](formData)
+						await data[method](formData)
 							.then(function(docRef) {
 								swal.fire({
 									// show error popup

@@ -720,7 +720,7 @@
 						let method = "update";
 
 						formData = Object.assign(formData, {
-							updated_at: moment().valueOf()
+							updated_at: moment().unix()
 						});
 
 						swal.fire({

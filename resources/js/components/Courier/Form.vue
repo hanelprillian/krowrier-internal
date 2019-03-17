@@ -540,12 +540,12 @@
 					data = db.collection("user").doc(this.data.user.user_id);
 					method = "update";
 					formData = Object.assign(formData, {
-						updated_at: moment().valueOf()
+						updated_at: moment().unix()
 					});
 				} else {
 					formData = Object.assign(formData, {
-						created_at: moment().valueOf(),
-						updated_at: moment().valueOf()
+						created_at: moment().unix(),
+						updated_at: moment().unix()
 					});
 				}
 

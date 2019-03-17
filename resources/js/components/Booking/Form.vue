@@ -386,9 +386,8 @@
 			async FetchData(id) {
 				const ref = await db.collection("booking").doc(id);
 				const refItem = await db
-					.collection("booking")
-					.doc(id)
-					.collection("booking_item");
+					.collection("booking_item")
+					.where("booking_id", "==", id);
 
 				ref.get().then(async doc => {
 					if (doc.exists) {

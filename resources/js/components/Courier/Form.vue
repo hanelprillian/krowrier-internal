@@ -69,130 +69,208 @@
 			</div>
 		</div>
 		<!-- End Page Header -->
-		<div class="row flex-row">
-			<div class="col-xl-12">
-				<!-- Form -->
-				<div class="widget has-shadow">
-					<div class="widget-header">
-						<span>Courier Information</span>
-					</div>
-					<div class="widget-body">
-						<form class="form-horizontal">
-							<div class="row">
-								<div class="col-md-6">
-									<div class="form-group align-items-center mb-5">
-										<label class="form-control-label">Email</label>
-										<p class="form-control-static">{{ data.user ? data.user.email : '-' }}</p>
-									</div>
-								</div>
-								<div class="col-md-6">
-									<div class="form-group align-items-center mb-5">
-										<label class="form-control-label">User</label>
-										<p class="form-control-static">{{ data.user ? data.user.name : '-' }}</p>
-									</div>
-								</div>
+		<ul class="nav nav-tabs" id="example-one" role="tablist">
+			<li class="nav-item">
+				<a
+					class="nav-link active"
+					id="base-tab-1"
+					data-toggle="tab"
+					href="#tab-1"
+					role="tab"
+					aria-controls="tab-1"
+					aria-selected="true"
+				>General</a>
+			</li>
+			<li class="nav-item">
+				<a
+					class="nav-link"
+					id="base-tab-2"
+					data-toggle="tab"
+					href="#tab-2"
+					role="tab"
+					@click.prevent="loadSchedule()"
+					aria-controls="tab-2"
+					aria-selected="false"
+				>Schedules</a>
+			</li>
+		</ul>
+		<div class="clearfix"></div>
+		<br>
+		<div class="tab-content pt-3">
+			<div class="tab-pane fade show active" id="tab-1" role="tabpanel" aria-labelledby="base-tab-1">
+				<div class="row flex-row">
+					<div class="col-xl-12">
+						<!-- Form -->
+						<div class="widget has-shadow">
+							<div class="widget-header">
+								<span>Courier Information</span>
 							</div>
-							<hr>
-							<br>
-							<div class="row">
-								<div class="col-md-6">
-									<div class="form-group align-items-center mb-5">
-										<label class="form-control-label">Phone</label>
-										<p v-if="!allowEdit" class="form-control-static">{{ data.user.phone }}</p>
-										<input
-											v-if="allowEdit"
-											type="number"
-											class="form-control"
-											value
-											v-model="data.user.phone"
-											placeholder="Phone"
-										>
+							<div class="widget-body">
+								<form class="form-horizontal">
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group align-items-center mb-5">
+												<label class="form-control-label">Email</label>
+												<p class="form-control-static">{{ data.user ? data.user.email : '-' }}</p>
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group align-items-center mb-5">
+												<label class="form-control-label">User</label>
+												<p class="form-control-static">{{ data.user ? data.user.name : '-' }}</p>
+											</div>
+										</div>
 									</div>
-									<div class="form-group align-items-center mb-5">
-										<label class="form-control-label">Birth</label>
-										<p v-if="!allowEdit" class="form-control-static">{{ data.user.birth_formatted }}</p>
-
-										<datepicker
-											v-if="allowEdit"
-											v-model="data.user.birth"
-											format="dd/MM/yyyy"
-											input-class="form-control"
-										></datepicker>
-									</div>
-								</div>
-								<div class="col-md-6">
-									<div class="form-group align-items-center mb-5">
-										<label class="form-control-label">Gender</label>
-										<p
-											v-if="!allowEdit"
-											class="form-control-static"
-										>{{ data.user.gender == 'M' ? 'Male' : 'Female' }}</p>
-
-										<select v-show="allowEdit" class="selectGender form-control" v-model="data.user.gender">
-											<option value="M">Male</option>
-											<option value="F">Female</option>
-										</select>
-									</div>
-									<div class="form-group align-items-center mb-5">
-										<label class="form-control-label">Address</label>
-										<p v-if="!allowEdit" class="form-control-static">{{ data.user.address }}</p>
-										<textarea
-											v-if="allowEdit"
-											class="form-control"
-											placeholder="Address"
-											rows="5"
-											v-model="data.user.address"
-										></textarea>
-									</div>
-								</div>
-							</div>
-						</form>
-					</div>
-				</div>
-				<!-- End Form -->
-				<!-- Form -->
-				<div class="widget has-shadow">
-					<div class="widget-header">
-						<span>Courier File</span>
-					</div>
-					<div class="widget-body">
-						<form class="form-horizontal">
-							<div class="row">
-								<div class="col-md-3">
-									<div class="form-group align-items-center mb-5">
-										<label class="form-control-label">KTP</label>
-										<p class="form-control-static">
-											<a @click.prevent class="pop">
-												<img
-													v-if="data.ktp_file != ''"
-													width="200px"
-													class="img-thumbnail"
-													:src="data.ktp_file"
-													alt
+									<hr>
+									<br>
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group align-items-center mb-5">
+												<label class="form-control-label">Phone</label>
+												<p v-if="!allowEdit" class="form-control-static">{{ data.user.phone }}</p>
+												<input
+													v-if="allowEdit"
+													type="number"
+													class="form-control"
+													value
+													v-model="data.user.phone"
+													placeholder="Phone"
 												>
-											</a>
-										</p>
+											</div>
+											<div class="form-group align-items-center mb-5">
+												<label class="form-control-label">Birth</label>
+												<p v-if="!allowEdit" class="form-control-static">{{ data.user.birth_formatted }}</p>
+
+												<datepicker
+													v-if="allowEdit"
+													v-model="data.user.birth"
+													format="dd/MM/yyyy"
+													input-class="form-control"
+												></datepicker>
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group align-items-center mb-5">
+												<label class="form-control-label">Gender</label>
+												<p
+													v-if="!allowEdit"
+													class="form-control-static"
+												>{{ data.user.gender == 'M' ? 'Male' : 'Female' }}</p>
+
+												<select v-show="allowEdit" class="selectGender form-control" v-model="data.user.gender">
+													<option value="M">Male</option>
+													<option value="F">Female</option>
+												</select>
+											</div>
+											<div class="form-group align-items-center mb-5">
+												<label class="form-control-label">Address</label>
+												<p v-if="!allowEdit" class="form-control-static">{{ data.user.address }}</p>
+												<textarea
+													v-if="allowEdit"
+													class="form-control"
+													placeholder="Address"
+													rows="5"
+													v-model="data.user.address"
+												></textarea>
+											</div>
+										</div>
 									</div>
-								</div>
-								<div class="col-md-3">
-									<div class="form-group align-items-center mb-5">
-										<label class="form-control-label">Photo</label>
-										<a @click.prevent class="pop">
-											<img
-												v-if="data.photo_file != ''"
-												width="200px"
-												class="img-thumbnail"
-												:src="data.photo_file"
-												alt
-											>
-										</a>
-									</div>
-								</div>
+								</form>
 							</div>
-						</form>
+						</div>
+						<!-- End Form -->
+						<!-- Form -->
+						<div class="widget has-shadow">
+							<div class="widget-header">
+								<span>Courier File</span>
+							</div>
+							<div class="widget-body">
+								<form class="form-horizontal">
+									<div class="row">
+										<div class="col-md-3">
+											<div class="form-group align-items-center mb-5">
+												<label class="form-control-label">KTP</label>
+												<p class="form-control-static">
+													<a @click.prevent class="pop">
+														<img
+															v-if="data.ktp_file != ''"
+															width="200px"
+															class="img-thumbnail"
+															:src="data.ktp_file"
+															alt
+														>
+													</a>
+												</p>
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="form-group align-items-center mb-5">
+												<label class="form-control-label">Photo</label>
+												<a @click.prevent class="pop">
+													<img
+														v-if="data.photo_file != ''"
+														width="200px"
+														class="img-thumbnail"
+														:src="data.photo_file"
+														alt
+													>
+												</a>
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+						<!-- End Form -->
 					</div>
 				</div>
-				<!-- End Form -->
+			</div>
+			<div class="tab-pane fade" id="tab-2" role="tabpanel" aria-labelledby="base-tab-2">
+				<div class="row flex-row">
+					<div class="col-xl-12">
+						<!-- Begin Widget 07 -->
+						<div class="widget widget-07 has-shadow">
+							<!-- Begin Widget Header -->
+							<div class="widget-header bordered d-flex align-items-center">
+								<h2>List Schedule</h2>
+							</div>
+							<!-- End Widget Header -->
+							<!-- Begin Widget Body -->
+							<div class="widget-body">
+								<div class="table-responsive table-scroll padding-right-10" style="max-height:520px;">
+									<table class="table table-hover mb-0">
+										<thead>
+											<tr>
+												<th>Drop Point</th>
+												<th>Location Stay Time</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr v-for="d in dataSchedule">
+												<td>{{ d.drop_point.name }}</td>
+												<td>{{ d.stay_location_time }}</td>
+											</tr>
+											<tr v-if="!pagingSchedule.end">
+												<td colspan="2">
+													<button class="btn btn-block" @click.prevent="loadMoreSchedule()">Load more</button>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<!-- End Widget Body -->
+							<!-- Begin Widget Footer -->
+							<div class="widget-footer d-flex align-items-center">
+								<div class="mr-auto p-2">
+									<span class="display-items">Showing 1-{{data.length}} Results</span>
+								</div>
+							</div>
+							<!-- End Widget Footer -->
+						</div>
+						<!-- End Widget 07 -->
+					</div>
+				</div>
 			</div>
 		</div>
 		<!-- End Row -->
@@ -226,6 +304,8 @@
 	export default {
 		data() {
 			return {
+				dataSchedule: [],
+
 				allowEdit: false,
 				dataLoaded: false,
 				dataUserLoaded: false,
@@ -240,6 +320,18 @@
 						address: ""
 					}
 				},
+				pagingSchedule: {
+					total_data: 0,
+					data_per_page: 10,
+					end: false,
+					loading: false
+				},
+
+				refSchedule: {
+					data: null,
+					dataNext: null
+				},
+
 				listIdentityType: [
 					{
 						label: "KTP",
@@ -277,6 +369,97 @@
 			}
 		},
 		methods: {
+			loadSchedule() {
+				let self = this;
+
+				self.dataSchedule = [];
+
+				this.refSchedule.data = db.collection("courier_schedule");
+				this.refSchedule.data.orderBy("created_at", "desc");
+
+				const firstPage = this.refSchedule.data.limit(
+					this.pagingSchedule.data_per_page
+				);
+				this.handledataSchedule(firstPage);
+			},
+
+			loadMoreSchedule() {
+				let self = this;
+
+				if (self.pagingSchedule.end) {
+					return;
+				}
+
+				this.pagingSchedule.loading = true;
+				this.handledataSchedule(this.refSchedule.dataNext).then(
+					documentSnapshots => {
+						self.pagingSchedule.loading = false;
+
+						if (documentSnapshots.empty) self.pagingSchedule.end = true;
+					}
+				);
+			},
+
+			handledataSchedule(ref) {
+				return new Promise((resolve, reject) => {
+					swal.fire({
+						title: "Loading Schedule...",
+						text: "Please waiting",
+						allowOutsideClick: false,
+						allowEscapeKey: false,
+						onOpen: () => {
+							swal.showLoading();
+						}
+					});
+
+					ref.get().then(documentSnapshots => {
+						if (documentSnapshots.empty) {
+							this.pagingSchedule.end = true;
+							resolve(documentSnapshots);
+
+							swal.close();
+						}
+
+						documentSnapshots.forEach(async doc => {
+							let data = doc.data();
+							data.id = doc.id;
+							data.stay_location_time = moment(
+								data.stay_location_time
+							).format("dddd, DD MMMM YYYY, HH:mm");
+							if (
+								data.drop_point_id != "" &&
+								typeof data.drop_point_id !== "undefined"
+							) {
+								await db
+									.collection("drop_point")
+									.doc(data.drop_point_id)
+									.get()
+									.then(doc1 => {
+										if (doc1.exists) {
+											data.drop_point = doc1.data();
+										}
+									});
+							}
+
+							this.dataSchedule.push(data);
+						});
+
+						const lastVisible =
+							documentSnapshots.docs[documentSnapshots.size - 1];
+
+						if (!lastVisible) return;
+
+						this.refSchedule.dataNext = this.refSchedule.data
+							.startAfter(lastVisible)
+							.limit(this.pagingSchedule.data_per_page);
+
+						resolve(documentSnapshots);
+
+						swal.close();
+					});
+				});
+			},
+
 			async FetchData(id) {
 				swal.fire({
 					title: "Loading...",
@@ -334,7 +517,7 @@
 								});
 						}
 
-						await swal.close();
+						swal.close();
 					} else {
 						this.$router.push("/internal/courier");
 					}

@@ -100,15 +100,6 @@
 							<div class="row">
 								<div class="col-md-6">
 									<div class="form-group align-items-center mb-5">
-										<label class="form-control-label">Vehicle Type</label>
-										<p v-if="!allowEdit" class="form-control-static">{{ data.vehicle_type_name }}</p>
-
-										<select v-show="allowEdit" class="formSelect form-control" v-model="data.vehicle_type_id">
-											<option :value="type.id" v-for="type in vehicleType">{{ type.name }}</option>
-										</select>
-									</div>
-
-									<div class="form-group align-items-center mb-5">
 										<label class="form-control-label">Phone</label>
 										<p v-if="!allowEdit" class="form-control-static">{{ data.user.phone }}</p>
 										<input
@@ -155,6 +146,55 @@
 											rows="5"
 											v-model="data.user.address"
 										></textarea>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+				<!-- End Form -->
+				<!-- Form -->
+				<div class="widget has-shadow">
+					<div class="widget-header">
+						<span>Courier Vehicle</span>
+					</div>
+					<div class="widget-body">
+						<form class="form-horizontal">
+							<div class="row">
+								<div class="col-md-4">
+									<div class="form-group align-items-center mb-5">
+										<label class="form-control-label">Vehicle Type</label>
+										<p v-if="!allowEdit" class="form-control-static">{{ data.vehicle_type_name }}</p>
+
+										<select v-show="allowEdit" class="formSelect form-control" v-model="data.vehicle_type_id">
+											<option :value="type.id" v-for="type in vehicleType">{{ type.name }}</option>
+										</select>
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group align-items-center mb-5">
+										<label class="form-control-label">Vehicle Name</label>
+										<p v-if="!allowEdit" class="form-control-static">{{ data.vehicle_name }}</p>
+										<input
+											v-if="allowEdit"
+											type="text"
+											class="form-control"
+											value
+											v-model="data.vehicle_name"
+										>
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group align-items-center mb-5">
+										<label class="form-control-label">Vehicle Number</label>
+										<p v-if="!allowEdit" class="form-control-static">{{ data.vehicle_licence_number }}</p>
+										<input
+											v-if="allowEdit"
+											type="text"
+											class="form-control"
+											value
+											v-model="data.vehicle_licence_number"
+										>
 									</div>
 								</div>
 							</div>
@@ -389,7 +429,7 @@
 				// }
 
 				let data = db.collection("user");
-				let data_feeder = db.collection("feede");
+				let data_feeder = db.collection("feeder");
 
 				let formData = {
 					phone: this.data.user.phone,
@@ -405,12 +445,22 @@
 
 				if (self.mode == "edit" && self.$route.params.id) {
 					data = db.collection("user").doc(this.data.user.user_id);
+					data_feeder = db
+						.collection("feeder")
+						.doc(self.$route.params.id);
 					method = "update";
 					formData = Object.assign(formData, {
 						updated_at: moment().valueOf()
 					});
+					formDataFeeder = Object.assign(formDataFeeder, {
+						updated_at: moment().valueOf()
+					});
 				} else {
 					formData = Object.assign(formData, {
+						created_at: moment().valueOf(),
+						updated_at: moment().valueOf()
+					});
+					formDataFeeder = Object.assign(formDataFeeder, {
 						created_at: moment().valueOf(),
 						updated_at: moment().valueOf()
 					});

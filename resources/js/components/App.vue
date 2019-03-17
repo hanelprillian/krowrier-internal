@@ -223,7 +223,7 @@
 						</transition>
 
 						<!-- Begin Page Footer-->
-						<footer class="main-footer">
+						<footer class="main-footer fixed-footer">
 							<div class="row">
 								<div
 									class="col-xl-6 col-lg-6 col-md-6 col-sm-12 d-flex align-items-center justify-content-xl-start justify-content-lg-start justify-content-md-start justify-content-center"

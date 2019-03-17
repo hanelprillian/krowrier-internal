@@ -191,14 +191,10 @@
 											<div class="form-group align-items-center mb-5">
 												<label class="form-control-label">KTP</label>
 												<p class="form-control-static">
-													<a @click.prevent class="pop">
-														<img
-															v-if="data.ktp_file != ''"
-															width="200px"
-															class="img-thumbnail"
-															:src="data.ktp_file"
-															alt
-														>
+													<small v-if="data.ktp_file == '' || data.ktp_file == ''">Not Available</small>
+													
+													<a @click.prevent class="pop" v-if="data.ktp_file != ''">
+														<img width="200px" class="img-thumbnail" :src="data.ktp_file" alt>
 													</a>
 												</p>
 											</div>
@@ -206,15 +202,12 @@
 										<div class="col-md-3">
 											<div class="form-group align-items-center mb-5">
 												<label class="form-control-label">Photo</label>
-												<a @click.prevent class="pop">
-													<img
-														v-if="data.photo_file != ''"
-														width="200px"
-														class="img-thumbnail"
-														:src="data.photo_file"
-														alt
-													>
-												</a>
+												<p class="form-control-static">
+													<small v-if="data.photo_file == '' || data.photo_file == null">Not Available</small>
+													<a @click.prevent class="pop" v-if="data.photo_file != ''">
+														<img width="200px" class="img-thumbnail" :src="data.photo_file" alt>
+													</a>
+												</p>
 											</div>
 										</div>
 									</div>

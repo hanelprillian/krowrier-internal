@@ -247,14 +247,10 @@
 											<div class="form-group align-items-center mb-5">
 												<label class="form-control-label">KTP</label>
 												<p class="form-control-static">
-													<a @click.prevent class="pop">
-														<img
-															v-if="data.ktp_file != ''"
-															width="200px"
-															class="img-thumbnail"
-															:src="data.ktp_file"
-															alt
-														>
+													<small v-if="data.ktp_file == '' || data.ktp_file == ''">Not Available</small>
+													
+													<a @click.prevent class="pop" v-if="data.ktp_file != ''">
+														<img width="200px" class="img-thumbnail" :src="data.ktp_file" alt>
 													</a>
 												</p>
 											</div>
@@ -262,15 +258,12 @@
 										<div class="col-md-3">
 											<div class="form-group align-items-center mb-5">
 												<label class="form-control-label">Photo</label>
-												<a @click.prevent class="pop">
-													<img
-														v-if="data.photo_file != ''"
-														width="200px"
-														class="img-thumbnail"
-														:src="data.photo_file"
-														alt
-													>
-												</a>
+												<p class="form-control-static">
+													<small v-if="data.photo_file == '' || data.photo_file == null">Not Available</small>
+													<a @click.prevent class="pop" v-if="data.photo_file != ''">
+														<img width="200px" class="img-thumbnail" :src="data.photo_file" alt>
+													</a>
+												</p>
 											</div>
 										</div>
 									</div>
@@ -546,6 +539,8 @@
 				ref.onSnapshot(async doc => {
 					if (doc.exists) {
 						let data = await doc.data();
+						data.ktp_file = data.ktp_file || "";
+						data.photo_file = data.photo_file || "";
 						this.data = Object.assign(data, {
 							user: {
 								user_id: "",
@@ -629,7 +624,11 @@
 					status: 1
 				};
 
-				let formDataFeeder = {};
+				let formDataFeeder = {
+					vehicle_licence_number: this.data.vehicle_licence_number,
+					vehicle_name: this.data.vehicle_name,
+					vehicle_type_id: this.data.vehicle_type_id
+				};
 
 				let method = "add";
 
@@ -668,21 +667,32 @@
 
 				data[method](formData)
 					.then(function(docRef) {
-						swal.fire({
-							// show error popup
-							title: "Saved",
-							text: "Your data saved",
-							type: "success",
-							confirmButtonColor: "#3085d6",
-							confirmButtonText: "OK"
-						}).then(function() {
-							// self.$router.push("/internal/courier");
-						});
+						data_feeder[method](formDataFeeder)
+							.then(function(docRef) {
+								swal.fire({
+									// show error popup
+									title: "Saved",
+									text: "Your data saved",
+									type: "success",
+									confirmButtonColor: "#3085d6",
+									confirmButtonText: "OK"
+								}).then(function() {
+									// self.$router.push("/internal/courier");
+								});
+							})
+							.catch(function(error) {
+								swal.fire({
+									title: "Error",
+									text: "Your data not saved saved",
+									type: "erorr"
+								});
+								console.error("Error adding document: ", error);
+							});
 					})
 					.catch(function(error) {
 						swal.fire({
 							title: "Error",
-							text: "Your data not saved saved",
+							text: "Your data not saved",
 							type: "erorr"
 						});
 						console.error("Error adding document: ", error);

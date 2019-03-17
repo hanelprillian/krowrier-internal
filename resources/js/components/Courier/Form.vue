@@ -130,7 +130,7 @@
 												<p v-if="!allowEdit" class="form-control-static">{{ data.user.phone }}</p>
 												<input
 													v-if="allowEdit"
-													type="number"
+													type="text"
 													class="form-control"
 													value
 													v-model="data.user.phone"
@@ -246,6 +246,9 @@
 											</tr>
 										</thead>
 										<tbody>
+											<tr class="alert-warning" v-if="dataSchedule.length == 0">
+												<td colspan="2">Schedule empty!</td>
+											</tr>
 											<tr v-for="d in dataSchedule">
 												<td>{{ d.drop_point.name }}</td>
 												<td>{{ d.stay_location_time }}</td>
@@ -330,14 +333,7 @@
 				refSchedule: {
 					data: null,
 					dataNext: null
-				},
-
-				listIdentityType: [
-					{
-						label: "KTP",
-						value: "KTP"
-					}
-				]
+				}
 			};
 		},
 		props: ["mode"],
@@ -374,7 +370,9 @@
 
 				self.dataSchedule = [];
 
-				this.refSchedule.data = db.collection("courier_schedule");
+				this.refSchedule.data = db
+					.collection("courier_schedule")
+					.where("courier_id", "==", self.$route.params.id);
 				this.refSchedule.data.orderBy("created_at", "desc");
 
 				const firstPage = this.refSchedule.data.limit(

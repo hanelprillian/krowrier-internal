@@ -69,7 +69,7 @@
 									<div class="form-group align-items-center mb-5">
 										<label class="form-control-label">Phone</label>
 										<input
-											type="number"
+											type="text"
 											class="form-control"
 											value
 											v-model="data.user.phone"

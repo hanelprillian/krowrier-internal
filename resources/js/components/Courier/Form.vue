@@ -11,32 +11,32 @@
 								<div class="btn-group mr-1 mb-2">
 									<a
 										class="btn btn-sm dropdown-toggle d-flex align-items-center"
-										:class="{'btn-dark' : data.is_active == 0, 'btn-success' : data.is_active == 1, 'btn-danger' : data.is_active == 2}"
+										:class="{'btn-dark' : data.active == 0, 'btn-success' : data.active == 1, 'btn-danger' : data.active == 2}"
 										data-toggle="dropdown"
 										aria-haspopup="true"
 										aria-expanded="false"
 									>
-										<button type="button" v-if="data.is_active == 0" class="btn btn-sm btn-dark">Inactive</button>
-										<button type="button" v-if="data.is_active == 1" class="btn btn-sm btn-success">Active</button>
-										<button type="button" v-if="data.is_active == 2" class="btn btn-sm btn-danger">Suspended</button>
+										<button type="button" v-if="data.active == 0" class="btn btn-sm btn-dark">Inactive</button>
+										<button type="button" v-if="data.active == 1" class="btn btn-sm btn-success">Active</button>
+										<button type="button" v-if="data.active == 2" class="btn btn-sm btn-danger">Suspended</button>
 									</a>
 									<div class="dropdown-menu">
 										<a
 											class="dropdown-item"
 											@click.prevent="SetStatus(1, 'Activate')"
-											v-if="data.is_active != 1"
+											v-if="data.active != 1"
 											href="#"
 										>Active</a>
 										<a
 											class="dropdown-item"
 											@click.prevent="SetStatus(2, 'Suspend')"
-											v-if="data.is_active != 2"
+											v-if="data.active != 2"
 											href="#"
 										>Suspend</a>
 										<a
 											class="dropdown-item"
 											@click.prevent="SetStatus(0, 'Set Inactive')"
-											v-if="data.is_active != 0"
+											v-if="data.active != 0"
 											href="#"
 										>Inactive</a>
 									</div>
@@ -92,6 +92,18 @@
 					aria-controls="tab-2"
 					aria-selected="false"
 				>Schedules</a>
+			</li>
+			<li class="nav-item">
+				<a
+					:class="{'disabled': !data.current_latitude || !data.current_longitude }"
+					class="nav-link"
+					id="base-tab-3"
+					:data-toggle="data.current_latitude  && data.current_longitude ? 'tab' : ''"
+					href="#tab-3"
+					role="tab"
+					aria-controls="tab-3"
+					aria-selected="false"
+				>Current Location</a>
 			</li>
 		</ul>
 		<div class="clearfix"></div>
@@ -192,7 +204,7 @@
 												<label class="form-control-label">KTP</label>
 												<p class="form-control-static">
 													<small v-if="data.ktp_file == '' || data.ktp_file == ''">Not Available</small>
-													
+
 													<a @click.prevent class="pop" v-if="data.ktp_file != ''">
 														<img width="200px" class="img-thumbnail" :src="data.ktp_file" alt>
 													</a>
@@ -268,6 +280,44 @@
 					</div>
 				</div>
 			</div>
+			<div
+				class="tab-pane fade"
+				id="tab-3"
+				role="tabpanel"
+				v-if="data.current_latitude  && data.current_longitude "
+				aria-labelledby="base-tab-3"
+			>
+				<div class="row flex-row">
+					<div class="col-xl-12">
+						<!-- Begin Widget 07 -->
+						<div class="widget widget-07 has-shadow">
+							<!-- Begin Widget Header -->
+							<div class="widget-header bordered d-flex align-items-center row">
+								<div class="col-md-12">
+									<h2>Current Location</h2>
+									{{ data.current_location }}
+								</div>
+							</div>
+						</div>
+						<!-- End Widget 07 -->
+						<div class="widget has-shadow">
+							<map-show
+								v-if="mapLoaded && data.current_latitude  && data.current_longitude "
+								marker-mode="reset"
+								:marked="true"
+								:lat="data.current_latitude"
+								:long="data.current_longitude"
+							></map-show>
+							<div v-else>Current Location Not Found</div>
+							<br>
+							Long:
+							{{ data.current_latitude }},
+							Lat:
+							{{ data.current_longitude }},
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 		<!-- End Row -->
 		<div
@@ -296,15 +346,16 @@
 <script>
 	import { required } from "vuelidate/lib/validators";
 	import Datepicker from "vuejs-datepicker";
+	import MapShow from "../_Widget/MapsShow";
 
 	export default {
 		data() {
 			return {
 				dataSchedule: [],
-
 				allowEdit: false,
 				dataLoaded: false,
 				dataUserLoaded: false,
+				mapLoaded: false,
 				data: {
 					user: {
 						user_id: "",
@@ -348,7 +399,8 @@
 		// 	}
 		// },
 		components: {
-			Datepicker
+			Datepicker,
+			MapShow
 		},
 		watch: {
 			"data.user.birth"() {
@@ -483,6 +535,10 @@
 
 						this.dataLoaded = true;
 						this.data.user.user_id = data.user_id;
+						this.data.user.user_id = data.user_id;
+						this.data.current_latitude = data.current_latitude;
+						this.data.current_longitude = data.current_longitude;
+						this.mapLoaded = true;
 
 						if (
 							data.user_id != "" &&
@@ -590,7 +646,7 @@
 					.doc(self.$route.params.id);
 
 				let formData = {
-					is_active: status
+					active: status
 				};
 
 				swal.fire({

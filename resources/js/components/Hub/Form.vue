@@ -4,14 +4,14 @@
 		<div class="row">
 			<div class="page-header">
 				<div class="d-flex align-items-center">
-					<h2 class="page-header-title">{{mode == 'add' ? 'New' : 'Edit'}} Drop Point</h2>
+					<h2 class="page-header-title">{{mode == 'add' ? 'New' : 'Edit'}} Hub</h2>
 					<div>
 						<div class="page-header-tools"></div>
 					</div>
 				</div>
 				<br>
 				<div>
-					<button @click="$router.push('/internal/drop-point')" class="btn btn-outline-secondary">Back</button>
+					<button @click="$router.push('/internal/hub')" class="btn btn-outline-secondary">Back</button>
 				</div>
 			</div>
 		</div>
@@ -149,7 +149,7 @@
 			},
 
 			async FetchData(id) {
-				const ref = await db.collection("drop_point").doc(id);
+				const ref = await db.collection("hub").doc(id);
 				ref.get().then(doc => {
 					if (doc.exists) {
 						this.name = doc.data().name;
@@ -160,7 +160,7 @@
 						this.created_at = doc.data().created_at;
 						this.dataLoaded = true;
 					} else {
-						this.$router.push("/internal/drop-point");
+						this.$router.push("/internal/hub");
 					}
 				});
 			},
@@ -174,7 +174,7 @@
 					return;
 				}
 
-				let data = db.collection("drop_point");
+				let data = db.collection("hub");
 
 				let formData = {
 					name: this.name,
@@ -188,7 +188,7 @@
 				let method = "add";
 
 				if (self.mode == "edit" && self.$route.params.id) {
-					data = db.collection("drop_point").doc(self.$route.params.id);
+					data = db.collection("hub").doc(self.$route.params.id);
 					method = "update";
 					formData = Object.assign(formData, {
 						updated_at: moment().valueOf()
@@ -210,7 +210,7 @@
 							confirmButtonColor: "#3085d6",
 							confirmButtonText: "OK"
 						}).then(function() {
-							self.$router.push("/internal/drop-point");
+							self.$router.push("/internal/hub");
 						});
 					})
 					.catch(function(error) {

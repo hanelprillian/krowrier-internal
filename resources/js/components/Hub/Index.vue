@@ -4,10 +4,10 @@
 		<div class="row">
 			<div class="page-header">
 				<div class="d-flex align-items-center">
-					<h2 class="page-header-title">Drop Point</h2>
+					<h2 class="page-header-title">Hub</h2>
 					<div>
 						<div class="page-header-tools">
-							<router-link tag="button" to="/internal/drop-point/new" class="btn btn-primary ripple">Tambah</router-link>
+							<router-link tag="button" to="/internal/hub/new" class="btn btn-primary ripple">Tambah</router-link>
 						</div>
 					</div>
 				</div>
@@ -71,7 +71,7 @@
 										<td>{{d.type}}</td>
 										<td>{{d.address}}</td>
 										<td class="td-actions">
-											<router-link :to="{path:'/internal/drop-point/'+d.id}">
+											<router-link :to="{path:'/internal/hub/'+d.id}">
 												<i class="la la-edit edit"></i>
 											</router-link>
 
@@ -138,7 +138,7 @@
 
 				self.data = [];
 
-				this.ref.data = db.collection("drop_point");
+				this.ref.data = db.collection("hub");
 
 				if (this.search.keyword != "") {
 					this.ref.data = this.ref.data

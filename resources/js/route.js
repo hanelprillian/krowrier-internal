@@ -48,26 +48,26 @@ const router = new VueRouter({
             }
         },
         {
-            path: rootInternal + "/drop-point",
-            name: "internal->drop-point",
-            component: require("./components/DropPoint/Index").default,
+            path: rootInternal + "/hub",
+            name: "internal->hub",
+            component: require("./components/Hub/Index").default,
             meta: {
                 requiresAuth: true
             }
         },
         {
-            path: rootInternal + "/drop-point/new",
-            name: "internal->drop-point->new",
-            component: require("./components/DropPoint/Form").default,
+            path: rootInternal + "/hub/new",
+            name: "internal->hub->new",
+            component: require("./components/Hub/Form").default,
             props: { mode: "add" },
             meta: {
                 requiresAuth: true
             }
         },
         {
-            path: rootInternal + "/drop-point/:id",
-            name: "internal->drop-point->form",
-            component: require("./components/DropPoint/Form").default,
+            path: rootInternal + "/hub/:id",
+            name: "internal->hub->form",
+            component: require("./components/Hub/Form").default,
             props: { mode: "edit" },
             meta: {
                 requiresAuth: true

@@ -4,7 +4,7 @@
 		<div class="row">
 			<div class="page-header">
 				<div class="d-flex align-items-center">
-					<h2 class="page-header-title">{{ mode == 'add' ? 'New' : 'Detail'}} Feeder</h2>
+					<h2 class="page-header-title">{{ mode == 'add' ? 'New' : 'Detail'}} Drop Point</h2>
 					<div>
 						<div class="page-header-tools">
 							<div class="form-group">
@@ -48,10 +48,7 @@
 				</div>
 				<br>
 				<div>
-					<button
-						@click="$router.push('/internal/feeder-courier')"
-						class="btn btn-outline-secondary"
-					>Back</button>
+					<button @click="$router.push('/internal/drop-point')" class="btn btn-outline-secondary">Back</button>
 					<button
 						@click="allowEdit = true"
 						v-if="!allowEdit"
@@ -86,25 +83,13 @@
 			</li>
 			<li class="nav-item">
 				<a
+					:class="{'disabled': !data.latitude || !data.longitude }"
 					class="nav-link"
 					id="base-tab-2"
-					data-toggle="tab"
+					:data-toggle="data.latitude  && data.longitude ? 'tab' : ''"
 					href="#tab-2"
 					role="tab"
-					@click.prevent="loadSchedule()"
 					aria-controls="tab-2"
-					aria-selected="false"
-				>Schedules</a>
-			</li>
-			<li class="nav-item">
-				<a
-					:class="{'disabled': !data.current_latitude || !data.current_longitude }"
-					class="nav-link"
-					id="base-tab-3"
-					:data-toggle="data.current_latitude  && data.current_longitude ? 'tab' : ''"
-					href="#tab-3"
-					role="tab"
-					aria-controls="tab-3"
 					aria-selected="false"
 				>Current Location</a>
 			</li>
@@ -299,62 +284,12 @@
 				</div>
 				<!-- End Row -->
 			</div>
-			<div class="tab-pane fade" id="tab-2" role="tabpanel" aria-labelledby="base-tab-2">
-				<div class="row flex-row">
-					<div class="col-xl-12">
-						<!-- Begin Widget 07 -->
-						<div class="widget widget-07 has-shadow">
-							<!-- Begin Widget Header -->
-							<div class="widget-header bordered d-flex align-items-center">
-								<h2>List Schedule</h2>
-							</div>
-							<!-- End Widget Header -->
-							<!-- Begin Widget Body -->
-							<div class="widget-body">
-								<div class="table-responsive table-scroll padding-right-10" style="max-height:520px;">
-									<table class="table table-hover mb-0">
-										<thead>
-											<tr>
-												<th>Drop Point</th>
-												<th>Location Stay Time</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr class="alert-warning" v-if="dataSchedule.length == 0">
-												<td colspan="2">Schedule empty!</td>
-											</tr>
-											<tr v-for="d in dataSchedule">
-												<td>{{ d.drop_point.name }}</td>
-												<td>{{ d.stay_location_time }}</td>
-											</tr>
-											<tr v-if="!pagingSchedule.end">
-												<td colspan="2">
-													<button class="btn btn-block" @click.prevent="loadMoreSchedule()">Load more</button>
-												</td>
-											</tr>
-										</tbody>
-									</table>
-								</div>
-							</div>
-							<!-- End Widget Body -->
-							<!-- Begin Widget Footer -->
-							<div class="widget-footer d-flex align-items-center">
-								<div class="mr-auto p-2">
-									<span class="display-items">Showing 1-{{data.length}} Results</span>
-								</div>
-							</div>
-							<!-- End Widget Footer -->
-						</div>
-						<!-- End Widget 07 -->
-					</div>
-				</div>
-			</div>
 			<div
 				class="tab-pane fade"
-				v-if="data.current_latitude  && data.current_longitude "
-				id="tab-3"
+				v-if="data.latitude  && data.longitude "
+				id="tab-2"
 				role="tabpanel"
-				aria-labelledby="base-tab-3"
+				aria-labelledby="base-tab-2"
 			>
 				<div class="row flex-row">
 					<div class="col-xl-12">
@@ -371,18 +306,18 @@
 						<!-- End Widget 07 -->
 						<div class="widget has-shadow">
 							<map-show
-								v-if="mapLoaded && data.current_latitude  && data.current_longitude "
+								v-if="mapLoaded && data.latitude  && data.longitude "
 								marker-mode="reset"
 								:marked="true"
-								:lat="data.current_latitude"
-								:long="data.current_longitude"
+								:lat="data.latitude"
+								:long="data.longitude"
 							></map-show>
 							<div v-else>Current Location Not Found</div>
 							<br>
 							Long:
-							{{ data.current_latitude }},
+							{{ data.latitude }},
 							Lat:
-							{{ data.current_longitude }},
+							{{ data.longitude }},
 						</div>
 					</div>
 				</div>
@@ -478,121 +413,13 @@
 					"YYYY-MM-DD"
 				);
 			}
-			// "data.current_latitude"() {
+			// "data.latitude"() {
 			// 	this.dataLoaded = false;
 			// 	this.dataLoaded = true;
-			// 	alert(this.data.current_latitude);
+			// 	alert(this.data.latitude);
 			// }
 		},
 		methods: {
-			loadSchedule() {
-				let self = this;
-
-				self.dataSchedule = [];
-
-				this.refSchedule.data = db
-					.collection("feeder_schedule")
-					.where("feeder_id", "==", self.$route.params.id);
-				this.refSchedule.data.orderBy("created_at", "desc");
-
-				const firstPage = this.refSchedule.data.limit(
-					this.pagingSchedule.data_per_page
-				);
-				this.handledataSchedule(firstPage);
-			},
-
-			loadMoreSchedule() {
-				let self = this;
-
-				if (self.pagingSchedule.end) {
-					return;
-				}
-
-				this.pagingSchedule.loading = true;
-				this.handledataSchedule(this.refSchedule.dataNext).then(
-					documentSnapshots => {
-						self.pagingSchedule.loading = false;
-
-						if (documentSnapshots.empty) self.pagingSchedule.end = true;
-					}
-				);
-			},
-
-			handledataSchedule(ref) {
-				return new Promise((resolve, reject) => {
-					swal.fire({
-						title: "Loading Schedule...",
-						text: "Please waiting",
-						allowOutsideClick: false,
-						allowEscapeKey: false,
-						onOpen: () => {
-							swal.showLoading();
-						}
-					});
-
-					ref.get().then(documentSnapshots => {
-						if (documentSnapshots.empty) {
-							this.pagingSchedule.end = true;
-							resolve(documentSnapshots);
-
-							swal.close();
-						}
-
-						documentSnapshots.forEach(async doc => {
-							let data = doc.data();
-							data.id = doc.id;
-							data.stay_location_time = moment(
-								data.stay_location_time
-							).format("dddd, DD MMMM YYYY, HH:mm");
-							if (
-								data.drop_point_id != "" &&
-								typeof data.drop_point_id !== "undefined"
-							) {
-								await db
-									.collection("drop_point")
-									.doc(data.drop_point_id)
-									.get()
-									.then(doc1 => {
-										if (doc1.exists) {
-											data.drop_point = doc1.data();
-										}
-									});
-							}
-
-							this.dataSchedule.push(data);
-						});
-
-						const lastVisible =
-							documentSnapshots.docs[documentSnapshots.size - 1];
-
-						if (!lastVisible) return;
-
-						this.refSchedule.dataNext = this.refSchedule.data
-							.startAfter(lastVisible)
-							.limit(this.pagingSchedule.data_per_page);
-
-						resolve(documentSnapshots);
-
-						swal.close();
-					});
-				});
-			},
-			async getVehicleType(id) {
-				const ref = await db.collection("feeder_vehicle_type");
-
-				ref.get().then(async documentSnapshots => {
-					if (documentSnapshots.empty) {
-						return;
-					}
-
-					documentSnapshots.forEach(async doc => {
-						let data = doc.data();
-						data.id = doc.id;
-						this.vehicleType.push(data);
-					});
-				});
-			},
-
 			async FetchData(id) {
 				swal.fire({
 					title: "Loading...",
@@ -604,7 +431,7 @@
 					}
 				});
 
-				const ref = await db.collection("feeder").doc(id);
+				const ref = await db.collection("drop_point").doc(id);
 
 				ref.onSnapshot(async doc => {
 					if (doc.exists) {
@@ -626,25 +453,9 @@
 
 						this.dataLoaded = true;
 						this.data.user.user_id = data.user_id;
-						this.data.current_latitude = data.current_latitude;
-						this.data.current_longitude = data.current_longitude;
+						this.data.latitude = data.latitude;
+						this.data.longitude = data.longitude;
 						this.mapLoaded = true;
-
-						if (
-							data.vehicle_type_id != "" &&
-							typeof data.vehicle_type_id !== "undefined"
-						) {
-							await db
-								.collection("feeder_vehicle_type")
-								.doc(data.vehicle_type_id)
-								.onSnapshot(async doc1 => {
-									if (doc1.exists) {
-										let data = await doc1.data();
-										this.data.vehicle_type_name =
-											data.name || "";
-									}
-								});
-						}
 
 						if (
 							data.user_id != "" &&
@@ -672,7 +483,7 @@
 
 						await swal.close();
 					} else {
-						this.$router.push("/internal/feeder-courier");
+						this.$router.push("/internal/drop-point");
 					}
 				});
 			},
@@ -687,7 +498,7 @@
 				// }
 
 				let data = db.collection("user");
-				let data_feeder = db.collection("feeder");
+				let data_drop_point = db.collection("drop_point");
 
 				let formData = {
 					phone: this.data.user.phone,
@@ -697,7 +508,7 @@
 					status: 1
 				};
 
-				let formDataFeeder = {
+				let formDataDropPoint = {
 					vehicle_police_number: this.data.vehicle_police_number,
 					vehicle_name: this.data.vehicle_name,
 					vehicle_type_id: this.data.vehicle_type_id
@@ -707,14 +518,14 @@
 
 				if (self.mode == "edit" && self.$route.params.id) {
 					data = db.collection("user").doc(this.data.user.user_id);
-					data_feeder = db
-						.collection("feeder")
+					data_drop_point = db
+						.collection("drop_point")
 						.doc(self.$route.params.id);
 					method = "update";
 					formData = Object.assign(formData, {
 						updated_at: moment().valueOf()
 					});
-					formDataFeeder = Object.assign(formDataFeeder, {
+					formDataDropPoint = Object.assign(formDataDropPoint, {
 						updated_at: moment().valueOf()
 					});
 				} else {
@@ -722,7 +533,7 @@
 						created_at: moment().valueOf(),
 						updated_at: moment().valueOf()
 					});
-					formDataFeeder = Object.assign(formDataFeeder, {
+					formDataDropPoint = Object.assign(formDataDropPoint, {
 						created_at: moment().valueOf(),
 						updated_at: moment().valueOf()
 					});
@@ -740,7 +551,7 @@
 
 				data[method](formData)
 					.then(function(docRef) {
-						data_feeder[method](formDataFeeder)
+						data_drop_point[method](formDataDropPoint)
 							.then(function(docRef) {
 								swal.fire({
 									// show error popup
@@ -775,14 +586,16 @@
 			async SetStatus(status, text) {
 				let self = this;
 
-				let data = await db.collection("feeder").doc(self.$route.params.id);
+				let data = await db
+					.collection("drop_point")
+					.doc(self.$route.params.id);
 
 				let formData = {
 					active: status
 				};
 
 				swal.fire({
-					title: text + " Feeder ?",
+					title: text + " DropPoint ?",
 					type: "question",
 					showCancelButton: true,
 					confirmButtonColor: "#3085d6",
@@ -849,8 +662,6 @@
 			} else {
 				$(".formSelect").selectpicker("destroy");
 			}
-
-			await self.getVehicleType();
 
 			if (self.mode == "edit" && self.$route.params.id)
 				await self.FetchData(self.$route.params.id);

@@ -203,6 +203,9 @@
 										<router-link tag="li" :to="{ path: '/internal/courier' }">
 											<a>Courier</a>
 										</router-link>
+										<router-link tag="li" :to="{ path: '/internal/drop-point' }">
+											<a>Drop Point</a>
+										</router-link>
 									</ul>
 								</li>
 								<router-link tag="li" :to="{ path: '/internal/user' }">

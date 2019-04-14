@@ -26,6 +26,8 @@
 									<span></span>
 								</a>
 								<!-- End Toggle -->
+                                &nbsp;
+                                {{time}}
 							</div>
 							<!-- End Logo -->
 							<!-- Begin Navbar Menu -->
@@ -617,6 +619,7 @@
 	export default {
 		data() {
 			return {
+				time: '',
 				IsLogged: IsLogged,
 				transitionName: "slide-left"
 			};
@@ -630,10 +633,19 @@
 					.then(() => {
 						window.location = "/internal/auth/login";
 					});
-			}
+			},
+
+            startTime()
+            {
+                var today = moment();
+                this.time = today;
+                var t = setTimeout(this.startTime, 500);
+            },
 		},
 
-		mounted() {
+		mounted()
+        {
+            this.startTime();
 			// ------------------------------------------------------- //
 			// Sidebar Functionality
 			// ------------------------------------------------------ //

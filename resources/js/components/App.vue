@@ -181,6 +181,10 @@
 										<router-link tag="li" :to="{ path: '/internal/Hub' }">
 											<a>Hub</a>
 										</router-link>
+
+										<router-link tag="li" :to="{ path: '/internal/company' }">
+											<a>Company</a>
+										</router-link>
 									</ul>
 								</li>
 								<li>

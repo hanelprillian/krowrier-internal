@@ -48,6 +48,32 @@ const router = new VueRouter({
             }
         },
         {
+            path: rootInternal + "/company",
+            name: "internal->company",
+            component: require("./components/Company/Index").default,
+            meta: {
+                requiresAuth: true
+            }
+        },
+        {
+            path: rootInternal + "/company/new",
+            name: "internal->company->new",
+            component: require("./components/Company/Form").default,
+            props: { mode: "add" },
+            meta: {
+                requiresAuth: true
+            }
+        },
+        {
+            path: rootInternal + "/company/:id",
+            name: "internal->company->form",
+            component: require("./components/Company/Form").default,
+            props: { mode: "edit" },
+            meta: {
+                requiresAuth: true
+            }
+        },
+        {
             path: rootInternal + "/hub",
             name: "internal->hub",
             component: require("./components/Hub/Index").default,

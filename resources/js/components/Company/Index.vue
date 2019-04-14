@@ -6,13 +6,7 @@
 				<div class="d-flex align-items-center">
 					<h2 class="page-header-title">Company</h2>
 					<div>
-						<div class="page-header-tools">
-							<router-link
-								tag="button"
-								to="/internal/company/new"
-								class="btn btn-primary ripple"
-							>Tambah</router-link>
-						</div>
+						<div class="page-header-tools"></div>
 					</div>
 				</div>
 			</div>
@@ -29,23 +23,59 @@
 					<!-- End Widget Header -->
 					<!-- Begin Widget Body -->
 					<div class="widget-body">
-						<div class="table-responsive table-scroll padding-right-10">
+						<div class="row">
+							<div class="col-md-6"></div>
+							<div class="col-md-6">
+								<div class="form-inline float-right">
+									<!--<div class="form-group">-->
+										<!--<label for>Status</label>&nbsp;&nbsp;-->
+										<!--<select v-model="search.status" class="form-control" @change="searchLoad()">-->
+											<!--<option value>All</option>-->
+											<!--<option value="1">Active</option>-->
+											<!--<option value="0">Inactive</option>-->
+											<!--<option value="2">Suspended</option>-->
+										<!--</select>-->
+									<!--</div>-->
+									<div class="form-group">
+										<label for>Search</label>&nbsp;&nbsp;
+										<input
+											type="text"
+											v-model="search.keyword"
+											class="form-control"
+											@keyup="searchLoad()"
+										>
+									</div>
+								</div>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+						<br>
+						<div class="table-responsive table-scroll padding-right-10" style="max-height:520px;">
 							<table class="table table-hover mb-0">
 								<thead>
 									<tr>
-										<th width="1%">
+										<th>
 											<div class="styled-checkbox mt-2">
 												<input type="checkbox" name="check-all" id="check-all">
 												<label for="check-all"></label>
 											</div>
 										</th>
-										<th width="15%">Name</th>
-										<th width="20%">Address</th>
-										<th width="20%">Address</th>
-										<th width="10%">Actions</th>
+										<th>Name</th>
+										<th>User</th>
+										<th>User Email</th>
+										<th>Company Code</th>
+										<th>Address</th>
+										<!--<th>Status</th>-->
+										<th>Actions</th>
 									</tr>
 								</thead>
 								<tbody>
+									<tr v-if="dataLoading">
+										<td colspan="7">Loading...</td>
+									</tr>
+									<tr v-if="data.length == 0 && !dataLoading">
+										<td colspan="7" class="warning">Data Empty</td>
+									</tr>
 									<tr v-for="d in data">
 										<td style="width:5%;">
 											<div class="styled-checkbox mt-2">
@@ -53,19 +83,27 @@
 												<label for="cb10"></label>
 											</div>
 										</td>
-										<td>{{d.name}}</td>
+										<td>{{ d.company_name }}</td>
+										<td>{{ d.user.name }}</td>
+										<td>{{ d.user.email }}</td>
+										<td>{{ d.company_code }}</td>
+										<td>{{ d.company_address }}</td>
+										<!--<td>-->
+											<!--<small v-if="d.active == 0" class="badge-text text-dark warning badge-text-small">Pending</small>-->
+											<!--<small v-if="d.active == 1" class="badge-text success badge-text-small">Active</small>-->
+											<!--<small v-if="d.active == 2" class="badge-text danger badge-text-small">Suspended</small>-->
+										<!--</td>-->
 										<td class="td-actions">
-											<router-link :to="{path:'/internal/company/'+d.id}">
+											<router-link tag="a" :to="'/internal/company/'+d.id">
 												<i class="la la-edit edit"></i>
 											</router-link>
-
-											<a href="#" @click.prevent="deleteData(d.id, d.name)">
+											<!-- <a href="#">
 												<i class="la la-close delete"></i>
-											</a>
+											</a>-->
 										</td>
 									</tr>
 									<tr v-if="!paging.end">
-										<td colspan="5">
+										<td colspan="9">
 											<button class="btn btn-block" @click.prevent="loadMore()">Load more</button>
 										</td>
 									</tr>
@@ -94,9 +132,11 @@
 		data() {
 			return {
 				data: [],
+				dataLoading: true,
 
 				search: {
-					keyword: ""
+					keyword: "",
+					status: ""
 				},
 
 				paging: {
@@ -130,11 +170,23 @@
 						.startAt(this.search.keyword)
 						.endAt(this.search.keyword + "\uf8ff");
 				} else {
-					this.ref.data.orderBy("created_at", "desc");
+					this.ref.data = this.ref.data.orderBy("created_at", "desc");
+				}
+
+				if (this.search.status != "") {
+					this.ref.data = this.ref.data.where(
+						"active",
+						"==",
+						parseInt(this.search.status)
+					);
 				}
 
 				const firstPage = this.ref.data.limit(this.paging.data_per_page);
-				this.handledata(firstPage);
+
+				this.dataLoading = true;
+				this.handledata(firstPage).then(documentSnapshots => {
+					this.dataLoading = false;
+				});
 			},
 
 			loadMore() {
@@ -160,9 +212,24 @@
 							resolve(documentSnapshots);
 						}
 
-						documentSnapshots.forEach(doc => {
+						documentSnapshots.forEach(async doc => {
 							let data = doc.data();
 							data.id = doc.id;
+							if (
+								data.user_id != "" &&
+								typeof data.user_id !== "undefined"
+							) {
+								await db
+									.collection("user")
+									.doc(data.user_id)
+									.get()
+									.then(doc1 => {
+										if (doc1.exists) {
+											data.user = doc1.data();
+										}
+									});
+							}
+
 							this.data.push(data);
 						});
 
@@ -180,10 +247,44 @@
 				});
 			},
 
-			deleteData(id, data_name) {
+			async _deleteAction(id) {
+				var total_booking = 0;
+				// await db
+				// 	.collection("booking")
+				// 	.where("origin_hub_id", "==", id)
+				// 	.limit(1)
+				// 	.get()
+				// 	.then(snap => {
+				// 		total_booking += snap.size;
+				// 	});
+				// await db
+				// 	.collection("booking")
+				// 	.where("destination_hub_id", "==", id)
+				// 	.limit(1)
+				// 	.get()
+				// 	.then(snap => {
+				// 		total_booking += snap.size;
+				// 	});
+
+				if (total_booking > 0) {
+					swal.fire("Delete Fail", "This HUB already used", "error");
+					return;
+				}
+				db.collection("company")
+					.doc(id)
+					.delete()
+					.then(() => {
+						this.loadData();
+					})
+					.catch(error => {
+						alert("Error removing document: ", error);
+					});
+			},
+
+			async deleteData(id, data_name) {
 				if (id) {
 					swal.fire({
-						title: "Delete Service Package ?",
+						title: "Delete Courier ?",
 						html:
 							"Your data " +
 							data_name +
@@ -195,34 +296,15 @@
 						confirmButtonText: "Yes"
 					}).then(result => {
 						if (result.value) {
-							db.collection("courier_schedule")
-								.where("company_id", "==", id)
-								.limit(1)
-								.get()
-								.then(snap => {
-									if (snap.size == 0) {
-										db.collection("company")
-											.doc(id)
-											.delete()
-											.then(() => {
-												this.loadData();
-											})
-											.catch(error => {
-												alert(
-													"Error removing document: ",
-													error
-												);
-											});
-									}
-								});
+							this._deleteAction(id);
 						}
 					});
 				}
 			}
 		},
-		async created() {
+		async mounted() {
 			await this.loadData();
-		},
-		mounted() {}
+		}
 	};
 </script>
+

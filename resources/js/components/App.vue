@@ -170,10 +170,10 @@
 								</router-link>
 
 								<li>
-									<a href="#dropdown-master-data" aria-expanded="false" data-toggle="collapse">
+									<a href="#dropdown-master-data" aria-expanded="false">
 										<i class="la la-list-alt"></i>Master Data
 									</a>
-									<ul id="dropdown-master-data" class="collapse list-unstyled pt-0">
+									<ul id="dropdown-master-data" class=" list-unstyled pt-0">
 										<router-link tag="li" :to="{ path: '/internal/service-package' }">
 											<a>Service Package</a>
 										</router-link>
@@ -188,10 +188,10 @@
 									</ul>
 								</li>
 								<li>
-									<a href="#dropdown-transaction-data" aria-expanded="false" data-toggle="collapse">
+									<a href="#dropdown-transaction-data" aria-expanded="false">
 										<i class="la la-newspaper-o"></i>Booking & Transaction
 									</a>
-									<ul id="dropdown-transaction-data" class="collapse list-unstyled pt-0">
+									<ul id="dropdown-transaction-data" class="list-unstyled pt-0">
 										<router-link tag="li" :to="{ path: '/internal/booking' }">
 											<a>Booking</a>
 										</router-link>

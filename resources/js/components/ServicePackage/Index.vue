@@ -4,12 +4,12 @@
 		<div class="row">
 			<div class="page-header">
 				<div class="d-flex align-items-center">
-					<h2 class="page-header-title">Company</h2>
+					<h2 class="page-header-title">Service Package</h2>
 					<div>
 						<div class="page-header-tools">
 							<router-link
 								tag="button"
-								to="/internal/company/new"
+								to="/internal/service-package/new"
 								class="btn btn-primary ripple"
 							>Tambah</router-link>
 						</div>
@@ -40,8 +40,6 @@
 											</div>
 										</th>
 										<th width="15%">Name</th>
-										<th width="20%">Address</th>
-										<th width="20%">Address</th>
 										<th width="10%">Actions</th>
 									</tr>
 								</thead>
@@ -55,7 +53,7 @@
 										</td>
 										<td>{{d.name}}</td>
 										<td class="td-actions">
-											<router-link :to="{path:'/internal/company/'+d.id}">
+											<router-link :to="{path:'/internal/service-package/'+d.id}">
 												<i class="la la-edit edit"></i>
 											</router-link>
 
@@ -122,7 +120,7 @@
 
 				self.data = [];
 
-				this.ref.data = db.collection("company");
+				this.ref.data = db.collection("service_package");
 
 				if (this.search.keyword != "") {
 					this.ref.data = this.ref.data
@@ -196,12 +194,12 @@
 					}).then(result => {
 						if (result.value) {
 							db.collection("courier_schedule")
-								.where("company_id", "==", id)
+								.where("service_package_id", "==", id)
 								.limit(1)
 								.get()
 								.then(snap => {
 									if (snap.size == 0) {
-										db.collection("company")
+										db.collection("service_package")
 											.doc(id)
 											.delete()
 											.then(() => {

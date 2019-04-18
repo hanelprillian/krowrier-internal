@@ -129,7 +129,9 @@
 												<i class="la la-gear"></i>
 											</a>
 											<img src="/images/user-no.png" alt="..." class="rounded-circle">
-										</li>
+                                            &nbsp;
+                                            <!--<span class="text-center">{{userLogged}}</span>-->
+                                        </li>
 										<li>
 											<a href="pages-profile.html" class="dropdown-item">Profile</a>
 										</li>
@@ -197,9 +199,9 @@
 										<router-link tag="li" :to="{ path: '/internal/booking' }">
 											<a>Booking</a>
 										</router-link>
-										<li>
-											<a href="#">Booking Progress</a>
-										</li>
+										<!--<li>-->
+											<!--<a href="#">Booking Progress</a>-->
+										<!--</li>-->
 										<router-link tag="li" :to="{ path: '/internal/customer' }">
 											<a>Customer</a>
 										</router-link>
@@ -619,7 +621,8 @@
 	export default {
 		data() {
 			return {
-				time: '',
+                userLogged: JSON.parse(localStorage.getItem('userLoginData')),
+                time: '',
 				IsLogged: IsLogged,
 				transitionName: "slide-left"
 			};
@@ -630,8 +633,13 @@
 				firebase
 					.auth()
 					.signOut()
-					.then(() => {
-						window.location = "/internal/auth/login";
+					.then(() =>
+                    {
+                        window.IsLogged = false;
+                        self.IsLogged = false;
+                        self.userLogged = [];
+                        localStorage.removeItem('userLoginData');
+                        window.location = "/internal/auth/login";
 					});
 			},
 

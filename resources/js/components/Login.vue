@@ -75,15 +75,16 @@
 			};
 		},
 		methods: {
-			login() {
+			async login() {
 				this.loading = true;
 
 				firebase
 					.auth()
 					.signInWithEmailAndPassword(this.email, this.password)
 					.then(
-						user => {
-							this.error = false;
+						async user => {
+                            await this.getLoggedUser();
+                            this.error = false;
 							window.location = "/internal";
 						},
 						err => {
@@ -92,7 +93,29 @@
 							console.log("Oops. " + err.message);
 						}
 					);
-			}
-		}
+			},
+
+            async getLoggedUser()
+            {
+                let self = this;
+                let currentUser = firebase.auth().currentUser;
+
+                await db.collection("user").where("user_id","==",currentUser.uid).limit(1).onSnapshot(async documentSnapshots =>
+                {
+                    if (!documentSnapshots.empty)
+                    {
+                        documentSnapshots.forEach(async doc =>
+                        {
+                            let data = await doc.data();
+                            data.id = doc.id;
+                            localStorage.setItem('userLoginData', JSON.stringify(data));
+                            console.log(localStorage.getItem('userLoginData'))
+                        });
+                    }
+                });
+
+            },
+
+        }
 	};
 </script>

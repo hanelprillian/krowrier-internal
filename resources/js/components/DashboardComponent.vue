@@ -89,7 +89,23 @@
 					</div>
 				</div>
 			</div>
-
+            <div class="col-xl-12">
+                <!-- Vertical Bar 02 -->
+                <div class="widget has-shadow">
+                    <div class="widget-header bordered no-actions d-flex align-items-center">
+                        <h4>Booking Statistics</h4>
+                    </div>
+                    <div class="widget-body">
+                        <GChart
+                                style="height: 300px;"
+                                type="ColumnChart"
+                                :data="chartData"
+                                :options="chartOptions"
+                        />
+                    </div>
+                </div>
+                <!-- End Vertical Bar 02 -->
+            </div>
 			<br>
 			<div class="col-xl-6">
 				<div class="widget widget-07 has-shadow">
@@ -196,9 +212,29 @@
 </template>
 
 <script>
+    import { GChart } from 'vue-google-charts'
+
 	export default {
+        components: {
+            GChart
+        },
 		data() {
 			return {
+                chartData: [
+                    ['Year', 'Completed', 'Progress'],
+                    ['Januari', 1000, 400],
+                    ['Februari', 1170, 460],
+                    ['Maret', 660, 1120],
+                    ['April', 1030, 540]
+                ],
+                chartOptions: {
+                    chart: {
+                        title: 'Company Performance',
+                        subtitle: 'Sales, Expenses, and Profit: 2014-2017',
+                    },
+                    colors: ['#1b9e77', '#d95f02']
+                },
+
 				total_data: {
 					users: {
 						data: 0,
@@ -230,7 +266,8 @@
 		},
 
 		methods: {
-			async getRecentFeederRegistered() {
+			async getRecentFeederRegistered()
+            {
 				db
 					.collection("feeder")
 					.where("active", "==", 0)
@@ -268,7 +305,8 @@
 					});
 			},
 
-			async getRecentCourierRegistered() {
+			async getRecentCourierRegistered()
+            {
 				db
 					.collection("courier")
 					.where("active", "==", 0)
@@ -305,7 +343,9 @@
 						this.recentCourier.loading = false;
 					});
 			},
-			async initCounter() {
+
+			async initCounter()
+            {
 				this.total_data.users.loading = true;
 
 				await db
@@ -358,7 +398,9 @@
 				this.total_data.couriers.loading = false;
 			}
 		},
-		async mounted() {
+
+		async mounted()
+        {
 			this.initCounter();
 			this.getRecentFeederRegistered();
 			this.getRecentCourierRegistered();

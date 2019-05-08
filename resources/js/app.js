@@ -27,8 +27,6 @@ firebase.initializeApp(config);
 window.db = firebase.firestore();
 
 //components
-window.DashboardComponent = require("./components/DashboardComponent").default;
-window.LoginComponent = require("./components/Login").default;
 window.App = require("./components/App").default;
 
 const router = require("./route").default;

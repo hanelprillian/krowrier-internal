@@ -6,7 +6,6 @@
 
 require("./bootstrap");
 require("./plugin/nicescroll.min");
-require("./plugin/chart.min");
 require("./plugin/fullcalendar.min");
 require("./plugin/daterangepicker");
 require("./plugin");

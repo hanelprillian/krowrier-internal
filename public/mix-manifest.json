@@ -6,6 +6,7 @@
     "/js/vendor.js": "/js/vendor.js",
     "/vendors~view-Company-Form-vue~view-Courier-Form-vue~view-Customer-Form-vue~view-DropPoint-Form-vue~v~1ac3bf8a.js": "/vendors~view-Company-Form-vue~view-Courier-Form-vue~view-Customer-Form-vue~view-DropPoint-Form-vue~v~1ac3bf8a.js",
     "/vendors~view-Company-Form-vue~view-Courier-Form-vue~view-Customer-Form-vue~view-DropPoint-Form-vue~v~c4fc8dbc.js": "/vendors~view-Company-Form-vue~view-Courier-Form-vue~view-Customer-Form-vue~view-DropPoint-Form-vue~v~c4fc8dbc.js",
+    "/vendors~view-Company-Form-vue~view-Courier-Form-vue~view-DropPoint-Form-vue~view-FeederCourier-Form-~1a68491e.js": "/vendors~view-Company-Form-vue~view-Courier-Form-vue~view-DropPoint-Form-vue~view-FeederCourier-Form-~1a68491e.js",
     "/view-Booking-Form-vue.js": "/view-Booking-Form-vue.js",
     "/view-Booking-Index-vue.js": "/view-Booking-Index-vue.js",
     "/view-Company-Form-vue.js": "/view-Company-Form-vue.js",
@@ -14,6 +15,7 @@
     "/view-Courier-Index-vue.js": "/view-Courier-Index-vue.js",
     "/view-Customer-Form-vue.js": "/view-Customer-Form-vue.js",
     "/view-Customer-Index-vue.js": "/view-Customer-Index-vue.js",
+    "/view-DashboardComponent-vue.js": "/view-DashboardComponent-vue.js",
     "/view-DropPoint-Form-vue.js": "/view-DropPoint-Form-vue.js",
     "/view-DropPoint-Index-vue.js": "/view-DropPoint-Index-vue.js",
     "/view-ExampleComponent-vue.js": "/view-ExampleComponent-vue.js",
@@ -21,12 +23,11 @@
     "/view-FeederCourier-Index-vue.js": "/view-FeederCourier-Index-vue.js",
     "/view-Hub-Form-vue.js": "/view-Hub-Form-vue.js",
     "/view-Hub-Index-vue.js": "/view-Hub-Index-vue.js",
+    "/view-Login-vue.js": "/view-Login-vue.js",
     "/view-ServicePackage-Form-vue.js": "/view-ServicePackage-Form-vue.js",
     "/view-ServicePackage-Index-vue.js": "/view-ServicePackage-Index-vue.js",
     "/view-User-Form-vue.js": "/view-User-Form-vue.js",
     "/view-User-Index-vue.js": "/view-User-Index-vue.js",
     "/view-_Widget-MapsPicker-vue.js": "/view-_Widget-MapsPicker-vue.js",
-    "/view-_Widget-MapsShow-vue.js": "/view-_Widget-MapsShow-vue.js",
-    "/vendors~view-FeederCourier-Form-vue.js": "/vendors~view-FeederCourier-Form-vue.js",
-    "/vendors~view-Company-Form-vue~view-Courier-Form-vue~view-DropPoint-Form-vue~view-FeederCourier-Form-~1a68491e.js": "/vendors~view-Company-Form-vue~view-Courier-Form-vue~view-DropPoint-Form-vue~view-FeederCourier-Form-~1a68491e.js"
+    "/view-_Widget-MapsShow-vue.js": "/view-_Widget-MapsShow-vue.js"
 }

@@ -577,8 +577,10 @@
 					});
 				});
 			},
-			async getVehicleType(id) {
+			async getVehicleType(id)
+            {
 				const ref = await db.collection("feeder_vehicle_type");
+                this.vehicleType = [];
 
 				ref.get().then(async documentSnapshots => {
 					if (documentSnapshots.empty) {

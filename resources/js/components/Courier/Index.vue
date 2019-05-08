@@ -32,7 +32,7 @@
 										<select v-model="search.status" class="form-control" @change="searchLoad()">
 											<option value>All</option>
 											<option value="1">Active</option>
-											<option value="0">Inactive</option>
+											<option value="0">Pending</option>
 											<option value="2">Suspended</option>
 										</select>
 									</div>

@@ -3,17 +3,13 @@
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
+require("./bootstrap");
 
 window.func = require("./lib/func");
+window.swal = require("sweetalert2");
+
 import Vuelidate from "vuelidate";
 Vue.use(Vuelidate);
-window.VueGoogleMaps = require("vue2-google-maps");
-Vue.use(VueGoogleMaps, {
-    load: {
-        key: "AIzaSyBZyzX8NH7rJ_-GUSsgNlrW-FtvFY546us",
-        libraries: "places,drawing"
-    }
-});
 
 //firebase
 

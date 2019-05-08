@@ -120,11 +120,11 @@
 										<td>{{ d.user.phone }}</td>
 										<td>
 											<small
-												v-if="d.is_active == 0"
+												v-if="d.active == 0"
 												class="badge-text text-dark warning badge-text-small"
 											>Pending</small>
-											<small v-if="d.is_active == 1" class="badge-text success badge-text-small">Active</small>
-											<small v-if="d.is_active == 2" class="badge-text danger badge-text-small">Suspended</small>
+											<small v-if="d.active == 1" class="badge-text success badge-text-small">Active</small>
+											<small v-if="d.active == 2" class="badge-text danger badge-text-small">Suspended</small>
 										</td>
 									</tr>
 								</template>
@@ -171,7 +171,7 @@
 										<td>{{ d.user.phone }}</td>
 										<td>
 											<small
-												v-if="d.is_active == 0"
+												v-if="d.active == 0"
 												class="badge-text text-dark warning badge-text-small"
 											>Pending</small>
 											<small v-if="d.is_active == 1" class="badge-text success badge-text-small">Active</small>
@@ -231,9 +231,9 @@
 
 		methods: {
 			async getRecentFeederRegistered() {
-				await db
+				db
 					.collection("feeder")
-					.where("is_active", "==", 0)
+					.where("active", "==", 0)
 					.limit(10)
 					.onSnapshot(async documentSnapshots => {
 						if (documentSnapshots.empty) {
@@ -269,9 +269,9 @@
 			},
 
 			async getRecentCourierRegistered() {
-				await db
+				db
 					.collection("courier")
-					.where("is_active", "==", 0)
+					.where("active", "==", 0)
 					.limit(10)
 					.onSnapshot(async documentSnapshots => {
 						if (documentSnapshots.empty) {

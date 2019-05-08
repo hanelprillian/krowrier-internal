@@ -16,7 +16,7 @@
 										aria-haspopup="true"
 										aria-expanded="false"
 									>
-										<button type="button" v-if="data.active == 0" class="btn btn-sm btn-dark">Inactive</button>
+										<button type="button" v-if="data.active == 0" class="btn btn-sm btn-dark">Pending</button>
 										<button type="button" v-if="data.active == 1" class="btn btn-sm btn-success">Active</button>
 										<button type="button" v-if="data.active == 2" class="btn btn-sm btn-danger">Suspended</button>
 									</a>
@@ -35,10 +35,10 @@
 										>Suspend</a>
 										<a
 											class="dropdown-item"
-											@click.prevent="SetStatus(0, 'Set Inactive')"
+											@click.prevent="SetStatus(0, 'Set to Pending')"
 											v-if="data.active != 0"
 											href="#"
-										>Inactive</a>
+										>Set to Pending</a>
 									</div>
 								</div>
 							</div>
@@ -155,7 +155,6 @@
 											<div class="form-group align-items-center mb-5">
 												<label class="form-control-label">Birth</label>
 												<p v-if="!allowEdit" class="form-control-static">{{ data.user.birth_formatted }}</p>
-
 												<datepicker
 													v-if="allowEdit"
 													v-model="data.user.birth"
@@ -416,6 +415,7 @@
 	import { required } from "vuelidate/lib/validators";
 	import Datepicker from "vuejs-datepicker";
 	import MapShow from "../_Widget/MapsShow";
+    import FormUtill from "../../form-utill"
 
 	export default {
 		data() {
@@ -661,10 +661,10 @@
 										this.data.user.gender = data.gender || "";
 										this.data.user.address = data.address || "";
 										this.data.user.birth = data.birth || "";
-										this.data.user.birth_formatted =
+										this.data.user.birth_formatted = data.birth ?
 											moment(data.birth).format(
 												"DD MMMM YYYY"
-											) || "";
+											) || "" : "-";
 										this.data.user.phone = data.phone || "";
 									}
 								});

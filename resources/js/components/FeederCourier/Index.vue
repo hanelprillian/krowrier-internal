@@ -32,7 +32,7 @@
 										<select v-model="search.status" class="form-control" @change="searchLoad()">
 											<option value>All</option>
 											<option value="1">Active</option>
-											<option value="0">Inactive</option>
+											<option value="0">Pending</option>
 											<option value="2">Suspended</option>
 										</select>
 									</div>
@@ -65,7 +65,7 @@
 										<th>Phone</th>
 										<th>Address</th>
 										<th>Status</th>
-										<th>Actions</th>
+										<th></th>
 									</tr>
 								</thead>
 								<tbody>
@@ -92,9 +92,20 @@
 											<small v-if="d.active == 2" class="badge-text danger badge-text-small">Suspended</small>
 										</td>
 										<td class="td-actions">
-											<router-link tag="a" :to="'/internal/feeder-courier/'+d.id">
-												<i class="la la-edit edit"></i>
-											</router-link>
+                                            <div class="dropdown">
+                                                <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    Action
+                                                </button>
+                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                    <router-link class="dropdown-item" tag="a" :to="'/internal/feeder-courier/'+d.id">
+                                                        <i class="la la-edit edit"></i> Edit
+                                                    </router-link>
+                                                    <a href="#" class="dropdown-item" @click.prevent="deleteData(d.id, d.user.name)">
+                                                        <i class="la la-close delete"></i> Delete
+                                                    </a>
+                                                </div>
+                                            </div>
+
 											<!-- <a href="#">
 												<i class="la la-close delete"></i>
 											</a>-->
@@ -246,30 +257,45 @@
 				});
 			},
 
-			async _deleteAction(id) {
+			async _deleteAction(id)
+			{
 				var total_booking = 0;
-				// await db
-				// 	.collection("booking")
-				// 	.where("origin_hub_id", "==", id)
-				// 	.limit(1)
-				// 	.get()
-				// 	.then(snap => {
-				// 		total_booking += snap.size;
-				// 	});
-				// await db
-				// 	.collection("booking")
-				// 	.where("destination_hub_id", "==", id)
-				// 	.limit(1)
-				// 	.get()
-				// 	.then(snap => {
-				// 		total_booking += snap.size;
-				// 	});
 
-				if (total_booking > 0) {
-					swal.fire("Delete Fail", "This Feeder already used", "error");
+                swal.fire({
+                    title: "Deleting...",
+                    text: "Please waiting",
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
+                    onOpen: () => {
+                        swal.showLoading();
+                    }
+                });
+
+				await db
+					.collection("booking")
+					.where("origin_feeder_id", "==", id)
+					.limit(1)
+					.get()
+					.then(snap => {
+						total_booking += snap.size;
+					});
+
+				await db
+					.collection("booking")
+					.where("destination_feeder_id", "==", id)
+					.limit(1)
+					.get()
+					.then(snap => {
+						total_booking += snap.size;
+					});
+
+				if (total_booking > 0)
+				{
+					swal.fire("Delete Failed!", "This Feeder Has Booking", "error");
 					return;
 				}
-				db.collection("feeder")
+
+				await db.collection("feeder")
 					.doc(id)
 					.delete()
 					.then(() => {

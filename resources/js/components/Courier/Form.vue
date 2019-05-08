@@ -16,7 +16,7 @@
 										aria-haspopup="true"
 										aria-expanded="false"
 									>
-										<button type="button" v-if="data.active == 0" class="btn btn-sm btn-dark">Inactive</button>
+										<button type="button" v-if="data.active == 0" class="btn btn-sm btn-dark">Pending</button>
 										<button type="button" v-if="data.active == 1" class="btn btn-sm btn-success">Active</button>
 										<button type="button" v-if="data.active == 2" class="btn btn-sm btn-danger">Suspended</button>
 									</a>
@@ -35,10 +35,10 @@
 										>Suspend</a>
 										<a
 											class="dropdown-item"
-											@click.prevent="SetStatus(0, 'Set Inactive')"
+											@click.prevent="SetStatus(0, 'Set to Pending')"
 											v-if="data.active != 0"
 											href="#"
-										>Inactive</a>
+										>Set to Pending</a>
 									</div>
 								</div>
 							</div>

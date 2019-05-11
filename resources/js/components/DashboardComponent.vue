@@ -97,7 +97,7 @@
                     </div>
                     <div class="widget-body">
                         <GChart
-                                style="height: 300px;"
+                                style="height: 300px; width:100%"
                                 type="ColumnChart"
                                 :data="chartData"
                                 :options="chartOptions"
@@ -221,18 +221,14 @@
 		data() {
 			return {
                 chartData: [
-                    ['Year', 'Completed', 'Progress'],
-                    ['Januari', 1000, 400],
-                    ['Februari', 1170, 460],
-                    ['Maret', 660, 1120],
-                    ['April', 1030, 540]
+                    ['Year', {label: 'Completed', type: 'number'}, 'Progress'],
                 ],
                 chartOptions: {
                     chart: {
                         title: 'Company Performance',
                         subtitle: 'Sales, Expenses, and Profit: 2014-2017',
                     },
-                    colors: ['#1b9e77', '#d95f02']
+                    colors: ['#2ecc71', '#3498db']
                 },
 
 				total_data: {
@@ -264,6 +260,10 @@
 				}
 			};
 		},
+
+        watch:
+        {
+        },
 
 		methods: {
 			async getRecentFeederRegistered()
@@ -348,63 +348,120 @@
             {
 				this.total_data.users.loading = true;
 
-				await db
+				 db
 					.collection("user")
 					.get()
 					.then(snap => {
 						this.total_data.users.data = snap.size;
-					});
+                        this.total_data.users.loading = false;
+                    });
 
-				this.total_data.users.loading = false;
 
 				this.total_data.bookings.loading = true;
 
-				await db
+				 db
 					.collection("booking")
 					.get()
 					.then(snap => {
 						this.total_data.bookings.data = snap.size;
-					});
+                        this.total_data.bookings.loading = false;
+                    });
 
-				this.total_data.bookings.loading = false;
 
 				this.total_data.customers.loading = true;
 
-				await db
+				 db
 					.collection("customer")
 					.get()
 					.then(snap => {
 						this.total_data.customers.data = snap.size;
-					});
+                        this.total_data.customers.loading = false;
+                    });
 
-				this.total_data.customers.loading = false;
 
 				this.total_data.couriers.loading = true;
 
-				await db
+				 db
 					.collection("courier")
 					.get()
 					.then(snap => {
 						this.total_data.couriers.data += snap.size;
 					});
 
-				await db
+				 db
 					.collection("feeder")
 					.get()
 					.then(snap => {
 						this.total_data.couriers.data += snap.size;
-					});
+                        this.total_data.couriers.loading = false;
+                    });
 
-				this.total_data.couriers.loading = false;
-			}
+			},
+
+            async initBookingChart()
+            {
+                let self = this;
+                let monthsName = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+                let monthsNumber = ['01','02','03','04','05','06','07','08','09','10','11','12'];
+                self.chartData =  [
+                    ['Year', {label: 'Completed', type: 'number'}, 'Progress'],
+                ];
+
+                for(var i = 0; i < monthsName.length; i++)
+                {
+                    let completedBooking = 0;
+                    let progressBooking = 0;
+
+                    let startMonthTimeStamp = moment(moment().format("YYYY")+"-"+monthsNumber[i]).startOf('month').valueOf();
+                    let endMonthTimeStamp = moment(moment().format("YYYY")+"-"+monthsNumber[i]).endOf('month').valueOf();
+
+                    await db.collection("booking").where('create_unix_time', '>=', startMonthTimeStamp)
+                        .where('create_unix_time', '<=', endMonthTimeStamp).where('status','==',1).get()
+                        .then(function(querySnapshot) {
+                            completedBooking = querySnapshot.size;
+                        });
+
+
+                    await db.collection("booking").where('create_unix_time', '>=', startMonthTimeStamp)
+                        .where('create_unix_time', '<=', endMonthTimeStamp).where('status','==',0).get()
+                        .then(function(querySnapshot) {
+                            progressBooking = querySnapshot.size;
+                        });
+
+                    self.chartData.push([monthsName[i], completedBooking, progressBooking]);
+                }
+
+                // for(var i = 0; i < monthsName.length; i++)
+                // {
+                //     let _getCol = self.chartData[i+1];
+
+                     // await db.collection("booking").where('create_unix_time', '>=', startMonthTimeStamp)
+                     //    .where('create_unix_time', '<=', endMonthTimeStamp).where('status','==',1).get()
+                     //    .then(function(querySnapshot) {
+                     //        _getCol[1] =  666;
+                     //
+                     //        console.log(_getCol)
+                     //    });
+
+
+                    // await db.collection("booking").where('create_unix_time', '>=', startMonthTimeStamp)
+                    //     .where('create_unix_time', '<=', endMonthTimeStamp).where('status','==',0).get()
+                    //     .then(function(querySnapshot) {
+                    //         self.chartData[i+1][2] = querySnapshot.size;
+                    //     });
+                // }
+            }
 		},
 
 		async mounted()
         {
+            this.initBookingChart();
 			this.initCounter();
 			this.getRecentFeederRegistered();
 			this.getRecentCourierRegistered();
 			let token = null;
+
+			// alert(moment(moment().format("YYYY")+"-05").startOf('month'))
 
 			// console.log(await func.getUserToken());
 		}

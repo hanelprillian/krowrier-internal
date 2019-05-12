@@ -96,12 +96,14 @@
                         <h4>Booking Statistics</h4>
                     </div>
                     <div class="widget-body">
-                        <GChart
-                                style="height: 300px; width:100%"
-                                type="ColumnChart"
-                                :data="chartData"
-                                :options="chartOptions"
-                        />
+                        <vue-apex-charts width="100%" height="300" type="bar" :options="chartOptions" :series="series"></vue-apex-charts>
+                        <!--<GChart-->
+                                <!--style="height: 300px; width:100%"-->
+                                <!--type="ColumnChart"-->
+                                <!--:data="chartData"-->
+                                <!--:options="chartOptions"-->
+                        <!--/>-->
+
                     </div>
                 </div>
                 <!-- End Vertical Bar 02 -->
@@ -212,24 +214,43 @@
 </template>
 
 <script>
-    import { GChart } from 'vue-google-charts'
+    // import { GChart } from 'vue-google-charts'
+    import VueApexCharts from 'vue-apexcharts'
 
 	export default {
         components: {
-            GChart
+            VueApexCharts
         },
 		data() {
 			return {
-                chartData: [
-                    ['Year', {label: 'Completed', type: 'number'}, 'Progress'],
-                ],
                 chartOptions: {
                     chart: {
-                        title: 'Company Performance',
-                        subtitle: 'Sales, Expenses, and Profit: 2014-2017',
+                        id: 'vuechart-example',
                     },
-                    colors: ['#2ecc71', '#3498db']
+                    xaxis: {
+                        categories: ['January','February','March','April','May','June','July','August','September','October','November','December']
+                    },
+                    colors: ["#2ecc71", "#3498db"]
                 },
+                series: [
+                    {
+                        name: 'Complete',
+                        data: [0,0,0,0,0,0,0,0,0,0,0,0]
+                    },
+                    {
+                        name: 'Progress',
+                        data: [0,0,0,0,0,0,0,0,0,0,0,0]
+                    }],
+                // chartData: [
+                //     ['Year', {label: 'Completed', type: 'number'}, 'Progress'],
+                // ],
+                // chartOptions: {
+                //     chart: {
+                //         title: 'Company Performance',
+                //         subtitle: 'Sales, Expenses, and Profit: 2014-2017',
+                //     },
+                //     colors: ['#2ecc71', '#3498db']
+                // },
 
 				total_data: {
 					users: {
@@ -266,6 +287,7 @@
         },
 
 		methods: {
+
 			async getRecentFeederRegistered()
             {
 				db
@@ -371,7 +393,7 @@
 				this.total_data.customers.loading = true;
 
 				 db
-					.collection("customer")
+					.collection("user").where('current_role','==','customer')
 					.get()
 					.then(snap => {
 						this.total_data.customers.data = snap.size;
@@ -398,69 +420,44 @@
 
 			},
 
-            async initBookingChart()
+            async getBookingStatistics(year)
             {
                 let self = this;
-                let monthsName = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-                let monthsNumber = ['01','02','03','04','05','06','07','08','09','10','11','12'];
-                self.chartData =  [
-                    ['Year', {label: 'Completed', type: 'number'}, 'Progress'],
-                ];
+                let dataComplete = self.series[0].data;
+                let dataProgress = self.series[1].data;
 
-                for(var i = 0; i < monthsName.length; i++)
-                {
-                    let completedBooking = 0;
-                    let progressBooking = 0;
+                year = year || moment().format("YYYY");
 
-                    let startMonthTimeStamp = moment(moment().format("YYYY")+"-"+monthsNumber[i]).startOf('month').valueOf();
-                    let endMonthTimeStamp = moment(moment().format("YYYY")+"-"+monthsNumber[i]).endOf('month').valueOf();
+                db
+                    .collection("booking_monthly_statistic")
+                    .where("year", "==", parseInt(year))
+                    .onSnapshot(async documentSnapshots => {
+                        
+                        dataComplete = [0,0,0,0,0,0,0,0,0,0,0,0];
+                        dataProgress = [0,0,0,0,0,0,0,0,0,0,0,0];
 
-                    await db.collection("booking").where('create_unix_time', '>=', startMonthTimeStamp)
-                        .where('create_unix_time', '<=', endMonthTimeStamp).where('status','==',1).get()
-                        .then(function(querySnapshot) {
-                            completedBooking = querySnapshot.size;
+                        documentSnapshots.forEach(function(change)
+                        {
+                            let data = change.data();
+
+                            dataComplete[data.month_index - 1] = data.total_success;
+                            dataProgress[data.month_index - 1] = data.total_process;
                         });
 
-
-                    await db.collection("booking").where('create_unix_time', '>=', startMonthTimeStamp)
-                        .where('create_unix_time', '<=', endMonthTimeStamp).where('status','==',0).get()
-                        .then(function(querySnapshot) {
-                            progressBooking = querySnapshot.size;
-                        });
-
-                    self.chartData.push([monthsName[i], completedBooking, progressBooking]);
-                }
-
-                // for(var i = 0; i < monthsName.length; i++)
-                // {
-                //     let _getCol = self.chartData[i+1];
-
-                     // await db.collection("booking").where('create_unix_time', '>=', startMonthTimeStamp)
-                     //    .where('create_unix_time', '<=', endMonthTimeStamp).where('status','==',1).get()
-                     //    .then(function(querySnapshot) {
-                     //        _getCol[1] =  666;
-                     //
-                     //        console.log(_getCol)
-                     //    });
-
-
-                    // await db.collection("booking").where('create_unix_time', '>=', startMonthTimeStamp)
-                    //     .where('create_unix_time', '<=', endMonthTimeStamp).where('status','==',0).get()
-                    //     .then(function(querySnapshot) {
-                    //         self.chartData[i+1][2] = querySnapshot.size;
-                    //     });
-                // }
+                        self.series[0].data = dataComplete;
+                        self.series[1].data = dataProgress;
+                    });
             }
 		},
 
+
 		async mounted()
         {
-            this.initBookingChart();
 			this.initCounter();
 			this.getRecentFeederRegistered();
 			this.getRecentCourierRegistered();
 			let token = null;
-
+			this.getBookingStatistics();
 			// alert(moment(moment().format("YYYY")+"-05").startOf('month'))
 
 			// console.log(await func.getUserToken());

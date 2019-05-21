@@ -268,13 +268,13 @@
 							</div>
 							<hr>
 							<div class="text-grey-dark" v-if="data.items_loading">Loading Items....</div>
-							<div class="alert alert-warning" v-if="data.items.length == 0 && !data.items_loading">No Item</div>
-							<div v-for="item in data.items">
+							<div class="alert alert-warning" v-if="!data.goods_name || data.goods_name == ''">No Item</div>
+							<div v-if="data.goods_name">
 								<div class="col-md-12">
 									<div class="form-group">
 										<span style="font-size: 12pt">
 											Booking Item
-											<strong>#{{ $index }}</strong>
+											<strong>#1</strong>
 										</span>
 									</div>
 									<br>
@@ -282,14 +282,14 @@
 										<div class="form-group">
 											<label class="form-control-label">Item</label>
 											<div class="form-control-static">
-												{{ item.name }}
+												{{ data.goods_name }}
 												<br>
 												<br>
 												<small>
 													<strong>Weight:</strong>
-													{{ item.weight }} Kg &nbsp;
-													<strong>Jumlah:</strong>
-													{{ item.quantity }} &nbsp;
+													{{ data.goods_weight }} Kg &nbsp;
+													<strong>Qty:</strong>
+													{{ data.goods_quantity }} &nbsp;
 												</small>
 											</div>
 										</div>
@@ -297,25 +297,6 @@
 								</div>
 								<div class="clearfix"></div>
 								<hr>
-							</div>
-
-							<div class="clearfix"></div>
-							<hr>
-							<div class="row">
-								<div class="col-md-4 col-sm-4">
-									<small>Total Item</small>
-									<br>
-									<div class="text">
-										<strong>{{ data.total_items }}</strong>
-									</div>
-								</div>
-								<div class="col-md-4 col-sm-4">
-									<small class="text-success">Total Weight</small>
-									<br>
-									<div class="text text-success">
-										<strong>{{ data.total_weights }} Kg</strong>
-									</div>
-								</div>
 							</div>
 						</div>
 					</div>
@@ -343,12 +324,12 @@
 								</td>
 							</tr>-->
 							<tr>
-								<th>
+								<th width="80%">
 									<h4 class="text-right">Total Charges</h4>
 								</th>
-								<td>
+								<td width="20%">
 									<h4>
-										<div class="text-left">Rp. {{ data.total_charges }}</div>
+										<strong>Rp. {{ currency(data.total_charges) }}</strong>
 									</h4>
 								</td>
 							</tr>
@@ -385,11 +366,11 @@
 		methods: {
 			async FetchData(id) {
 				const ref = await db.collection("booking").doc(id);
-				const refItem = await db
+				const refItem =  db
 					.collection("booking_item")
 					.where("booking_id", "==", id);
 
-				ref.get().then(async doc => {
+                await ref.get().then(async doc => {
 					if (doc.exists) {
 						let data = await doc.data();
 						data.created_at = moment(data.created_at).format(
@@ -405,10 +386,6 @@
 							courier_user: null,
 							feeder_destination: null,
 							feeder_destination_user: null,
-							items_loading: true,
-							items: [],
-							total_items: 0,
-							total_weights: 0
 						});
 
 						this.dataLoaded = true;
@@ -417,7 +394,7 @@
 							data.service_package_id != "" &&
 							typeof data.service_package_id !== "undefined"
 						) {
-							await db
+							 db
 								.collection("service_package")
 								.doc(data.service_package_id)
 								.get()
@@ -432,7 +409,7 @@
 							data.user_id != "" &&
 							typeof data.user_id !== "undefined"
 						) {
-							await db
+							 db
 								.collection("user")
 								.doc(data.user_id)
 								.get()
@@ -447,7 +424,7 @@
 							data.courier_id != "" &&
 							typeof data.courier_id !== "undefined"
 						) {
-							await db
+							 db
 								.collection("courier")
 								.doc(data.courier_id)
 								.get()
@@ -476,7 +453,7 @@
 							data.origin_feeder_id != "" &&
 							typeof data.origin_feeder_id !== "undefined"
 						) {
-							await db
+							 db
 								.collection("feeder")
 								.doc(data.origin_feeder_id)
 								.get()
@@ -505,7 +482,7 @@
 							data.destination_feeder_id != "" &&
 							typeof data.destination_feeder_id !== "undefined"
 						) {
-							await db
+							 db
 								.collection("feeder")
 								.doc(data.destination_feeder_id)
 								.get()
@@ -529,23 +506,21 @@
 									}
 								});
 						}
-
-						refItem.get().then(async itemDoc => {
-							itemDoc.forEach(async doc => {
-								this.data.items.push(doc.data());
-								this.data.total_items++;
-								this.data.total_weights += parseFloat(
-									doc.data().weight
-								);
-							});
-
-							this.data.items_loading = false;
-						});
 					} else {
 						this.$router.push("/internal/booking");
 					}
 				});
-			}
+			},
+
+            currency(val)
+            {
+                let ret = 0;
+
+                if(val)
+                    ret = func.currency_number(val);
+
+                return ret;
+            }
 		},
 		async mounted() {
 			let self = this;

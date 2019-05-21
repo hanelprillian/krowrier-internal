@@ -432,7 +432,7 @@
                     .collection("booking_monthly_statistic")
                     .where("year", "==", parseInt(year))
                     .onSnapshot(async documentSnapshots => {
-                        
+
                         dataComplete = [0,0,0,0,0,0,0,0,0,0,0,0];
                         dataProgress = [0,0,0,0,0,0,0,0,0,0,0,0];
 

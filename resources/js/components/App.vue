@@ -1,9 +1,9 @@
 <template>
-	<div class>
-		<div v-if="IsLogged">
+	<div style="height: 100%;">
+		<div v-if="IsLogged" style="height: 100%;">
 			<!-- Begin Preloader -->
 			<!-- End Preloader -->
-			<div class="page">
+			<div class="page" style="height: 100%;">
 				<!-- Begin Header -->
 				<header class="header">
 					<nav class="navbar fixed-top">

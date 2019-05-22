@@ -23,6 +23,13 @@ export function currency_number(input)
     return x1 + x2;
 }
 
+export function toTitleCase(str)
+{
+    return str.replace(/\w\S*/g, function(txt){
+        return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+    });
+}
+
 export function getUserByID(db, id) {
     let data = [];
 

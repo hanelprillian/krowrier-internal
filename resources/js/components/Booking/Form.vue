@@ -20,325 +20,375 @@
 			</div>
 		</div>
 		<!-- End Page Header -->
-		<div class="row flex-row">
-			<div class="col-xl-12">
-				<div class="widget widget-default">
-					<div class="widget-body">
-						<div class="row">
-							<div class="col-md-6">
-								<div class="form-group">
-									<label class="form-control-label">Booking Number</label>
-									<p class="form-control-static">{{ dataLoaded ? data.code_booking : 'Loading...' }}</p>
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<label class="form-control-label">Date</label>
-									<p class="form-control-static">
-										<span>{{ data.created_at }}</span>
-									</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+        <ul class="nav nav-tabs" id="example-one" role="tablist">
+            <li class="nav-item">
+                <a
+                        class="nav-link active"
+                        id="base-tab-1"
+                        data-toggle="tab"
+                        href="#tab-1"
+                        role="tab"
+                        aria-controls="tab-1"
+                        aria-selected="true"
+                >General</a>
+            </li>
+            <li class="nav-item">
+                <a
+                        class="nav-link"
+                        id="base-tab-2"
+                        data-toggle="tab"
+                        href="#tab-2"
+                        role="tab"
+                        aria-controls="tab-2"
+                        @click.prevent="loadProgress()"
+                        aria-selected="false"
+                >Progress</a>
+            </li>
+        </ul>
+        <div class="clearfix"></div>
+        <br>
+        <div class="tab-content pt-3">
+            <div class="tab-pane fade show active" id="tab-1" role="tabpanel" aria-labelledby="base-tab-1">
+                <div class="row flex-row">
+                    <div class="col-xl-12">
+                        <div class="widget widget-default">
+                            <div class="widget-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="form-control-label">Booking Number</label>
+                                            <p class="form-control-static">{{ dataLoaded ? data.code_booking : 'Loading...' }}</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="form-control-label">Date</label>
+                                            <p class="form-control-static">
+                                                <span>{{ data.created_at }}</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-				<div class="widget widget-default">
-					<div class="widget-body">
-						<div class="row">
-							<div class="col-md-5">
-								<div class="form-group">
-									<label>
-										<span>Customer</span>
-									</label>
-									<div class="form-control-static">
-										<div class="row">
-											<div class="col-md-12">
-												<div class="form-group">
-													<label class="form-control-label">Name</label>
-													<p class="form-control-static">{{ data.user ? data.user.name : "" }}</p>
-												</div>
-											</div>
-											<div class="col-md-12">
-												<div class="form-group">
-													<label class="form-control-label">Phone</label>
-													<p class="form-control-static">{{ data.user ? data.user.phone : ""}}</p>
-												</div>
-											</div>
-											<div class="col-md-12">
-												<div class="form-group">
-													<label class="form-control-label">Pickup Address</label>
-													<p class="form-control-static">{{ data.pickup_address }}</p>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-1">
-								<i class="fas fa-arrow-right" style="margin-top:50%;font-size: 13pt"></i>
-							</div>
-							<div class="col-md-5">
-								<div class="form-group">
-									<label>
-										<span>Receiver</span>
-									</label>
-									<div class="form-control-static">
-										<div class="row">
-											<div class="col-md-12">
-												<div class="form-group">
-													<label class="form-control-label">Name</label>
-													<p class="form-control-static">{{ data.consignee_name }}</p>
-												</div>
-											</div>
-											<div class="col-md-12">
-												<div class="form-group">
-													<label class="form-control-label">Destination Address</label>
-													<p class="form-control-static">{{ data.destination_address }}</p>
-												</div>
-											</div>
-											<!-- <div class="col-md-12">
-												<div class="form-group">
-													<label class="form-control-label">Phone</label>
-													<p class="form-control-static">082380011133</p>
-												</div>
-											</div>
-											<div class="col-md-12">
-												<div class="form-group">
-													<label class="form-control-label">Destination Address</label>
-													<p class="form-control-static">Jln moch yamin sh</p>
-												</div>
-											</div>-->
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+                        <div class="widget widget-default">
+                            <div class="widget-body">
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <div class="form-group">
+                                            <label>
+                                                <span>Customer</span>
+                                            </label>
+                                            <div class="form-control-static">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label class="form-control-label">Name</label>
+                                                            <p class="form-control-static">{{ data.user ? data.user.name : "" }}</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label class="form-control-label">Phone</label>
+                                                            <p class="form-control-static">{{ data.user ? data.user.phone : ""}}</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label class="form-control-label">Pickup Address</label>
+                                                            <p class="form-control-static">{{ data.pickup_address }}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <i class="fas fa-arrow-right" style="margin-top:50%;font-size: 13pt"></i>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <div class="form-group">
+                                            <label>
+                                                <span>Receiver</span>
+                                            </label>
+                                            <div class="form-control-static">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label class="form-control-label">Name</label>
+                                                            <p class="form-control-static">{{ data.consignee_name }}</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label class="form-control-label">Destination Address</label>
+                                                            <p class="form-control-static">{{ data.destination_address }}</p>
+                                                        </div>
+                                                    </div>
+                                                    <!-- <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label class="form-control-label">Phone</label>
+                                                            <p class="form-control-static">082380011133</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label class="form-control-label">Destination Address</label>
+                                                            <p class="form-control-static">Jln moch yamin sh</p>
+                                                        </div>
+                                                    </div>-->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-				<div class="widget widget-default">
-					<div class="widget-header">Courier Information</div>
-					<div class="widget-body">
-						<div class="row">
-							<div class="col-md-4">
-								<div class="form-group">
-									<label>
+                        <div class="widget widget-default">
+                            <div class="widget-header">Courier Information</div>
+                            <div class="widget-body">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>
 										<span>
 											Feeder
 											&nbsp;
 											<small
-												class="badge-text badge-text-small success bg-gradient-02"
-											>Pickup</small>
+                                                    class="badge-text badge-text-small success bg-gradient-02"
+                                            >Pickup</small>
 										</span>
-									</label>
-									<div class="form-control-static">
-										<div class="row">
-											<div class="col-md-12">
-												<div class="form-group">
-													<label class="form-control-label">Name</label>
-													<p
-														class="form-control-static"
-													>{{ data.feeder_origin_user ? data.feeder_origin_user.name : "-"}}</p>
-												</div>
-											</div>
-											<div class="col-md-12">
-												<div class="form-group">
-													<label class="form-control-label">Phone</label>
-													<p
-														class="form-control-static"
-													>{{ data.feeder_origin_user ? data.feeder_origin_user.phone : "-" }}</p>
-												</div>
-											</div>
-											<div class="col-md-12">
-												<div class="form-group">
-													<label class="form-control-label">Vehicle</label>
-													<p
-														class="form-control-static"
-													>{{ data.feeder_origin_user ? data.feeder_origin.vehicle_name : "-"}}</p>
-												</div>
-											</div>
-											<div class="col-md-12">
-												<div class="form-group">
-													<label class="form-control-label">Vehicle License Number</label>
-													<p
-														class="form-control-static"
-													>{{ data.feeder_origin_user ? data.feeder_origin.vehicle_licence_number : "-"}}</p>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-4">
-								<div class="form-group">
-									<label>
-										<span>Courier</span>
-									</label>
-									<div class="form-control-static">
-										<div class="row">
-											<div class="col-md-12">
-												<div class="form-group">
-													<label class="form-control-label">Name</label>
-													<p class="form-control-static">{{ data.courier_user ? data.courier_user.name : "-" }}</p>
-												</div>
-											</div>
-											<div class="col-md-12">
-												<div class="form-group">
-													<label class="form-control-label">Phone</label>
-													<p class="form-control-static">{{ data.courier_user ? data.courier_user.phone : "-" }}</p>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-4">
-								<div class="form-group">
-									<label>
+                                            </label>
+                                            <div class="form-control-static">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label class="form-control-label">Name</label>
+                                                            <p
+                                                                    class="form-control-static"
+                                                            >{{ data.feeder_origin_user ? data.feeder_origin_user.name : "-"}}</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label class="form-control-label">Phone</label>
+                                                            <p
+                                                                    class="form-control-static"
+                                                            >{{ data.feeder_origin_user ? data.feeder_origin_user.phone : "-" }}</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label class="form-control-label">Vehicle</label>
+                                                            <p
+                                                                    class="form-control-static"
+                                                            >{{ data.feeder_origin_user ? data.feeder_origin.vehicle_name : "-"}}</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label class="form-control-label">Vehicle License Number</label>
+                                                            <p
+                                                                    class="form-control-static"
+                                                            >{{ data.feeder_origin_user ? data.feeder_origin.vehicle_licence_number : "-"}}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>
+                                                <span>Courier</span>
+                                            </label>
+                                            <div class="form-control-static">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label class="form-control-label">Name</label>
+                                                            <p class="form-control-static">{{ data.courier_user ? data.courier_user.name : "-" }}</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label class="form-control-label">Phone</label>
+                                                            <p class="form-control-static">{{ data.courier_user ? data.courier_user.phone : "-" }}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>
 										<span>
 											Feeder
 											&nbsp;
 											<small
-												class="badge-text badge-text-small success bg-gradient-03"
-											>Delivery</small>
+                                                    class="badge-text badge-text-small success bg-gradient-03"
+                                            >Delivery</small>
 										</span>
-									</label>
-									<div class="form-control-static">
-										<div class="row">
-											<div class="col-md-12">
-												<div class="form-group">
-													<label class="form-control-label">Name</label>
-													<p
-														class="form-control-static"
-													>{{ data.feeder_destination_user ? data.feeder_destination_user.name : "-" }}</p>
-												</div>
-											</div>
-											<div class="col-md-12">
-												<div class="form-group">
-													<label class="form-control-label">Phone</label>
-													<p
-														class="form-control-static"
-													>{{ data.feeder_destination_user ? data.feeder_destination_user.phone : "-"}}</p>
-												</div>
-											</div>
-											<div class="col-md-12">
-												<div class="form-group">
-													<label class="form-control-label">Vehicle</label>
-													<p
-														class="form-control-static"
-													>{{ data.feeder_destination ? data.feeder_destination.vehicle_name : "-" }}</p>
-												</div>
-											</div>
-											<div class="col-md-12">
-												<div class="form-group">
-													<label class="form-control-label">Vehicle License Number</label>
-													<p
-														class="form-control-static"
-													>{{ data.feeder_destination ? data.feeder_destination.vehicle_licence_number : "-" }}</p>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+                                            </label>
+                                            <div class="form-control-static">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label class="form-control-label">Name</label>
+                                                            <p
+                                                                    class="form-control-static"
+                                                            >{{ data.feeder_destination_user ? data.feeder_destination_user.name : "-" }}</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label class="form-control-label">Phone</label>
+                                                            <p
+                                                                    class="form-control-static"
+                                                            >{{ data.feeder_destination_user ? data.feeder_destination_user.phone : "-"}}</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label class="form-control-label">Vehicle</label>
+                                                            <p
+                                                                    class="form-control-static"
+                                                            >{{ data.feeder_destination ? data.feeder_destination.vehicle_name : "-" }}</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label class="form-control-label">Vehicle License Number</label>
+                                                            <p
+                                                                    class="form-control-static"
+                                                            >{{ data.feeder_destination ? data.feeder_destination.vehicle_licence_number : "-" }}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-				<div class="widget">
-					<div class="widget-body">
-						<div class="form-group">
-							<label>
-								<span>Booking Item</span>
-							</label>
-							<br>
-							<br>
-							<div class="form-control-static">
-								<div class="row">
-									<div class="col-md-4">
-										<div class="form-group">
-											<label class="form-control-label">Service Package</label>
-											<div
-												class="form-control-static"
-											>{{ data.service_package ? data.service_package.name : "-" }}</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<hr>
-							<div class="text-grey-dark" v-if="data.items_loading">Loading Items....</div>
-							<div class="alert alert-warning" v-if="!data.goods_name || data.goods_name == ''">No Item</div>
-							<div v-if="data.goods_name">
-								<div class="col-md-12">
-									<div class="form-group">
+                        <div class="widget">
+                            <div class="widget-body">
+                                <div class="form-group">
+                                    <label>
+                                        <span>Booking Item</span>
+                                    </label>
+                                    <br>
+                                    <br>
+                                    <div class="form-control-static">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="form-control-label">Service Package</label>
+                                                    <div
+                                                            class="form-control-static"
+                                                    >{{ data.service_package ? data.service_package.name : "-" }}</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="text-grey-dark" v-if="data.items_loading">Loading Items....</div>
+                                    <div class="alert alert-warning" v-if="!data.goods_name || data.goods_name == ''">No Item</div>
+                                    <div v-if="data.goods_name">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
 										<span style="font-size: 12pt">
 											Booking Item
 											<strong>#1</strong>
 										</span>
-									</div>
-									<br>
-									<div>
-										<div class="form-group">
-											<label class="form-control-label">Item</label>
-											<div class="form-control-static">
-												{{ data.goods_name }}
-												<br>
-												<br>
-												<small>
-													<strong>Weight:</strong>
-													{{ data.goods_weight }} Kg &nbsp;
-													<strong>Qty:</strong>
-													{{ data.goods_quantity }} &nbsp;
-												</small>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="clearfix"></div>
-								<hr>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="widget">
-					<table class="table table-compact">
-						<tbody>
-							<!-- <tr>
-								<th>
-									<div class="text-right">Charges
-										<br>
-										<small>1 Kg</small>
-									</div>
-								</th>
-								<td>
-									<div class="text-left">9000</div>
-								</td>
-							</tr>
-							<tr>
-								<th>
-									<div class="text-right">Other Charges</div>
-								</th>
-								<td>
-									<div class="text-left">0.00</div>
-								</td>
-							</tr>-->
-							<tr>
-								<th width="80%">
-									<h4 class="text-right">Total Charges</h4>
-								</th>
-								<td width="20%">
-									<h4>
-										<strong>Rp. {{ currency(data.total_charges) }}</strong>
-									</h4>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</div>
-		</div>
-		<!-- End Row -->
+                                            </div>
+                                            <br>
+                                            <div>
+                                                <div class="form-group">
+                                                    <label class="form-control-label">Item</label>
+                                                    <div class="form-control-static">
+                                                        {{ data.goods_name }}
+                                                        <br>
+                                                        <br>
+                                                        <small>
+                                                            <strong>Weight:</strong>
+                                                            {{ data.goods_weight }} Kg &nbsp;
+                                                            <strong>Qty:</strong>
+                                                            {{ data.goods_quantity }} &nbsp;
+                                                        </small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                        <hr>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="widget">
+                            <table class="table table-compact">
+                                <tbody>
+                                <!-- <tr>
+                                    <th>
+                                        <div class="text-right">Charges
+                                            <br>
+                                            <small>1 Kg</small>
+                                        </div>
+                                    </th>
+                                    <td>
+                                        <div class="text-left">9000</div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        <div class="text-right">Other Charges</div>
+                                    </th>
+                                    <td>
+                                        <div class="text-left">0.00</div>
+                                    </td>
+                                </tr>-->
+                                <tr>
+                                    <th width="80%">
+                                        <h4 class="text-right">Total Charges</h4>
+                                    </th>
+                                    <td width="20%">
+                                        <h4>
+                                            <strong>Rp. {{ currency(data.total_charges) }}</strong>
+                                        </h4>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="tab-2" role="tabpanel" aria-labelledby="base-tab-2">
+                <ul class="list-group w-100">
+                    <li class="list-group-item" v-for="progress in dataProgress.data">
+                        <div class="other-message">
+                            <div class="media">
+                                <div class="media-left align-self-center mr-4">
+                                    <strong>#{{progress.seq}}</strong>
+                                </div>
+                                <div class="media-body align-self-center">
+                                    <div class="other-message-sender margin-bottom-5">
+                                        <span class="badge-text badge-text-small bg-gradient-03">{{progress.status_name_formatted}}</span>
+                                    </div>
+                                    <div class="other-message-time">{{progress.datetime_formatted}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
 	</div>
 </template>
 
@@ -358,8 +408,13 @@
 					pickup_address: "",
 					destination_drop_point_id: "",
 					code_booking: "",
+					booking_id: "",
 					created_at: ""
-				}
+				},
+
+                dataProgress: {
+                    data: []
+                }
 			};
 		},
 		props: ["mode"],
@@ -373,6 +428,8 @@
                 await ref.get().then(async doc => {
 					if (doc.exists) {
 						let data = await doc.data();
+						data.booking_id = doc.id;
+
 						data.created_at = moment(data.created_at).format(
 							"DD MMMM YYYY, HH mm"
 						);
@@ -511,6 +568,52 @@
 					}
 				});
 			},
+
+            async loadProgress()
+            {
+                let self = this;
+
+                self.dataProgress.data = [];
+
+                swal.fire({
+                    title: "Loading Progress...",
+                    text: "Please waiting",
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
+                    onOpen: () => {
+                        swal.showLoading();
+                    }
+                });
+
+                await db.collection("booking_progress").where("booking_id","==", self.data.booking_id)
+                    .orderBy("unix_time","desc")
+                    .get().then(function (snapshot)
+                {
+                    if(snapshot.size > 0)
+                    {
+                        let index = snapshot.size;
+
+                        snapshot.forEach(function (doc)
+                        {
+                            let data = doc.data();
+                            data.id = doc.id;
+                            data.seq = index;
+                            data.status_name_formatted = func.toTitleCase(data.status_name);
+                            data.datetime_formatted = moment(data.datetime).format(
+                                "DD MMMM YYYY, HH mm"
+                            );
+                            self.dataProgress.data.push(data);
+
+                            index--;
+                        });
+                    }
+
+                    swal.close();
+                }).catch(error => {
+                    console.log(error)
+                    swal.close();
+                });
+            },
 
             currency(val)
             {

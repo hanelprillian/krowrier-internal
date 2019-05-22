@@ -50,7 +50,7 @@
 </head>
 
 <body>
-    <div id="app">
+    <div id="app" style="height: 100%;">
         <app></app>
     </div>
     <!-- Begin Vendor Js -->

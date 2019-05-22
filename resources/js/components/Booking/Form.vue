@@ -374,14 +374,20 @@
                     <li class="list-group-item" v-for="progress in dataProgress.data">
                         <div class="other-message">
                             <div class="media">
-                                <div class="media-left align-self-center mr-4">
-                                    <strong>#{{progress.seq}}</strong>
-                                </div>
-                                <div class="media-body align-self-center">
-                                    <div class="other-message-sender margin-bottom-5">
-                                        <span class="badge-text badge-text-small bg-gradient-03">{{progress.status_name_formatted}}</span>
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <div class="media-left align-self-center">
+                                            <strong>#{{progress.seq}}</strong>
+                                        </div>
                                     </div>
-                                    <div class="other-message-time">{{progress.datetime_formatted}}</div>
+                                    <div class="col-md-10">
+                                        <div class="media-body align-self-center">
+                                            <div class="other-message-sender margin-bottom-5">
+                                                <span class="badge-text badge-text-small bg-gradient-03">{{progress.status_name_formatted}}</span>
+                                            </div>
+                                            <div class="other-message-time">{{progress.datetime_formatted}}</div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -67,15 +67,6 @@
                                         </div>
                                     </div>
                                 </template>
-
-                                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-                                    <div class="form-group">
-                                        <small>
-                                            <label for="">&nbsp;</label>
-                                        </small>
-                                        <button class="btn btn-primary btn-block btn-sm"><i class="ion-ios-search-strong"></i></button>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -90,14 +81,16 @@
                     <div class="widget-body">
                         <div class="media">
                             <div class="align-self-center ml-5 mr-5">
-                                <i class="ion-ios-contact"></i>
+                                <i class="ion-location"></i>
                             </div>
 
                             <div class="media-body align-self-center">
-                                <div class="title">Total Users</div>
-                                <div class="number" style="font-size:11pt">
-                                    <span v-if="total_data.users.loading">Calculating...</span>
-                                    <span v-if="!total_data.users.loading">{{ total_data.users.data }}</span>
+                                <div class="title">
+                                    <span v-if="total_data.drop_point.loading">Calculating...</span>
+                                    <span v-if="!total_data.drop_point.loading">{{ currency(total_data.drop_point.data) }}</span>
+                                </div>
+                                <div class="" style="font-size:11pt">
+                                    Total Drop Point
                                 </div>
                             </div>
                         </div>
@@ -113,10 +106,12 @@
                             </div>
 
                             <div class="media-body align-self-center">
-                                <div class="title">Total Customers</div>
-                                <div class="number" style="font-size:11pt">
+                                <div class="title">
                                     <span v-if="total_data.customers.loading">Calculating...</span>
-                                    <span v-if="!total_data.customers.loading">{{ total_data.customers.data }}</span>
+                                    <span v-if="!total_data.customers.loading">{{ currency(total_data.customers.data) }}</span>
+                                </div>
+                                <div class="" style="font-size:11pt">
+                                    Total Customers
                                 </div>
                             </div>
                         </div>
@@ -128,14 +123,16 @@
                     <div class="widget-body">
                         <div class="media">
                             <div class="align-self-center ml-5 mr-5">
-                                <i class="ion-ios-contact"></i>
+                                <i class="ion-android-walk"></i>
                             </div>
 
                             <div class="media-body align-self-center">
-                                <div class="title text-facebook">Total Couriers</div>
-                                <div class="number" style="font-size:11pt">
+                                <div class="title text-facebook">
                                     <span v-if="total_data.couriers.loading">Calculating...</span>
-                                    <span v-if="!total_data.couriers.loading">{{ total_data.couriers.data }}</span>
+                                    <span v-if="!total_data.couriers.loading">{{ currency(total_data.couriers.data) }}</span>
+                                </div>
+                                <div class="" style="font-size:11pt">
+                                    Total Couriers
                                 </div>
                             </div>
                         </div>
@@ -367,6 +364,10 @@
                         data: 0,
                         loading: true
                     },
+                    drop_point: {
+                        data: 0,
+                        loading: true
+                    },
                     bookings: {
                         data: 0,
                         loading: true
@@ -529,6 +530,28 @@
                         this.total_data.users.loading = false;
                     });
 
+                //counter droppoint
+                this.total_data.drop_point.loading = true;
+
+                let queryDropPoint = db
+                    .collection("drop_point")
+                    .where("create_unix_time" ,'>=', moment(this.filter_dashboard.current_year.toString()).startOf('year').valueOf())
+                    .where("create_unix_time" ,'<=', moment(this.filter_dashboard.current_year.toString()).endOf('year').valueOf());
+
+                if(self.filter_dashboard.method == 'by_year')
+                {
+                    queryDropPoint =  db
+                        .collection("drop_point")
+                        .where("create_unix_time" ,'>=', moment(this.filter_dashboard.selected_year.toString()).startOf('year').valueOf())
+                        .where("create_unix_time" ,'<=', moment(this.filter_dashboard.selected_year.toString()).endOf('year').valueOf());
+                }
+
+                queryDropPoint.get()
+                    .then(snap => {
+                        this.total_data.drop_point.data = snap.size;
+                        this.total_data.drop_point.loading = false;
+                    });
+
                 //counter booking
                 this.total_data.bookings.loading = true;
 
@@ -580,34 +603,67 @@
                         self.total_data.booking_charges.loading = false;
                     });
 
+                // customer counter
                 this.total_data.customers.loading = true;
 
-                db
+                let queryCustomer = db
                     .collection("user").where('current_role','==','customer')
-                    .get()
-                    .then(snap => {
-                        this.total_data.customers.data = snap.size;
-                        this.total_data.customers.loading = false;
-                    });
+                    .where("create_unix_time" ,'>=', moment(this.filter_dashboard.current_year.toString()).startOf('year').valueOf())
+                    .where("create_unix_time" ,'<=', moment(this.filter_dashboard.current_year.toString()).endOf('year').valueOf());
 
+                if(self.filter_dashboard.method == 'by_year')
+                {
+                    queryCustomer = db
+                        .collection("user").where('current_role','==','customer')
+                        .where("create_unix_time" ,'>=', moment(this.filter_dashboard.selected_year.toString()).startOf('year').valueOf())
+                        .where("create_unix_time" ,'<=', moment(this.filter_dashboard.selected_year.toString()).endOf('year').valueOf());
+                }
 
+                queryCustomer.onSnapshot(async documentSnapshots =>
+                {
+                    this.total_data.customers.data = documentSnapshots.size;
+                    this.total_data.customers.loading = false;
+                });
+
+                //couriers counter
                 this.total_data.couriers.loading = true;
 
-                db
+                let queryCourier = db
                     .collection("courier")
-                    .get()
-                    .then(snap => {
-                        this.total_data.couriers.data += snap.size;
-                    });
+                    .where("create_unix_time" ,'>=', moment(this.filter_dashboard.current_year.toString()).startOf('year').valueOf())
+                    .where("create_unix_time" ,'<=', moment(this.filter_dashboard.current_year.toString()).endOf('year').valueOf());
 
-                db
+                if(self.filter_dashboard.method == 'by_year')
+                {
+                    queryCourier = db
+                        .collection("courier")
+                        .where("create_unix_time" ,'>=', moment(this.filter_dashboard.selected_year.toString()).startOf('year').valueOf())
+                        .where("create_unix_time" ,'<=', moment(this.filter_dashboard.selected_year.toString()).endOf('year').valueOf());
+                }
+
+                queryCourier.onSnapshot(async documentSnapshots =>
+                {
+                    this.total_data.couriers.data = documentSnapshots.size;
+                });
+
+                let queryFeeder = db
                     .collection("feeder")
-                    .get()
-                    .then(snap => {
-                        this.total_data.couriers.data += snap.size;
-                        this.total_data.couriers.loading = false;
-                    });
+                    .where("create_unix_time" ,'>=', moment(this.filter_dashboard.current_year.toString()).startOf('year').valueOf())
+                    .where("create_unix_time" ,'<=', moment(this.filter_dashboard.current_year.toString()).endOf('year').valueOf());
 
+                if(self.filter_dashboard.method == 'by_year')
+                {
+                    queryFeeder = db
+                        .collection("feeder")
+                        .where("create_unix_time" ,'>=', moment(this.filter_dashboard.selected_year.toString()).startOf('year').valueOf())
+                        .where("create_unix_time" ,'<=', moment(this.filter_dashboard.selected_year.toString()).endOf('year').valueOf());
+                }
+
+                queryFeeder.onSnapshot(async documentSnapshots =>
+                {
+                    this.total_data.couriers.data += documentSnapshots.size;
+                    this.total_data.couriers.loading = false;
+                });
             },
 
             async getBookingStatistics(year)

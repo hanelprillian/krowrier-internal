@@ -713,20 +713,16 @@
 						.collection("feeder")
 						.doc(self.$route.params.id);
 					method = "update";
-					formData = Object.assign(formData, {
-						updated_at: moment().valueOf()
-					});
-					formDataFeeder = Object.assign(formDataFeeder, {
-						updated_at: moment().valueOf()
-					});
 				} else {
 					formData = Object.assign(formData, {
-						created_at: moment().valueOf(),
+						created_at: moment().format("YYYY-MM-DD HH:mm:ss"),
+						create_unix_time: moment().valueOf(),
 						updated_at: moment().valueOf()
 					});
 					formDataFeeder = Object.assign(formDataFeeder, {
-						created_at: moment().valueOf(),
-						updated_at: moment().valueOf()
+                        created_at: moment().format("YYYY-MM-DD HH:mm:ss"),
+                        create_unix_time: moment().valueOf(),
+                        updated_at: moment().valueOf()
 					});
 				}
 

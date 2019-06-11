@@ -596,9 +596,6 @@
 				if (self.mode == "edit" && self.$route.params.id) {
 					data = db.collection("user").doc(this.data.user.user_id);
 					method = "update";
-					formData = Object.assign(formData, {
-						updated_at: moment().unix()
-					});
 				} else {
 					formData = Object.assign(formData, {
 						created_at: moment().unix(),

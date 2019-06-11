@@ -24,7 +24,7 @@
 					<!-- Begin Widget Body -->
 					<div class="widget-body">
 						<div class="table-responsive table-scroll padding-right-10" style="max-height:520px;">
-							<table class="table table-hover mb-0">
+							<table class="table table-bordered table-hover mb-0">
 								<thead>
 									<tr>
 										<th style="width:1%">
@@ -34,11 +34,12 @@
 											</div>
 										</th>
 										<th style="width:10%">No Booking</th>
+										<th style="width:10%">Date</th>
 										<th style="width:20%">Customer</th>
 										<!-- <th>Service</th> -->
 										<th style="width:25%">Pickup Address</th>
 										<th style="width:25%">Destination</th>
-										<th style="width:10%">Actions</th>
+										<th style="width:10%"></th>
 									</tr>
 								</thead>
 								<tbody>
@@ -55,17 +56,27 @@
 											<small v-if="d.status == 0" class="badge-text info badge-text-small">Progress</small>
 											<small v-if="d.status == 1" class="badge-text success badge-text-small">Complete</small>
 										</td>
+										<td class="valign-top">{{ d.create_date }}</td>
 										<td class="valign-top">{{ d.user.name }}</td>
 										<!-- <td class="valign-top">One day service</td> -->
 										<td class="valign-top">{{ d.pickup_address }}</td>
 										<td class="valign-top">{{ d.destination_address }}</td>
 										<td class="valign-top td-actions">
-											<router-link :to="{path:'/internal/booking/'+d.id}">
-												<i class="la la-edit edit"></i>
-											</router-link>
-											<a href="#">
-												<i class="la la-close delete"></i>
-											</a>
+											<div class="dropdown">
+												<button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+													Action
+												</button>
+												<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+													<router-link class="dropdown-item" tag="a" :to="'/internal/booking/'+d.id">
+														<i class="la la-edit edit"></i> Edit
+													</router-link>
+                                                    <!--@click.prevent="deleteData(d.id, d.user.name)"-->
+                                                    <a href="#" class="dropdown-item"
+                                                    >
+														<i class="la la-close delete"></i> Delete
+													</a>
+												</div>
+											</div>
 										</td>
 									</tr>
 									<tr v-if="!paging.end">
@@ -128,15 +139,16 @@
 				self.data = [];
 
 				this.ref.data = db.collection("booking");
+                this.ref.data = this.ref.data.orderBy("create_unix_time", "desc");
 
-				if (this.search.keyword != "") {
-					this.ref.data = this.ref.data
-						.orderBy("item_code", "asc")
-						.startAt(this.search.keyword)
-						.endAt(this.search.keyword + "\uf8ff");
-				} else {
-					this.ref.data.orderBy("created_at", "desc");
-				}
+                // if (this.search.keyword != "") {
+				// 	this.ref.data = this.ref.data
+				// 		.orderBy("item_code", "asc")
+				// 		.startAt(this.search.keyword)
+				// 		.endAt(this.search.keyword + "\uf8ff");
+				// } else {
+				// 	this.ref.data.orderBy("create_unix_time", "desc");
+				// }
 
 				const firstPage = this.ref.data.limit(this.paging.data_per_page);
 				this.handledata(firstPage);

@@ -3,7 +3,7 @@
 		<div v-if="IsLogged" style="height: 100%;">
 			<!-- Begin Preloader -->
 			<!-- End Preloader -->
-			<div class="page" style="height: 100%;">
+			<div class="page" :class="{'chat':$route.name == 'internal->support_room'}" style="height: 100%;">
 				<!-- Begin Header -->
 				<header class="header">
 					<nav class="navbar fixed-top">
@@ -32,82 +32,88 @@
 							<!-- End Logo -->
 							<!-- Begin Navbar Menu -->
 							<ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center pull-right">
+								<li class="nav-item margin-right-10" style="position: relative">
+                                    <router-link tag="button" class="btn btn-success btn-sm" to="/internal/support-room">
+                                        Support Room
+                                    </router-link>
+                                    <span class="badge-pulse" style="position: absolute; top:0; right: -5px"></span>
+                                </li>
 								<!-- Begin Notifications -->
-								<li class="nav-item dropdown">
-									<a
-										id="notifications"
-										rel="nofollow"
-										data-target="#"
-										href="#"
-										data-toggle="dropdown"
-										aria-haspopup="true"
-										aria-expanded="false"
-										class="nav-link"
-									>
-										<i class="la la-bell animated infinite swing"></i>
-										<span class="badge-pulse"></span>
-									</a>
-									<ul aria-labelledby="notifications" class="dropdown-menu notification">
-										<li>
-											<div class="notifications-header">
-												<div class="title">Notifications (4)</div>
-												<div class="notifications-overlay"></div>
-												<img src="assets/img/notifications/01.jpg" alt="..." class="img-fluid">
-											</div>
-										</li>
-										<li>
-											<a href="#">
-												<div class="message-icon">
-													<i class="la la-user"></i>
-												</div>
-												<div class="message-body">
-													<div class="message-body-heading">New user registered</div>
-													<span class="date">2 hours ago</span>
-												</div>
-											</a>
-										</li>
-										<li>
-											<a href="#">
-												<div class="message-icon">
-													<i class="la la-calendar-check-o"></i>
-												</div>
-												<div class="message-body">
-													<div class="message-body-heading">New event added</div>
-													<span class="date">7 hours ago</span>
-												</div>
-											</a>
-										</li>
-										<li>
-											<a href="#">
-												<div class="message-icon">
-													<i class="la la-history"></i>
-												</div>
-												<div class="message-body">
-													<div class="message-body-heading">Server rebooted</div>
-													<span class="date">7 hours ago</span>
-												</div>
-											</a>
-										</li>
-										<li>
-											<a href="#">
-												<div class="message-icon">
-													<i class="la la-twitter"></i>
-												</div>
-												<div class="message-body">
-													<div class="message-body-heading">You have 3 new followers</div>
-													<span class="date">10 hours ago</span>
-												</div>
-											</a>
-										</li>
-										<li>
-											<a
-												rel="nofollow"
-												href="#"
-												class="dropdown-item all-notifications text-center"
-											>View All Notifications</a>
-										</li>
-									</ul>
-								</li>
+								<!--<li class="nav-item dropdown">-->
+									<!--<a-->
+										<!--id="notifications"-->
+										<!--rel="nofollow"-->
+										<!--data-target="#"-->
+										<!--href="#"-->
+										<!--data-toggle="dropdown"-->
+										<!--aria-haspopup="true"-->
+										<!--aria-expanded="false"-->
+										<!--class="nav-link"-->
+									<!--&gt;-->
+										<!--<i class="la la-bell animated infinite swing"></i>-->
+										<!--<span class="badge-pulse"></span>-->
+									<!--</a>-->
+									<!--<ul aria-labelledby="notifications" class="dropdown-menu notification">-->
+										<!--<li>-->
+											<!--<div class="notifications-header">-->
+												<!--<div class="title">Notifications (4)</div>-->
+												<!--<div class="notifications-overlay"></div>-->
+												<!--<img src="assets/img/notifications/01.jpg" alt="..." class="img-fluid">-->
+											<!--</div>-->
+										<!--</li>-->
+										<!--<li>-->
+											<!--<a href="#">-->
+												<!--<div class="message-icon">-->
+													<!--<i class="la la-user"></i>-->
+												<!--</div>-->
+												<!--<div class="message-body">-->
+													<!--<div class="message-body-heading">New user registered</div>-->
+													<!--<span class="date">2 hours ago</span>-->
+												<!--</div>-->
+											<!--</a>-->
+										<!--</li>-->
+										<!--<li>-->
+											<!--<a href="#">-->
+												<!--<div class="message-icon">-->
+													<!--<i class="la la-calendar-check-o"></i>-->
+												<!--</div>-->
+												<!--<div class="message-body">-->
+													<!--<div class="message-body-heading">New event added</div>-->
+													<!--<span class="date">7 hours ago</span>-->
+												<!--</div>-->
+											<!--</a>-->
+										<!--</li>-->
+										<!--<li>-->
+											<!--<a href="#">-->
+												<!--<div class="message-icon">-->
+													<!--<i class="la la-history"></i>-->
+												<!--</div>-->
+												<!--<div class="message-body">-->
+													<!--<div class="message-body-heading">Server rebooted</div>-->
+													<!--<span class="date">7 hours ago</span>-->
+												<!--</div>-->
+											<!--</a>-->
+										<!--</li>-->
+										<!--<li>-->
+											<!--<a href="#">-->
+												<!--<div class="message-icon">-->
+													<!--<i class="la la-twitter"></i>-->
+												<!--</div>-->
+												<!--<div class="message-body">-->
+													<!--<div class="message-body-heading">You have 3 new followers</div>-->
+													<!--<span class="date">10 hours ago</span>-->
+												<!--</div>-->
+											<!--</a>-->
+										<!--</li>-->
+										<!--<li>-->
+											<!--<a-->
+												<!--rel="nofollow"-->
+												<!--href="#"-->
+												<!--class="dropdown-item all-notifications text-center"-->
+											<!--&gt;View All Notifications</a>-->
+										<!--</li>-->
+									<!--</ul>-->
+								<!--</li>-->
 								<!-- End Notifications -->
 								<!-- User -->
 								<li class="nav-item dropdown">
@@ -161,7 +167,7 @@
 				</header>
 				<!-- End Header -->
 				<!-- Begin Page Content -->
-				<div class="page-content d-flex align-items-stretch">
+				<div class="page-content d-flex align-items-stretch" style="height: 100%">
 					<div class="default-sidebar">
 						<!-- Begin Side Navbar -->
 						<nav class="side-navbar box-scroll sidebar-scroll">

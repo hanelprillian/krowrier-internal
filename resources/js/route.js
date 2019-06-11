@@ -260,6 +260,16 @@ const router = new VueRouter({
             meta: {
                 requiresAuth: true
             }
+        },
+
+        // support room
+        {
+            path: rootInternal + "/support-room",
+            name: "internal->support_room",
+            component: loadView("SupportRoom/Index"),
+            meta: {
+                requiresAuth: true
+            }
         }
     ],
     linkActiveClass: "active"

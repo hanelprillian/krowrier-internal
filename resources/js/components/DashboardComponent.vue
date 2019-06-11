@@ -22,7 +22,7 @@
         <div class="row">
             <div class="col-xl-12">
                 <!--collapsed collapse-->
-                <div class="collapse show" id="filterSection">
+                <div class="collapse collapsed" id="filterSection">
                     <div class="widget has-shadow">
                         <div class="widget-header bordered no-actions">
                             <h4>Filter</h4>

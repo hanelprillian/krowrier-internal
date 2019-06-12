@@ -35,10 +35,11 @@
 												<label for="check-all"></label>
 											</div>
 										</th>
+										<th width="5%"></th>
+										<th width="15%">Role</th>
 										<th width="20%">Name</th>
 										<th width="20%">Email</th>
 										<th width="10%">Phone</th>
-										<th width="40%">Address</th>
 										<th width="10%">Actions</th>
 									</tr>
 								</thead>
@@ -50,21 +51,39 @@
 												<label for="cb10"></label>
 											</div>
 										</td>
-										<td>{{user.name}}</td>
+                                        <td class="text-center">
+                                            <div style="height: 80px; width: 80px">
+                                                <img :src="user.photo != '' ? user.photo : 'https://firebasestorage.googleapis.com/v0/b/pasarudang-6129d.appspot.com/o/_webs%2Fuser-img.png?alt=media&token=cb7062cb-1aab-428c-b5d2-8f84fee01cc3'" alt="" style="height: 100%; width: 100%; object-fit: cover" class="img-fluid rounded-circle">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <span class="badge-text badge-text-small bg-blue">{{user.current_role}}</span>
+                                        </td>
+										<td>
+                                            {{user.name}}
+                                        </td>
 										<td>{{user.email}}</td>
 										<td>{{user.phone}}</td>
-										<td>{{ user.address}}</td>
 										<td class="td-actions">
-											<a href="#">
-												<i class="la la-edit edit"></i>
-											</a>
-											<a href="#" @click.prevent="deleteUser()" v-if="current_user.uid != user.id">
-												<i class="la la-close delete"></i>
-											</a>
+											<div class="dropdown">
+												<button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+													Action
+												</button>
+												<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+													<router-link class="dropdown-item" tag="a" :to="'/internal/user/'+user.id">
+														<i class="la la-edit edit"></i> Edit
+													</router-link>
+													<!--@click.prevent="deleteData(d.id, d.user.name)"-->
+                                                    <a href="#" @click.prevent="deleteUser()" v-if="current_user.uid != user.id"
+                                                    >
+														<i class="la la-close delete"></i> Delete
+													</a>
+												</div>
+											</div>
 										</td>
 									</tr>
 									<tr v-if="!paging.end">
-										<td colspan="6">
+										<td colspan="7">
 											<button class="btn btn-block" @click.prevent="loadMore()">Load more</button>
 										</td>
 									</tr>
@@ -121,7 +140,7 @@
 
 				this.ref.users = db
 					.collection("user")
-					.orderBy("created_at", "desc");
+					.orderBy("create_unix_time", "desc");
 
 				const firstPage = this.ref.users.limit(this.paging.user_per_page);
 				this.handleUsers(firstPage);

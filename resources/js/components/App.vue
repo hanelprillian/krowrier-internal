@@ -208,9 +208,6 @@
 										<!--<li>-->
 											<!--<a href="#">Booking Progress</a>-->
 										<!--</li>-->
-										<router-link tag="li" :to="{ path: '/internal/customer' }">
-											<a>Customer</a>
-										</router-link>
 										<router-link tag="li" :to="{ path: '/internal/feeder-courier' }">
 											<a>Feeder Courier</a>
 										</router-link>

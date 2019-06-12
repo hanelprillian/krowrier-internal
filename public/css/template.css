@@ -7317,6 +7317,10 @@ nav.navbar .user-size.dropdown-menu {
   overflow: hidden;
 }
 
+nav.navbar .chat-size.dropdown-menu {
+  min-width: 900px;
+}
+
 nav.navbar .user-size.dropdown-menu a {
   font-weight: 600;
   padding: 0.5rem 1.4rem;
@@ -15943,5 +15947,310 @@ be a descendant of the grid when it is being dragged.
     display: block;
     padding-top: 1.4rem;
   }
+}
+
+.chat {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  margin: auto;
+  left: 0;
+  right: 0;
+}
+
+.chat-button {
+  cursor: pointer;
+  border-radius: 10px 10px 0px 0px;
+  background: #fff;
+  box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.16);
+  padding: 5px 25px;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-left: auto;
+  width: 180px;
+  justify-content: center;
+}
+
+.chat-button .number {
+  border-radius: 11px;
+  background: #f24d4d;
+  color: white;
+  padding: 0px 10px;
+  margin-left: 5px;
+}
+
+.chat-button i {
+  margin-right: 10px;
+}
+
+@media screen and (max-width: 767px) {
+  .chat-button {
+    display: none;
+  }
+}
+
+.chat-popup {
+  cursor: pointer;
+  width: 100%;
+  border-radius: 0 0 24px 24px;
+  background: linear-gradient(to right, #fff 0%, #fcfcfc 100%);
+  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.16);
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: auto;
+}
+
+.chat-popup .sidepanel {
+  flex: 0 0 30%;
+  max-width: 30%;
+  border-radius: 25px 0px 0px 0px;
+  background: #fff;
+  box-shadow: 6px 0px 8px rgba(0, 0, 0, 0.16);
+}
+
+.chat-popup .sidepanel .header-chat {
+  padding: 30px 0 0 20px;
+}
+
+.chat-popup .sidepanel .header-chat h5 {
+  margin-bottom: 20px;
+}
+
+.chat-popup .sidepanel .header-chat .search-contact {
+  border: none;
+  border-bottom: 1px solid #707070;
+  border-radius: 0;
+}
+
+.chat-popup .sidepanel .header-chat .search-contact .input-group-prepend .input-group-text {
+  border: none;
+}
+
+.chat-popup .sidepanel .contacts {
+  overflow-y: scroll;
+  height: 500px;
+}
+
+.chat-popup .sidepanel .contacts ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.chat-popup .sidepanel .contacts ul li {
+  transition: 0.5s all;
+  position: relative;
+}
+
+.chat-popup .sidepanel .contacts ul li.active:before {
+  content: "";
+  border: 3px solid #002BFD;
+  position: absolute;
+  border-radius: 0px 3px 3px 0px;
+  top: 15px;
+  bottom: 15px;
+}
+
+.chat-popup .sidepanel .contacts ul li .wrap {
+  display: flex;
+  flex-wrap: wrap;
+  transition: 0.5s all;
+  width: 100%;
+  margin: 0;
+  padding: 15px;
+  align-items: center;
+}
+
+.chat-popup .sidepanel .contacts ul li .wrap .image-col {
+  flex: 0 0 30%;
+  max-width: 30%;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.chat-popup .sidepanel .contacts ul li .wrap .image-col .image-contact {
+  width: 100%;
+  background: #e6e6e6;
+  margin: auto;
+  border-radius: 100%;
+  position: relative;
+}
+
+.chat-popup .sidepanel .contacts ul li .wrap .image-col .image-contact:before {
+  content: "";
+  display: block;
+  padding-top: 100%;
+}
+
+.chat-popup .sidepanel .contacts ul li .wrap .image-col .image-contact img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  position: absolute;
+  top: 0;
+  border-radius: 100%;
+}
+
+.chat-popup .sidepanel .contacts ul li .wrap .message-cont-col {
+  flex: 0 0 70%;
+  max-width: 70%;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.chat-popup .sidepanel .contacts ul li .wrap .message-cont-col .name {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 16px;
+  color: #000;
+  margin-bottom: 10px;
+}
+
+.chat-popup .sidepanel .contacts ul li .wrap .message-cont-col .preview {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  color: #7a7a7a;
+  margin: 0;
+}
+
+.chat-popup .content {
+  flex: 0 0 70%;
+  max-width: 70%;
+}
+
+.chat-popup .content .contact-profile {
+  padding: 20px;
+  background: linear-gradient(to right, #fff 0%, #fcfcfc 100%);
+  border-radius: 0 24px 0 0;
+}
+
+.chat-popup .content .contact-profile .name {
+  margin-bottom: 20px;
+}
+
+.chat-popup .content .contact-profile .status {
+  font-weight: 500;
+  font-size: 16px;
+  color: #07c87b;
+  text-transform: uppercase;
+}
+
+.chat-popup .content .contact-profile .type {
+  border-radius: 15.5px;
+  background: linear-gradient(to right, #002BFD 0%, #2C304D 100%);
+  padding: 5px 15px;
+  color: white;
+  font-size: 14px;
+  margin-left: 10px;
+}
+
+.chat-popup .content .contact-profile .setting i {
+  padding: 10px;
+  color: #2C304D;
+  border-radius: 100%;
+  font-size: 20px;
+}
+
+.chat-popup .content .contact-profile .setting .fa-cog {
+  background: #ffe4e4;
+  margin-right: 15px;
+}
+
+.chat-popup .content .contact-profile .setting .fa-chevron-down {
+  background: transparent;
+  border: 1px solid #2C304D;
+  cursor: pointer;
+}
+
+.chat-popup .content .messages {
+  background: #f8f8f8;
+  height: 450px;
+  overflow-y: scroll;
+}
+
+.chat-popup .content .messages ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.chat-popup .content .messages ul li {
+  padding: 15px;
+  width: 70%;
+}
+
+.chat-popup .content .messages ul li.user {
+  margin-left: auto;
+}
+
+.chat-popup .content .messages ul li.user .time {
+  text-align: right;
+  padding-right: 10px;
+}
+
+.chat-popup .content .messages ul li.user .time i {
+  color: #3363D4;
+}
+
+.chat-popup .content .messages ul li.seller .time {
+  padding-left: 20px;
+}
+
+.chat-popup .content .messages ul .sent {
+  border-radius: 13px 0px 13px 13px;
+  background: linear-gradient(to right, #252946 0%, #002BFD 100%);
+  opacity: 0.8;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.09);
+  font-weight: 500;
+  font-size: 16px;
+  color: white;
+  padding: 15px;
+  margin: 5px;
+}
+
+.chat-popup .content .messages ul .replies {
+  border-radius: 0px 13px 13px 13px;
+  background: #fff;
+  border: 1px solid #e2e2e2;
+  opacity: 0.8;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.09);
+  font-weight: 500;
+  font-size: 16px;
+  color: #7a7a7a;
+  padding: 15px;
+  margin: 5px;
+}
+
+.chat-popup .content .messages ul .time {
+  font-weight: normal;
+  font-size: 14px;
+  color: #7a7a7a;
+}
+
+.chat-popup .content .message-input {
+  background: #fff;
+  box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.16);
+}
+
+.chat-popup .content .message-input .input-message {
+  border: none;
+  padding: 15px;
+}
+
+.chat-popup .content .message-input .input-message .input-group-prepend .input-group-text,
+.chat-popup .content .message-input .input-message .input-group-append .input-group-text {
+  border: none;
+}
+
+.chat-popup .content .message-input .input-message .input-group-append .input-group-text {
+  background: #ecedee;
+  color: #ee336e;
+  border-radius: 50%;
+}
+
+.chat-popup .content .message-input .input-message .form-control {
+  font-size: 16px;
 }
 

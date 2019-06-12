@@ -32,12 +32,240 @@
 							<!-- End Logo -->
 							<!-- Begin Navbar Menu -->
 							<ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center pull-right">
-								<li class="nav-item margin-right-10" style="position: relative">
-                                    <router-link tag="button" class="btn btn-success btn-sm" to="/internal/support-room">
+								<li class="nav-item dropdown margin-right-10" style="position: relative">
+                                    <button
+                                            data-target="#"
+                                            data-toggle="dropdown"
+                                            aria-haspopup="true"
+                                            aria-expanded="false"
+                                            class="btn btn-success btn-sm">
                                         Support Room
-                                    </router-link>
+                                    </button>
                                     <span class="badge-pulse" style="position: absolute; top:0; right: -5px"></span>
-                                </li>
+									<div aria-labelledby="user" class="chat-size dropdown-menu">
+                                        <div class="chat-popup">
+                                            <div class="sidepanel">
+                                                <div class="header-chat">
+                                                    <h5 class="text-uppercase"><strong>Support Room</strong></h5>
+                                                    <div class="input-group search-contact">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text" id="basic-addon1"><i class="fa fa-search"></i></span>
+                                                        </div>
+                                                        <input class="form-control" type="search" placeholder="Cari..." aria-label="Cari...">
+                                                    </div>
+                                                </div>
+                                                <div class="contacts">
+                                                    <ul>
+                                                        <li class="contact active">
+                                                            <div class="wrap">
+                                                                <div class="image-col">
+                                                                    <div class="image-contact">
+                                                                        <img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
+                                                                    </div>
+                                                                </div>
+                                                                <div class="message-cont-col">
+                                                                    <p class="name">Hans Cocolonel</p>
+                                                                    <p class="preview">Goodluck my way.</p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li class="contact">
+                                                            <div class="wrap">
+                                                                <div class="image-col">
+                                                                    <div class="image-contact">
+                                                                        <img src="http://emilcarlsson.se/assets/louislitt.png" alt="" />
+                                                                    </div>
+                                                                </div>
+                                                                <div class="message-cont-col">
+                                                                    <p class="name">Hans Cocolonel</p>
+                                                                    <p class="preview">Goodluck my way.</p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li class="contact">
+                                                            <div class="wrap">
+                                                                <div class="image-col">
+                                                                    <div class="image-contact">
+                                                                        <img src="http://emilcarlsson.se/assets/louislitt.png" alt="" />
+                                                                    </div>
+                                                                </div>
+                                                                <div class="message-cont-col">
+                                                                    <p class="name">Hans Cocolonel</p>
+                                                                    <p class="preview">Goodluck my way.</p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li class="contact">
+                                                            <div class="wrap">
+                                                                <div class="image-col">
+                                                                    <div class="image-contact">
+                                                                        <img src="http://emilcarlsson.se/assets/louislitt.png" alt="" />
+                                                                    </div>
+                                                                </div>
+                                                                <div class="message-cont-col">
+                                                                    <p class="name">Hans Cocolonel</p>
+                                                                    <p class="preview">Goodluck my way.</p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li class="contact">
+                                                            <div class="wrap">
+                                                                <div class="image-col">
+                                                                    <div class="image-contact">
+                                                                        <img src="http://emilcarlsson.se/assets/louislitt.png" alt="" />
+                                                                    </div>
+                                                                </div>
+                                                                <div class="message-cont-col">
+                                                                    <p class="name">Hans Cocolonel</p>
+                                                                    <p class="preview">Goodluck my way.</p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li class="contact">
+                                                            <div class="wrap">
+                                                                <div class="image-col">
+                                                                    <div class="image-contact">
+                                                                        <img src="http://emilcarlsson.se/assets/louislitt.png" alt="" />
+                                                                    </div>
+                                                                </div>
+                                                                <div class="message-cont-col">
+                                                                    <p class="name">Hans Cocolonel</p>
+                                                                    <p class="preview">Goodluck my way.</p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li class="contact">
+                                                            <div class="wrap">
+                                                                <div class="image-col">
+                                                                    <div class="image-contact">
+                                                                        <img src="http://emilcarlsson.se/assets/louislitt.png" alt="" />
+                                                                    </div>
+                                                                </div>
+                                                                <div class="message-cont-col">
+                                                                    <p class="name">Hans Cocolonel</p>
+                                                                    <p class="preview">Goodluck my way.</p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li class="contact">
+                                                            <div class="wrap">
+                                                                <div class="image-col">
+                                                                    <div class="image-contact">
+                                                                        <img src="http://emilcarlsson.se/assets/louislitt.png" alt="" />
+                                                                    </div>
+                                                                </div>
+                                                                <div class="message-cont-col">
+                                                                    <p class="name">Hans Cocolonel</p>
+                                                                    <p class="preview">Goodluck my way.</p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li class="contact">
+                                                            <div class="wrap">
+                                                                <div class="image-col">
+                                                                    <div class="image-contact">
+                                                                        <img src="http://emilcarlsson.se/assets/louislitt.png" alt="" />
+                                                                    </div>
+                                                                </div>
+                                                                <div class="message-cont-col">
+                                                                    <p class="name">Hans Cocolonel</p>
+                                                                    <p class="preview">Goodluck my way.</p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li class="contact">
+                                                            <div class="wrap">
+                                                                <div class="image-col">
+                                                                    <div class="image-contact">
+                                                                        <img src="http://emilcarlsson.se/assets/louislitt.png" alt="" />
+                                                                    </div>
+                                                                </div>
+                                                                <div class="message-cont-col">
+                                                                    <p class="name">Hans Cocolonel</p>
+                                                                    <p class="preview">Goodluck my way.</p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="content">
+                                                <div class="contact-profile">
+                                                    <div class="row align-items-center">
+                                                        <div class="col-md-8">
+                                                            <h4 class="name">Hans Cocolonel <span class="type">Customer</span></h4>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="messages">
+                                                    <ul>
+                                                        <li class="user">
+                                                            <div class="sent">Hallo gan untuk barangnya ready ? untuk berapa liter ?</div>
+                                                            <div class="time">
+                                                                12:40 PM <i class="fas fa-check-double"></i>
+                                                            </div>
+                                                        </li>
+                                                        <li class="seller">
+                                                            <div class="replies">Ready untuk 30 liter, baca deskripsi dlu ya mas</div>
+                                                            <div class="time">
+                                                                12:40 PM
+                                                            </div>
+                                                        </li>
+                                                        <li class="user">
+                                                            <div class="sent">Hallo gan untuk barangnya ready ? untuk berapa liter ?</div>
+                                                            <div class="time">
+                                                                12:40 PM <i class="fas fa-check-double"></i>
+                                                            </div>
+                                                        </li>
+                                                        <li class="seller">
+                                                            <div class="replies">Ready untuk 30 liter, baca deskripsi dlu ya mas</div>
+                                                            <div class="time">
+                                                                12:40 PM
+                                                            </div>
+                                                        </li>
+                                                        <li class="user">
+                                                            <div class="sent">Hallo gan untuk barangnya ready ? untuk berapa liter ?</div>
+                                                            <div class="time">
+                                                                12:40 PM <i class="fas fa-check-double"></i>
+                                                            </div>
+                                                        </li>
+                                                        <li class="seller">
+                                                            <div class="replies">Ready untuk 30 liter, baca deskripsi dlu ya mas</div>
+                                                            <div class="time">
+                                                                12:40 PM
+                                                            </div>
+                                                        </li>
+                                                        <li class="user">
+                                                            <div class="sent">Hallo gan untuk barangnya ready ? untuk berapa liter ?</div>
+                                                            <div class="time">
+                                                                12:40 PM <i class="fas fa-check-double"></i>
+                                                            </div>
+                                                        </li>
+                                                        <li class="seller">
+                                                            <div class="replies">Ready untuk 30 liter, baca deskripsi dlu ya mas</div>
+                                                            <div class="time">
+                                                                12:40 PM
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="message-input">
+                                                    <form>
+                                                        <div class="input-group input-message">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text" id="basic-addon1"><i class="fa fa-paperclip attachment"></i></span>
+                                                            </div>
+                                                            <input class="form-control" type="search" placeholder="Sent a message" aria-label="Sent a message">
+                                                            <div class="input-group-append">
+                                                                <span class="input-group-text" id="basic-addon1"><i class="fa fa-paper-plane"></i></span>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+									</div>
+								</li>
 								<!-- Begin Notifications -->
 								<!--<li class="nav-item dropdown">-->
 									<!--<a-->
@@ -688,6 +916,9 @@
 					$(".collapse").collapse("hide");
 				});
 			});
+            $('.dropdown-menu').click(function(e) {
+                e.stopPropagation();
+            });
 		}
 	};
 </script>

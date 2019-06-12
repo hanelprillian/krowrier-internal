@@ -146,135 +146,6 @@
                             </div>
                         </div>
 
-                        <div class="widget widget-default">
-                            <div class="widget-header">Courier Information</div>
-                            <div class="widget-body">
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label>
-										<span>
-											Feeder
-											&nbsp;
-											<small
-                                                    class="badge-text badge-text-small success bg-gradient-02"
-                                            >Pickup</small>
-										</span>
-                                            </label>
-                                            <div class="form-control-static">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <div class="form-group">
-                                                            <label class="form-control-label">Name</label>
-                                                            <p
-                                                                    class="form-control-static"
-                                                            >{{ data.feeder_origin_user ? data.feeder_origin_user.name : "-"}}</p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-12">
-                                                        <div class="form-group">
-                                                            <label class="form-control-label">Phone</label>
-                                                            <p
-                                                                    class="form-control-static"
-                                                            >{{ data.feeder_origin_user ? data.feeder_origin_user.phone : "-" }}</p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-12">
-                                                        <div class="form-group">
-                                                            <label class="form-control-label">Vehicle</label>
-                                                            <p
-                                                                    class="form-control-static"
-                                                            >{{ data.feeder_origin_user ? data.feeder_origin.vehicle_name : "-"}}</p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-12">
-                                                        <div class="form-group">
-                                                            <label class="form-control-label">Vehicle License Number</label>
-                                                            <p
-                                                                    class="form-control-static"
-                                                            >{{ data.feeder_origin_user ? data.feeder_origin.vehicle_licence_number : "-"}}</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label>
-                                                <span>Courier</span>
-                                            </label>
-                                            <div class="form-control-static">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <div class="form-group">
-                                                            <label class="form-control-label">Name</label>
-                                                            <p class="form-control-static">{{ data.courier_user ? data.courier_user.name : "-" }}</p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-12">
-                                                        <div class="form-group">
-                                                            <label class="form-control-label">Phone</label>
-                                                            <p class="form-control-static">{{ data.courier_user ? data.courier_user.phone : "-" }}</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label>
-										<span>
-											Feeder
-											&nbsp;
-											<small
-                                                    class="badge-text badge-text-small success bg-gradient-03"
-                                            >Delivery</small>
-										</span>
-                                            </label>
-                                            <div class="form-control-static">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <div class="form-group">
-                                                            <label class="form-control-label">Name</label>
-                                                            <p
-                                                                    class="form-control-static"
-                                                            >{{ data.feeder_destination_user ? data.feeder_destination_user.name : "-" }}</p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-12">
-                                                        <div class="form-group">
-                                                            <label class="form-control-label">Phone</label>
-                                                            <p
-                                                                    class="form-control-static"
-                                                            >{{ data.feeder_destination_user ? data.feeder_destination_user.phone : "-"}}</p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-12">
-                                                        <div class="form-group">
-                                                            <label class="form-control-label">Vehicle</label>
-                                                            <p
-                                                                    class="form-control-static"
-                                                            >{{ data.feeder_destination ? data.feeder_destination.vehicle_name : "-" }}</p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-12">
-                                                        <div class="form-group">
-                                                            <label class="form-control-label">Vehicle License Number</label>
-                                                            <p
-                                                                    class="form-control-static"
-                                                            >{{ data.feeder_destination ? data.feeder_destination.vehicle_licence_number : "-" }}</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
                         <div class="widget">
                             <div class="widget-body">
                                 <div class="form-group">
@@ -371,24 +242,111 @@
 
             <div class="tab-pane fade" id="tab-2" role="tabpanel" aria-labelledby="base-tab-2">
                 <ul class="list-group w-100">
-                    <li class="list-group-item" v-for="progress in dataProgress.data">
+                    <li class="list-group-item" v-for="(progress, index) in dataProgress.data">
                         <div class="other-message">
                             <div class="media">
-                                <div class="row">
-                                    <div class="col-md-2">
-                                        <div class="media-left align-self-center">
-                                            <strong>#{{progress.seq}}</strong>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-10">
-                                        <div class="media-body align-self-center">
-                                            <div class="other-message-sender margin-bottom-5">
-                                                <span class="badge-text badge-text-small bg-gradient-03">{{progress.status_name_formatted}}</span>
+                                <table class="table">
+                                    <tbody>
+                                    <tr>
+                                        <td width="10%">
+                                            <strong style="font-size: 15pt">#{{progress.seq}}</strong>
+                                        </td>
+                                        <td width="90%">
+                                            <div class="media-body align-self-center">
+                                                <div class="other-message-sender margin-bottom-5">
+                                                    <strong class="text-blue" style="font-size: 12pt">{{progress.status_name_formatted}}</strong>
+                                                    <br>
+                                                    <small>{{progress.datetime_formatted}}</small>
+                                                </div>
+                                                <div class="other-message-time padding-top-10">
+                                                    <!--data feeder-->
+                                                    <div class="row" v-if="progress.status_name === 'Feeder'">
+                                                        <div class="col-md-3">
+                                                            <label for=""><small><strong>ID</strong></small></label>
+                                                            <p class="form-control-static">
+                                                                {{progress.feeder && progress.feeder.feeder_id ? progress.feeder.feeder_id : '-'}}
+                                                            </p>
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <label for=""><small><strong>Name</strong></small></label>
+                                                            <p class="form-control-static">
+                                                                {{progress.feeder && progress.feeder.fullname ? progress.feeder.fullname : '-'}}
+                                                            </p>
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <label for=""><small><strong>Phone</strong></small></label>
+                                                            <p class="form-control-static">
+                                                                {{progress.feeder && progress.feeder.phone ? progress.feeder.phone : '-'}}
+                                                            </p>
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <label for=""><small><strong>Vehicle</strong></small></label>
+                                                            <p class="form-control-static">
+                                                                <span v-if="progress.feeder">
+                                                                    {{progress.feeder.vehicle_name}} <small>({{progress.feeder.vehicle_police_number}})</small>
+                                                                </span>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row" v-if="progress.status_name === 'Courier'">
+                                                        <div class="col-md-3">
+                                                            <label for=""><small><strong>ID</strong></small></label>
+                                                            <p class="form-control-static">
+                                                                {{progress.courier && progress.courier.courier_id ? progress.courier.courier_id : '-'}}
+                                                            </p>
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <label for=""><small><strong>Name</strong></small></label>
+                                                            <p class="form-control-static">
+                                                                {{progress.courier && progress.courier.fullname ? progress.courier.fullname : '-'}}
+                                                            </p>
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <label for=""><small><strong>Phone</strong></small></label>
+                                                            <p class="form-control-static">
+                                                                {{progress.courier && progress.courier.phone ? progress.courier.phone : '-'}}
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row" v-if="progress.status_name === 'Drop Point'">
+                                                        <div class="col-md-3">
+                                                            <label for=""><small><strong>ID</strong></small></label>
+                                                            <p class="form-control-static">
+                                                                {{progress.drop_point && progress.drop_point.droppoint_id ? progress.drop_point.droppoint_id : '-'}}
+                                                            </p>
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <label for=""><small><strong>Name</strong></small></label>
+                                                            <p class="form-control-static">
+                                                                {{progress.drop_point && progress.drop_point.name ? progress.drop_point.name : '-'}}
+                                                                <br>
+                                                                <small>
+                                                                    Owner:
+                                                                    <strong>
+                                                                        {{progress.drop_point && progress.drop_point.owner_name ? progress.drop_point.owner_name : '-'}}
+                                                                    </strong>
+                                                                </small>
+                                                            </p>
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <label for=""><small><strong>Phone</strong></small></label>
+                                                            <p class="form-control-static">
+                                                                {{progress.drop_point && progress.drop_point.phone ? progress.drop_point.phone : '-'}}
+                                                            </p>
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <label for=""><small><strong>Address</strong></small></label>
+                                                            <p class="form-control-static">
+                                                                {{progress.drop_point && progress.drop_point.address ? progress.drop_point.address : '-'}}
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div class="other-message-time">{{progress.datetime_formatted}}</div>
-                                        </div>
-                                    </div>
-                                </div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </li>
@@ -427,9 +385,6 @@
 		methods: {
 			async FetchData(id) {
 				const ref = await db.collection("booking").doc(id);
-				const refItem =  db
-					.collection("booking_item")
-					.where("booking_id", "==", id);
 
                 await ref.get().then(async doc => {
 					if (doc.exists) {
@@ -483,92 +438,6 @@
 								});
 						}
 
-						if (
-							data.courier_id != "" &&
-							typeof data.courier_id !== "undefined"
-						) {
-							 db
-								.collection("courier")
-								.doc(data.courier_id)
-								.get()
-								.then(async doc1 => {
-									if (
-										doc1.exists &&
-										doc1.data().user_id != "" &&
-										typeof doc1.data().user_id !== "undefined"
-									) {
-										await db
-											.collection("user")
-											.doc(doc1.data().user_id)
-											.get()
-											.then(async doc2 => {
-												if (doc2.exists) {
-													this.data.courier_user = await doc2.data();
-												}
-											});
-
-										this.data.courier = await doc1.data();
-									}
-								});
-						}
-
-						if (
-							data.origin_feeder_id != "" &&
-							typeof data.origin_feeder_id !== "undefined"
-						) {
-							 db
-								.collection("feeder")
-								.doc(data.origin_feeder_id)
-								.get()
-								.then(async doc1 => {
-									if (
-										doc1.exists &&
-										doc1.data().user_id != "" &&
-										typeof doc1.data().user_id !== "undefined"
-									) {
-										await db
-											.collection("user")
-											.doc(doc1.data().user_id)
-											.get()
-											.then(async doc2 => {
-												if (doc2.exists) {
-													this.data.feeder_origin_user = await doc2.data();
-												}
-											});
-
-										this.data.feeder_origin = await doc1.data();
-									}
-								});
-						}
-
-						if (
-							data.destination_feeder_id != "" &&
-							typeof data.destination_feeder_id !== "undefined"
-						) {
-							 db
-								.collection("feeder")
-								.doc(data.destination_feeder_id)
-								.get()
-								.then(async doc1 => {
-									if (
-										doc1.exists &&
-										doc1.data().user_id != "" &&
-										typeof doc1.data().user_id !== "undefined"
-									) {
-										await db
-											.collection("user")
-											.doc(doc1.data().user_id)
-											.get()
-											.then(async doc2 => {
-												if (doc2.exists) {
-													this.data.feeder_destination_user = await doc2.data();
-												}
-											});
-
-										this.data.feeder_destination = await doc1.data();
-									}
-								});
-						}
 					} else {
 						this.$router.push("/internal/booking");
 					}
@@ -591,6 +460,8 @@
                     }
                 });
 
+                let _dataProgress = [];
+
                 await db.collection("booking_progress").where("booking_id","==", self.data.booking_id)
                     .orderBy("unix_time","desc")
                     .get().then(function (snapshot)
@@ -599,20 +470,70 @@
                     {
                         let index = snapshot.size;
 
-                        snapshot.forEach(function (doc)
+                        snapshot.forEach(async function (doc)
                         {
                             let data = doc.data();
                             data.id = doc.id;
                             data.seq = index;
+                            data.feeder = {};
+                            data.courier = {};
+                            data.drop_point = {};
                             data.status_name_formatted = func.toTitleCase(data.status_name);
                             data.datetime_formatted = moment(data.datetime).format(
                                 "DD MMMM YYYY, HH mm"
                             );
-                            self.dataProgress.data.push(data);
+
+                            if (
+                                data.status_name === 'Feeder' && data.role_firebase_id != "" &&
+                                typeof data.role_firebase_id !== "undefined"
+                            ) {
+                                db
+                                    .collection("feeder")
+                                    .doc(data.role_firebase_id)
+                                    .get()
+                                    .then(async doc1 =>
+                                    {
+                                        data.feeder = doc1.data();
+                                    });
+                            }
+
+                            if (
+                                data.status_name === 'Courier' && data.role_firebase_id != "" &&
+                                typeof data.role_firebase_id !== "undefined"
+                            ) {
+                                db
+                                    .collection("courier")
+                                    .doc(data.role_firebase_id)
+                                    .get()
+                                    .then(async doc1 =>
+                                    {
+                                        data.courier = doc1.data();
+                                    });
+                            }
+
+                            if (
+                                data.status_name === 'Drop Point' && data.role_firebase_id != "" &&
+                                typeof data.role_firebase_id !== "undefined"
+                            ) {
+                                db
+                                    .collection("drop_point")
+                                    .doc(data.role_firebase_id)
+                                    .get()
+                                    .then(async doc1 =>
+                                    {
+                                        data.drop_point = doc1.data();
+                                    });
+                            }
+
+                            _dataProgress.push(data);
 
                             index--;
                         });
                     }
+
+                    self.dataProgress.data = _dataProgress;
+
+                    console.log(self.dataProgress.data)
 
                     swal.close();
                 }).catch(error => {

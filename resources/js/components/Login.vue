@@ -84,8 +84,6 @@
 					.then(
 						async user => {
                             await this.getLoggedUser();
-                            this.error = false;
-							window.location = "/internal";
 						},
 						err => {
 							this.loading = false;
@@ -110,12 +108,32 @@
                             data.id = doc.id;
                             localStorage.setItem('userLoginData', JSON.stringify(data));
                             console.log(localStorage.getItem('userLoginData'))
+
+                            this.error = false;
+                            window.location = "/internal";
                         });
+                    }
+                    else
+                    {
+                        self.logout();
                     }
                 });
 
             },
 
+            logout() {
+                firebase
+                    .auth()
+                    .signOut()
+                    .then(() =>
+                    {
+                        window.IsLogged = false;
+                        self.IsLogged = false;
+                        self.userLogged = [];
+                        localStorage.removeItem('userLoginData');
+                        window.location = "/internal/auth/login";
+                    });
+            },
         }
 	};
 </script>

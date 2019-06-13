@@ -56,133 +56,17 @@
                                                 </div>
                                                 <div class="contacts">
                                                     <ul>
-                                                        <li class="contact active">
+                                                        <li class="contact" v-for="list in filterChat" :class="{'active':chatData.openedChat.opponent_user_id == list.opponent_user_id}" @click.prevent="selectChat(list.chat_id,list.from_id, list.to_id, list.opponent_user_id, list.opponent_user.username, list.opponent_user.photo)">
                                                             <div class="wrap">
                                                                 <div class="image-col">
                                                                     <div class="image-contact">
-                                                                        <img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
+                                                                        <img :src="list.opponent_user && list.opponent_user.photo != '' ? list.opponent_user.photo : 'https://firebasestorage.googleapis.com/v0/b/pasarudang-6129d.appspot.com/o/_webs%2Fuser-img.png?alt=media&token=cb7062cb-1aab-428c-b5d2-8f84fee01cc3'" alt="" />
                                                                     </div>
                                                                 </div>
                                                                 <div class="message-cont-col">
-                                                                    <p class="name">Hans Cocolonel</p>
-                                                                    <p class="preview">Goodluck my way.</p>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="contact">
-                                                            <div class="wrap">
-                                                                <div class="image-col">
-                                                                    <div class="image-contact">
-                                                                        <img src="http://emilcarlsson.se/assets/louislitt.png" alt="" />
-                                                                    </div>
-                                                                </div>
-                                                                <div class="message-cont-col">
-                                                                    <p class="name">Hans Cocolonel</p>
-                                                                    <p class="preview">Goodluck my way.</p>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="contact">
-                                                            <div class="wrap">
-                                                                <div class="image-col">
-                                                                    <div class="image-contact">
-                                                                        <img src="http://emilcarlsson.se/assets/louislitt.png" alt="" />
-                                                                    </div>
-                                                                </div>
-                                                                <div class="message-cont-col">
-                                                                    <p class="name">Hans Cocolonel</p>
-                                                                    <p class="preview">Goodluck my way.</p>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="contact">
-                                                            <div class="wrap">
-                                                                <div class="image-col">
-                                                                    <div class="image-contact">
-                                                                        <img src="http://emilcarlsson.se/assets/louislitt.png" alt="" />
-                                                                    </div>
-                                                                </div>
-                                                                <div class="message-cont-col">
-                                                                    <p class="name">Hans Cocolonel</p>
-                                                                    <p class="preview">Goodluck my way.</p>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="contact">
-                                                            <div class="wrap">
-                                                                <div class="image-col">
-                                                                    <div class="image-contact">
-                                                                        <img src="http://emilcarlsson.se/assets/louislitt.png" alt="" />
-                                                                    </div>
-                                                                </div>
-                                                                <div class="message-cont-col">
-                                                                    <p class="name">Hans Cocolonel</p>
-                                                                    <p class="preview">Goodluck my way.</p>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="contact">
-                                                            <div class="wrap">
-                                                                <div class="image-col">
-                                                                    <div class="image-contact">
-                                                                        <img src="http://emilcarlsson.se/assets/louislitt.png" alt="" />
-                                                                    </div>
-                                                                </div>
-                                                                <div class="message-cont-col">
-                                                                    <p class="name">Hans Cocolonel</p>
-                                                                    <p class="preview">Goodluck my way.</p>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="contact">
-                                                            <div class="wrap">
-                                                                <div class="image-col">
-                                                                    <div class="image-contact">
-                                                                        <img src="http://emilcarlsson.se/assets/louislitt.png" alt="" />
-                                                                    </div>
-                                                                </div>
-                                                                <div class="message-cont-col">
-                                                                    <p class="name">Hans Cocolonel</p>
-                                                                    <p class="preview">Goodluck my way.</p>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="contact">
-                                                            <div class="wrap">
-                                                                <div class="image-col">
-                                                                    <div class="image-contact">
-                                                                        <img src="http://emilcarlsson.se/assets/louislitt.png" alt="" />
-                                                                    </div>
-                                                                </div>
-                                                                <div class="message-cont-col">
-                                                                    <p class="name">Hans Cocolonel</p>
-                                                                    <p class="preview">Goodluck my way.</p>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="contact">
-                                                            <div class="wrap">
-                                                                <div class="image-col">
-                                                                    <div class="image-contact">
-                                                                        <img src="http://emilcarlsson.se/assets/louislitt.png" alt="" />
-                                                                    </div>
-                                                                </div>
-                                                                <div class="message-cont-col">
-                                                                    <p class="name">Hans Cocolonel</p>
-                                                                    <p class="preview">Goodluck my way.</p>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="contact">
-                                                            <div class="wrap">
-                                                                <div class="image-col">
-                                                                    <div class="image-contact">
-                                                                        <img src="http://emilcarlsson.se/assets/louislitt.png" alt="" />
-                                                                    </div>
-                                                                </div>
-                                                                <div class="message-cont-col">
-                                                                    <p class="name">Hans Cocolonel</p>
-                                                                    <p class="preview">Goodluck my way.</p>
+                                                                    <p class="name">{{list.opponent_user.name}}</p>
+                                                                    <p class="role">{{list.opponent_user.current_role}}</p>
+                                                                    <p class="preview">{{list.last_message}}</p>
                                                                 </div>
                                                             </div>
                                                         </li>
@@ -194,6 +78,10 @@
                                                     <div class="row align-items-center">
                                                         <div class="col-md-8">
                                                             <h4 class="name">Hans Cocolonel <span class="type">Customer</span></h4>
+                                                            <div class="form-group">
+                                                                <label for=""><strong><small>Booking ID</small></strong></label>
+                                                                <p class="form-control-static">BK20198787</p>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -856,11 +744,580 @@
                 userLogged: JSON.parse(localStorage.getItem('userLoginData')),
                 time: '',
 				IsLogged: IsLogged,
-				transitionName: "slide-left"
-			};
+				transitionName: "slide-left",
+
+                chatData : {
+                    searchList: {
+                        keyword: ''
+                    },
+                    list: [],
+                    openedChat: {
+                        logged_user_id: '',
+                        opponent_user_id: '',
+                        form: {
+                            booking_id: '',
+                            chat_id: '',
+                            chat_type: '',
+                            created_at: '',
+                            role: '',
+                            unix_time: '',
+                            updated_at: '',
+                            user_id: '',
+                        },
+                        detail: []
+                    },
+                }
+            };
 		},
 
+        computed: {
+            filterChat ()
+            {
+                let self = this;
+
+                return this.chatData.list.filter(function (list)
+                {
+                    return list.opponent_user.name ? list.opponent_user.name.toLowerCase().includes(self.chatData.searchList.keyword.toLowerCase()) : '';
+                })
+            }
+        },
+
 		methods: {
+            async selectChat(chat_id, from_id, to_id, opponent_user_id, name, photo, message, product_id)
+            {
+                let self = this;
+                message = message || '';
+                product_id = product_id || '';
+
+                if(to_id != '')
+                {
+                    if(chat_id != '')
+                    {
+                        let msg_last_index = 0;
+
+                        await db.collection("chat").doc(chat_id)
+                            .onSnapshot(async function(doc)
+                            {
+                                if (doc.exists)
+                                {
+                                    let data = doc.data();
+                                    data.id = doc.id;
+
+                                    let newDataMessage = [];
+
+                                    await $.each(data.messages, async function (i, v)
+                                    {
+                                        let date = new Date(v.created_at);
+                                        let day = date.getDay();
+                                        let days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+                                        let dayName = days[date.getDay()];
+                                        let dates = date.getUTCDate();
+                                        let month = date.getMonth();
+                                        let year = date.getFullYear();
+
+                                        let month_name = function(month)
+                                        {
+                                            var mlist = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
+                                            return mlist[month];
+                                        };
+
+                                        let hours = date.getHours();
+                                        let minutes = "0" + date.getMinutes();
+                                        let seconds = "0" + date.getSeconds();
+                                        let formattedTime = dayName + ', ' + dates + ' ' + month_name(month) + ' ' + year + ', ' + hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+
+                                        v.created_at_formatted = formattedTime;
+
+                                        if(v.product_id != '')
+                                        {
+                                            let productData = null;
+
+                                            const ref = db.collection(func.collectionName("products")).doc(v.product_id);
+
+                                            await ref.get().then(async doc =>
+                                            {
+                                                if (doc.exists)
+                                                {
+                                                    let data = doc.data();
+                                                    data.id = doc.id;
+
+                                                    await db.collection("category").doc(data.category_id)
+                                                        .get()
+                                                        .then(function(categoryDoc)
+                                                        {
+                                                            if (categoryDoc.exists)
+                                                            {
+                                                                let categoryData = categoryDoc.data();
+                                                                data.category_name = categoryData.cat_name;
+                                                            }
+                                                        })
+                                                        .catch(function(error) {
+                                                        });
+
+                                                    await db.collection("company").doc(data.company_id)
+                                                        .get()
+                                                        .then(function(companyDoc)
+                                                        {
+                                                            if (companyDoc.exists)
+                                                            {
+                                                                let companyData = companyDoc.data();
+                                                                data.company_name = companyData.name;
+                                                                data.company_logo = companyData.logo;
+                                                                data.company_location = companyData.location;
+                                                            }
+                                                        })
+                                                        .catch(function(error) {
+                                                        });
+
+                                                    v.product_data = data;
+                                                }
+                                            });
+                                        }
+
+                                        newDataMessage.push(v);
+
+                                        if(i == data.messages.length - 1)
+                                        {
+                                            msg_last_index = i;
+                                        }
+                                    });
+
+                                    self.chatData.openedChat.detail = newDataMessage;
+
+                                    console.log('msg', data.messages);
+
+                                    setTimeout(function ()
+                                    {
+                                        var lastElement = document.getElementById("chat-"+chat_id+"-index-"+ msg_last_index);
+                                        if(lastElement)
+                                        {
+                                            var topPos = lastElement.offsetTop;
+                                            func.scrollTo(document.getElementById('listMessagesChat'), topPos-30, 600);
+                                        }
+                                    }, 10);
+                                }
+                            });
+                    }
+
+                    self.chatData.openedChat.logged_user_id = self.userLogged.id;
+                    self.chatData.openedChat.opponent_user_id = opponent_user_id;
+                    self.chatData.openedChat.form.chat_id = chat_id;
+                    self.chatData.openedChat.form.from_id = from_id;
+                    self.chatData.openedChat.form.to_id = to_id;
+                    self.chatData.openedChat.form.user_name = name;
+                    self.chatData.openedChat.form.user_photo = photo;
+                    self.chatData.openedChat.form.messages = message;
+                    self.chatData.openedChat.form.product_id = product_id;
+                }
+            },
+
+            async initChat(to_id, product_id, message, autosend)
+            {
+                let self = this;
+                product_id = product_id || '';
+                message = message || '';
+                autosend = autosend || false;
+
+                await db.collection("chat")
+                    .where("from_id",'==',self.userLogged.id)
+                    .where("to_id",'==',to_id).limit(1)
+                    .get().then(async function(querySnapshot)
+                    {
+                        if(querySnapshot.size == 0)
+                        {
+                            await db.collection("chat")
+                                .where("from_id",'==',to_id)
+                                .where("to_id",'==',self.userLogged.id)
+                                .limit(1)
+                                .get().then(async function(querySnapshot2)
+                                {
+                                    if(querySnapshot2.size == 0)
+                                    {
+                                        if (
+                                            to_id != "" &&
+                                            typeof to_id !== "undefined"
+                                        ) {
+                                            await db.collection(func.collectionName("user")).doc(to_id)
+                                                .get()
+                                                .then(async function (userDoc)
+                                                {
+                                                    if (userDoc.exists) {
+                                                        let userData = userDoc.data();
+                                                        userData.id = userDoc.id;
+                                                        let opponent_user = userData;
+                                                        let opponent_user_id = userData.id;
+
+                                                        await self.selectChat('', self.userLogged.id, to_id, opponent_user_id, (opponent_user && opponent_user.username ? opponent_user.username : ''), (opponent_user && opponent_user.photo ? opponent_user.photo : ''), message, product_id);
+
+                                                        if(autosend)
+                                                        {
+                                                            self.sendChat();
+                                                        }
+                                                    }
+                                                })
+                                                .catch(function (error) {
+                                                });
+                                        }
+
+                                        return;
+                                    }
+
+                                    querySnapshot2.forEach(async function(doc2)
+                                    {
+                                        let data = doc2.data();
+                                        data.id = doc2.id;
+
+                                        ///opponent
+                                        if (
+                                            data.from_id != "" &&
+                                            typeof data.from_id !== "undefined"
+                                        )
+                                        {
+                                            await db.collection(func.collectionName("user")).doc(data.from_id)
+                                                .get()
+                                                .then(async function(userDoc)
+                                                {
+                                                    if (userDoc.exists)
+                                                    {
+                                                        let userData = userDoc.data();
+                                                        userData.id = userDoc.id;
+                                                        data.opponent_user = userData;
+                                                        data.opponent_user_id = userData.id;
+
+                                                        await self.selectChat(doc2.id, data.from_id, data.to_id, from_id, (data.opponent_user && data.opponent_user.username? data.opponent_user.username : ''), (data.opponent_user && data.opponent_user.photo? data.opponent_user.photo : ''), message, product_id);
+
+                                                        if(autosend)
+                                                        {
+                                                            self.sendChat();
+                                                        }
+                                                    }
+                                                })
+                                                .catch(function(error) {
+                                                });
+                                        }
+                                    });
+                                });
+                            return;
+                        }
+
+                        querySnapshot.forEach(async function(doc)
+                        {
+                            let data = doc.data();
+                            data.id = doc.id;
+
+                            ///opponent
+                            if (
+                                data.to_id != "" &&
+                                typeof data.to_id !== "undefined"
+                            )
+                            {
+                                await db.collection(func.collectionName("user")).doc(data.to_id)
+                                    .get()
+                                    .then(async function(userDoc)
+                                    {
+                                        if (userDoc.exists)
+                                        {
+                                            let userData = userDoc.data();
+                                            userData.id = userDoc.id;
+                                            data.opponent_user = userData;
+                                            data.opponent_user_id = userData.id;
+
+                                            await self.selectChat(doc.id, data.from_id, data.to_id, to_id, (data.opponent_user && data.opponent_user.username? data.opponent_user.username : ''), (data.opponent_user && data.opponent_user.photo? data.opponent_user.photo : ''), message, product_id);
+
+                                            if(autosend)
+                                            {
+                                                self.sendChat();
+                                            }
+                                        }
+                                    })
+                                    .catch(function(error) {
+                                    });
+                            }
+                        });
+                    });
+
+                self.openChatForm();
+            },
+
+            async getChatList()
+            {
+                let self = this;
+
+                self.chatData.list = [];
+
+                await db.collection("chat")
+                    .where("role_id",'==',self.userLogged.id)
+                    .orderBy('unix_time','desc')
+                    .onSnapshot(function(querySnapshot)
+                    {
+                        querySnapshot.docChanges().forEach(async function(change)
+                        {
+                            if (change.type === "added")
+                            {
+                                let data = change.doc.data();
+                                data.id = change.doc.id;
+                                data.chat_id = change.doc.id;
+                                data.logged_user_id = self.userLogged.id;
+
+                                data.last_message = data.last_message ? (data.last_message.length > 13 ? data.last_message.substring(0,13)+'...' : data.last_message) : '';
+
+                                if (
+                                    data.user_id != "" &&
+                                    typeof data.user_id !== "undefined"
+                                )
+                                {
+                                    await db.collection("user").doc(data.user_id)
+                                        .get()
+                                        .then(function(userDoc)
+                                        {
+                                            if (userDoc.exists)
+                                            {
+                                                let userData = userDoc.data();
+                                                userData.id = userDoc.id;
+                                                data.opponent_user = userData;
+                                                data.opponent_user_id = userData.id;
+                                            }
+                                        })
+                                        .catch(function(error) {
+                                        });
+                                }
+
+                                if (
+                                    data.booking_id != "" &&
+                                    typeof data.booking_id !== "undefined"
+                                )
+                                {
+                                    await db.collection("booking").doc(data.booking_id)
+                                        .get()
+                                        .then(function(userDoc)
+                                        {
+                                            if (userDoc.exists)
+                                            {
+                                                let bookingData = userDoc.data();
+                                                bookingData.id = userDoc.id;
+                                                data.booking_data = bookingData;
+                                            }
+                                        })
+                                        .catch(function(error) {
+                                        });
+                                }
+
+                                self.chatData.list.push(data);
+
+                                self.modifyChatList(data.id, {
+                                    unix_time: data.updated_at,
+                                    last_message: data.last_message
+                                });
+
+                                console.log('chat_added', data)
+                            }
+                            if (change.type === "modified")
+                            {
+                                let data = change.doc.data();
+                                data.id = change.doc.id;
+
+                                data.last_message = data.last_message ? (data.last_message.length > 13 ? data.last_message.substring(0,13)+'...' : data.last_message) : '';
+
+                                self.modifyChatList(data.id, {
+                                    unix_time: data.updated_at,
+                                    last_message: data.last_message
+                                });
+
+                                console.log('chat_modified', data)
+                            }
+                        });
+                    });
+
+                await db.collection("chat")
+                    .where("user_id",'==',self.userLogged.id)
+                    .orderBy('unix_time','desc')
+                    .onSnapshot(function(querySnapshot)
+                    {
+                        querySnapshot.docChanges().forEach(async function(change)
+                        {
+                            if (change.type === "added")
+                            {
+                                let data = change.doc.data();
+                                data.id = change.doc.id;
+                                data.chat_id = change.doc.id;
+                                data.logged_user_id = self.userLogged.id;
+
+                                data.last_message = data.last_message ? (data.last_message.length > 13 ? data.last_message.substring(0,13)+'...' : data.last_message) : '';
+
+                                if (
+                                    data.role_id != "" &&
+                                    typeof data.role_id !== "undefined"
+                                )
+                                {
+                                    await db.collection("user").doc(data.role_id)
+                                        .get()
+                                        .then(function(userDoc)
+                                        {
+                                            if (userDoc.exists)
+                                            {
+                                                let userData = userDoc.data();
+                                                userData.id = userDoc.id;
+                                                data.opponent_user = userData;
+                                                data.opponent_user_id = userData.id;
+                                            }
+                                        })
+                                        .catch(function(error) {
+                                        });
+                                }
+
+                                if (
+                                    data.booking_id != "" &&
+                                    typeof data.booking_id !== "undefined"
+                                )
+                                {
+                                    await db.collection("booking").doc(data.booking_id)
+                                        .get()
+                                        .then(function(userDoc)
+                                        {
+                                            if (userDoc.exists)
+                                            {
+                                                let bookingData = userDoc.data();
+                                                bookingData.id = userDoc.id;
+                                                data.booking_data = bookingData;
+                                            }
+                                        })
+                                        .catch(function(error) {
+                                        });
+                                }
+
+                                self.chatData.list.push(data);
+
+                                self.modifyChatList(data.id, {
+                                    unix_time: data.updated_at,
+                                    last_message: data.last_message
+                                });
+
+                                console.log('chat_added', data)
+                            }
+
+                            if (change.type === "modified")
+                            {
+                                let data = change.doc.data();
+                                data.id = change.doc.id;
+
+                                data.last_message = data.last_message ? (data.last_message.length > 13 ? data.last_message.substring(0,13)+'...' : data.last_message) : '';
+
+                                self.modifyChatList(data.id, {
+                                    unix_time: data.updated_at,
+                                    last_message: data.last_message
+                                });
+
+                                console.log('chat_modified', data)
+                            }
+                        });
+                    });
+
+                self.chatData.list = await _.uniqBy(self.chatData.list, 'logged_user_id');
+
+                console.log('chat list', self.chatData.list);
+            },
+
+            modifyChatList(chat_id, data)
+            {
+                let self = this;
+                let getChatList = _.find(self.chatData.list, ['chat_id', chat_id]);
+
+                if(getChatList)
+                {
+                    getChatList.unix_time = data.unix_time ? data.unix_time : 0;
+                    getChatList.last_message = data.last_message;
+                }
+
+                self.reArrangeChat();
+            },
+
+            reArrangeChat()
+            {
+                let self = this;
+                self.chatData.list = _.orderBy( self.chatData.list, ['unix_time'], ['desc']);
+            },
+
+            async sendChat()
+            {
+                let self = this;
+                let openedChat = self.chatData.openedChat;
+
+                if(self.chatData.openedChat.form.messages.length > 0)
+                {
+                    if(openedChat.form.chat_id != '')
+                    {
+                        let refChat = db.collection("chat").doc(openedChat.form.chat_id);
+
+                        // get last message
+                        let lastMessages = {};
+
+                        await refChat.get().then(async (doc) => {
+                            if (!doc.exists) return;
+
+                            let getLastMessage = await doc.get('messages');
+
+                            getLastMessage.push({
+                                from_id: self.chatData.openedChat.form.from_id,
+                                to_id: self.chatData.openedChat.form.to_id,
+                                messages: self.chatData.openedChat.form.messages,
+                                product_id: self.chatData.openedChat.form.product_id,
+                                image_url: '',
+                                created_at: new Date().getTime(),
+                            });
+
+                            lastMessages = getLastMessage;
+                        });
+
+                        refChat.update({
+                            updated_at: new Date().getTime(),
+                            messages: lastMessages
+                        }).then(async function (response)
+                        {
+                        })
+                            .catch(function(error)
+                            {
+                                console.log(error)
+                            });
+                    }
+                    else
+                    {
+                        let refChat = db.collection("chat");
+
+                        refChat.add({
+                            created_at: new Date().getTime(),
+                            from_id: self.chatData.openedChat.form.from_id,
+                            to_id: self.chatData.openedChat.form.to_id,
+                            updated_at: new Date().getTime(),
+                            messages: [
+                                {
+                                    from_id: self.chatData.openedChat.form.from_id,
+                                    to_id: self.chatData.openedChat.form.to_id,
+                                    messages: self.chatData.openedChat.form.messages,
+                                    product_id: self.chatData.openedChat.form.product_id,
+                                    image_url: '',
+                                    created_at: new Date().getTime(),
+                                }
+                            ]
+                        }).then(async function (response)
+                        {
+                            if(response.id != '' || response.id != null)
+                            {
+                                let chat_id = response.id;
+
+                                await refChat.doc(response.id).update({
+                                    chat_id: chat_id
+                                }).then(async function () {}).catch(function(error) {});
+                            }
+                        }).catch(function(error) {
+                            console.log(error)
+                        });
+                    }
+
+                    self.chatData.openedChat.form.messages = '';
+
+                }
+            },
+            
 			logout() {
 				firebase
 					.auth()
@@ -919,6 +1376,8 @@
             $('.dropdown-menu').click(function(e) {
                 e.stopPropagation();
             });
+
+            this.getChatList();
 		}
 	};
 </script>

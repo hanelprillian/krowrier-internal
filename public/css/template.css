@@ -16062,10 +16062,10 @@ be a descendant of the grid when it is being dragged.
 }
 
 .chat-popup .sidepanel .contacts ul li .wrap .image-col {
-  flex: 0 0 30%;
-  max-width: 30%;
-  padding-right: 10px;
-  padding-left: 10px;
+  flex: 0 0 20%;
+  max-width: 20%;
+  padding-right: 3px;
+  padding-left: 3px;
 }
 
 .chat-popup .sidepanel .contacts ul li .wrap .image-col .image-contact {
@@ -16093,23 +16093,30 @@ be a descendant of the grid when it is being dragged.
 }
 
 .chat-popup .sidepanel .contacts ul li .wrap .message-cont-col {
-  flex: 0 0 70%;
-  max-width: 70%;
+  flex: 0 0 80%;
+  max-width: 80%;
   padding-right: 10px;
   padding-left: 10px;
 }
 
 .chat-popup .sidepanel .contacts ul li .wrap .message-cont-col .name {
   font-weight: 500;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 16px;
+  color: #000;
+  margin-bottom: 2px;
+}
+
+.chat-popup .sidepanel .contacts ul li .wrap .message-cont-col .role {
+  font-weight: bold;
+  font-size: 12px;
   color: #000;
   margin-bottom: 10px;
 }
 
 .chat-popup .sidepanel .contacts ul li .wrap .message-cont-col .preview {
   font-weight: 500;
-  font-size: 12px;
+  font-size: 10px;
   line-height: 16px;
   color: #7a7a7a;
   margin: 0;
@@ -16204,7 +16211,7 @@ be a descendant of the grid when it is being dragged.
   opacity: 0.8;
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.09);
   font-weight: 500;
-  font-size: 16px;
+  font-size: 13px;
   color: white;
   padding: 15px;
   margin: 5px;
@@ -16217,7 +16224,7 @@ be a descendant of the grid when it is being dragged.
   opacity: 0.8;
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.09);
   font-weight: 500;
-  font-size: 16px;
+  font-size: 13px;
   color: #7a7a7a;
   padding: 15px;
   margin: 5px;
@@ -16225,7 +16232,7 @@ be a descendant of the grid when it is being dragged.
 
 .chat-popup .content .messages ul .time {
   font-weight: normal;
-  font-size: 14px;
+  font-size: 11px;
   color: #7a7a7a;
 }
 

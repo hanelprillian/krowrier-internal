@@ -3,8 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="c83c229e-a460-4b06-aa34-53bdc3cf4928" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/template.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/template.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/sass/template.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/template.scss" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -64,8 +66,8 @@
       <file leaf-file-name="App.vue" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/js/components/App.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="80" column="92" selection-start-line="80" selection-start-column="92" selection-end-line="80" selection-end-column="92" />
+            <state relative-caret-position="220">
+              <caret line="50" column="194" selection-start-line="50" selection-start-column="194" selection-end-line="50" selection-end-column="194" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#template#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
@@ -148,8 +150,8 @@
       <file leaf-file-name="template.scss" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/sass/template.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="15353" column="25" selection-start-line="15353" selection-start-column="25" selection-end-line="15353" selection-end-column="25" />
+            <state relative-caret-position="187">
+              <caret line="15166" column="21" selection-start-line="15166" selection-start-column="7" selection-end-line="15166" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -171,11 +173,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Load Mo</find>
-      <find>created_at</find>
-      <find>Reg</find>
-      <find>menu</find>
-      <find>chat</find>
       <find>$red</find>
       <find>Ready untuk 30 liter, baca deskripsi dlu ya mas</find>
       <find>chat-popup</find>
@@ -201,6 +198,11 @@
       <find>Sup</find>
       <find>firebase</find>
       <find>Hans Co</find>
+      <find>message-cont-col</find>
+      <find>search-contact</find>
+      <find>contact</find>
+      <find>searchList.keyword</find>
+      <find>Search</find>
     </findStrings>
     <replaceStrings>
       <replace>../</replace>
@@ -574,12 +576,12 @@
       <workItem from="1560263998733" duration="13879000" />
       <workItem from="1560354985254" duration="13573000" />
       <workItem from="1560380945688" duration="1865000" />
-      <workItem from="1560402330001" duration="3386000" />
+      <workItem from="1560402330001" duration="4486000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="186493000" />
+    <option name="totallyTimeSpent" value="187593000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -1010,15 +1012,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/sass/template.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="15353" column="25" selection-start-line="15353" selection-start-column="25" selection-end-line="15353" selection-end-column="25" />
+        <state relative-caret-position="187">
+          <caret line="15166" column="21" selection-start-line="15166" selection-start-column="7" selection-end-line="15166" selection-end-column="21" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/components/App.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="80" column="92" selection-start-line="80" selection-start-column="92" selection-end-line="80" selection-end-column="92" />
+        <state relative-caret-position="220">
+          <caret line="50" column="194" selection-start-line="50" selection-start-column="194" selection-end-line="50" selection-end-column="194" />
           <folding>
             <element signature="n#style#0;n#div#0;n#template#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />

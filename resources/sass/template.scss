@@ -15165,7 +15165,6 @@ be a descendant of the grid when it is being dragged.
         margin-bottom: 20px;
       }
       .search-contact{
-        border: none;
         border-bottom: 1px solid #707070;
         border-radius: 0;
         .input-group-prepend{
@@ -15185,6 +15184,7 @@ be a descendant of the grid when it is being dragged.
         li{
           transition: 0.5s all;
           position: relative;
+          border-bottom: 1px solid #e7e7e7;
           &.active{
             //background: linear-gradient(to left, #002BFD 0%, #fff 100%);
             &:before {
@@ -15231,8 +15231,8 @@ be a descendant of the grid when it is being dragged.
               }
             }
             .message-cont-col {
-              flex: 0 0 80%;
-              max-width: 80%;
+              flex: 0 0 100%;
+              max-width: 100%;
               padding-right: 10px;
               padding-left: 10px;
               .name{

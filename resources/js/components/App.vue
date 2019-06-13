@@ -47,26 +47,23 @@
                                             <div class="sidepanel">
                                                 <div class="header-chat">
                                                     <h5 class="text-uppercase"><strong>Support Room</strong></h5>
-                                                    <div class="input-group search-contact">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text" id="basic-addon1"><i class="fa fa-search"></i></span>
-                                                        </div>
-                                                        <input class="form-control" type="search" placeholder="Cari..." aria-label="Cari...">
+                                                    <div class="search-contact">
+                                                        <input class="form-control no-border" type="search" placeholder="Search..." aria-label="Search..."  v-model="chatData.searchList.keyword">
                                                     </div>
                                                 </div>
                                                 <div class="contacts">
                                                     <ul>
                                                         <li class="contact" v-for="list in filterChat" :class="{'active':chatData.openedChat.opponent_user_id == list.opponent_user_id}" @click.prevent="selectChat(list.chat_id,list.from_id, list.to_id, list.opponent_user_id, list.opponent_user.username, list.opponent_user.photo)">
                                                             <div class="wrap">
-                                                                <div class="image-col">
-                                                                    <div class="image-contact">
-                                                                        <img :src="list.opponent_user && list.opponent_user.photo != '' ? list.opponent_user.photo : 'https://firebasestorage.googleapis.com/v0/b/pasarudang-6129d.appspot.com/o/_webs%2Fuser-img.png?alt=media&token=cb7062cb-1aab-428c-b5d2-8f84fee01cc3'" alt="" />
-                                                                    </div>
-                                                                </div>
+                                                                <!--<div class="image-col">-->
+                                                                    <!--<div class="image-contact">-->
+                                                                        <!--<img :src="list.opponent_user && list.opponent_user.photo != '' ? list.opponent_user.photo : 'https://firebasestorage.googleapis.com/v0/b/pasarudang-6129d.appspot.com/o/_webs%2Fuser-img.png?alt=media&token=cb7062cb-1aab-428c-b5d2-8f84fee01cc3'" alt="" />-->
+                                                                    <!--</div>-->
+                                                                <!--</div>-->
                                                                 <div class="message-cont-col">
                                                                     <p class="name">{{list.opponent_user.name}}</p>
                                                                     <p class="role">{{list.opponent_user.current_role}}</p>
-                                                                    <p class="preview">{{list.last_message}}</p>
+                                                                    <p class="preview">Booking ID: {{list.booking_data.code_booking}}</p>
                                                                 </div>
                                                             </div>
                                                         </li>
@@ -781,7 +778,17 @@
 
                 return this.chatData.list.filter(function (list)
                 {
-                    return list.opponent_user.name ? list.opponent_user.name.toLowerCase().includes(self.chatData.searchList.keyword.toLowerCase()) : '';
+                    if(
+                        (
+                            list.opponent_user.name && list.opponent_user.name.toLowerCase().includes(self.chatData.searchList.keyword.toLowerCase())
+                        ) ||
+                        (
+                            list.booking_data.code_booking && list.booking_data.code_booking.toLowerCase().includes(self.chatData.searchList.keyword.toLowerCase())
+                        )
+                    )
+                    {
+                        return true;
+                    }
                 })
             }
         },

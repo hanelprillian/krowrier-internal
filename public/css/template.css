@@ -16017,7 +16017,6 @@ be a descendant of the grid when it is being dragged.
 }
 
 .chat-popup .sidepanel .header-chat .search-contact {
-  border: none;
   border-bottom: 1px solid #707070;
   border-radius: 0;
 }
@@ -16040,6 +16039,7 @@ be a descendant of the grid when it is being dragged.
 .chat-popup .sidepanel .contacts ul li {
   transition: 0.5s all;
   position: relative;
+  border-bottom: 1px solid #e7e7e7;
 }
 
 .chat-popup .sidepanel .contacts ul li.active:before {
@@ -16093,8 +16093,8 @@ be a descendant of the grid when it is being dragged.
 }
 
 .chat-popup .sidepanel .contacts ul li .wrap .message-cont-col {
-  flex: 0 0 80%;
-  max-width: 80%;
+  flex: 0 0 100%;
+  max-width: 100%;
   padding-right: 10px;
   padding-left: 10px;
 }

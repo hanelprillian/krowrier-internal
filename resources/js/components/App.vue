@@ -78,9 +78,13 @@
                                                     <div class="row align-items-center">
                                                         <div class="col-md-8">
                                                             <h4 class="name">Hans Cocolonel <span class="type">Customer</span></h4>
-                                                            <div class="form-group">
+                                                            <div class="form-group no-margin">
                                                                 <label for=""><strong><small>Booking ID</small></strong></label>
-                                                                <p class="form-control-static">BK20198787</p>
+                                                                <p class="form-control-static ">
+                                                                    <router-link to="/internal/booking/BK20198787" class="no-padding">
+                                                                        BK20198787
+                                                                    </router-link>
+                                                                </p>
                                                             </div>
                                                         </div>
                                                     </div>

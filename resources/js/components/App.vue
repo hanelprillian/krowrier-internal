@@ -831,7 +831,7 @@
 
                                     let newDataMessage = [];
 
-                                    await db.collection("message")
+                                     db.collection("message")
                                         .where("chat_id",'==',data.id)
                                         .orderBy('unix_time','asc')
                                         .onSnapshot(function(querySnapshot)
@@ -869,12 +869,22 @@
 
                                                     newDataMessage.push(data);
 
-                                                    index++;
-
-                                                    if(index == totalMessage)
+                                                    if(index == totalMessage - 1)
                                                     {
                                                         msg_last_index = index;
+
+                                                        setTimeout(function () {
+                                                            var lastElement = document.getElementById("chat-"+chat_id+"-index-"+ msg_last_index);
+
+                                                            if(lastElement)
+                                                            {
+                                                                var topPos = lastElement.offsetTop;
+                                                                func.scrollTo(document.getElementById('listMessagesChat'), topPos-30, 600);
+                                                            }
+                                                        }, 10);
                                                     }
+
+                                                    index++;
                                                 }
                                             });
                                         });
@@ -882,16 +892,6 @@
                                     self.chatData.openedChat.detail = newDataMessage;
 
                                     console.log('opened_chat', self.chatData.openedChat);
-
-                                    setTimeout(function ()
-                                    {
-                                        var lastElement = document.getElementById("chat-"+chat_id+"-index-"+ msg_last_index);
-                                        if(lastElement)
-                                        {
-                                            var topPos = lastElement.offsetTop;
-                                            func.scrollTo(document.getElementById('listMessagesChat'), topPos-30, 600);
-                                        }
-                                    }, 10);
                                 }
                             });
                     }
@@ -1316,7 +1316,7 @@
 
                 }
             },
-            
+
 			logout() {
 				firebase
 					.auth()

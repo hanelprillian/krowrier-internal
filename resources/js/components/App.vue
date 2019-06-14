@@ -53,7 +53,7 @@
                                                 </div>
                                                 <div class="contacts">
                                                     <ul>
-                                                        <li class="contact" v-for="list in filterChat" :class="{'active':chatData.openedChat.opponent_user_id == list.opponent_user_id}" @click.prevent="selectChat(list.chat_id,list.from_id, list.to_id, list.opponent_user_id, list.opponent_user.username, list.opponent_user.photo)">
+                                                        <li class="contact" v-for="list in filterChat" :class="{'active':chatData.openedChat.opponent_user_id == list.opponent_user_id}" @click.prevent="selectChat(list.chat_id,list.user_id, list.role_id, list.opponent_user_id, list.opponent_user.name, list.opponent_user.photo, list.booking_data.id, list.booking_data.code_booking, list.opponent_user.current_role)">
                                                             <div class="wrap">
                                                                 <!--<div class="image-col">-->
                                                                     <!--<div class="image-contact">-->
@@ -71,86 +71,100 @@
                                                 </div>
                                             </div>
                                             <div class="content">
+                                                <!--<div class="contact-profile">-->
+                                                    <!--<div class="row align-items-center">-->
+                                                        <!--<div class="col-md-8">-->
+                                                            <!--<h4 class="name">Hans Cocolonel <span class="type">Customer</span></h4>-->
+                                                            <!--<div class="form-group no-margin">-->
+                                                                <!--<label for=""><strong><small>Booking ID</small></strong></label>-->
+                                                                <!--<p class="form-control-static ">-->
+                                                                    <!--<router-link to="/internal/booking/BK20198787" class="no-padding">-->
+                                                                        <!--BK20198787-->
+                                                                    <!--</router-link>-->
+                                                                <!--</p>-->
+                                                            <!--</div>-->
+                                                        <!--</div>-->
+                                                    <!--</div>-->
+                                                <!--</div>-->
+
                                                 <div class="contact-profile">
                                                     <div class="row align-items-center">
                                                         <div class="col-md-8">
-                                                            <h4 class="name">Hans Cocolonel <span class="type">Customer</span></h4>
-                                                            <div class="form-group no-margin">
-                                                                <label for=""><strong><small>Booking ID</small></strong></label>
-                                                                <p class="form-control-static ">
-                                                                    <router-link to="/internal/booking/BK20198787" class="no-padding">
-                                                                        BK20198787
-                                                                    </router-link>
-                                                                </p>
+                                                            <template v-if="chatData.openedChat.opponent_user_id != ''">
+                                                                <h4 class="name">{{chatData.openedChat.form.name}}
+                                                                    <!--<span class="type">Seller</span>-->
+                                                                </h4>
+                                                                <div class="form-group no-margin">
+                                                                    <label for=""><strong><small>Booking Code</small></strong></label>
+                                                                    <p class="form-control-static ">
+                                                                        <router-link target="_blank" :to="'/internal/booking/'+chatData.openedChat.form.booking_id" class="no-padding">
+                                                                            {{chatData.openedChat.form.booking_code}}
+                                                                        </router-link>
+                                                                    </p>
+                                                                </div>
+                                                                <!--<h5 class="status">Online</h5>-->
+                                                            </template>
+                                                        </div>
+                                                        <div class="col-md-4 d-flex justify-content-end align-items-center">
+                                                            <div class="setting">
+                                                                <!--<i class="fas fa-cog"></i>-->
+                                                                <i class="fas fa-chevron-down" onclick="closeForm()"></i>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="messages">
-                                                    <ul>
-                                                        <li class="user">
-                                                            <div class="sent">Hallo gan untuk barangnya ready ? untuk berapa liter ?</div>
-                                                            <div class="time">
-                                                                12:40 PM <i class="fas fa-check-double"></i>
+                                                <template v-if="chatData.openedChat.opponent_user_id != ''">
+                                                    <div class="messages" id="listMessagesChat">
+                                                        <ul>
+                                                            <li v-for="(detail, index) in chatData.openedChat.detail" :class="{'user': chatData.openedChat.logged_user_id == detail.user_id, 'seller' : chatData.openedChat.logged_user_id == detail.role_id}" :id="'chat-'+chatData.openedChat.form.chat_id+'-index-'+index">
+                                                                <div :class="{'sent': chatData.openedChat.logged_user_id == detail.from, 'replies' : chatData.openedChat.logged_user_id == chatData.openedChat.form.role_id}">
+                                                                    <span v-html="detail.message"></span>
+                                                                    <div v-if="detail.product_id && detail.product_data">
+                                                                        <hr>
+                                                                        <router-link :to="{ path: '/product/'+detail.product_data.id }">
+                                                                            <div class="product-box">
+                                                                                <div class="images">
+                                                                                    <img :src="detail.product_data.photo" class="img-fluid"/>
+                                                                                    <div class="wishlist text-grey-soft">
+                                                                                        <i class="fas fa-heart"></i>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="description">
+                                                                                    <div class="name font-weight-bold">{{detail.product_data.name}}</div>
+                                                                                    <div class="supplier font-weight-light">{{detail.product_data.category_name}}</div>
+                                                                                    <div class="price font-weight-bold">Rp. {{currency(detail.product_data.min_price)}} - {{currency(detail.product_data.max_price)}} /{{detail.product_data.unit}}</div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </router-link>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="time">
+                                                                    {{detail.created_at_formatted}}
+                                                                    <!--<i class="fas fa-check-double"></i>-->
+                                                                </div>
+                                                            </li>
+                                                            <!--<li class="seller">-->
+                                                            <!--<div class="replies">Ready untuk 30 liter, baca deskripsi dlu ya mas</div>-->
+                                                            <!--<div class="time">-->
+                                                            <!--12:40 PM-->
+                                                            <!--</div>-->
+                                                            <!--</li>-->
+                                                        </ul>
+                                                    </div>
+                                                    <div class="message-input" style="position: absolute;left:0;right:0;bottom:0">
+                                                        <form @submit.prevent="sendChat()">
+                                                            <div class="input-group input-message">
+                                                                <!--<div class="input-group-prepend">-->
+                                                                <!--<span class="input-group-text" id="basic-addon1"><i class="fa fa-paperclip attachment"></i></span>-->
+                                                                <!--</div>-->
+                                                                <input class="form-control" type="text" placeholder="Sent a message" v-model="chatData.openedChat.form.messages" aria-label="Sent a message">
+                                                                <div class="input-group-append" @click.prevent="sendChat()">
+                                                                    <span class="input-group-text" id="basic-addon1"><i class="fa fa-paper-plane"></i></span>
+                                                                </div>
                                                             </div>
-                                                        </li>
-                                                        <li class="seller">
-                                                            <div class="replies">Ready untuk 30 liter, baca deskripsi dlu ya mas</div>
-                                                            <div class="time">
-                                                                12:40 PM
-                                                            </div>
-                                                        </li>
-                                                        <li class="user">
-                                                            <div class="sent">Hallo gan untuk barangnya ready ? untuk berapa liter ?</div>
-                                                            <div class="time">
-                                                                12:40 PM <i class="fas fa-check-double"></i>
-                                                            </div>
-                                                        </li>
-                                                        <li class="seller">
-                                                            <div class="replies">Ready untuk 30 liter, baca deskripsi dlu ya mas</div>
-                                                            <div class="time">
-                                                                12:40 PM
-                                                            </div>
-                                                        </li>
-                                                        <li class="user">
-                                                            <div class="sent">Hallo gan untuk barangnya ready ? untuk berapa liter ?</div>
-                                                            <div class="time">
-                                                                12:40 PM <i class="fas fa-check-double"></i>
-                                                            </div>
-                                                        </li>
-                                                        <li class="seller">
-                                                            <div class="replies">Ready untuk 30 liter, baca deskripsi dlu ya mas</div>
-                                                            <div class="time">
-                                                                12:40 PM
-                                                            </div>
-                                                        </li>
-                                                        <li class="user">
-                                                            <div class="sent">Hallo gan untuk barangnya ready ? untuk berapa liter ?</div>
-                                                            <div class="time">
-                                                                12:40 PM <i class="fas fa-check-double"></i>
-                                                            </div>
-                                                        </li>
-                                                        <li class="seller">
-                                                            <div class="replies">Ready untuk 30 liter, baca deskripsi dlu ya mas</div>
-                                                            <div class="time">
-                                                                12:40 PM
-                                                            </div>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="message-input">
-                                                    <form>
-                                                        <div class="input-group input-message">
-                                                            <div class="input-group-prepend">
-                                                                <span class="input-group-text" id="basic-addon1"><i class="fa fa-paperclip attachment"></i></span>
-                                                            </div>
-                                                            <input class="form-control" type="search" placeholder="Sent a message" aria-label="Sent a message">
-                                                            <div class="input-group-append">
-                                                                <span class="input-group-text" id="basic-addon1"><i class="fa fa-paper-plane"></i></span>
-                                                            </div>
-                                                        </div>
-                                                    </form>
-                                                </div>
+                                                        </form>
+                                                    </div>
+                                                </template>
                                             </div>
                                         </div>
 									</div>
@@ -794,13 +808,14 @@
         },
 
 		methods: {
-            async selectChat(chat_id, from_id, to_id, opponent_user_id, name, photo, message, product_id)
+            async selectChat(chat_id, user_id, role_id, opponent_user_id, name, photo, booking_id, booking_code, current_role)
             {
                 let self = this;
-                message = message || '';
-                product_id = product_id || '';
+                booking_id = booking_id || '';
+                booking_code = booking_code || '';
+                current_role = current_role || '';
 
-                if(to_id != '')
+                if(role_id != '')
                 {
                     if(chat_id != '')
                     {
@@ -816,86 +831,57 @@
 
                                     let newDataMessage = [];
 
-                                    await $.each(data.messages, async function (i, v)
-                                    {
-                                        let date = new Date(v.created_at);
-                                        let day = date.getDay();
-                                        let days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-                                        let dayName = days[date.getDay()];
-                                        let dates = date.getUTCDate();
-                                        let month = date.getMonth();
-                                        let year = date.getFullYear();
-
-                                        let month_name = function(month)
+                                    await db.collection("message")
+                                        .where("chat_id",'==',data.id)
+                                        .orderBy('unix_time','asc')
+                                        .onSnapshot(function(querySnapshot)
                                         {
-                                            var mlist = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
-                                            return mlist[month];
-                                        };
+                                            let totalMessage = querySnapshot.size;
+                                            let index = 0;
 
-                                        let hours = date.getHours();
-                                        let minutes = "0" + date.getMinutes();
-                                        let seconds = "0" + date.getSeconds();
-                                        let formattedTime = dayName + ', ' + dates + ' ' + month_name(month) + ' ' + year + ', ' + hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
-
-                                        v.created_at_formatted = formattedTime;
-
-                                        if(v.product_id != '')
-                                        {
-                                            let productData = null;
-
-                                            const ref = db.collection(func.collectionName("products")).doc(v.product_id);
-
-                                            await ref.get().then(async doc =>
+                                            querySnapshot.docChanges().forEach(async function(change)
                                             {
-                                                if (doc.exists)
+                                                if (change.type === "added")
                                                 {
-                                                    let data = doc.data();
-                                                    data.id = doc.id;
+                                                    let data = change.doc.data();
+                                                    data.id = change.doc.id;
 
-                                                    await db.collection("category").doc(data.category_id)
-                                                        .get()
-                                                        .then(function(categoryDoc)
-                                                        {
-                                                            if (categoryDoc.exists)
-                                                            {
-                                                                let categoryData = categoryDoc.data();
-                                                                data.category_name = categoryData.cat_name;
-                                                            }
-                                                        })
-                                                        .catch(function(error) {
-                                                        });
+                                                    let date = new Date(data.created_at);
+                                                    let day = date.getDay();
+                                                    let days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+                                                    let dayName = days[date.getDay()];
+                                                    let dates = date.getUTCDate();
+                                                    let month = date.getMonth();
+                                                    let year = date.getFullYear();
 
-                                                    await db.collection("company").doc(data.company_id)
-                                                        .get()
-                                                        .then(function(companyDoc)
-                                                        {
-                                                            if (companyDoc.exists)
-                                                            {
-                                                                let companyData = companyDoc.data();
-                                                                data.company_name = companyData.name;
-                                                                data.company_logo = companyData.logo;
-                                                                data.company_location = companyData.location;
-                                                            }
-                                                        })
-                                                        .catch(function(error) {
-                                                        });
+                                                    let month_name = function(month)
+                                                    {
+                                                        var mlist = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
+                                                        return mlist[month];
+                                                    };
 
-                                                    v.product_data = data;
+                                                    let hours = date.getHours();
+                                                    let minutes = "0" + date.getMinutes();
+                                                    let seconds = "0" + date.getSeconds();
+                                                    let formattedTime = dayName + ', ' + dates + ' ' + month_name(month) + ' ' + year + ', ' + hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+
+                                                    data.created_at_formatted = formattedTime;
+
+                                                    newDataMessage.push(data);
+
+                                                    index++;
+
+                                                    if(index == totalMessage)
+                                                    {
+                                                        msg_last_index = index;
+                                                    }
                                                 }
                                             });
-                                        }
-
-                                        newDataMessage.push(v);
-
-                                        if(i == data.messages.length - 1)
-                                        {
-                                            msg_last_index = i;
-                                        }
-                                    });
+                                        });
 
                                     self.chatData.openedChat.detail = newDataMessage;
 
-                                    console.log('msg', data.messages);
+                                    console.log('opened_chat', self.chatData.openedChat);
 
                                     setTimeout(function ()
                                     {
@@ -913,42 +899,44 @@
                     self.chatData.openedChat.logged_user_id = self.userLogged.id;
                     self.chatData.openedChat.opponent_user_id = opponent_user_id;
                     self.chatData.openedChat.form.chat_id = chat_id;
-                    self.chatData.openedChat.form.from_id = from_id;
-                    self.chatData.openedChat.form.to_id = to_id;
-                    self.chatData.openedChat.form.user_name = name;
+                    self.chatData.openedChat.form.user_id = user_id;
+                    self.chatData.openedChat.form.role_id = role_id;
+                    self.chatData.openedChat.form.name = name;
                     self.chatData.openedChat.form.user_photo = photo;
-                    self.chatData.openedChat.form.messages = message;
-                    self.chatData.openedChat.form.product_id = product_id;
+                    // self.chatData.openedChat.form.messages = message;
+                    self.chatData.openedChat.form.booking_id = booking_id;
+                    self.chatData.openedChat.form.booking_code = booking_code;
+                    self.chatData.openedChat.form.current_role = current_role;
                 }
             },
 
-            async initChat(to_id, product_id, message, autosend)
+            async initChat(role_id, booking_id, message, autosend)
             {
                 let self = this;
-                product_id = product_id || '';
+                booking_id = booking_id || '';
                 message = message || '';
                 autosend = autosend || false;
 
                 await db.collection("chat")
-                    .where("from_id",'==',self.userLogged.id)
-                    .where("to_id",'==',to_id).limit(1)
+                    .where("user_id",'==',self.userLogged.id)
+                    .where("role_id",'==',role_id).limit(1)
                     .get().then(async function(querySnapshot)
                     {
                         if(querySnapshot.size == 0)
                         {
                             await db.collection("chat")
-                                .where("from_id",'==',to_id)
-                                .where("to_id",'==',self.userLogged.id)
+                                .where("user_id",'==',role_id)
+                                .where("role_id",'==',self.userLogged.id)
                                 .limit(1)
                                 .get().then(async function(querySnapshot2)
                                 {
                                     if(querySnapshot2.size == 0)
                                     {
                                         if (
-                                            to_id != "" &&
-                                            typeof to_id !== "undefined"
+                                            role_id != "" &&
+                                            typeof role_id !== "undefined"
                                         ) {
-                                            await db.collection(func.collectionName("user")).doc(to_id)
+                                            await db.collection(func.collectionName("user")).doc(role_id)
                                                 .get()
                                                 .then(async function (userDoc)
                                                 {
@@ -958,7 +946,7 @@
                                                         let opponent_user = userData;
                                                         let opponent_user_id = userData.id;
 
-                                                        await self.selectChat('', self.userLogged.id, to_id, opponent_user_id, (opponent_user && opponent_user.username ? opponent_user.username : ''), (opponent_user && opponent_user.photo ? opponent_user.photo : ''), message, product_id);
+                                                        await self.selectChat('', self.userLogged.id, role_id, opponent_user_id, (opponent_user && opponent_user.username ? opponent_user.username : ''), (opponent_user && opponent_user.photo ? opponent_user.photo : ''), message, booking_id);
 
                                                         if(autosend)
                                                         {
@@ -980,11 +968,11 @@
 
                                         ///opponent
                                         if (
-                                            data.from_id != "" &&
-                                            typeof data.from_id !== "undefined"
+                                            data.user_id != "" &&
+                                            typeof data.user_id !== "undefined"
                                         )
                                         {
-                                            await db.collection(func.collectionName("user")).doc(data.from_id)
+                                            await db.collection(func.collectionName("user")).doc(data.user_id)
                                                 .get()
                                                 .then(async function(userDoc)
                                                 {
@@ -995,7 +983,7 @@
                                                         data.opponent_user = userData;
                                                         data.opponent_user_id = userData.id;
 
-                                                        await self.selectChat(doc2.id, data.from_id, data.to_id, from_id, (data.opponent_user && data.opponent_user.username? data.opponent_user.username : ''), (data.opponent_user && data.opponent_user.photo? data.opponent_user.photo : ''), message, product_id);
+                                                        await self.selectChat(doc2.id, data.user_id, data.role_id, user_id, (data.opponent_user && data.opponent_user.username? data.opponent_user.username : ''), (data.opponent_user && data.opponent_user.photo? data.opponent_user.photo : ''), message, booking_id);
 
                                                         if(autosend)
                                                         {
@@ -1018,11 +1006,11 @@
 
                             ///opponent
                             if (
-                                data.to_id != "" &&
-                                typeof data.to_id !== "undefined"
+                                data.role_id != "" &&
+                                typeof data.role_id !== "undefined"
                             )
                             {
-                                await db.collection(func.collectionName("user")).doc(data.to_id)
+                                await db.collection(func.collectionName("user")).doc(data.role_id)
                                     .get()
                                     .then(async function(userDoc)
                                     {
@@ -1033,7 +1021,7 @@
                                             data.opponent_user = userData;
                                             data.opponent_user_id = userData.id;
 
-                                            await self.selectChat(doc.id, data.from_id, data.to_id, to_id, (data.opponent_user && data.opponent_user.username? data.opponent_user.username : ''), (data.opponent_user && data.opponent_user.photo? data.opponent_user.photo : ''), message, product_id);
+                                            await self.selectChat(doc.id, data.user_id, data.role_id, role_id, (data.opponent_user && data.opponent_user.username? data.opponent_user.username : ''), (data.opponent_user && data.opponent_user.photo? data.opponent_user.photo : ''), message, booking_id);
 
                                             if(autosend)
                                             {
@@ -1268,10 +1256,10 @@
                             let getLastMessage = await doc.get('messages');
 
                             getLastMessage.push({
-                                from_id: self.chatData.openedChat.form.from_id,
-                                to_id: self.chatData.openedChat.form.to_id,
+                                user_id: self.chatData.openedChat.form.user_id,
+                                role_id: self.chatData.openedChat.form.role_id,
                                 messages: self.chatData.openedChat.form.messages,
-                                product_id: self.chatData.openedChat.form.product_id,
+                                booking_id: self.chatData.openedChat.form.booking_id,
                                 image_url: '',
                                 created_at: new Date().getTime(),
                             });
@@ -1296,15 +1284,15 @@
 
                         refChat.add({
                             created_at: new Date().getTime(),
-                            from_id: self.chatData.openedChat.form.from_id,
-                            to_id: self.chatData.openedChat.form.to_id,
+                            user_id: self.chatData.openedChat.form.user_id,
+                            role_id: self.chatData.openedChat.form.role_id,
                             updated_at: new Date().getTime(),
                             messages: [
                                 {
-                                    from_id: self.chatData.openedChat.form.from_id,
-                                    to_id: self.chatData.openedChat.form.to_id,
+                                    user_id: self.chatData.openedChat.form.user_id,
+                                    role_id: self.chatData.openedChat.form.role_id,
                                     messages: self.chatData.openedChat.form.messages,
-                                    product_id: self.chatData.openedChat.form.product_id,
+                                    booking_id: self.chatData.openedChat.form.booking_id,
                                     image_url: '',
                                     created_at: new Date().getTime(),
                                 }

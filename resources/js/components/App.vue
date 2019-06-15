@@ -41,17 +41,24 @@
                                             class="btn btn-success btn-sm">
                                         Support Room
                                     </button>
-                                    <span class="badge-pulse" style="position: absolute; top:0; right: -5px"></span>
+                                    <span class="badge-pulse" v-if="chatData.has_unread_chat" style="position: absolute; top:0; right: -5px"></span>
 									<div aria-labelledby="user" class="chat-size dropdown-menu">
                                         <div class="chat-popup">
                                             <div class="sidepanel">
                                                 <div class="header-chat">
-                                                    <h5 class="text-uppercase"><strong>Support Room</strong></h5>
+                                                    <h5 class="text-uppercase">
+                                                        <strong>Support Room
+                                                            <span>{{chatData.total_unread}}</span>
+                                                        </strong>
+                                                    </h5>
                                                     <div class="search-contact">
                                                         <input class="form-control no-border" type="search" placeholder="Search..." aria-label="Search..."  v-model="chatData.searchList.keyword">
                                                     </div>
                                                 </div>
                                                 <div class="contacts">
+                                                    <div class="text-center padding-top-10 text-grey-dark" v-if="filterChat.length == 0">
+                                                        Chat Empty :(
+                                                    </div>
                                                     <ul>
                                                         <li class="contact" v-for="list in filterChat" :class="{'active':chatData.openedChat.opponent_user_id == list.opponent_user_id}" @click.prevent="selectChat(list.chat_id,list.user_id, list.role_id, list.opponent_user_id, list.opponent_user.name, list.opponent_user.photo, list.booking_data.id, list.booking_data.code_booking, list.opponent_user.current_role)">
                                                             <div class="wrap">
@@ -61,7 +68,7 @@
                                                                     <!--</div>-->
                                                                 <!--</div>-->
                                                                 <div class="message-cont-col">
-                                                                    <p class="name">{{list.opponent_user.name}}</p>
+                                                                    <p class="name">{{list.opponent_user.name}} &nbsp; <small v-if="list.total_unread > 0" class="badge-text badge-text-small success">{{list.total_unread}}</small></p>
                                                                     <p class="role">{{list.opponent_user.current_role}}</p>
                                                                     <p class="preview">Booking ID: {{list.booking_data.code_booking}}</p>
                                                                 </div>
@@ -116,26 +123,11 @@
                                                 <template v-if="chatData.openedChat.opponent_user_id != ''">
                                                     <div class="messages" id="listMessagesChat">
                                                         <ul>
-                                                            <li v-for="(detail, index) in chatData.openedChat.detail" :class="{'user': chatData.openedChat.logged_user_id == detail.user_id, 'seller' : chatData.openedChat.logged_user_id == detail.role_id}" :id="'chat-'+chatData.openedChat.form.chat_id+'-index-'+index">
-                                                                <div :class="{'sent': chatData.openedChat.logged_user_id == detail.from, 'replies' : chatData.openedChat.logged_user_id == chatData.openedChat.form.role_id}">
-                                                                    <span v-html="detail.message"></span>
-                                                                    <div v-if="detail.product_id && detail.product_data">
-                                                                        <hr>
-                                                                        <router-link :to="{ path: '/product/'+detail.product_data.id }">
-                                                                            <div class="product-box">
-                                                                                <div class="images">
-                                                                                    <img :src="detail.product_data.photo" class="img-fluid"/>
-                                                                                    <div class="wishlist text-grey-soft">
-                                                                                        <i class="fas fa-heart"></i>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="description">
-                                                                                    <div class="name font-weight-bold">{{detail.product_data.name}}</div>
-                                                                                    <div class="supplier font-weight-light">{{detail.product_data.category_name}}</div>
-                                                                                    <div class="price font-weight-bold">Rp. {{currency(detail.product_data.min_price)}} - {{currency(detail.product_data.max_price)}} /{{detail.product_data.unit}}</div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </router-link>
+                                                            <li v-for="(detail, index) in chatData.openedChat.detail" :class="{'user': chatData.openedChat.logged_user_id == detail.from, 'seller' : chatData.openedChat.logged_user_id != detail.from}" :id="'chat-'+chatData.openedChat.form.chat_id+'-index-'+index">
+                                                                <div :class="{'sent': chatData.openedChat.logged_user_id == detail.from, 'replies' : chatData.openedChat.logged_user_id != detail.from}">
+                                                                    <span v-if="detail.type == 'text'" v-html="detail.message"></span>
+                                                                    <div v-if="detail.type == 'file'">
+                                                                        <img :src="detail.message" class="img-thumbnail" alt="">
                                                                     </div>
                                                                 </div>
                                                                 <div class="time">
@@ -766,11 +758,14 @@
                         keyword: ''
                     },
                     list: [],
+                    total_unread: 0,
+                    has_unread_chat: false,
                     openedChat: {
                         logged_user_id: '',
                         opponent_user_id: '',
                         form: {
                             booking_id: '',
+                            role_id: '',
                             chat_id: '',
                             chat_type: '',
                             created_at: '',
@@ -834,12 +829,13 @@
                                      db.collection("message")
                                         .where("chat_id",'==',data.id)
                                         .orderBy('unix_time','asc')
-                                        .onSnapshot(function(querySnapshot)
+                                        .onSnapshot(async function(querySnapshot)
                                         {
                                             let totalMessage = querySnapshot.size;
                                             let index = 0;
+                                            let last_index = 0;
 
-                                            querySnapshot.docChanges().forEach(async function(change)
+                                            await querySnapshot.docChanges().forEach(async function(change)
                                             {
                                                 if (change.type === "added")
                                                 {
@@ -872,21 +868,19 @@
                                                     if(index == totalMessage - 1)
                                                     {
                                                         msg_last_index = index;
-
-                                                        setTimeout(function () {
-                                                            var lastElement = document.getElementById("chat-"+chat_id+"-index-"+ msg_last_index);
-
-                                                            if(lastElement)
-                                                            {
-                                                                var topPos = lastElement.offsetTop;
-                                                                func.scrollTo(document.getElementById('listMessagesChat'), topPos-30, 600);
-                                                            }
-                                                        }, 10);
                                                     }
 
                                                     index++;
                                                 }
                                             });
+
+                                            var lastElement = document.getElementById("chat-"+chat_id+"-index-"+ msg_last_index);
+
+                                            if(lastElement)
+                                            {
+                                                var topPos = lastElement.offsetTop;
+                                                func.scrollTo(document.getElementById('listMessagesChat'), topPos-30, 100);
+                                            }
                                         });
 
                                     self.chatData.openedChat.detail = newDataMessage;
@@ -1049,6 +1043,8 @@
                     .orderBy('unix_time','desc')
                     .onSnapshot(function(querySnapshot)
                     {
+                        self.chatData.total_unread = 0;
+
                         querySnapshot.docChanges().forEach(async function(change)
                         {
                             if (change.type === "added")
@@ -1059,6 +1055,37 @@
                                 data.logged_user_id = self.userLogged.id;
 
                                 data.last_message = data.last_message ? (data.last_message.length > 13 ? data.last_message.substring(0,13)+'...' : data.last_message) : '';
+
+                                data.total_unread = 0;
+
+                                //get unread
+                                db.collection("message")
+                                    .where("chat_id",'==',data.id)
+                                    .where('read','==',0)
+                                    .where('from', '<', data.logged_user_id)
+                                    .onSnapshot(function(querySnapshot)
+                                    {
+                                        data.total_unread = querySnapshot.size;
+
+                                        if(querySnapshot.size > 0)
+                                            self.chatData.has_unread_chat = true;
+                                        else
+                                            self.chatData.has_unread_chat = false;
+
+                                        db.collection("message")
+                                            .where("chat_id",'==',data.id)
+                                            .where('read','==',0)
+                                            .where('from', '>', data.logged_user_id)
+                                            .onSnapshot(function(querySnapshot1)
+                                            {
+                                                data.total_unread = querySnapshot1.size;
+
+                                                if(querySnapshot1.size > 0)
+                                                    self.chatData.has_unread_chat = true;
+                                                else
+                                                    self.chatData.has_unread_chat = false;
+                                            });
+                                    });
 
                                 if (
                                     data.user_id != "" &&
@@ -1253,23 +1280,37 @@
                         await refChat.get().then(async (doc) => {
                             if (!doc.exists) return;
 
-                            let getLastMessage = await doc.get('messages');
+                            let refMessages = db.collection("message");
 
-                            getLastMessage.push({
-                                user_id: self.chatData.openedChat.form.user_id,
-                                role_id: self.chatData.openedChat.form.role_id,
-                                messages: self.chatData.openedChat.form.messages,
-                                booking_id: self.chatData.openedChat.form.booking_id,
-                                image_url: '',
-                                created_at: new Date().getTime(),
-                            });
+                            refMessages.add({
+                                chat_id: self.chatData.openedChat.form.chat_id,
+                                created_at: moment().format("YYYY-MM-DD HH:mm:ss"),
+                                from: self.chatData.openedChat.form.role_id,
+                                message: self.chatData.openedChat.form.messages,
+                                read: 0,
+                                type: 'text',
+                                // unix_time: moment().valueOf(),
+                                unix_time: firebase.firestore.Timestamp.now().toMillis(),
+                                updated_at: moment().format("YYYY-MM-DD HH:mm:ss"),
+                            }).then(async function (response)
+                            {
+                                if(response.id != '' || response.id != null)
+                                {
+                                    let message_id = response.id;
 
-                            lastMessages = getLastMessage;
+                                    await refMessages.doc(response.id).update({
+                                        id: message_id
+                                    }).then(async function () {}).catch(function(error) {});
+                                }
+                            }).catch(function(error)
+                                {
+                                    console.log(error)
+                                });
                         });
 
                         refChat.update({
-                            updated_at: new Date().getTime(),
-                            messages: lastMessages
+                            unix_time: firebase.firestore.Timestamp.now().toMillis(),
+                            updated_at: moment().format("YYYY-MM-DD HH:mm:ss"),
                         }).then(async function (response)
                         {
                         })

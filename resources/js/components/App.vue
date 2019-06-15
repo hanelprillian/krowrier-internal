@@ -1072,6 +1072,8 @@
                                         else
                                             self.chatData.has_unread_chat = false;
 
+                                        // self.chatData.total_unread = data.total_unread;
+
                                         db.collection("message")
                                             .where("chat_id",'==',data.id)
                                             .where('read','==',0)
@@ -1170,6 +1172,37 @@
 
                                 data.last_message = data.last_message ? (data.last_message.length > 13 ? data.last_message.substring(0,13)+'...' : data.last_message) : '';
 
+                                //get unread
+                                db.collection("message")
+                                    .where("chat_id",'==',data.id)
+                                    .where('read','==',0)
+                                    .where('from', '<', data.logged_user_id)
+                                    .onSnapshot(function(querySnapshot)
+                                    {
+                                        data.total_unread = querySnapshot.size;
+
+                                        if(querySnapshot.size > 0)
+                                            self.chatData.has_unread_chat = true;
+                                        else
+                                            self.chatData.has_unread_chat = false;
+
+                                        // self.chatData.total_unread = data.total_unread;
+
+                                        db.collection("message")
+                                            .where("chat_id",'==',data.id)
+                                            .where('read','==',0)
+                                            .where('from', '>', data.logged_user_id)
+                                            .onSnapshot(function(querySnapshot1)
+                                            {
+                                                data.total_unread = querySnapshot1.size;
+
+                                                if(querySnapshot1.size > 0)
+                                                    self.chatData.has_unread_chat = true;
+                                                else
+                                                    self.chatData.has_unread_chat = false;
+                                            });
+                                    });
+
                                 if (
                                     data.role_id != "" &&
                                     typeof data.role_id !== "undefined"
@@ -1238,7 +1271,8 @@
                         });
                     });
 
-                self.chatData.list = await _.uniqBy(self.chatData.list, 'logged_user_id');
+                // self.chatData.list = await _.uniqBy(self.chatData.list, 'logged_user_id');
+                self.chatData.list = _.uniqBy(self.chatData.list, 'logged_user_id');
 
                 console.log('chat list', self.chatData.list);
             },

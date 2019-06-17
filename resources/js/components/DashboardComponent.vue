@@ -55,7 +55,7 @@
                                             <small>
                                                 <label for="">Start Month</label>
                                             </small>
-                                            <datepicker :minimumView="'month'" :maximumView="'year'" v-model="filter_dashboard.from_month" input-class="form-control" format="MM/yyyy"></datepicker>
+                                            <datepicker :minimumView="'month'" :maximumView="'year'" v-model="filter_dashboard.from_month" input-class="form-control" format="yyyy/MM"></datepicker>
                                         </div>
                                     </div>
                                     <div class="col-lg-2 col-md-2 col-sm-2">
@@ -63,7 +63,7 @@
                                             <small>
                                                 <label for="">End Month</label>
                                             </small>
-                                            <datepicker :minimumView="'month'" :maximumView="'year'" v-model="filter_dashboard.to_month" input-class="form-control" format="MM/yyyy"></datepicker>
+                                            <datepicker :minimumView="'month'" :maximumView="'year'" v-model="filter_dashboard.to_month" input-class="form-control" format="yyyy/MM"></datepicker>
                                         </div>
                                     </div>
                                 </template>
@@ -97,6 +97,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="col-xl-4 col-md-6 col-sm-6">
                 <div class="widget widget-12 has-shadow">
                     <div class="widget-body">
@@ -118,6 +119,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="col-xl-4 col-md-6 col-sm-6">
                 <div class="widget widget-12 has-shadow">
                     <div class="widget-body">
@@ -193,7 +195,7 @@
                                 </div>
                             </div>
                         </div>
-                        <vue-apex-charts width="100%" height="300" type="bar" :options="chartOptions" :series="series"></vue-apex-charts>
+                        <vue-apex-charts v-if="filter_dashboard.method == 'by_year' || filter_dashboard.method == 'current_year'" width="100%" height="300" type="bar" :options="chartOptions" :series="series"></vue-apex-charts>
                         <!--<GChart-->
                         <!--style="height: 300px; width:100%"-->
                         <!--type="ColumnChart"-->
@@ -424,6 +426,22 @@
                         self.getBookingStatistics(self.filter_dashboard.current_year);
                         self.initCounter();
                     }
+                },
+
+                "filter_dashboard.from_month" ()
+                {
+                    if(this.filter_dashboard.method == 'month_range' && this.filter_dashboard.from_month != '' && this.filter_dashboard.to_month != '')
+                    {
+                        this.initCounter();
+                    }
+                },
+
+                "filter_dashboard.to_month" ()
+                {
+                    if(this.filter_dashboard.method == 'month_range' && this.filter_dashboard.from_month != '' && this.filter_dashboard.to_month != '')
+                    {
+                        this.initCounter();
+                    }
                 }
             },
 
@@ -545,6 +563,13 @@
                         .where("create_unix_time" ,'>=', moment(this.filter_dashboard.selected_year.toString()).startOf('year').valueOf())
                         .where("create_unix_time" ,'<=', moment(this.filter_dashboard.selected_year.toString()).endOf('year').valueOf());
                 }
+                else if(self.filter_dashboard.method == 'month_range')
+                {
+                    queryDropPoint =  db
+                        .collection("drop_point")
+                        .where("create_unix_time" ,'>=', moment(this.filter_dashboard.from_month.toString()).startOf('month').valueOf())
+                        .where("create_unix_time" ,'<=', moment(this.filter_dashboard.to_month.toString()).endOf('month').valueOf());
+                }
 
                 queryDropPoint.get()
                     .then(snap => {
@@ -567,6 +592,13 @@
                         .where("create_unix_time" ,'>=', moment(this.filter_dashboard.selected_year.toString()).startOf('year').valueOf())
                         .where("create_unix_time" ,'<=', moment(this.filter_dashboard.selected_year.toString()).endOf('year').valueOf());
                 }
+                else if(self.filter_dashboard.method == 'month_range')
+                {
+                    queryBooking =  db
+                        .collection("booking")
+                        .where("create_unix_time" ,'>=', moment(this.filter_dashboard.from_month.toString()).startOf('month').valueOf())
+                        .where("create_unix_time" ,'<=', moment(this.filter_dashboard.to_month.toString()).endOf('month').valueOf());
+                }
 
                 queryBooking.get()
                     .then(snap => {
@@ -586,6 +618,13 @@
                     queryBookingCharges =  db
                         .collection("booking_monthly_statistic")
                         .where("year" ,'==', parseInt(self.filter_dashboard._selected_year_formatted))
+                }
+                else if(self.filter_dashboard.method == 'month_range')
+                {
+                    queryBookingCharges =  db
+                        .collection("booking_monthly_statistic")
+                        .where("year" ,'>=', moment(this.filter_dashboard.from_month.toString()).startOf('month').year())
+                        .where("year" ,'<=', moment(this.filter_dashboard.to_month.toString()).endOf('month').year());
                 }
 
                 queryBookingCharges
@@ -618,6 +657,13 @@
                         .where("create_unix_time" ,'>=', moment(this.filter_dashboard.selected_year.toString()).startOf('year').valueOf())
                         .where("create_unix_time" ,'<=', moment(this.filter_dashboard.selected_year.toString()).endOf('year').valueOf());
                 }
+                else if(self.filter_dashboard.method == 'month_range')
+                {
+                    queryCustomer =  db
+                        .collection("user").where('current_role','==','customer')
+                        .where("create_unix_time" ,'>=', moment(this.filter_dashboard.from_month.toString()).startOf('month').valueOf())
+                        .where("create_unix_time" ,'<=', moment(this.filter_dashboard.to_month.toString()).endOf('month').valueOf());
+                }
 
                 queryCustomer.onSnapshot(async documentSnapshots =>
                 {
@@ -640,6 +686,13 @@
                         .where("create_unix_time" ,'>=', moment(this.filter_dashboard.selected_year.toString()).startOf('year').valueOf())
                         .where("create_unix_time" ,'<=', moment(this.filter_dashboard.selected_year.toString()).endOf('year').valueOf());
                 }
+                else if(self.filter_dashboard.method == 'month_range')
+                {
+                    queryCourier =  db
+                        .collection("courier")
+                        .where("create_unix_time" ,'>=', moment(this.filter_dashboard.from_month.toString()).startOf('month').valueOf())
+                        .where("create_unix_time" ,'<=', moment(this.filter_dashboard.to_month.toString()).endOf('month').valueOf());
+                }
 
                 queryCourier.onSnapshot(async documentSnapshots =>
                 {
@@ -657,6 +710,13 @@
                         .collection("feeder")
                         .where("create_unix_time" ,'>=', moment(this.filter_dashboard.selected_year.toString()).startOf('year').valueOf())
                         .where("create_unix_time" ,'<=', moment(this.filter_dashboard.selected_year.toString()).endOf('year').valueOf());
+                }
+                else if(self.filter_dashboard.method == 'month_range')
+                {
+                    queryFeeder =  db
+                        .collection("feeder")
+                        .where("create_unix_time" ,'>=', moment(this.filter_dashboard.from_month.toString()).startOf('month').valueOf())
+                        .where("create_unix_time" ,'<=', moment(this.filter_dashboard.to_month.toString()).endOf('month').valueOf());
                 }
 
                 queryFeeder.onSnapshot(async documentSnapshots =>

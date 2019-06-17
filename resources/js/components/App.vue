@@ -807,6 +807,11 @@
             }
         },
 
+        watch:
+        {
+
+        },
+
         methods: {
             async selectChat(chat_id, user_id, role_id, opponent_user_id, name, photo, booking_id, booking_code, current_role)
             {
@@ -1068,7 +1073,9 @@
 
                 self.chatData.list = [];
 
-                await db.collection("chat")
+                let chatRef = db.collection("chat");
+
+                chatRef
                     .where("role_id",'==',self.userLogged.id)
                     .orderBy('unix_time','desc')
                     .onSnapshot(function(querySnapshot)
@@ -1089,30 +1096,23 @@
                                 data.total_unread = 0;
 
                                 //get unread
-                                db.collection("message")
+                                let refMsgUnread = db.collection("message")
                                     .where("chat_id",'==',data.id)
-                                    .where('read','==',0)
-                                    .where('from', '<', data.logged_user_id)
-                                    .onSnapshot(function(querySnapshot)
+                                    .where('read','==',0);
+
+                                refMsgUnread.where('from', '<', data.logged_user_id)
+                                    .onSnapshot(function(querySnapshotMsg)
                                     {
-                                        data.total_unread = querySnapshot.size;
-
-                                        if(querySnapshot.size > 0)
-                                            self.chatData.has_unread_chat = true;
-                                        else
-                                            self.chatData.has_unread_chat = false;
-
+                                        data.total_unread = querySnapshotMsg.size;
                                         // self.chatData.total_unread = data.total_unread;
 
-                                        db.collection("message")
-                                            .where("chat_id",'==',data.id)
-                                            .where('read','==',0)
-                                            .where('from', '>', data.logged_user_id)
-                                            .onSnapshot(function(querySnapshot1)
+                                        refMsgUnread.where('from', '>', data.logged_user_id)
+                                            .onSnapshot(function(querySnapshotMsg1)
                                             {
-                                                data.total_unread = querySnapshot1.size;
+                                                if(querySnapshotMsg1.size > 0)
+                                                    data.total_unread =+ querySnapshotMsg1.size;
 
-                                                if(querySnapshot1.size > 0)
+                                                if(querySnapshotMsg.size > 0 || querySnapshotMsg1.size > 0)
                                                     self.chatData.has_unread_chat = true;
                                                 else
                                                     self.chatData.has_unread_chat = false;
@@ -1186,7 +1186,7 @@
                         });
                     });
 
-                await db.collection("chat")
+                chatRef
                     .where("user_id",'==',self.userLogged.id)
                     .orderBy('unix_time','desc')
                     .onSnapshot(function(querySnapshot)
@@ -1203,35 +1203,35 @@
                                 data.last_message = data.last_message ? (data.last_message.length > 13 ? data.last_message.substring(0,13)+'...' : data.last_message) : '';
 
                                 //get unread
-                                db.collection("message")
-                                    .where("chat_id",'==',data.id)
-                                    .where('read','==',0)
-                                    .where('from', '<', data.logged_user_id)
-                                    .onSnapshot(function(querySnapshot)
-                                    {
-                                        data.total_unread = querySnapshot.size;
-
-                                        if(querySnapshot.size > 0)
-                                            self.chatData.has_unread_chat = true;
-                                        else
-                                            self.chatData.has_unread_chat = false;
-
-                                        // self.chatData.total_unread = data.total_unread;
-
-                                        db.collection("message")
-                                            .where("chat_id",'==',data.id)
-                                            .where('read','==',0)
-                                            .where('from', '>', data.logged_user_id)
-                                            .onSnapshot(function(querySnapshot1)
-                                            {
-                                                data.total_unread = querySnapshot1.size;
-
-                                                if(querySnapshot1.size > 0)
-                                                    self.chatData.has_unread_chat = true;
-                                                else
-                                                    self.chatData.has_unread_chat = false;
-                                            });
-                                    });
+                                // db.collection("message")
+                                //     .where("chat_id",'==',data.id)
+                                //     .where('read','==',0)
+                                //     .where('from', '<', data.logged_user_id)
+                                //     .onSnapshot(function(querySnapshot)
+                                //     {
+                                //         data.total_unread = querySnapshot.size;
+                                //
+                                //         if(querySnapshot.size > 0)
+                                //             self.chatData.has_unread_chat = true;
+                                //         else
+                                //             self.chatData.has_unread_chat = false;
+                                //
+                                //         // self.chatData.total_unread = data.total_unread;
+                                //
+                                //         db.collection("message")
+                                //             .where("chat_id",'==',data.id)
+                                //             .where('read','==',0)
+                                //             .where('from', '>', data.logged_user_id)
+                                //             .onSnapshot(function(querySnapshot1)
+                                //             {
+                                //                 data.total_unread = querySnapshot1.size;
+                                //
+                                //                 if(querySnapshot1.size > 0)
+                                //                     self.chatData.has_unread_chat = true;
+                                //                 else
+                                //                     self.chatData.has_unread_chat = false;
+                                //             });
+                                //     });
 
                                 if (
                                     data.role_id != "" &&
@@ -1442,6 +1442,11 @@
             },
         },
 
+        beforeMount()
+        {
+            this.getChatList();
+        },
+
         mounted()
         {
             this.startTime();
@@ -1478,8 +1483,6 @@
             $('.dropdown-menu').click(function(e) {
                 e.stopPropagation();
             });
-
-            this.getChatList();
         }
     };
 </script>

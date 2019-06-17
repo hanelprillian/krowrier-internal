@@ -3,11 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="c83c229e-a460-4b06-aa34-53bdc3cf4928" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/template.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/template.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/sass/template.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/template.scss" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -24,8 +21,8 @@
       <file leaf-file-name="App.vue" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/js/components/App.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="188">
-              <caret line="1344" column="41" lean-forward="true" selection-start-line="1344" selection-start-column="41" selection-end-line="1344" selection-end-column="41" />
+            <state relative-caret-position="160">
+              <caret line="811" column="8" selection-start-line="811" selection-start-column="8" selection-end-line="811" selection-end-column="8" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#template#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
@@ -49,15 +46,25 @@
                 <element signature="n#div#2;n#div#0;n#div#0;n#template#0;n#!!top" />
                 <element signature="e#54278#54977#0" />
                 <element signature="e#54395#54962#0" expanded="true" />
+                <element signature="e#55148#60242#0" />
                 <element signature="e#55819#58761#0" expanded="true" />
                 <element signature="e#56120#58309#0" expanded="true" />
                 <element signature="e#57785#58086#0" expanded="true" />
                 <element signature="e#58480#58781#0" expanded="true" />
                 <element signature="e#59864#66914#0" />
-                <element signature="e#66961#79366#0" />
+                <element signature="e#67270#73127#0" expanded="true" />
+                <element signature="e#67435#73103#0" expanded="true" />
+                <element signature="e#71266#72637#0" expanded="true" />
+                <element signature="e#72144#72597#0" expanded="true" />
+                <element signature="e#70249#70765#0" expanded="true" />
+                <element signature="e#73470#79083#0" expanded="true" />
                 <element signature="e#79423#79810#0" />
+                <element signature="e#84034#85544#0" expanded="true" />
                 <element signature="e#84410#85478#0" expanded="true" />
                 <element signature="e#83132#84751#0" />
+                <element signature="e#85818#86610#0" expanded="true" />
+                <element signature="e#86680#86831#0" expanded="true" />
+                <element signature="e#86884#86936#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -133,10 +140,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>firebase.firestore.Timestamp.now()</find>
-      <find>.format(&quot;YYYY-MM-DD hh:mm&quot;)</find>
-      <find>created_at_for</find>
-      <find>chat_mo</find>
       <find>chat_modified</find>
       <find>opened_</find>
       <find>opened_chat</find>
@@ -163,6 +166,10 @@
       <find>Sen</find>
       <find>Sup</find>
       <find>Booking Code</find>
+      <find>getChatList</find>
+      <find>modifyChatList</find>
+      <find>has_unread_chat</find>
+      <find>opponent_user</find>
     </findStrings>
     <replaceStrings>
       <replace>../</replace>
@@ -553,12 +560,12 @@
       <workItem from="1560621869630" duration="11567000" />
       <workItem from="1560677542401" duration="604000" />
       <workItem from="1560745563288" duration="13653000" />
-      <workItem from="1560782370834" duration="5185000" />
+      <workItem from="1560782370834" duration="8505000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="223386000" />
+    <option name="totallyTimeSpent" value="226706000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -955,8 +962,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/components/App.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="1344" column="41" lean-forward="true" selection-start-line="1344" selection-start-column="41" selection-end-line="1344" selection-end-column="41" />
+        <state relative-caret-position="160">
+          <caret line="811" column="8" selection-start-line="811" selection-start-column="8" selection-end-line="811" selection-end-column="8" />
           <folding>
             <element signature="n#style#0;n#div#0;n#template#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
@@ -980,15 +987,25 @@
             <element signature="n#div#2;n#div#0;n#div#0;n#template#0;n#!!top" />
             <element signature="e#54278#54977#0" />
             <element signature="e#54395#54962#0" expanded="true" />
+            <element signature="e#55148#60242#0" />
             <element signature="e#55819#58761#0" expanded="true" />
             <element signature="e#56120#58309#0" expanded="true" />
             <element signature="e#57785#58086#0" expanded="true" />
             <element signature="e#58480#58781#0" expanded="true" />
             <element signature="e#59864#66914#0" />
-            <element signature="e#66961#79366#0" />
+            <element signature="e#67270#73127#0" expanded="true" />
+            <element signature="e#67435#73103#0" expanded="true" />
+            <element signature="e#71266#72637#0" expanded="true" />
+            <element signature="e#72144#72597#0" expanded="true" />
+            <element signature="e#70249#70765#0" expanded="true" />
+            <element signature="e#73470#79083#0" expanded="true" />
             <element signature="e#79423#79810#0" />
+            <element signature="e#84034#85544#0" expanded="true" />
             <element signature="e#84410#85478#0" expanded="true" />
             <element signature="e#83132#84751#0" />
+            <element signature="e#85818#86610#0" expanded="true" />
+            <element signature="e#86680#86831#0" expanded="true" />
+            <element signature="e#86884#86936#0" expanded="true" />
           </folding>
         </state>
       </provider>

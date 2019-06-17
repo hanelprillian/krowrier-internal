@@ -33,5 +33,7 @@
     "/view-User-Form-vue.js": "/view-User-Form-vue.js",
     "/view-User-Index-vue.js": "/view-User-Index-vue.js",
     "/view-_Widget-MapsPicker-vue.js": "/view-_Widget-MapsPicker-vue.js",
-    "/view-_Widget-MapsShow-vue.js": "/view-_Widget-MapsShow-vue.js"
+    "/view-_Widget-MapsShow-vue.js": "/view-_Widget-MapsShow-vue.js",
+    "/vendors~view-Company-Form-vue~view-Courier-Form-vue~view-Customer-Form-vue~view-DropPoint-Form-vue~v~1ac3bf8a.js": "/vendors~view-Company-Form-vue~view-Courier-Form-vue~view-Customer-Form-vue~view-DropPoint-Form-vue~v~1ac3bf8a.js",
+    "/view-Courier-Form-vue~view-FeederCourier-Form-vue.js": "/view-Courier-Form-vue~view-FeederCourier-Form-vue.js"
 }

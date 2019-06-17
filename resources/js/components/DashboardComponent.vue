@@ -623,8 +623,8 @@
                 {
                     queryBookingCharges =  db
                         .collection("booking_monthly_statistic")
-                        .where("year" ,'>=', moment(this.filter_dashboard.from_month.toString()).startOf('month').year())
-                        .where("year" ,'<=', moment(this.filter_dashboard.to_month.toString()).endOf('month').year());
+                        .where("month_index" ,'>=', moment(this.filter_dashboard.from_month.toString()).month()+1)
+                        .where("month_index" ,'<=', moment(this.filter_dashboard.to_month.toString()).month()+1);
                 }
 
                 queryBookingCharges

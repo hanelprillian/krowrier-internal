@@ -7,6 +7,7 @@
                     <h2 class="page-header-title">
                         Dashboard |
                         <small v-if="filter_dashboard.method == 'current_year' || filter_dashboard.method == 'by_year'">{{filter_dashboard._selected_year_formatted}}</small>
+                        <small v-if="filter_dashboard.method == 'month_range'">{{filter_dashboard._from_month_format}} <small>to</small> {{filter_dashboard._to_month_format}}</small>
                     </h2>
                     <div>
                         <div class="page-header-tools">
@@ -36,8 +37,9 @@
                                         </small>
                                         <select name="" v-model="filter_dashboard.method" id="" class="form-control formSelect btn-sm no-margin">
                                             <option value="current_year">Current Year ({{filter_dashboard.current_year}})</option>
-                                            <option value="by_year">By Selected Year</option>
-                                            <option value="month_range">Month Range</option>
+                                            <option value="by_year">By Year</option>
+                                            <option value="month_range">By Month</option>
+                                            <option value="date_range">By Date</option>
                                         </select>
                                     </div>
                                 </div>
@@ -207,12 +209,16 @@
                 </div>
                 <!-- End Vertical Bar 02 -->
             </div>
-            <br>
+            <div class="col-md-12 pb-3">
+                <h3>
+                    New Request
+                </h3>
+            </div>
             <div class="col-xl-6">
                 <div class="widget widget-07 has-shadow">
                     <!-- Begin Widget Header -->
                     <div class="widget-header bordered d-flex align-items-center">
-                        <h2>New Feeder Courier</h2>
+                        <h2>New Feeder</h2>
                     </div>
                     <!-- End Widget Header -->
                     <!-- Begin Widget Body -->
@@ -350,14 +356,16 @@
                     // current_year
                     // month_range
                     // by_year
-                    // by_year
+                    // date_range
                     method: 'current_year',
 
                     selected_year: moment().format("YYYY"),
                     _selected_year_formatted: moment().format("YYYY"),
 
-                    from_month: '',
-                    to_month: '',
+                    from_month: moment().format("YYYY/MM"),
+                    _from_month_format: moment().format("MMMM YYYY"),
+                    to_month: moment().format("YYYY/MM"),
+                    _to_month_format: moment().format("MMMM YYYY"),
                     current_year: moment().format("YYYY"),
                 },
 
@@ -430,6 +438,10 @@
 
                 "filter_dashboard.from_month" ()
                 {
+                    this.filter_dashboard._from_month_format = this.filter_dashboard.from_month != '' ? moment(this.filter_dashboard.from_month).format(
+                        "MMMM YYYY"
+                    ) : moment().format("MMMM YYYY");
+
                     if(this.filter_dashboard.method == 'month_range' && this.filter_dashboard.from_month != '' && this.filter_dashboard.to_month != '')
                     {
                         this.initCounter();
@@ -438,6 +450,10 @@
 
                 "filter_dashboard.to_month" ()
                 {
+                    this.filter_dashboard._to_month_format = this.filter_dashboard.to_month != '' ? moment(this.filter_dashboard.to_month).format(
+                        "MMMM YYYY"
+                    ) : moment().format("MMMM YYYY");
+
                     if(this.filter_dashboard.method == 'month_range' && this.filter_dashboard.from_month != '' && this.filter_dashboard.to_month != '')
                     {
                         this.initCounter();

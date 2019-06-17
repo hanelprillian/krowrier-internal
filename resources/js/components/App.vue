@@ -1436,6 +1436,7 @@
 
             startTime()
             {
+                moment.locale('id');
                 var today = moment();
                 this.time = today;
                 var t = setTimeout(this.startTime, 500);

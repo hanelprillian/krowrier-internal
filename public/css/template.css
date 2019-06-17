@@ -16174,7 +16174,7 @@ be a descendant of the grid when it is being dragged.
 .chat-popup .content .messages {
   background: #f8f8f8;
   height: 450px;
-  padding-bottom: 60px;
+  margin-bottom: 55px;
   overflow-y: scroll;
 }
 
@@ -16244,7 +16244,7 @@ be a descendant of the grid when it is being dragged.
 
 .chat-popup .content .message-input .input-message {
   border: none;
-  padding: 15px;
+  padding: 5px;
 }
 
 .chat-popup .content .message-input .input-message .input-group-prepend .input-group-text,
@@ -16253,9 +16253,10 @@ be a descendant of the grid when it is being dragged.
 }
 
 .chat-popup .content .message-input .input-message .input-group-append .input-group-text {
-  background: #ecedee;
-  color: #ee336e;
-  border-radius: 50%;
+  background: #3654E8;
+  color: #fff;
+  font-size: 13pt;
+  padding: 0 20px 0 20px;
 }
 
 .chat-popup .content .message-input .input-message .form-control {

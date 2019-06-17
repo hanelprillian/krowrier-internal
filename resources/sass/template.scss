@@ -15307,7 +15307,7 @@ be a descendant of the grid when it is being dragged.
     .messages{
       background: #f8f8f8;
       height: 450px;
-      padding-bottom:60px;
+      margin-bottom:55px;
       overflow-y: scroll;
       ul{
         list-style: none;
@@ -15368,7 +15368,7 @@ be a descendant of the grid when it is being dragged.
       box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.16);
       .input-message{
         border: none;
-        padding: 15px;
+        padding: 5px;
         .input-group-prepend, .input-group-append{
           .input-group-text{
             border: none;
@@ -15376,9 +15376,10 @@ be a descendant of the grid when it is being dragged.
         }
         .input-group-append{
           .input-group-text{
-            background: #ecedee;
-            color: #ee336e;
-            border-radius: 50%;
+            background: #3654E8;
+            color: #fff;
+            font-size: 13pt;
+            padding: 0 20px 0 20px;
           }
         }
         .form-control{

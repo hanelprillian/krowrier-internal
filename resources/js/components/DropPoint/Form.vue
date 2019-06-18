@@ -103,21 +103,29 @@
 						<!-- Form -->
 						<div class="widget has-shadow">
 							<div class="widget-header">
-								<span>Courier Information</span>
+								<span>Drop Point Information</span>
 							</div>
 							<div class="widget-body">
 								<form class="form-horizontal">
 									<div class="row">
 										<div class="col-md-6">
-											<div class="form-group align-items-center mb-5">
-												<label class="form-control-label">Email</label>
-												<p class="form-control-static">{{ data.user ? data.user.email : '-' }}</p>
-											</div>
+                                            <div class="form-group align-items-center mb-5">
+                                                <label class="form-control-label">ID</label>
+                                                <p class="form-control-static">{{ data.droppoint_id ? data.droppoint_id : '-' }}</p>
+                                            </div>
+                                            <div class="form-group align-items-center mb-5">
+                                                <label class="form-control-label">Name</label>
+                                                <p class="form-control-static">{{ data.name ? data.name : '-' }}</p>
+                                            </div>
 										</div>
 										<div class="col-md-6">
+                                            <div class="form-group align-items-center mb-5">
+                                                <label class="form-control-label">Owner</label>
+                                                <p class="form-control-static">{{ data.owner_name ? data.owner_name : '-' }}</p>
+                                            </div>
 											<div class="form-group align-items-center mb-5">
-												<label class="form-control-label">User</label>
-												<p class="form-control-static">{{ data.user ? data.user.name : '-' }}</p>
+												<label class="form-control-label">Address</label>
+												<p class="form-control-static">{{ data.address ? data.address : '-' }}</p>
 											</div>
 										</div>
 									</div>
@@ -126,53 +134,35 @@
 									<div class="row">
 										<div class="col-md-6">
 											<div class="form-group align-items-center mb-5">
-												<label class="form-control-label">Phone</label>
-												<p v-if="!allowEdit" class="form-control-static">{{ data.user.phone }}</p>
-												<input
-													v-if="allowEdit"
-													type="text"
-													class="form-control"
-													value
-													v-model="data.user.phone"
-													placeholder="Phone"
-												>
+												<label class="form-control-label">Email</label>
+												<p class="form-control-static">{{ data.user ? data.user.email : '-'}}</p>
 											</div>
 											<div class="form-group align-items-center mb-5">
-												<label class="form-control-label">Birth</label>
-												<p v-if="!allowEdit" class="form-control-static">{{ data.user.birth_formatted }}</p>
-
-												<datepicker
-													v-if="allowEdit"
-													v-model="data.user.birth"
-													format="dd/MM/yyyy"
-													input-class="form-control"
-												></datepicker>
+												<label class="form-control-label">Username</label>
+                                                <p v-if="!allowEdit" class="form-control-static">{{ data.user ? data.user.name : '-'}}</p>
+                                                <input
+                                                        v-if="allowEdit"
+                                                        type="text"
+                                                        class="form-control"
+                                                        value
+                                                        v-model="data.user.name"
+                                                        placeholder="Phone"
+                                                >
 											</div>
 										</div>
 										<div class="col-md-6">
-											<div class="form-group align-items-center mb-5">
-												<label class="form-control-label">Gender</label>
-												<p
-													v-if="!allowEdit"
-													class="form-control-static"
-												>{{ data.user.gender == 'M' ? 'Male' : 'Female' }}</p>
-
-												<select v-show="allowEdit" class="formSelect form-control" v-model="data.user.gender">
-													<option value="M">Male</option>
-													<option value="F">Female</option>
-												</select>
-											</div>
-											<div class="form-group align-items-center mb-5">
-												<label class="form-control-label">Address</label>
-												<p v-if="!allowEdit" class="form-control-static">{{ data.user.address }}</p>
-												<textarea
-													v-if="allowEdit"
-													class="form-control"
-													placeholder="Address"
-													rows="5"
-													v-model="data.user.address"
-												></textarea>
-											</div>
+                                            <div class="form-group align-items-center mb-5">
+                                                <label class="form-control-label">Phone</label>
+                                                <p v-if="!allowEdit" class="form-control-static">{{ data.phone}}</p>
+                                                <input
+                                                        v-if="allowEdit"
+                                                        type="text"
+                                                        class="form-control"
+                                                        value
+                                                        v-model="data.phone"
+                                                        placeholder="Phone"
+                                                >
+                                            </div>
 										</div>
 									</div>
 								</form>
@@ -182,60 +172,7 @@
 						<!-- Form -->
 						<div class="widget has-shadow">
 							<div class="widget-header">
-								<span>Courier Vehicle</span>
-							</div>
-							<div class="widget-body">
-								<form class="form-horizontal">
-									<div class="row">
-										<div class="col-md-4">
-											<div class="form-group align-items-center mb-5">
-												<label class="form-control-label">Vehicle Type</label>
-												<p v-if="!allowEdit" class="form-control-static">{{ data.vehicle_type_name }}</p>
-
-												<select
-													v-show="allowEdit"
-													class="formSelect form-control"
-													v-model="data.vehicle_type_id"
-												>
-													<option :value="type.id" v-for="type in vehicleType">{{ type.name }}</option>
-												</select>
-											</div>
-										</div>
-										<div class="col-md-4">
-											<div class="form-group align-items-center mb-5">
-												<label class="form-control-label">Vehicle Name</label>
-												<p v-if="!allowEdit" class="form-control-static">{{ data.vehicle_name }}</p>
-												<input
-													v-if="allowEdit"
-													type="text"
-													class="form-control"
-													value
-													v-model="data.vehicle_name"
-												>
-											</div>
-										</div>
-										<div class="col-md-4">
-											<div class="form-group align-items-center mb-5">
-												<label class="form-control-label">Vehicle Number</label>
-												<p v-if="!allowEdit" class="form-control-static">{{ data.vehicle_police_number }}</p>
-												<input
-													v-if="allowEdit"
-													type="text"
-													class="form-control"
-													value
-													v-model="data.vehicle_police_number"
-												>
-											</div>
-										</div>
-									</div>
-								</form>
-							</div>
-						</div>
-						<!-- End Form -->
-						<!-- Form -->
-						<div class="widget has-shadow">
-							<div class="widget-header">
-								<span>Courier File</span>
+								<span>File</span>
 							</div>
 							<div class="widget-body">
 								<form class="form-horizontal">
@@ -265,12 +202,12 @@
 										</div>
 										<div class="col-md-3">
 											<div class="form-group align-items-center mb-5">
-												<label class="form-control-label">Vehicle Photo</label>
+												<label class="form-control-label">Drop Point Photo</label>
 												<p class="form-control-static">
-													<small v-if="data.vehicle_file == '' || data.vehicle_file == ''">Not Available</small>
+													<small v-if="data.droppoint_photo_file == '' || data.droppoint_photo_file == ''">Not Available</small>
 
-													<a @click.prevent class="pop" v-if="data.vehicle_file != ''">
-														<img width="200px" class="img-thumbnail" :src="data.vehicle_file" alt>
+													<a @click.prevent class="pop" v-if="data.droppoint_photo_file != ''">
+														<img width="200px" class="img-thumbnail" :src="data.droppoint_photo_file" alt>
 													</a>
 												</p>
 											</div>

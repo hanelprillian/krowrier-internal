@@ -40,6 +40,7 @@
 										<th width="20%">Name</th>
 										<th width="20%">Email</th>
 										<th width="10%">Phone</th>
+										<!--<th width="10%">Gender</th>-->
 										<!--<th width="10%">Actions</th>-->
 									</tr>
 								</thead>
@@ -64,6 +65,7 @@
                                         </td>
 										<td>{{user.email}}</td>
 										<td>{{user.phone}}</td>
+										<!--<td>{{user.gender}}</td>-->
 										<!--<td class="td-actions">-->
 											<!--<div class="dropdown">-->
 												<!--<button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->

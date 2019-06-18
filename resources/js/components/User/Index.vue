@@ -7,7 +7,7 @@
 					<h2 class="page-header-title">Data User</h2>
 					<div>
 						<div class="page-header-tools">
-							<router-link tag="button" to="/internal/user/new" class="btn btn-primary ripple">Tambah</router-link>
+							<!--<router-link tag="button" to="/internal/user/new" class="btn btn-primary ripple">Tambah</router-link>-->
 						</div>
 					</div>
 				</div>
@@ -40,7 +40,7 @@
 										<th width="20%">Name</th>
 										<th width="20%">Email</th>
 										<th width="10%">Phone</th>
-										<th width="10%">Actions</th>
+										<!--<th width="10%">Actions</th>-->
 									</tr>
 								</thead>
 								<tbody>
@@ -64,23 +64,23 @@
                                         </td>
 										<td>{{user.email}}</td>
 										<td>{{user.phone}}</td>
-										<td class="td-actions">
-											<div class="dropdown">
-												<button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-													Action
-												</button>
-												<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-													<router-link class="dropdown-item" tag="a" :to="'/internal/user/'+user.id">
-														<i class="la la-edit edit"></i> Edit
-													</router-link>
-													<!--@click.prevent="deleteData(d.id, d.user.name)"-->
-                                                    <a href="#" @click.prevent="deleteUser()" v-if="current_user.uid != user.id"
-                                                    >
-														<i class="la la-close delete"></i> Delete
-													</a>
-												</div>
-											</div>
-										</td>
+										<!--<td class="td-actions">-->
+											<!--<div class="dropdown">-->
+												<!--<button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+													<!--Action-->
+												<!--</button>-->
+												<!--<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">-->
+													<!--<router-link class="dropdown-item" tag="a" :to="'/internal/user/'+user.id">-->
+														<!--<i class="la la-edit edit"></i> Edit-->
+													<!--</router-link>-->
+													<!--&lt;!&ndash;@click.prevent="deleteData(d.id, d.user.name)"&ndash;&gt;-->
+                                                    <!--<a href="#" @click.prevent="deleteUser()" v-if="current_user.uid != user.id"-->
+                                                    <!--&gt;-->
+														<!--<i class="la la-close delete"></i> Delete-->
+													<!--</a>-->
+												<!--</div>-->
+											<!--</div>-->
+										<!--</td>-->
 									</tr>
 									<tr v-if="!paging.end">
 										<td colspan="7">

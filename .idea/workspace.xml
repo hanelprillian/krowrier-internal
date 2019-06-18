@@ -3,8 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="c83c229e-a460-4b06-aa34-53bdc3cf4928" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/view-DashboardComponent-vue.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/view-DashboardComponent-vue.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/DashboardComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/DashboardComponent.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/mix-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/view-DropPoint-Index-vue.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/view-DropPoint-Index-vue.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/view-User-Index-vue.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/view-User-Index-vue.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/DropPoint/Form.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/DropPoint/Form.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/DropPoint/Index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/DropPoint/Index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/User/Index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/User/Index.vue" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -21,8 +25,8 @@
       <file leaf-file-name="App.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/js/components/App.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="141">
-              <caret line="1387" lean-forward="true" selection-start-line="1387" selection-end-line="1387" />
+            <state relative-caret-position="10557">
+              <caret line="1387" selection-start-line="1387" selection-end-line="1387" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#template#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
@@ -47,11 +51,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DashboardComponent.vue" pinned="false" current-in-tab="true">
+      <file leaf-file-name="DashboardComponent.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/js/components/DashboardComponent.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="114">
-              <caret line="819" column="17" lean-forward="true" selection-start-line="819" selection-start-column="17" selection-end-line="819" selection-end-column="17" />
+            <state relative-caret-position="11615">
+              <caret line="769" column="29" selection-start-line="769" selection-start-column="29" selection-end-line="769" selection-end-column="29" />
               <folding>
                 <element signature="n#div#0;n#div#2;n#div#0;n#template#0;n#!!top" />
                 <element signature="n#div#1;n#div#2;n#div#0;n#template#0;n#!!top" />
@@ -60,11 +64,54 @@
                 <element signature="n#div#0;n#div#1;n#div#0;n#div#3;n#div#2;n#div#0;n#template#0;n#!!top" />
                 <element signature="n#div#4;n#div#2;n#div#0;n#template#0;n#!!top" />
                 <element signature="n#div#5;n#div#2;n#div#0;n#template#0;n#!!top" />
-                <element signature="e#21050#22515#0" />
-                <element signature="e#22577#24047#0" />
-                <element signature="e#27452#27885#0" expanded="true" />
-                <element signature="e#27613#27787#0" expanded="true" />
-                <element signature="e#31086#31244#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Index.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/js/components/User/Index.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="233">
+              <caret line="53" column="34" selection-start-line="53" selection-start-column="34" selection-end-line="57" selection-end-column="45" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Index.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/js/components/DropPoint/Index.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="206">
+              <caret line="86" column="52" lean-forward="true" selection-start-line="86" selection-start-column="52" selection-end-line="86" selection-end-column="52" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#td#1;n#tr#2;n#tbody#0;n#table#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="e#6260#7153#0" expanded="true" />
+                <element signature="e#6303#7145#0" expanded="true" />
+                <element signature="e#6462#6867#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Form.vue" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/js/components/DropPoint/Form.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="299">
+              <caret line="349" column="8" lean-forward="true" selection-start-line="349" selection-start-column="8" selection-end-line="349" selection-end-column="8" />
+              <folding>
+                <element signature="e#11380#11432#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Form.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/js/components/FeederCourier/Form.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="302">
+              <caret line="414" selection-start-line="414" selection-end-line="417" selection-end-column="44" />
+              <folding>
+                <element signature="e#13471#13523#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -74,8 +121,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>msg_last_index</find>
-      <find>index-</find>
       <find>chatData.openedChat.detailwatch</find>
       <find>watch</find>
       <find>listMess</find>
@@ -104,6 +149,8 @@
       <find>Month</find>
       <find>month_range</find>
       <find>initCounter</find>
+      <find>Tambah</find>
+      <find>s</find>
     </findStrings>
     <replaceStrings>
       <replace>../</replace>
@@ -173,7 +220,6 @@
         <option value="$PROJECT_DIR$/resources/js/components/Courier/Form.vue" />
         <option value="$PROJECT_DIR$/resources/js/components/Booking/Index.vue" />
         <option value="$PROJECT_DIR$/resources/js/components/Booking/Form.vue" />
-        <option value="$PROJECT_DIR$/resources/js/components/User/Index.vue" />
         <option value="$PROJECT_DIR$/resources/js/components/Login.vue" />
         <option value="$PROJECT_DIR$/resources/js/lib/func.js" />
         <option value="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" />
@@ -182,6 +228,9 @@
         <option value="$PROJECT_DIR$/resources/sass/template.scss" />
         <option value="$PROJECT_DIR$/resources/js/components/App.vue" />
         <option value="$PROJECT_DIR$/resources/js/components/DashboardComponent.vue" />
+        <option value="$PROJECT_DIR$/resources/js/components/User/Index.vue" />
+        <option value="$PROJECT_DIR$/resources/js/components/DropPoint/Index.vue" />
+        <option value="$PROJECT_DIR$/resources/js/components/DropPoint/Form.vue" />
       </list>
     </option>
   </component>
@@ -367,6 +416,14 @@
               <item name="resources" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="js" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="components" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="DropPoint" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="krowrier-internal" type="b2602c69:ProjectViewProjectNode" />
+              <item name="krowrier-internal" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="resources" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="js" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="components" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="FeederCourier" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
@@ -497,12 +554,13 @@
       <workItem from="1560621869630" duration="11567000" />
       <workItem from="1560677542401" duration="604000" />
       <workItem from="1560745563288" duration="13653000" />
-      <workItem from="1560782370834" duration="12771000" />
+      <workItem from="1560782370834" duration="13518000" />
+      <workItem from="1560835825965" duration="1154000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="230972000" />
+    <option name="totallyTimeSpent" value="232873000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -512,11 +570,11 @@
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info id="npm" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Run" order="2" />
+      <window_info id="npm" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.16105418" />
       <window_info anchor="right" id="Remote Host" order="3" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22550336" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22885907" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -532,6 +590,7 @@
       <window_info anchor="bottom" id="Find" order="1" />
     </layout>
     <layout-to-restore>
+      <window_info anchor="bottom" id="Version Control" order="12" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info id="npm" order="2" side_tool="true" />
@@ -544,13 +603,12 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="TypeScript" order="9" weight="0.3295129" />
       <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.16837482" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="12" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="right" id="Database" order="4" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -568,13 +626,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/.babelrc">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="7" column="5" lean-forward="true" selection-start-line="7" selection-start-column="5" selection-end-line="7" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/plugin.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="161">
@@ -761,13 +812,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/FeederCourier/Form.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="14053">
-          <caret line="709" column="67" selection-start-line="709" selection-start-column="67" selection-end-line="709" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/components/FeederCourier/Index.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2438">
@@ -824,20 +868,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/User/Index.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1265">
-          <caret line="55" column="92" selection-start-line="55" selection-start-column="92" selection-end-line="55" selection-end-column="240" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/lib/func.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="483">
           <caret line="66" column="40" selection-start-line="66" selection-start-column="40" selection-end-line="66" selection-end-column="40" />
-          <folding>
-            <element signature="e#1711#1953#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -890,13 +924,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/internal/dashboard.blade.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/components/App.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="141">
-          <caret line="1387" lean-forward="true" selection-start-line="1387" selection-end-line="1387" />
+        <state relative-caret-position="10557">
+          <caret line="1387" selection-start-line="1387" selection-end-line="1387" />
           <folding>
             <element signature="n#style#0;n#div#0;n#template#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
@@ -922,8 +953,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/components/DashboardComponent.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="819" column="17" lean-forward="true" selection-start-line="819" selection-start-column="17" selection-end-line="819" selection-end-column="17" />
+        <state relative-caret-position="11615">
+          <caret line="769" column="29" selection-start-line="769" selection-start-column="29" selection-end-line="769" selection-end-column="29" />
           <folding>
             <element signature="n#div#0;n#div#2;n#div#0;n#template#0;n#!!top" />
             <element signature="n#div#1;n#div#2;n#div#0;n#template#0;n#!!top" />
@@ -932,11 +963,46 @@
             <element signature="n#div#0;n#div#1;n#div#0;n#div#3;n#div#2;n#div#0;n#template#0;n#!!top" />
             <element signature="n#div#4;n#div#2;n#div#0;n#template#0;n#!!top" />
             <element signature="n#div#5;n#div#2;n#div#0;n#template#0;n#!!top" />
-            <element signature="e#21050#22515#0" />
-            <element signature="e#22577#24047#0" />
-            <element signature="e#27452#27885#0" expanded="true" />
-            <element signature="e#27613#27787#0" expanded="true" />
-            <element signature="e#31086#31244#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/User/Index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="233">
+          <caret line="53" column="34" selection-start-line="53" selection-start-column="34" selection-end-line="57" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/DropPoint/Index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="206">
+          <caret line="86" column="52" lean-forward="true" selection-start-line="86" selection-start-column="52" selection-end-line="86" selection-end-column="52" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#td#1;n#tr#2;n#tbody#0;n#table#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="e#6260#7153#0" expanded="true" />
+            <element signature="e#6303#7145#0" expanded="true" />
+            <element signature="e#6462#6867#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/FeederCourier/Form.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="302">
+          <caret line="414" selection-start-line="414" selection-end-line="417" selection-end-column="44" />
+          <folding>
+            <element signature="e#13471#13523#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/DropPoint/Form.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="349" column="8" lean-forward="true" selection-start-line="349" selection-start-column="8" selection-end-line="349" selection-end-column="8" />
+          <folding>
+            <element signature="e#11380#11432#0" expanded="true" />
           </folding>
         </state>
       </provider>

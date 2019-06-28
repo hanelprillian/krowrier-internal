@@ -71,7 +71,7 @@
                                                                 <div class="message-cont-col">
                                                                     <p class="name">{{list.opponent_user.name}} &nbsp; <small v-if="list.total_unread > 0" class="badge-text badge-text-small success">{{list.total_unread}}</small></p>
                                                                     <p class="role">{{list.opponent_user.current_role}}</p>
-                                                                    <p class="preview">Booking ID: {{list.booking_data.code_booking}}</p>
+                                                                    <p class="preview">Booking ID: {{list.booking_data ? list.booking_data.code_booking : '-'}}</p>
                                                                 </div>
                                                             </div>
                                                         </li>
@@ -352,6 +352,16 @@
                                         <i class="la la-users"></i>Users
                                     </a>
                                 </router-link>
+                                <li>
+                                    <a href="#dropdown-reporting-data" aria-expanded="false">
+                                        <i class="la la-paper-plane-o"></i>Reporting
+                                    </a>
+                                    <ul id="dropdown-reporting-data" class="list-unstyled pt-0">
+                                        <router-link tag="li" :to="{ path: '/internal/report/booking' }">
+                                            <a>Booking</a>
+                                        </router-link>
+                                    </ul>
+                                </li>
                             </ul>
                             <!--<span class="heading">Transaction & Booking</span>-->
                             <!-- End Main Navigation -->
@@ -750,6 +760,7 @@
 
 <script>
     import WebUtill from "../webUtill"
+
     export default {
         data() {
             return {
@@ -1090,6 +1101,7 @@
                                 data.id = change.doc.id;
                                 data.chat_id = change.doc.id;
                                 data.logged_user_id = self.userLogged.id;
+                                data.booking_data = [];
 
                                 data.last_message = data.last_message ? (data.last_message.length > 13 ? data.last_message.substring(0,13)+'...' : data.last_message) : '';
 
@@ -1199,6 +1211,7 @@
                                 data.id = change.doc.id;
                                 data.chat_id = change.doc.id;
                                 data.logged_user_id = self.userLogged.id;
+                                data.booking_data = [];
 
                                 data.last_message = data.last_message ? (data.last_message.length > 13 ? data.last_message.substring(0,13)+'...' : data.last_message) : '';
 

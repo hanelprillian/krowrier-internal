@@ -37,7 +37,7 @@
 </template>
 
 <script>
-	export default {
+    export default {
 		data() {
 			return {
 				center: { lat: this.lat, lng: this.long },

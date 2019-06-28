@@ -10771,3 +10771,12 @@ a.text-dark:focus {
   height: 100%;
 }
 
+.table-report {
+  font-size: 9pt;
+}
+
+.table-report th,
+.table-report td {
+  padding: 3px 4px 3px 4px !important;
+}
+

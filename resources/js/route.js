@@ -264,9 +264,9 @@ const router = new VueRouter({
 
         // support room
         {
-            path: rootInternal + "/support-room",
-            name: "internal->support_room",
-            component: loadView("SupportRoom/Index"),
+            path: rootInternal + "/report/booking",
+            name: "internal->report->booking",
+            component: loadView("Report/Booking"),
             meta: {
                 requiresAuth: true
             }

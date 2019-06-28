@@ -22,7 +22,6 @@
 </template>
 
 <script>
-	import Gmaps from "../../gmaps"
 	export default {
 		data() {
 			return {

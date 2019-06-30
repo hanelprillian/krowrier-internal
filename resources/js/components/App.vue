@@ -824,6 +824,16 @@
         },
 
         methods: {
+            currency(val)
+            {
+                let ret = 0;
+
+                if(val)
+                    ret = func.currency_number(val);
+
+                return ret;
+            },
+
             async selectChat(chat_id, user_id, role_id, opponent_user_id, name, photo, booking_id, booking_code, current_role)
             {
                 let self = this;

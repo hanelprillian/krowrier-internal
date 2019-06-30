@@ -2,39 +2,57 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c83c229e-a460-4b06-aa34-53bdc3cf4928" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/js/components/Report/Booking.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/template.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/template.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/manifest.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/template.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/template.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/vendor.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/vendor.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/mix-manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/vendors~view-Company-Form-vue~view-Courier-Form-vue~view-Customer-Form-vue~view-DropPoint-Form-vue~v~1ac3bf8a.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/vendors~view-Company-Form-vue~view-Courier-Form-vue~view-DropPoint-Form-vue~view-FeederCourier-Form-~1a68491e.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/vendors~view-FeederCourier-Form-vue.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/vendors~view-Company-Form-vue~view-Courier-Form-vue~view-Customer-Form-vue~view-DashboardComponent-v~70730f35.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/vendors~view-Company-Form-vue~view-Courier-Form-vue~view-Customer-Form-vue~view-DashboardComponent-v~70730f35.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/vendors~view-Company-Form-vue~view-Courier-Form-vue~view-Customer-Form-vue~view-DashboardComponent-v~90008c26.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/vendors~view-Company-Form-vue~view-Courier-Form-vue~view-Customer-Form-vue~view-DashboardComponent-v~efa8cb50.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/vendors~view-Company-Form-vue~view-Courier-Form-vue~view-Customer-Form-vue~view-DropPoint-Form-vue~v~07275a82.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/vendors~view-Company-Form-vue~view-Courier-Form-vue~view-Customer-Form-vue~view-DropPoint-Form-vue~v~bbb4ce56.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/vendors~view-Company-Form-vue~view-Courier-Form-vue~view-Customer-Form-vue~view-DropPoint-Form-vue~v~c4fc8dbc.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/vendors~view-Company-Form-vue~view-Courier-Form-vue~view-DropPoint-Form-vue~view-FeederCourier-Form-~bc114b20.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/vendors~view-Company-Form-vue~view-Courier-Form-vue~view-DropPoint-Form-vue~view-Hub-Form-vue~view-S~008b0804.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/vendors~view-DashboardComponent-vue.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/vendors~view-DashboardComponent-vue.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/vendors~view-FeederCourier-Form-vue~view-Hub-Form-vue~view-SupportRoom-Form-vue~view-_Widget-MapsPic~0a0b6f85.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/vendors~view-Hub-Form-vue~view-SupportRoom-Form-vue~view-_Widget-MapsPicker-vue.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/view-Booking-Form-vue.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/view-Booking-Form-vue.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/view-Booking-Index-vue.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/view-Booking-Index-vue.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/view-Company-Form-vue.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/view-Company-Form-vue.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/view-Company-Index-vue.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/view-Company-Index-vue.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/view-Courier-Form-vue.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/view-Courier-Form-vue.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/view-Courier-Form-vue~view-DashboardComponent-vue~view-DropPoint-Form-vue~view-FeederCourier-Form-vu~e3b36d47.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/view-Courier-Form-vue~view-DashboardComponent-vue~view-FeederCourier-Form-vue.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/view-Courier-Form-vue~view-FeederCourier-Form-vue.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/view-Courier-Form-vue~view-DashboardComponent-vue~view-DropPoint-Form-vue~view-FeederCourier-Form-vu~2b767859.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/view-Courier-Form-vue~view-DashboardComponent-vue~view-DropPoint-Form-vue~view-FeederCourier-Form-vu~7d1aec5f.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/view-Courier-Form-vue~view-DashboardComponent-vue~view-DropPoint-Form-vue~view-FeederCourier-Form-vu~7d1aec5f.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/view-Courier-Form-vue~view-DashboardComponent-vue~view-DropPoint-Form-vue~view-FeederCourier-Form-vu~b55739c5.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/view-Courier-Index-vue.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/view-Courier-Index-vue.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/view-Customer-Form-vue.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/view-Customer-Form-vue.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/view-Customer-Index-vue.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/view-Customer-Index-vue.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/view-DashboardComponent-vue.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/view-DashboardComponent-vue.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/view-DropPoint-Form-vue.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/view-DropPoint-Form-vue.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/view-DropPoint-Index-vue.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/view-DropPoint-Index-vue.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/view-ExampleComponent-vue.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/view-ExampleComponent-vue.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/view-FeederCourier-Form-vue.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/view-FeederCourier-Form-vue.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/view-FeederCourier-Index-vue.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/view-FeederCourier-Index-vue.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/view-Hub-Form-vue.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/view-Hub-Form-vue.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/view-SupportRoom-Form-vue.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/view-SupportRoom-Form-vue.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/view-SupportRoom-Index-vue.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/view-SupportRoom-Index-vue.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/view-Hub-Index-vue.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/view-Hub-Index-vue.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/view-Login-vue.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/view-Login-vue.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/view-Report-Booking-vue.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/view-Report-Booking-vue.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/view-Report-Form-vue.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/view-Report-Form-vue.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/view-Report-Index-vue.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/view-ServicePackage-Form-vue.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/view-ServicePackage-Form-vue.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/view-ServicePackage-Index-vue.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/view-ServicePackage-Index-vue.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/view-SupportRoom-Form-vue.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/view-SupportRoom-Index-vue.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/view-User-Form-vue.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/view-User-Form-vue.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/view-User-Index-vue.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/view-User-Index-vue.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/view-_Widget-MapsPicker-vue.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/view-_Widget-MapsPicker-vue.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/view-_Widget-MapsShow-vue.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/view-_Widget-MapsShow-vue.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/FeederCourier/Form.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/FeederCourier/Form.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/Hub/Form.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Hub/Form.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/SupportRoom/Form.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Report/Form.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/SupportRoom/Index.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/_Widget/MapsPicker.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/_Widget/MapsPicker.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/_Widget/MapsShow.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/_Widget/MapsShow.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/gmaps.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/gmaps.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/route.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/route.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/sass/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/app.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/internal/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/internal/layout.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/Report/Booking.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Report/Booking.vue" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -51,8 +69,8 @@
       <file leaf-file-name="App.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/js/components/App.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="713">
-              <caret line="353" column="46" selection-start-line="353" selection-start-column="46" selection-end-line="353" selection-end-column="46" />
+            <state relative-caret-position="17043">
+              <caret line="835" selection-start-line="835" selection-end-line="835" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#template#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
@@ -76,10 +94,19 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="Form.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/js/components/Booking/Form.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="9499">
+              <caret line="544" column="8" selection-start-line="544" selection-start-column="8" selection-end-line="552" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="route.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/js/route.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="69">
+            <state relative-caret-position="5888">
               <caret line="258" column="35" selection-start-line="258" selection-start-column="35" selection-end-line="258" selection-end-column="35" />
               <folding>
                 <element signature="n#!!block;n#loadView#0" expanded="true" />
@@ -91,15 +118,43 @@
       <file leaf-file-name="Booking.vue" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/js/components/Report/Booking.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="368">
-              <caret line="130" column="57" lean-forward="true" selection-start-line="130" selection-start-column="57" selection-end-line="130" selection-end-column="57" />
+            <state relative-caret-position="207">
+              <caret line="276" column="17" selection-start-line="276" selection-start-column="17" selection-end-line="276" selection-end-column="17" />
               <folding>
-                <element signature="n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" />
                 <element signature="n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" />
                 <element signature="n#template#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" />
                 <element signature="n#template#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#div#2;n#div#0;n#template#0;n#!!top" />
                 <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="e#5326#5367#0" expanded="true" />
+                <element signature="n#style#0;n#table#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#template#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Index.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/js/components/Booking/Index.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3174">
+              <caret line="140" column="57" selection-start-line="140" selection-start-column="57" selection-end-line="140" selection-end-column="57" />
+              <folding>
+                <element signature="e#5207#5984#0" expanded="true" />
+                <element signature="e#5250#5976#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Form.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/js/components/DropPoint/Form.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="10028">
+              <caret line="517" column="41" selection-start-line="517" selection-start-column="41" selection-end-line="517" selection-end-column="41" />
+              <folding>
+                <element signature="e#15210#15833#0" expanded="true" />
+                <element signature="e#15291#15601#0" expanded="true" />
+                <element signature="e#15527#15590#0" expanded="true" />
+                <element signature="e#15633#15824#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -108,8 +163,8 @@
       <file leaf-file-name="app.scss" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/sass/app.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="362">
-              <caret line="43" column="1" lean-forward="true" selection-start-line="43" selection-start-column="1" selection-end-line="43" selection-end-column="1" />
+            <state relative-caret-position="989">
+              <caret line="43" column="1" selection-start-line="43" selection-start-column="1" selection-end-line="43" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -117,8 +172,8 @@
       <file leaf-file-name="DashboardComponent.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/js/components/DashboardComponent.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="184">
-              <caret line="8" column="9" lean-forward="true" selection-start-line="8" selection-start-column="9" selection-end-line="10" selection-end-column="179" />
+            <state relative-caret-position="7084">
+              <caret line="527" column="26" selection-start-line="527" selection-start-column="21" selection-end-line="527" selection-end-column="26" />
               <folding>
                 <element signature="n#div#0;n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" />
                 <element signature="n#div#0;n#div#2;n#div#0;n#template#0;n#!!top" />
@@ -138,17 +193,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>startTim</find>
-      <find>.format(&quot;MMM&quot;)</find>
-      <find>.format(&quot;MMMM&quot;)</find>
-      <find>_to_month_format</find>
-      <find>Month</find>
-      <find>month_range</find>
-      <find>initCounter</find>
-      <find>Tambah</find>
-      <find>s</find>
-      <find>Courier Vehicle</find>
-      <find>vehicle_type_name</find>
       <find>vehicle</find>
       <find>Courier File</find>
       <find>vehicle_file</find>
@@ -166,8 +210,19 @@
       <find>FormUtill</find>
       <find>Users</find>
       <find>Report</find>
-      <find>dashboard</find>
       <find>status_name</find>
+      <find>initCount</find>
+      <find>total_data.bookings</find>
+      <find>dashboard</find>
+      <find>generateReport</find>
+      <find>currency</find>
+      <find>save</find>
+      <find>Total</find>
+      <find>Filter Method</find>
+      <find>Status</find>
+      <find>status</find>
+      <find>where</find>
+      <find>filter_report.status</find>
     </findStrings>
     <replaceStrings>
       <replace>../</replace>
@@ -190,6 +245,7 @@
       <replace>.format(&quot;MMMM&quot;)</replace>
       <replace>.format(&quot;MMMM YYYY&quot;)</replace>
       <replace>droppoint_photo_file</replace>
+      <replace>result</replace>
       <replace>report</replace>
     </replaceStrings>
   </component>
@@ -247,8 +303,8 @@
         <option value="$PROJECT_DIR$/resources/js/components/_Widget/MapsPicker.vue" />
         <option value="$PROJECT_DIR$/resources/js/components/Report/Index.vue" />
         <option value="$PROJECT_DIR$/resources/js/route.js" />
-        <option value="$PROJECT_DIR$/resources/js/components/App.vue" />
         <option value="$PROJECT_DIR$/resources/sass/app.scss" />
+        <option value="$PROJECT_DIR$/resources/js/components/App.vue" />
         <option value="$PROJECT_DIR$/resources/js/components/Report/Booking.vue" />
       </list>
     </option>
@@ -369,7 +425,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -498,6 +553,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -579,29 +635,28 @@
       <workItem from="1560860201407" duration="4200000" />
       <workItem from="1560881604168" duration="16000" />
       <workItem from="1561713107318" duration="617000" />
-      <workItem from="1561748155335" duration="6681000" />
+      <workItem from="1561748155335" duration="8970000" />
+      <workItem from="1561808010297" duration="813000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="247297000" />
+    <option name="totallyTimeSpent" value="250399000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info id="npm" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.15959005" />
+      <window_info id="npm" order="2" side_tool="true" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.15959005" />
       <window_info anchor="right" id="Remote Host" order="3" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24563758" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24899329" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
-      <window_info anchor="bottom" id="Find" order="1" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
@@ -612,8 +667,10 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" />
     </layout>
     <layout-to-restore>
+      <window_info anchor="bottom" id="Version Control" order="12" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info id="npm" order="2" side_tool="true" />
@@ -626,13 +683,12 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="TypeScript" order="9" weight="0.3295129" />
       <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.16837482" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="12" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="right" id="Database" order="4" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -650,6 +706,21 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/resources/js/components/Report/Booking.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4255">
+          <caret line="185" column="29" selection-start-line="185" selection-start-column="29" selection-end-line="185" selection-end-column="29" />
+          <folding>
+            <element signature="n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#template#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#template#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#2;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#table#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#template#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/chart.js" />
     <entry file="file://$PROJECT_DIR$/resources/js/template.js">
       <provider selected="true" editor-type-id="text-editor">
@@ -717,13 +788,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/components/Dashboard.js" />
-    <entry file="file://$PROJECT_DIR$/resources/js/components/Booking/Form.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5934">
-          <caret line="338" column="91" selection-start-line="338" selection-start-column="91" selection-end-line="338" selection-end-column="91" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/components/Customer/Index.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2622">
@@ -801,20 +865,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/DropPoint/Form.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3749">
-          <caret line="163" column="49" selection-start-line="163" selection-start-column="49" selection-end-line="163" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/Booking/Index.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="139">
-          <caret line="67" column="57" selection-start-line="67" selection-start-column="57" selection-end-line="67" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/internal/layout.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="115">
@@ -878,9 +928,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/vue2-google-maps/dist/main.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="207">
@@ -892,9 +939,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret selection-end-line="6" selection-end-column="6" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -923,9 +967,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="188">
           <caret line="412" lean-forward="true" selection-start-line="412" selection-end-line="412" />
-          <folding>
-            <element signature="e#13471#13523#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -948,7 +989,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/route.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="69">
+        <state relative-caret-position="5888">
           <caret line="258" column="35" selection-start-line="258" selection-start-column="35" selection-end-line="258" selection-end-column="35" />
           <folding>
             <element signature="n#!!block;n#loadView#0" expanded="true" />
@@ -956,10 +997,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/landing-page/assets/css/styles.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="1" column="28" lean-forward="true" selection-start-line="1" selection-start-column="28" selection-end-line="1" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/sass/app.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="989">
+          <caret line="43" column="1" selection-start-line="43" selection-start-column="1" selection-end-line="43" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/Booking/Form.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="9499">
+          <caret line="544" column="8" selection-start-line="544" selection-start-column="8" selection-end-line="552" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/components/App.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="713">
-          <caret line="353" column="46" selection-start-line="353" selection-start-column="46" selection-end-line="353" selection-end-column="46" />
+        <state relative-caret-position="17043">
+          <caret line="835" selection-start-line="835" selection-end-line="835" />
           <folding>
             <element signature="n#style#0;n#div#0;n#template#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
@@ -982,10 +1044,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/DropPoint/Form.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="10028">
+          <caret line="517" column="41" selection-start-line="517" selection-start-column="41" selection-end-line="517" selection-end-column="41" />
+          <folding>
+            <element signature="e#15210#15833#0" expanded="true" />
+            <element signature="e#15291#15601#0" expanded="true" />
+            <element signature="e#15527#15590#0" expanded="true" />
+            <element signature="e#15633#15824#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/components/DashboardComponent.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="8" column="9" lean-forward="true" selection-start-line="8" selection-start-column="9" selection-end-line="10" selection-end-column="179" />
+        <state relative-caret-position="7084">
+          <caret line="527" column="26" selection-start-line="527" selection-start-column="21" selection-end-line="527" selection-end-column="26" />
           <folding>
             <element signature="n#div#0;n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" />
             <element signature="n#div#0;n#div#2;n#div#0;n#template#0;n#!!top" />
@@ -1000,31 +1075,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/landing-page/assets/css/styles.css">
+    <entry file="file://$PROJECT_DIR$/resources/js/components/Booking/Index.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23">
-          <caret line="1" column="28" lean-forward="true" selection-start-line="1" selection-start-column="28" selection-end-line="1" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/sass/app.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="362">
-          <caret line="43" column="1" lean-forward="true" selection-start-line="43" selection-start-column="1" selection-end-line="43" selection-end-column="1" />
+        <state relative-caret-position="3174">
+          <caret line="140" column="57" selection-start-line="140" selection-start-column="57" selection-end-line="140" selection-end-column="57" />
+          <folding>
+            <element signature="e#5207#5984#0" expanded="true" />
+            <element signature="e#5250#5976#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/components/Report/Booking.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="130" column="57" lean-forward="true" selection-start-line="130" selection-start-column="57" selection-end-line="130" selection-end-column="57" />
+        <state relative-caret-position="207">
+          <caret line="276" column="17" selection-start-line="276" selection-start-column="17" selection-end-line="276" selection-end-column="17" />
           <folding>
-            <element signature="n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" />
             <element signature="n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" />
             <element signature="n#template#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" />
             <element signature="n#template#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#2;n#div#0;n#template#0;n#!!top" />
             <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="e#5326#5367#0" expanded="true" />
+            <element signature="n#style#0;n#table#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#template#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>

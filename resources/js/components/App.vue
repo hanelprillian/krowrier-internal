@@ -364,6 +364,11 @@
                                             <a>Booking</a>
                                         </router-link>
                                     </ul>
+                                    <ul id="dropdown-reporting-data" class="list-unstyled pt-0">
+                                        <router-link tag="li" :to="{ path: '/internal/report/feeder-distance' }">
+                                            <a>Feeder Distance</a>
+                                        </router-link>
+                                    </ul>
                                 </li>
                             </ul>
                             <!--<span class="heading">Transaction & Booking</span>-->

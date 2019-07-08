@@ -262,11 +262,19 @@ const router = new VueRouter({
             }
         },
 
-        // support room
         {
             path: rootInternal + "/report/booking",
             name: "internal->report->booking",
             component: loadView("Report/Booking"),
+            meta: {
+                requiresAuth: true
+            }
+        },
+
+        {
+            path: rootInternal + "/report/feeder-distance",
+            name: "internal->report->feeder_distance",
+            component: loadView("Report/FeederDIstance"),
             meta: {
                 requiresAuth: true
             }

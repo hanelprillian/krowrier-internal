@@ -289,9 +289,9 @@
                         .where("create_unix_time" ,'<=', moment(this.filter_report.to_date.toString()).valueOf());
                 }
 
-                if(self.filter_report.status != '' || self.filter_report.status != null)
+                if(self.filter_report.status.length > 0 && self.filter_report.status != '')
                 {
-                    // queryBooking = queryBooking.where('status', '==', self.filter_report.status);
+                    queryBooking = queryBooking.where('status', '==', parseInt(self.filter_report.status));
                 }
 
                 await queryBooking.orderBy('create_unix_time','desc').get()

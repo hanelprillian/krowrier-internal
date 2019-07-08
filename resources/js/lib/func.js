@@ -82,3 +82,22 @@ export function scrollTo(element, to, duration)
     };
     animateScroll();
 }
+
+export function printElem(divId)
+{
+    var content = document.getElementById(divId).innerHTML;
+    var mywindow = window.open('', 'Print', 'height=700,width=1000');
+
+    mywindow.document.write('<html><head><title>Print</title><link rel="stylesheet" href="/css/app.css">');
+    mywindow.document.write('</head><body class="section-to-print">');
+    mywindow.document.write(content);
+    mywindow.document.write('</body></html>');
+
+    mywindow.document.close();
+    mywindow.focus()
+    setTimeout(function () {
+        mywindow.print();
+        mywindow.close();
+    }, 500);
+    return true;
+}

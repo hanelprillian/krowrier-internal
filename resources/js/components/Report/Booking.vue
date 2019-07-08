@@ -104,10 +104,12 @@
             <div class="col-md-12">
                 <div class="widget has-shadow">
                     <div class="widget-header bordered no-actions">
-                        <h4>Result</h4>
+                        <h4 class="float-left">Result</h4>
+                        <div class="clearfix"></div>
                     </div>
                     <div class="widget-body">
-                        <div style="height: 500px; overflow-y: scroll" class="bg-grey p-3">
+                        <button @click.prevent="printElem('reportResult')" class="btn btn-info btn-sm"><i class="ion-printer"></i> Print</button>
+                        <div style="height: 700px; overflow-y: scroll" id="reportResult" class="bg-grey p-3 mt-4">
                             <h3>Transaction Report</h3>
                             <small>Status: {{filter_report.status_name}}</small>
                             <br>
@@ -123,6 +125,7 @@
                                     <tr>
                                         <th width="10%">Date</th>
                                         <th width="15%">Code</th>
+                                        <th width="15%">Product</th>
                                         <th width="15%">Customer</th>
                                         <th width="25%">Destination</th>
                                         <th width="15%">Charges</th>
@@ -132,26 +135,37 @@
                                     <tr v-for="result in result.data">
                                         <td>{{ result.create_date }}</td>
                                         <td>{{result.code_booking}}</td>
+                                        <td>
+                                            {{result.goods_name}}
+                                            <br>
+                                            <small>
+                                                Qty: {{result.goods_quantity}}
+                                            </small>
+                                            <br>
+                                            <small>
+                                                Weight: {{result.goods_weight}} Kg
+                                            </small>
+                                        </td>
                                         <td>{{ result.user.name }}</td>
                                         <td>{{ result.destination_address }}</td>
                                         <td>Rp. {{$parent.currency(result.total_charges)}}</td>
                                     </tr>
                                     <tr v-if="result.data.length == 0">
-                                        <td colspan="5" class="bg-warning">
+                                        <td colspan="6" class="bg-warning">
                                             Data Empty
                                         </td>
                                     </tr>
                                     </tbody>
-                                    <tfoot>
+                                    <!--<tfoot>-->
                                     <tr>
-                                        <th colspan="4" class="text-right">
+                                        <th colspan="5" class="text-right">
                                             Total Charges
                                         </th>
                                         <th>
                                             Rp. {{$parent.currency(result.total_charges)}}
                                         </th>
                                     </tr>
-                                    </tfoot>
+                                    <!--</tfoot>-->
                                 </table>
                             </div>
                         </div>
@@ -226,6 +240,10 @@
         },
 
 		methods: {
+            printElem(elem)
+            {
+                return func.printElem(elem)
+            },
             async generateReport()
             {
                 let self = this;

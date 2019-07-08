@@ -1,6 +1,9 @@
 <template>
     <div style="height: 100%;">
-        <div v-if="IsLogged" style="height: 100%;">
+        <div v-if="$route.query.view_mode == 'print'">
+            <router-view></router-view>
+        </div>
+        <div v-else-if="IsLogged" style="height: 100%;">
             <!-- Begin Preloader -->
             <!-- End Preloader -->
             <div class="page" :class="{'chat':$route.name == 'internal->support_room'}" style="height: 100%;">
@@ -751,7 +754,6 @@
             </div>
             <!-- End Modal -->
         </div>
-
         <div v-else>
             <router-view></router-view>
         </div>

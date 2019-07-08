@@ -84,18 +84,18 @@
 					aria-selected="true"
 				>General</a>
 			</li>
-			<li class="nav-item">
-				<a
-					class="nav-link"
-					id="base-tab-2"
-					data-toggle="tab"
-					href="#tab-2"
-					role="tab"
-					@click.prevent="loadSchedule()"
-					aria-controls="tab-2"
-					aria-selected="false"
-				>Schedules</a>
-			</li>
+			<!--<li class="nav-item">-->
+				<!--<a-->
+					<!--class="nav-link"-->
+					<!--id="base-tab-2"-->
+					<!--data-toggle="tab"-->
+					<!--href="#tab-2"-->
+					<!--role="tab"-->
+					<!--@click.prevent="loadTask()"-->
+					<!--aria-controls="tab-2"-->
+					<!--aria-selected="false"-->
+				<!--&gt;Tasks</a>-->
+			<!--</li>-->
 			<li class="nav-item">
 				<a
 					:class="{'disabled': !data.current_latitude || !data.current_longitude }"
@@ -305,7 +305,7 @@
 						<div class="widget widget-07 has-shadow">
 							<!-- Begin Widget Header -->
 							<div class="widget-header bordered d-flex align-items-center">
-								<h2>List Schedule</h2>
+								<h2>List Task</h2>
 							</div>
 							<!-- End Widget Header -->
 							<!-- Begin Widget Body -->
@@ -319,16 +319,16 @@
 											</tr>
 										</thead>
 										<tbody>
-											<tr class="alert-warning" v-if="dataSchedule.length == 0">
-												<td colspan="2">Schedule empty!</td>
+											<tr class="alert-warning" v-if="dataTask.length == 0">
+												<td colspan="2">Task empty!</td>
 											</tr>
-											<tr v-for="d in dataSchedule">
+											<tr v-for="d in dataTask">
 												<td>{{ d.drop_point.name }}</td>
 												<td>{{ d.stay_location_time }}</td>
 											</tr>
-											<tr v-if="!pagingSchedule.end">
+											<tr v-if="!pagingTask.end">
 												<td colspan="2">
-													<button class="btn btn-block" @click.prevent="loadMoreSchedule()">Load more</button>
+													<button class="btn btn-block" @click.prevent="loadMoreTask()">Load more</button>
 												</td>
 											</tr>
 										</tbody>
@@ -420,7 +420,7 @@
 	export default {
 		data() {
 			return {
-				dataSchedule: [],
+				dataTask: [],
 				vehicleType: [],
 				allowEdit: false,
 				dataLoaded: false,
@@ -437,14 +437,14 @@
 						address: ""
 					}
 				},
-				pagingSchedule: {
+				pagingTask: {
 					total_data: 0,
 					data_per_page: 10,
 					end: false,
 					loading: false
 				},
 
-				refSchedule: {
+				refTask: {
 					data: null,
 					dataNext: null
 				}
@@ -485,43 +485,43 @@
 			// }
 		},
 		methods: {
-			loadSchedule() {
+			loadTask() {
 				let self = this;
 
-				self.dataSchedule = [];
+				self.dataTask = [];
 
-				this.refSchedule.data = db
-					.collection("feeder_schedule")
+				this.refTask.data = db
+					.collection("feeder_task")
 					.where("feeder_id", "==", self.$route.params.id);
-				this.refSchedule.data.orderBy("created_at", "desc");
+				this.refTask.data.orderBy("created_at", "desc");
 
-				const firstPage = this.refSchedule.data.limit(
-					this.pagingSchedule.data_per_page
+				const firstPage = this.refTask.data.limit(
+					this.pagingTask.data_per_page
 				);
-				this.handledataSchedule(firstPage);
+				this.handledataTask(firstPage);
 			},
 
-			loadMoreSchedule() {
+			loadMoreTask() {
 				let self = this;
 
-				if (self.pagingSchedule.end) {
+				if (self.pagingTask.end) {
 					return;
 				}
 
-				this.pagingSchedule.loading = true;
-				this.handledataSchedule(this.refSchedule.dataNext).then(
+				this.pagingTask.loading = true;
+				this.handledataTask(this.refTask.dataNext).then(
 					documentSnapshots => {
-						self.pagingSchedule.loading = false;
+						self.pagingTask.loading = false;
 
-						if (documentSnapshots.empty) self.pagingSchedule.end = true;
+						if (documentSnapshots.empty) self.pagingTask.end = true;
 					}
 				);
 			},
 
-			handledataSchedule(ref) {
+			handledataTask(ref) {
 				return new Promise((resolve, reject) => {
 					swal.fire({
-						title: "Loading Schedule...",
+						title: "Loading Task...",
 						text: "Please waiting",
 						allowOutsideClick: false,
 						allowEscapeKey: false,
@@ -532,7 +532,7 @@
 
 					ref.get().then(documentSnapshots => {
 						if (documentSnapshots.empty) {
-							this.pagingSchedule.end = true;
+							this.pagingTask.end = true;
 							resolve(documentSnapshots);
 
 							swal.close();
@@ -559,7 +559,7 @@
 									});
 							}
 
-							this.dataSchedule.push(data);
+							this.dataTask.push(data);
 						});
 
 						const lastVisible =
@@ -567,9 +567,9 @@
 
 						if (!lastVisible) return;
 
-						this.refSchedule.dataNext = this.refSchedule.data
+						this.refTask.dataNext = this.refTask.data
 							.startAfter(lastVisible)
-							.limit(this.pagingSchedule.data_per_page);
+							.limit(this.pagingTask.data_per_page);
 
 						resolve(documentSnapshots);
 

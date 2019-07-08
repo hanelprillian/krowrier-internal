@@ -32,18 +32,18 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                                    <div class="form-group">
-                                        <small>
-                                            <label for=""><strong>Status</strong></label>
-                                        </small>
-                                        <select name="" v-model="filter_report.status" id="" class="form-control formSelect btn-sm no-margin">
-                                            <option value="">All</option>
-                                            <option value="0">Progress</option>
-                                            <option value="1">Complete</option>
-                                        </select>
-                                    </div>
-                                </div>
+                                <!--<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">-->
+                                    <!--<div class="form-group">-->
+                                        <!--<small>-->
+                                            <!--<label for=""><strong>Status</strong></label>-->
+                                        <!--</small>-->
+                                        <!--<select name="" v-model="filter_report.status" id="" class="form-control formSelect btn-sm no-margin">-->
+                                            <!--<option value="">All</option>-->
+                                            <!--<option value="0">Progress</option>-->
+                                            <!--<option value="1">Complete</option>-->
+                                        <!--</select>-->
+                                    <!--</div>-->
+                                <!--</div>-->
                                 <div class="col-lg-2 col-md-2 col-sm-2" v-if="filter_report.method == 'by_year'">
                                     <div class="form-group">
                                         <small>
@@ -196,8 +196,8 @@
                     // month_range
                     // by_year
                     // date_range
-                    status_name: 'All',
-                    status: '',
+                    status_name: 'Completed',
+                    status: 1,
                     method: 'current_year',
 
                     selected_year: moment().format("YYYY"),
@@ -220,18 +220,15 @@
         watch: {
 		    "filter_report.status" ()
             {
-                this.filter_report.status_name = 'All';
+                this.filter_report.status_name = 'Completed';
 
-                if(this.filter_report.status != '' || this.filter_report.status != null)
+                if(this.filter_report.status == 0)
                 {
-                    if(this.filter_report.status == 0)
-                    {
-                        this.filter_report.status_name = 'On Progress';
-                    }
-                    else if(this.filter_report.status == 1)
-                    {
-                        this.filter_report.status_name = 'Completed';
-                    }
+                    this.filter_report.status_name = 'On Progress';
+                }
+                else if(this.filter_report.status == '')
+                {
+                    this.filter_report.status_name = 'All';
                 }
             }
         },
@@ -291,8 +288,10 @@
 
                 if(self.filter_report.status.length > 0 && self.filter_report.status != '')
                 {
-                    queryBooking = queryBooking.where('status', '==', parseInt(self.filter_report.status));
+                    // queryBooking = queryBooking.where('status', '==', parseInt(self.filter_report.status));
                 }
+
+                queryBooking = queryBooking.where('status', '==', 1);
 
                 await queryBooking.orderBy('create_unix_time','desc').get()
                     .then(async snap => {

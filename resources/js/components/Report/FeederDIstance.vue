@@ -35,13 +35,55 @@
                                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                                     <div class="form-group">
                                         <small>
-                                            <label for=""><strong>Status</strong></label>
+                                            <label for=""><strong>Feeder</strong></label>
                                         </small>
-                                        <select name="" v-model="filter_report.status" id="" class="form-control formSelect btn-sm no-margin">
-                                            <option value="">All</option>
-                                            <option value="0">Progress</option>
-                                            <option value="1">Complete</option>
-                                        </select>
+                                        <p class="form-control-static mr-sm-2" v-if="filter_report.feeder_id != ''">
+                                            {{filter_report.feeder_name}}
+                                            <a href="#" @click.prevent="unselectFeeder()" class="float-right text-danger"><i class="ion-close"></i></a>
+                                        </p>
+                                        <input class="form-control mr-sm-2" v-model="filter_report.search_feeder_keyword" v-if="filter_report.feeder_id == ''" type="search" placeholder="Select Feeder" aria-label="Select Feeder">
+                                    </div>
+                                    <div class="search-result-box" v-if="filter_report.search_feeder_box_opened && filter_report.feeder_id == ''">
+                                        <!--not found section-->
+                                        <div class="p-3 text-danger" v-if="filter_report.search_feeder_result.length == 0">
+                                            Search "{{filter_report.search_feeder_keyword}}" not found
+                                        </div>
+
+                                        <!--list feeder-->
+                                        <div v-if="filter_report.search_feeder_result.length > 0">
+                                            <div class="p-3 text-grey-dark">
+                                                <small>
+                                                    Feeder
+                                                </small>
+                                            </div>
+                                            <div class="list-group">
+                                                <template v-for="feeder in filter_report.search_feeder_result">
+                                                    <div class="list-group-item list-group-item-action" @click.prevent="selectFeeder(feeder.id, feeder.fullname)">
+                                                        <div class="row">
+                                                            <div class="col-md-3 p-0">
+                                                                <div style="height: 80px; width: 80px " class="center">
+                                                                    <img :src="feeder.photo_file != '' ? feeder.photo_file : 'https://firebasestorage.googleapis.com/v0/b/pasarudang-6129d.appspot.com/o/_webs%2Fuser-img.png?alt=media&token=cb7062cb-1aab-428c-b5d2-8f84fee01cc3'" alt="" style="height: 100%; width: 100%; object-fit: cover" class="img-fluid rounded-circle">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-9">
+                                                                <h5 class="card-title">
+                                                                    {{feeder.fullname}}
+                                                                </h5>
+                                                                <div class="row">
+                                                                    <div class="col-md-7 align-self-center">
+                                                                        <!--<small class="text-muted text-12"> UD Muncul Jaya </small>-->
+                                                                        <!--<br>-->
+                                                                        <small class="text-orange mt-1">
+                                                                            {{feeder.vehicle_name}}, {{feeder.vehicle_police_number}}
+                                                                        </small>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </template>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-2 col-md-2 col-sm-2" v-if="filter_report.method == 'by_year'">
@@ -199,7 +241,8 @@
                     // by_year
                     // date_range
                     search_feeder_keyword: '',
-                    search_feeder_status: false,
+                    search_feeder_box_opened: false,
+                    search_feeder_result: [],
 
                     feeder_name: '',
                     feeder_id: '',
@@ -225,6 +268,20 @@
             };
 		},
         watch: {
+            "filter_report.search_feeder_keyword": _.debounce(async function(newVal)
+            {
+                let self = this;
+
+                if(self.filter_report.search_feeder_keyword.length > 2)
+                {
+                    await self.searchFeeder();
+                    self.filter_report.search_feeder_box_opened = true;
+                }
+                else
+                    self.filter_report.search_feeder_box_opened  = false;
+
+            }, 500),
+            
 		    "filter_report.status" ()
             {
                 this.filter_report.status_name = 'All';
@@ -247,6 +304,49 @@
         },
 
 		methods: {
+		    selectFeeder(id, name)
+            {
+                let self = this;
+                self.filter_report.feeder_id = id;
+                self.filter_report.feeder_name = name;
+                self.filter_report.search_feeder_keyword = '';
+                self.filter_report.search_feeder_box_opened = false;
+            },
+
+            unselectFeeder()
+            {
+                let self = this;
+
+                self.filter_report.feeder_id = '';
+                self.filter_report.feeder_name = '';
+                self.result.data = [];
+            },
+
+            async searchFeeder()
+            {
+                let self = this;
+
+                self.filter_report.search_feeder_result= [];
+
+                let ref = db.collection("feeder");
+
+                await ref.get().then(async documentSnapshots =>
+                {
+                    let num = 1;
+                    await documentSnapshots.forEach(async doc =>
+                    {
+                        let data = doc.data();
+                        data.id = doc.id;
+
+                        if(data.fullname.toLowerCase().indexOf(self.filter_report.search_feeder_keyword) !== -1 && num <= 10)
+                        {
+                            self.filter_report.search_feeder_result.push(data);
+                            num++;
+                        }
+                    });
+                });
+            },
+            
             printElem(elem)
             {
                 return func.printElem(elem)

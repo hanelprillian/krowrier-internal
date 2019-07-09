@@ -10780,6 +10780,17 @@ a.text-dark:focus {
   padding: 3px 4px 3px 4px !important;
 }
 
+.search-result-box {
+  width: 500px;
+  max-height: 500px;
+  display: block;
+  background: #fff;
+  position: absolute;
+  z-index: 999;
+  border: 1.3px solid #e6e7e8;
+  overflow-y: scroll;
+}
+
 @media print {
   .section-to-print,
   .section-to-print * {

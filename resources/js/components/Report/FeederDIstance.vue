@@ -133,7 +133,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <button class="btn btn-primary btn-sm" @click.prevent="generateReport()">Generate</button>
+                                    <button class="btn btn-primary btn-sm" :disabled="filter_report.feeder_id == ''" @click.prevent="generateReport()">Generate</button>
                                 </div>
                             </div>
                         </div>
@@ -168,45 +168,55 @@
                                     <thead>
                                     <tr>
                                         <th width="10%">Date</th>
-                                        <th width="15%">Code</th>
-                                        <th width="15%">Product</th>
-                                        <th width="15%">Customer</th>
-                                        <th width="25%">Destination</th>
-                                        <th width="15%">Charges</th>
+                                        <th width="8%">Status</th>
+                                        <th width="11%">Task</th>
+                                        <th width="15%">Booking</th>
+                                        <th width="10%">Distance</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     <tr v-for="result in result.data">
                                         <td>{{ result.create_date }}</td>
-                                        <td>{{result.code_booking}}</td>
                                         <td>
-                                            {{result.goods_name}}
+                                            {{result.id}}
                                             <br>
-                                            <small>
-                                                Qty: {{result.goods_quantity}}
-                                            </small>
-                                            <br>
-                                            <small>
-                                                Weight: {{result.goods_weight}} Kg
-                                            </small>
+                                            <span v-if="result.task_status == 1" class="badge badge-success">Completed</span>
+                                            <span v-if="result.task_status == 0" class="badge badge-primary">Progress</span>
                                         </td>
-                                        <td>{{ result.user.name }}</td>
-                                        <td>{{ result.destination_address }}</td>
-                                        <td>Rp. {{$parent.currency(result.total_charges)}}</td>
+                                        <td>
+                                            <span v-if="result.type && result.type == 0">Pickup</span>
+                                            <span v-if="result.type && result.type == 1">Delivery</span>
+                                        </td>
+                                        <td>
+                                            <small>
+                                                Code: {{result.booking_code}}
+                                            </small>
+                                            <br>
+                                            <small>
+                                                <strong>
+                                                    {{result.type && result.type == 0 ? 'Pickup Address' : 'Destination Address'}}
+                                                </strong>
+                                            </small>
+                                            <br>
+                                            <span>
+                                                {{result.type && result.type == 0 ? result.pickup_address : result.destination_address}}
+                                            </span>
+                                        </td>
+                                        <td>{{$parent.formatMoney(result.distance, 2)}} Km</td>
                                     </tr>
                                     <tr v-if="result.data.length == 0">
-                                        <td colspan="6" class="bg-warning">
+                                        <td colspan="5" class="bg-warning">
                                             Data Empty
                                         </td>
                                     </tr>
                                     </tbody>
                                     <!--<tfoot>-->
                                     <tr>
-                                        <th colspan="5" class="text-right">
-                                            Total Charges
+                                        <th colspan="4" class="text-right">
+                                            Total Distance
                                         </th>
                                         <th>
-                                            Rp. {{$parent.currency(result.total_charges)}}
+                                           {{(result.total_distance)}} Km
                                         </th>
                                     </tr>
                                     <!--</tfoot>-->
@@ -230,7 +240,7 @@
 				result: {
 				    data: [],
 				    total: 0,
-				    total_charges: 0,
+				    total_distance: 0,
                     loading: false
                 },
                 filter_report: {
@@ -357,7 +367,7 @@
                 this.result.loading = true;
                 this.result.data = [];
                 this.result.total = 0;
-                this.result.total_charges = 0;
+                this.result.total_distance = 0;
 
                 swal.fire({
                     title: "Generating Report",
@@ -370,61 +380,50 @@
                 });
 
                 let queryBooking = db
-                    .collection("booking")
+                    .collection("feeder_task")
                     .where("create_unix_time" ,'>=', moment(this.filter_report.current_year.toString()).startOf('year').valueOf())
                     .where("create_unix_time" ,'<=', moment(this.filter_report.current_year.toString()).endOf('year').valueOf());
 
                 if(self.filter_report.method == 'by_year')
                 {
                     queryBooking =  db
-                        .collection("booking")
+                        .collection("feeder_task")
                         .where("create_unix_time" ,'>=', moment(this.filter_report.selected_year.toString()).startOf('year').valueOf())
                         .where("create_unix_time" ,'<=', moment(this.filter_report.selected_year.toString()).endOf('year').valueOf());
                 }
                 else if(self.filter_report.method == 'month_range')
                 {
                     queryBooking =  db
-                        .collection("booking")
+                        .collection("feeder_task")
                         .where("create_unix_time" ,'>=', moment(this.filter_report.from_month.toString()).startOf('month').valueOf())
                         .where("create_unix_time" ,'<=', moment(this.filter_report.to_month.toString()).endOf('month').valueOf());
                 }
                 else if(self.filter_report.method == 'date_range')
                 {
                     queryBooking =  db
-                        .collection("booking")
+                        .collection("feeder_task")
                         .where("create_unix_time" ,'>=', moment(this.filter_report.from_date.toString()).valueOf())
                         .where("create_unix_time" ,'<=', moment(this.filter_report.to_date.toString()).valueOf());
                 }
 
-                if(self.filter_report.status.length > 0 && self.filter_report.status != '')
-                {
-                    queryBooking = queryBooking.where('status', '==', parseInt(self.filter_report.status));
-                }
+                queryBooking = queryBooking.where('feeder_id', '==', self.filter_report.feeder_id);
 
                 await queryBooking.orderBy('create_unix_time','desc').get()
                     .then(async snap => {
                         this.result.total = snap.size;
+                        let totalDistance = 0;
 
                         snap.forEach(async doc =>
                         {
                             let data = doc.data();
                             data.id = doc.id;
-                            data.user = null;
 
-                            db
-                                .collection("user")
-                                .doc(data.user_id)
-                                .get()
-                                .then(doc1 => {
-                                    if (doc1.exists) {
-                                        data.user = doc1.data();
-                                    }
-                                });
-
-                            this.result.total_charges += data.total_charges;
+                            if(data.distance)
+                                totalDistance += parseFloat(data.distance);
 
                             this.result.data.push(data);
                         });
+                        this.result.total_distance = totalDistance;
                         this.result.loading = false;
                     });
 

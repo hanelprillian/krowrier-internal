@@ -841,6 +841,14 @@
                 return ret;
             },
 
+            formatMoney(amount, c, d, t)
+            {
+                if(amount)
+                    return func.formatMoney(amount);
+                else
+                    return 0;
+            },
+
             async selectChat(chat_id, user_id, role_id, opponent_user_id, name, photo, booking_id, booking_code, current_role)
             {
                 let self = this;

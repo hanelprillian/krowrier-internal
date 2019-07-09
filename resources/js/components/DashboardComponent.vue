@@ -363,11 +363,8 @@
                     {
                         name: 'Complete',
                         data: [0,0,0,0,0,0,0,0,0,0,0,0]
-                    },
-                    {
-                        name: 'Progress',
-                        data: [0,0,0,0,0,0,0,0,0,0,0,0]
-                    }],
+                    }
+                ],
 
                 filter_dashboard: {
                     // there are methods:
@@ -715,7 +712,7 @@
                         {
                             let data = change.data();
 
-                            self.total_data.booking_charges.data += data.total_charges_all;
+                            self.total_data.booking_charges.data += data.total_charges_success;
                         });
 
                         self.total_data.booking_charges.loading = false;
@@ -830,7 +827,7 @@
             {
                 let self = this;
                 let dataComplete = self.series[0].data;
-                let dataProgress = self.series[1].data;
+                // let dataProgress = self.series[1].data;
 
                 year = year || moment().format("YYYY");
 
@@ -840,18 +837,18 @@
                     .onSnapshot(async documentSnapshots => {
 
                         dataComplete = [0,0,0,0,0,0,0,0,0,0,0,0];
-                        dataProgress = [0,0,0,0,0,0,0,0,0,0,0,0];
+                        // dataProgress = [0,0,0,0,0,0,0,0,0,0,0,0];
 
                         documentSnapshots.forEach(function(change)
                         {
                             let data = change.data();
 
                             dataComplete[data.month_index - 1] = data.total_success;
-                            dataProgress[data.month_index - 1] = data.total_process;
+                            // dataProgress[data.month_index - 1] = data.total_process;
                         });
 
                         self.series[0].data = dataComplete;
-                        self.series[1].data = dataProgress;
+                        // self.series[1].data = dataProgress;
                     });
             }
         },

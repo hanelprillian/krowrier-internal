@@ -362,7 +362,8 @@
                 series: [
                     {
                         name: 'Complete',
-                        data: [0,0,0,0,0,0,0,0,0,0,0,0]
+                        // data: [0,0,0,0,0,0,0,0,0,0,0,0]
+                        data: [0]
                     }
                 ],
 
@@ -456,6 +457,11 @@
                         self.getBookingStatisticsByMonth(self.filter_dashboard.current_year);
                         self.initCounter();
                     }
+                    else if(self.filter_dashboard.method == 'date_range')
+                    {
+                        self.initCounter();
+                        self.getBookingStatisticsByDate();
+                    }
                 },
 
                 "filter_dashboard.from_month" ()
@@ -491,6 +497,7 @@
                     if(this.filter_dashboard.method == 'date_range' && this.filter_dashboard.from_date != '' && this.filter_dashboard.to_date != '')
                     {
                         this.initCounter();
+                        this.getBookingStatisticsByDate();
                     }
                 },
 
@@ -503,6 +510,7 @@
                     if(this.filter_dashboard.method == 'date_range' && this.filter_dashboard.from_date != '' && this.filter_dashboard.to_date != '')
                     {
                         this.initCounter();
+                        this.getBookingStatisticsByDate();
                     }
                 }
             },
@@ -856,6 +864,46 @@
                         self.series[0].data = dataComplete;
                         // self.series[1].data = dataProgress;
                     });
+            },
+
+            async getBookingStatisticsByDate()
+            {
+                let self = this;
+
+                let from_date = moment(this.filter_dashboard.from_date);
+                let to_date = moment(this.filter_dashboard.to_date);
+                let xaxisCategories = [];
+                let seriesData = [];
+                // let dataComplete = self.series[0].data;
+
+                for (var m = moment(from_date); m.diff(to_date, 'days') <= 0; m.add(1, 'days'))
+                {
+                    let date_formatted = m.format('DD MMMM YYYY');
+                    let startDay = new Date(m.format('YYYY-MM-DD'));
+                    startDay.setHours(0,0,0,0);
+                    let endDay = new Date(m.format('YYYY-MM-DD'));
+                    endDay.setHours(23,59,59,999);
+                    let totalBookingDaily = 0;
+
+                    db
+                        .collection("booking")
+                        .where("create_unix_time", ">=", startDay.valueOf())
+                        .where("create_unix_time", "<=", endDay.valueOf())
+                        .orderBy("create_unix_time", "desc")
+                        .get().then(async documentSnapshots => {
+                            totalBookingDaily = documentSnapshots.size;
+                            seriesData.push(totalBookingDaily);
+                        });
+                    xaxisCategories.push(date_formatted);
+                }
+
+                self.series[0].data = seriesData;
+
+                self.chartOptions = {
+                    xaxis: {
+                        categories: xaxisCategories
+                    }
+                };
             }
         },
 

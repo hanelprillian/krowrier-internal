@@ -4,12 +4,8 @@
     <list default="true" id="c83c229e-a460-4b06-aa34-53bdc3cf4928" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/mix-manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/vendors~view-Company-Form-vue~view-Courier-Form-vue~view-Customer-Form-vue~view-DashboardComponent-v~70730f35.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/view-Courier-Form-vue~view-DashboardComponent-vue~view-DropPoint-Form-vue~view-FeederCourier-Form-vu~7d1aec5f.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/public/view-DashboardComponent-vue.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/view-DashboardComponent-vue.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/view-Report-FeederDIstance-vue.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/view-Report-FeederDIstance-vue.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/DashboardComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/DashboardComponent.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/Report/FeederDIstance.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Report/FeederDIstance.vue" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -26,8 +22,8 @@
       <file leaf-file-name="DashboardComponent.vue" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/js/components/DashboardComponent.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="142">
-              <caret line="829" column="28" lean-forward="true" selection-start-line="829" selection-start-column="28" selection-end-line="829" selection-end-column="28" />
+            <state relative-caret-position="349">
+              <caret line="458" column="21" lean-forward="true" selection-start-line="458" selection-start-column="21" selection-end-line="458" selection-end-column="21" />
               <folding>
                 <element signature="n#div#0;n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" />
                 <element signature="n#div#0;n#div#2;n#div#0;n#template#0;n#!!top" />
@@ -35,7 +31,7 @@
                 <element signature="n#div#2;n#div#2;n#div#0;n#template#0;n#!!top" />
                 <element signature="n#div#4;n#div#2;n#div#0;n#template#0;n#!!top" />
                 <element signature="e#19009#19052#0" expanded="true" />
-                <element signature="e#22057#25462#0" />
+                <element signature="e#25522#25673#0" />
                 <element signature="e#25734#27199#0" />
                 <element signature="e#25933#27183#0" expanded="true" />
                 <element signature="e#26237#27099#0" expanded="true" />
@@ -53,8 +49,10 @@
                 <element signature="e#36846#37005#0" expanded="true" />
                 <element signature="e#38888#38983#0" expanded="true" />
                 <element signature="e#40764#40922#0" expanded="true" />
+                <element signature="e#41005#42241#0" />
                 <element signature="e#41592#42225#0" expanded="true" />
                 <element signature="e#41822#42077#0" expanded="true" />
+                <element signature="e#44017#44446#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -64,9 +62,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>report</find>
-      <find>Report</find>
-      <find>Transa</find>
       <find>filter-</find>
       <find>filter_report</find>
       <find>filter_report.status</find>
@@ -94,6 +89,9 @@
       <find>getBookingStatistics</find>
       <find>getBookingStatisticsByMonth</find>
       <find>chartOptions</find>
+      <find>filter_dashboard.to_date</find>
+      <find>seriesData</find>
+      <find>getBookingStatisticsByDate</find>
     </findStrings>
     <replaceStrings>
       <replace>../</replace>
@@ -521,12 +519,12 @@
       <workItem from="1562182116408" duration="2066000" />
       <workItem from="1562223444360" duration="13000" />
       <workItem from="1562570018077" duration="16423000" />
-      <workItem from="1562860399346" duration="1740000" />
+      <workItem from="1562860399346" duration="5799000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="271911000" />
+    <option name="totallyTimeSpent" value="275970000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -957,8 +955,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/components/DashboardComponent.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
-          <caret line="829" column="28" lean-forward="true" selection-start-line="829" selection-start-column="28" selection-end-line="829" selection-end-column="28" />
+        <state relative-caret-position="349">
+          <caret line="458" column="21" lean-forward="true" selection-start-line="458" selection-start-column="21" selection-end-line="458" selection-end-column="21" />
           <folding>
             <element signature="n#div#0;n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" />
             <element signature="n#div#0;n#div#2;n#div#0;n#template#0;n#!!top" />
@@ -966,7 +964,7 @@
             <element signature="n#div#2;n#div#2;n#div#0;n#template#0;n#!!top" />
             <element signature="n#div#4;n#div#2;n#div#0;n#template#0;n#!!top" />
             <element signature="e#19009#19052#0" expanded="true" />
-            <element signature="e#22057#25462#0" />
+            <element signature="e#25522#25673#0" />
             <element signature="e#25734#27199#0" />
             <element signature="e#25933#27183#0" expanded="true" />
             <element signature="e#26237#27099#0" expanded="true" />
@@ -984,8 +982,10 @@
             <element signature="e#36846#37005#0" expanded="true" />
             <element signature="e#38888#38983#0" expanded="true" />
             <element signature="e#40764#40922#0" expanded="true" />
+            <element signature="e#41005#42241#0" />
             <element signature="e#41592#42225#0" expanded="true" />
             <element signature="e#41822#42077#0" expanded="true" />
+            <element signature="e#44017#44446#0" expanded="true" />
           </folding>
         </state>
       </provider>

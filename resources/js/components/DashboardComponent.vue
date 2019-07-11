@@ -216,7 +216,7 @@
                                 </div>
                             </div>
                         </div>
-                        <vue-apex-charts v-if="filter_dashboard.method == 'by_year' || filter_dashboard.method == 'current_year'" width="100%" height="300" type="bar" :options="chartOptions" :series="series"></vue-apex-charts>
+                        <vue-apex-charts v-if="filter_dashboard.method == 'by_year' || filter_dashboard.method == 'current_year' || filter_dashboard.method == 'date_range'" width="100%" height="300" type="bar" :options="chartOptions" :series="series"></vue-apex-charts>
                         <!--<GChart-->
                         <!--style="height: 300px; width:100%"-->
                         <!--type="ColumnChart"-->
@@ -355,7 +355,7 @@
                         id: 'vuechart-example',
                     },
                     xaxis: {
-                        categories: ['January','February','March','April','May','June','July','August','September','October','November','December']
+                        categories: []
                     },
                     colors: ["#2ecc71", "#3498db"],
                 },
@@ -441,7 +441,7 @@
                             "YYYY"
                         ) : moment().format("YYYY");
 
-                        self.getBookingStatistics(self.filter_dashboard._selected_year_formatted);
+                        self.getBookingStatisticsByMonth(self.filter_dashboard._selected_year_formatted);
                         self.initCounter();
                     }
                 },
@@ -453,7 +453,7 @@
                     if(self.filter_dashboard.method == 'current_year')
                     {
                         self.filter_dashboard.selected_year = self.filter_dashboard.current_year;
-                        self.getBookingStatistics(self.filter_dashboard.current_year);
+                        self.getBookingStatisticsByMonth(self.filter_dashboard.current_year);
                         self.initCounter();
                     }
                 },
@@ -823,9 +823,15 @@
                 });
             },
 
-            async getBookingStatistics(year)
+            async getBookingStatisticsByMonth(year)
             {
                 let self = this;
+                self.chartOptions = {
+                    xaxis: {
+                        categories: ['January','February','March','April','May','June','July','August','September','October','November','December']
+                    }
+                };
+
                 let dataComplete = self.series[0].data;
                 // let dataProgress = self.series[1].data;
 
@@ -860,7 +866,7 @@
             this.getRecentFeederRegistered();
             this.getRecentCourierRegistered();
             let token = null;
-            this.getBookingStatistics();
+            this.getBookingStatisticsByMonth();
             // alert(moment(moment().format("YYYY")+"-05").startOf('month'))
 
             // console.log(await func.getUserToken());

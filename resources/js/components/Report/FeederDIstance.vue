@@ -178,8 +178,7 @@
                                     <tr v-for="result in result.data">
                                         <td>{{ result.create_date }}</td>
                                         <td>
-                                            {{result.id}}
-                                            <br>
+
                                             <span v-if="result.task_status == 1" class="badge badge-success">Completed</span>
                                             <span v-if="result.task_status == 0" class="badge badge-primary">Progress</span>
                                         </td>

@@ -12,7 +12,7 @@
                     </h2>
                     <div>
                         <div class="page-header-tools">
-                            <button data-toggle="collapse" class="btn btn-info btn-sm" data-target="#filterSection">
+                            <button data-toggle="collapse" class="btn btn-gradient-03 btn-sm" data-target="#filterSection">
                                 &nbsp; <i class="ion-ios-list-outline"></i> Filter &nbsp;
                             </button>
                         </div>
@@ -39,7 +39,7 @@
                                         <select name="" v-model="filter_dashboard.method" id="" class="form-control formSelect btn-sm no-margin">
                                             <option value="current_year">Current Year ({{filter_dashboard.current_year}})</option>
                                             <option value="by_year">By Year</option>
-                                            <option value="month_range">By Month</option>
+                                            <!--<option value="month_range">By Month</option>-->
                                             <option value="date_range">By Date</option>
                                         </select>
                                     </div>
@@ -167,9 +167,14 @@
                 <!-- Vertical Bar 02 -->
                 <div class="widget has-shadow">
                     <div class="widget-header bordered no-actions">
-                        <h4>
-                            Booking Statistics
+                        <h4 class="float-left">
+                            Booking Statistics |
+                            <small v-if="filter_dashboard.method == 'current_year' || filter_dashboard.method == 'by_year'">{{filter_dashboard._selected_year_formatted}}</small>
+                            <small v-if="filter_dashboard.method == 'month_range'">{{filter_dashboard._from_month_format}} <small>to</small> {{filter_dashboard._to_month_format}}</small>
+                            <small v-if="filter_dashboard.method == 'date_range'">{{filter_dashboard._from_date_format}} <small>to</small> {{filter_dashboard._to_date_format}}</small>
                         </h4>
+                        <button class="btn btn-info btn-sm float-right" @click.prevent="refreshDashboardStatistic()">Refresh</button>
+                        <div class="clearfix"></div>
                     </div>
                     <div class="widget-body">
                         <div class="row">
@@ -459,8 +464,8 @@
                     }
                     else if(self.filter_dashboard.method == 'date_range')
                     {
-                        self.initCounter();
                         self.getBookingStatisticsByDate();
+                        self.initCounter();
                     }
                 },
 
@@ -490,14 +495,14 @@
 
                 "filter_dashboard.from_date" ()
                 {
-                    this.filter_dashboard._from_date_format = this.filter_dashboard.from_date != '' ? moment(this.filter_dashboard._from_date_format).format(
+                    this.filter_dashboard._from_date_format = this.filter_dashboard.from_date != '' ? moment(this.filter_dashboard.from_date).format(
                         "DD MMMM YYYY"
                     ) : moment().format("DD MMMM YYYY");
 
                     if(this.filter_dashboard.method == 'date_range' && this.filter_dashboard.from_date != '' && this.filter_dashboard.to_date != '')
                     {
-                        this.initCounter();
                         this.getBookingStatisticsByDate();
+                        this.initCounter();
                     }
                 },
 
@@ -509,8 +514,8 @@
 
                     if(this.filter_dashboard.method == 'date_range' && this.filter_dashboard.from_date != '' && this.filter_dashboard.to_date != '')
                     {
-                        this.initCounter();
                         this.getBookingStatisticsByDate();
+                        this.initCounter();
                     }
                 }
             },
@@ -524,6 +529,23 @@
                     ret = func.currency_number(val);
 
                 return ret;
+            },
+
+            refreshDashboardStatistic()
+            {
+                let self = this;
+
+                if(self.filter_dashboard.method == 'current_year')
+                {
+                    self.filter_dashboard.selected_year = self.filter_dashboard.current_year;
+                    self.getBookingStatisticsByMonth(self.filter_dashboard.current_year);
+                    self.initCounter();
+                }
+                else if(self.filter_dashboard.method == 'date_range')
+                {
+                    self.getBookingStatisticsByDate();
+                    self.initCounter();
+                }
             },
 
             async getRecentFeederRegistered()
@@ -642,10 +664,15 @@
                 }
                 else if(self.filter_dashboard.method == 'date_range')
                 {
+                    let startDay = new Date(this.filter_dashboard.from_date.toString());
+                    startDay.setHours(0,0,0,0);
+                    let endDay = new Date(this.filter_dashboard.to_date.toString());
+                    endDay.setHours(23,59,59,999);
+
                     queryDropPoint =  db
                         .collection("drop_point")
-                        .where("create_unix_time" ,'>=', moment(this.filter_dashboard.from_date.toString()).valueOf())
-                        .where("create_unix_time" ,'<=', moment(this.filter_dashboard.to_date.toString()).valueOf());
+                        .where("create_unix_time" ,'>=', startDay.valueOf())
+                        .where("create_unix_time" ,'<=', endDay.valueOf());
                 }
 
                 queryDropPoint.get()
@@ -656,6 +683,7 @@
 
                 //counter booking
                 this.total_data.bookings.loading = true;
+                this.total_data.booking_charges.loading = true;
 
                 let queryBooking = db
                     .collection("booking")
@@ -678,49 +706,31 @@
                 }
                 else if(self.filter_dashboard.method == 'date_range')
                 {
+                    let startDay = new Date(this.filter_dashboard.from_date.toString());
+                    startDay.setHours(0,0,0,0);
+                    let endDay = new Date(this.filter_dashboard.to_date.toString());
+                    endDay.setHours(23,59,59,999);
+
                     queryBooking =  db
                         .collection("booking")
-                        .where("create_unix_time" ,'>=', moment(this.filter_dashboard.from_date.toString()).valueOf())
-                        .where("create_unix_time" ,'<=', moment(this.filter_dashboard.to_date.toString()).valueOf());
+                        .where("create_unix_time" ,'>=', startDay.valueOf())
+                        .where("create_unix_time" ,'<=', endDay.valueOf());
                 }
+
+                queryBooking = queryBooking.where('status', '==', 1);
 
                 queryBooking.get()
                     .then(snap => {
                         this.total_data.bookings.data = snap.size;
                         this.total_data.bookings.loading = false;
-                    });
-
-                //counter booking charges
-                this.total_data.booking_charges.loading = true;
-
-                let queryBookingCharges = db
-                    .collection("booking_monthly_statistic")
-                    .where("year" ,'==', parseInt(self.filter_dashboard.current_year))
-
-                if(self.filter_dashboard.method == 'by_year')
-                {
-                    queryBookingCharges =  db
-                        .collection("booking_monthly_statistic")
-                        .where("year" ,'==', parseInt(self.filter_dashboard._selected_year_formatted))
-                }
-                else if(self.filter_dashboard.method == 'month_range')
-                {
-                    queryBookingCharges =  db
-                        .collection("booking_monthly_statistic")
-                        .where("month_index" ,'>=', moment(this.filter_dashboard.from_month.toString()).month()+1)
-                        .where("month_index" ,'<=', moment(this.filter_dashboard.to_month.toString()).month()+1);
-                }
-
-                queryBookingCharges
-                    .onSnapshot(async documentSnapshots => {
 
                         self.total_data.booking_charges.data = 0;
 
-                        documentSnapshots.forEach(function(change)
+                        snap.forEach(function(change)
                         {
                             let data = change.data();
 
-                            self.total_data.booking_charges.data += data.total_charges_success;
+                            self.total_data.booking_charges.data += data.total_charges;
                         });
 
                         self.total_data.booking_charges.loading = false;
@@ -750,10 +760,15 @@
                 }
                 else if(self.filter_dashboard.method == 'date_range')
                 {
+                    let startDay = new Date(this.filter_dashboard.from_date.toString());
+                    startDay.setHours(0,0,0,0);
+                    let endDay = new Date(this.filter_dashboard.to_date.toString());
+                    endDay.setHours(23,59,59,999);
+
                     queryCustomer =  db
                         .collection("user").where('current_role','==','customer')
-                        .where("create_unix_time" ,'>=', moment(this.filter_dashboard.from_date.toString()).valueOf())
-                        .where("create_unix_time" ,'<=', moment(this.filter_dashboard.to_date.toString()).valueOf());
+                        .where("create_unix_time" ,'>=', startDay.valueOf())
+                        .where("create_unix_time" ,'<=', endDay.valueOf());
                 }
 
                 queryCustomer.onSnapshot(async documentSnapshots =>
@@ -786,10 +801,15 @@
                 }
                 else if(self.filter_dashboard.method == 'date_range')
                 {
+                    let startDay = new Date(this.filter_dashboard.from_date.toString());
+                    startDay.setHours(0,0,0,0);
+                    let endDay = new Date(this.filter_dashboard.to_date.toString());
+                    endDay.setHours(23,59,59,999);
+
                     queryCourier =  db
                         .collection("courier")
-                        .where("create_unix_time" ,'>=', moment(this.filter_dashboard.from_date.toString()).valueOf())
-                        .where("create_unix_time" ,'<=', moment(this.filter_dashboard.to_date.toString()).valueOf());
+                        .where("create_unix_time" ,'>=', startDay.valueOf())
+                        .where("create_unix_time" ,'<=', endDay.valueOf());
                 }
 
                 queryCourier.onSnapshot(async documentSnapshots =>
@@ -818,10 +838,15 @@
                 }
                 else if(self.filter_dashboard.method == 'date_range')
                 {
+                    let startDay = new Date(this.filter_dashboard.from_date.toString());
+                    startDay.setHours(0,0,0,0);
+                    let endDay = new Date(this.filter_dashboard.to_date.toString());
+                    endDay.setHours(23,59,59,999);
+
                     queryFeeder =  db
                         .collection("feeder")
-                        .where("create_unix_time" ,'>=', moment(this.filter_dashboard.from_date.toString()).valueOf())
-                        .where("create_unix_time" ,'<=', moment(this.filter_dashboard.to_date.toString()).valueOf());
+                        .where("create_unix_time" ,'>=', startDay.valueOf())
+                        .where("create_unix_time" ,'<=', endDay.valueOf());
                 }
 
                 queryFeeder.onSnapshot(async documentSnapshots =>
@@ -889,6 +914,7 @@
                         .collection("booking")
                         .where("create_unix_time", ">=", startDay.valueOf())
                         .where("create_unix_time", "<=", endDay.valueOf())
+                        .where('status', '==', 1)
                         .orderBy("create_unix_time", "desc")
                         .get().then(async documentSnapshots => {
                             totalBookingDaily = documentSnapshots.size;
@@ -913,11 +939,7 @@
             this.initCounter();
             this.getRecentFeederRegistered();
             this.getRecentCourierRegistered();
-            let token = null;
-            this.getBookingStatisticsByMonth();
-            // alert(moment(moment().format("YYYY")+"-05").startOf('month'))
-
-            // console.log(await func.getUserToken());
+            this.getBookingStatisticsByMonth(this.filter_dashboard.current_year);
         },
         updated() {
             $(".formSelect").selectpicker("refresh");

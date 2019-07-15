@@ -7,7 +7,7 @@
                     <h2 class="page-header-title">
                         Dashboard |
                         <small v-if="filter_dashboard.method == 'current_year' || filter_dashboard.method == 'by_year'">{{filter_dashboard._selected_year_formatted}}</small>
-                        <small v-if="filter_dashboard.method == 'month_range'">{{filter_dashboard._from_month_format}} <small>to</small> {{filter_dashboard._to_month_format}}</small>
+                        <small v-if="filter_dashboard.method == 'by_month'">{{filter_dashboard._selected_month_format}} </small>
                         <small v-if="filter_dashboard.method == 'date_range'">{{filter_dashboard._from_date_format}} <small>to</small> {{filter_dashboard._to_date_format}}</small>
                     </h2>
                     <div>
@@ -39,7 +39,7 @@
                                         <select name="" v-model="filter_dashboard.method" id="" class="form-control formSelect btn-sm no-margin">
                                             <option value="current_year">Current Year ({{filter_dashboard.current_year}})</option>
                                             <option value="by_year">By Year</option>
-                                            <!--<option value="month_range">By Month</option>-->
+                                            <option value="by_month">By Month</option>
                                             <option value="date_range">By Date</option>
                                         </select>
                                     </div>
@@ -52,21 +52,13 @@
                                         <datepicker :minimumView="'year'" :maximumView="'year'" v-model="filter_dashboard.selected_year" input-class="form-control" format="yyyy"></datepicker>
                                     </div>
                                 </div>
-                                <template v-if="filter_dashboard.method == 'month_range'">
+                                <template v-if="filter_dashboard.method == 'by_month'">
                                     <div class="col-lg-2 col-md-2 col-sm-2">
                                         <div class="form-group">
                                             <small>
-                                                <label for="">Start Month</label>
+                                                <label for="">Select Month</label>
                                             </small>
-                                            <datepicker :minimumView="'month'" :maximumView="'year'" v-model="filter_dashboard.from_month" input-class="form-control" format="yyyy/MM"></datepicker>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-2 col-md-2 col-sm-2">
-                                        <div class="form-group">
-                                            <small>
-                                                <label for="">End Month</label>
-                                            </small>
-                                            <datepicker :minimumView="'month'" :maximumView="'year'" v-model="filter_dashboard.to_month" input-class="form-control" format="yyyy/MM"></datepicker>
+                                            <datepicker :minimumView="'month'" :maximumView="'year'" v-model="filter_dashboard.selected_month" input-class="form-control" format="yyyy/MM"></datepicker>
                                         </div>
                                     </div>
                                 </template>
@@ -170,7 +162,7 @@
                         <h4 class="float-left">
                             Booking Statistics |
                             <small v-if="filter_dashboard.method == 'current_year' || filter_dashboard.method == 'by_year'">{{filter_dashboard._selected_year_formatted}}</small>
-                            <small v-if="filter_dashboard.method == 'month_range'">{{filter_dashboard._from_month_format}} <small>to</small> {{filter_dashboard._to_month_format}}</small>
+                            <small v-if="filter_dashboard.method == 'by_month'">{{filter_dashboard._selected_month_format}}</small>
                             <small v-if="filter_dashboard.method == 'date_range'">{{filter_dashboard._from_date_format}} <small>to</small> {{filter_dashboard._to_date_format}}</small>
                         </h4>
                         <button class="btn btn-info btn-sm float-right" @click.prevent="refreshDashboardStatistic()">Refresh</button>
@@ -221,7 +213,7 @@
                                 </div>
                             </div>
                         </div>
-                        <vue-apex-charts v-if="filter_dashboard.method == 'by_year' || filter_dashboard.method == 'current_year' || filter_dashboard.method == 'date_range'" width="100%" height="300" type="bar" :options="chartOptions" :series="series"></vue-apex-charts>
+                        <vue-apex-charts v-if="filter_dashboard.method == 'by_year' || filter_dashboard.method == 'current_year' || filter_dashboard.method == 'date_range' || filter_dashboard.method == 'by_month'" width="100%" height="300" type="bar" :options="chartOptions" :series="series"></vue-apex-charts>
                         <!--<GChart-->
                         <!--style="height: 300px; width:100%"-->
                         <!--type="ColumnChart"-->
@@ -358,11 +350,16 @@
                 chartOptions: {
                     chart: {
                         id: 'vuechart-example',
+                        events: {
+                            dataPointSelection: function(event, chartContext, config) {
+                                console.log(chartContext, config);
+                            }
+                        }
                     },
                     xaxis: {
                         categories: []
                     },
-                    colors: ["#2ecc71", "#3498db"],
+                    colors: ["#002BFE"],
                 },
                 series: [
                     {
@@ -376,7 +373,7 @@
                     // there are methods:
                     // all
                     // current_year
-                    // month_range
+                    // by_month
                     // by_year
                     // date_range
                     method: 'current_year',
@@ -388,6 +385,9 @@
                     _from_month_format: moment().format("MMMM YYYY"),
                     to_month: moment().format("YYYY/MM"),
                     _to_month_format: moment().format("MMMM YYYY"),
+
+                    selected_month: moment().format("YYYY/MM"),
+                    _selected_month_format: moment().format("MMMM YYYY"),
 
                     from_date: moment().format("YYYY/MM/DD"),
                     _from_date_format: moment().format("DD MMMM YYYY"),
@@ -462,6 +462,11 @@
                         self.getBookingStatisticsByMonth(self.filter_dashboard.current_year);
                         self.initCounter();
                     }
+                    else if(self.filter_dashboard.method == 'by_month')
+                    {
+                        self.getBookingStatisticsByDate(moment(self.filter_dashboard.selected_month).startOf("month").toDate(), moment(self.filter_dashboard.selected_month).endOf("month").toDate());
+                        self.initCounter();
+                    }
                     else if(self.filter_dashboard.method == 'date_range')
                     {
                         self.getBookingStatisticsByDate();
@@ -469,26 +474,15 @@
                     }
                 },
 
-                "filter_dashboard.from_month" ()
+                "filter_dashboard.selected_month" ()
                 {
-                    this.filter_dashboard._from_month_format = this.filter_dashboard.from_month != '' ? moment(this.filter_dashboard.from_month).format(
+                    this.filter_dashboard._selected_month_format = this.filter_dashboard.selected_month != '' ? moment(this.filter_dashboard.selected_month).format(
                         "MMMM YYYY"
                     ) : moment().format("MMMM YYYY");
 
-                    if(this.filter_dashboard.method == 'month_range' && this.filter_dashboard.from_month != '' && this.filter_dashboard.to_month != '')
+                    if(this.filter_dashboard.method == 'by_month' && this.filter_dashboard.selected_month != '')
                     {
-                        this.initCounter();
-                    }
-                },
-
-                "filter_dashboard.to_month" ()
-                {
-                    this.filter_dashboard._to_month_format = this.filter_dashboard.to_month != '' ? moment(this.filter_dashboard.to_month).format(
-                        "MMMM YYYY"
-                    ) : moment().format("MMMM YYYY");
-
-                    if(this.filter_dashboard.method == 'month_range' && this.filter_dashboard.from_month != '' && this.filter_dashboard.to_month != '')
-                    {
+                        this.getBookingStatisticsByDate(moment(this.filter_dashboard.selected_month).startOf("month").toDate(), moment(this.filter_dashboard.selected_month).endOf("month").toDate());
                         this.initCounter();
                     }
                 },
@@ -655,7 +649,7 @@
                         .where("create_unix_time" ,'>=', moment(this.filter_dashboard.selected_year.toString()).startOf('year').valueOf())
                         .where("create_unix_time" ,'<=', moment(this.filter_dashboard.selected_year.toString()).endOf('year').valueOf());
                 }
-                else if(self.filter_dashboard.method == 'month_range')
+                else if(self.filter_dashboard.method == 'by_month')
                 {
                     queryDropPoint =  db
                         .collection("drop_point")
@@ -697,7 +691,7 @@
                         .where("create_unix_time" ,'>=', moment(this.filter_dashboard.selected_year.toString()).startOf('year').valueOf())
                         .where("create_unix_time" ,'<=', moment(this.filter_dashboard.selected_year.toString()).endOf('year').valueOf());
                 }
-                else if(self.filter_dashboard.method == 'month_range')
+                else if(self.filter_dashboard.method == 'by_month')
                 {
                     queryBooking =  db
                         .collection("booking")
@@ -751,7 +745,7 @@
                         .where("create_unix_time" ,'>=', moment(this.filter_dashboard.selected_year.toString()).startOf('year').valueOf())
                         .where("create_unix_time" ,'<=', moment(this.filter_dashboard.selected_year.toString()).endOf('year').valueOf());
                 }
-                else if(self.filter_dashboard.method == 'month_range')
+                else if(self.filter_dashboard.method == 'by_month')
                 {
                     queryCustomer =  db
                         .collection("user").where('current_role','==','customer')
@@ -792,7 +786,7 @@
                         .where("create_unix_time" ,'>=', moment(this.filter_dashboard.selected_year.toString()).startOf('year').valueOf())
                         .where("create_unix_time" ,'<=', moment(this.filter_dashboard.selected_year.toString()).endOf('year').valueOf());
                 }
-                else if(self.filter_dashboard.method == 'month_range')
+                else if(self.filter_dashboard.method == 'by_month')
                 {
                     queryCourier =  db
                         .collection("courier")
@@ -829,7 +823,7 @@
                         .where("create_unix_time" ,'>=', moment(this.filter_dashboard.selected_year.toString()).startOf('year').valueOf())
                         .where("create_unix_time" ,'<=', moment(this.filter_dashboard.selected_year.toString()).endOf('year').valueOf());
                 }
-                else if(self.filter_dashboard.method == 'month_range')
+                else if(self.filter_dashboard.method == 'by_month')
                 {
                     queryFeeder =  db
                         .collection("feeder")
@@ -891,12 +885,13 @@
                     });
             },
 
-            async getBookingStatisticsByDate()
+            async getBookingStatisticsByDate(from_date, to_date)
             {
                 let self = this;
 
-                let from_date = moment(this.filter_dashboard.from_date);
-                let to_date = moment(this.filter_dashboard.to_date);
+                from_date = moment(from_date) || moment(this.filter_dashboard.from_date);
+                to_date = moment(to_date) || moment(this.filter_dashboard.to_date);
+
                 let xaxisCategories = [];
                 let seriesData = [];
                 // let dataComplete = self.series[0].data;
@@ -919,7 +914,7 @@
                         .get().then(async documentSnapshots => {
                             totalBookingDaily = documentSnapshots.size;
                             seriesData.push(totalBookingDaily);
-                        });
+                    });
                     xaxisCategories.push(date_formatted);
                 }
 

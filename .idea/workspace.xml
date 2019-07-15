@@ -3,41 +3,42 @@
   <component name="ChangeListManager">
     <list default="true" id="c83c229e-a460-4b06-aa34-53bdc3cf4928" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/template.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/vendor.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/vendors~view-Company-Form-vue~view-Courier-Form-vue~view-Customer-Form-vue~view-DashboardComponent-v~a32f1a3e.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/vendors~view-Company-Form-vue~view-Courier-Form-vue~view-Customer-Form-vue~view-DropPoint-Form-vue~v~3854e3b5.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/vendors~view-Company-Form-vue~view-Courier-Form-vue~view-Customer-Form-vue~view-DropPoint-Form-vue~v~bbb4ce56.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/vendors~view-DashboardComponent-vue.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/view-Booking-Form-vue.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/view-Booking-Index-vue.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/view-Company-Form-vue.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/view-Company-Index-vue.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/view-Courier-Form-vue.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/view-Courier-Form-vue~view-DashboardComponent-vue~view-DropPoint-Form-vue~view-FeederCourier-Form-vu~c6a38320.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/view-Courier-Form-vue~view-DropPoint-Form-vue~view-FeederCourier-Form-vue~view-Hub-Form-vue~view-Rep~6ee886b3.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/view-Courier-Index-vue.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/view-Customer-Form-vue.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/view-Customer-Index-vue.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/view-DashboardComponent-vue.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/view-DropPoint-Form-vue.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/view-DropPoint-Index-vue.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/view-ExampleComponent-vue.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/view-FeederCourier-Form-vue.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/view-FeederCourier-Index-vue.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/view-Hub-Form-vue.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/view-Hub-Index-vue.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/view-Login-vue.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/view-Report-Booking-vue.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/view-Report-FeederDIstance-vue.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/view-Report-Form-vue.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/view-ServicePackage-Form-vue.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/view-ServicePackage-Index-vue.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/view-User-Form-vue.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/view-User-Index-vue.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/view-_Widget-MapsPicker-vue.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/view-_Widget-MapsShow-vue.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/template.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/template.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/06.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/06.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/template.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/template.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/vendor.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/vendor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/mix-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/vendors~view-Company-Form-vue~view-Courier-Form-vue~view-Customer-Form-vue~view-DashboardComponent-v~a32f1a3e.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/vendors~view-Company-Form-vue~view-Courier-Form-vue~view-Customer-Form-vue~view-DashboardComponent-v~a32f1a3e.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/vendors~view-DashboardComponent-vue.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/vendors~view-DashboardComponent-vue.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/view-Booking-Form-vue.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/view-Booking-Form-vue.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/view-Booking-Index-vue.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/view-Booking-Index-vue.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/view-Company-Form-vue.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/view-Company-Form-vue.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/view-Company-Index-vue.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/view-Company-Index-vue.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/view-Courier-Form-vue.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/view-Courier-Form-vue.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/view-Courier-Form-vue~view-DashboardComponent-vue~view-DropPoint-Form-vue~view-FeederCourier-Form-vu~c6a38320.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/view-Courier-Form-vue~view-DashboardComponent-vue~view-DropPoint-Form-vue~view-FeederCourier-Form-vu~c6a38320.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/view-Courier-Index-vue.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/view-Courier-Index-vue.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/view-Customer-Form-vue.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/view-Customer-Form-vue.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/view-Customer-Index-vue.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/view-Customer-Index-vue.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/view-DashboardComponent-vue.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/view-DashboardComponent-vue.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/view-DropPoint-Form-vue.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/view-DropPoint-Form-vue.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/view-DropPoint-Index-vue.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/view-DropPoint-Index-vue.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/view-ExampleComponent-vue.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/view-ExampleComponent-vue.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/view-FeederCourier-Form-vue.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/view-FeederCourier-Form-vue.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/view-FeederCourier-Index-vue.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/view-FeederCourier-Index-vue.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/view-Hub-Form-vue.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/view-Hub-Form-vue.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/view-Hub-Index-vue.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/view-Hub-Index-vue.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/view-Login-vue.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/view-Login-vue.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/view-Report-Booking-vue.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/view-Report-Booking-vue.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/view-Report-FeederDIstance-vue.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/view-Report-FeederDIstance-vue.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/view-Report-Form-vue.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/view-Report-Form-vue.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/view-ServicePackage-Form-vue.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/view-ServicePackage-Form-vue.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/view-ServicePackage-Index-vue.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/view-ServicePackage-Index-vue.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/view-User-Form-vue.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/view-User-Form-vue.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/view-User-Index-vue.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/view-User-Index-vue.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/view-_Widget-MapsPicker-vue.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/view-_Widget-MapsPicker-vue.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/view-_Widget-MapsShow-vue.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/view-_Widget-MapsShow-vue.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/DashboardComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/DashboardComponent.vue" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -55,36 +56,41 @@
       <file leaf-file-name="DashboardComponent.vue" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/js/components/DashboardComponent.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
-              <caret line="940" column="46" selection-start-line="940" selection-start-column="46" selection-end-line="940" selection-end-column="46" />
+            <state relative-caret-position="234">
+              <caret line="898" column="51" lean-forward="true" selection-start-line="898" selection-start-column="51" selection-end-line="898" selection-end-column="51" />
               <folding>
-                <element signature="n#div#0;n#div#2;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#div#1;n#div#2;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#div#2;n#div#2;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#div#4;n#div#2;n#div#0;n#template#0;n#!!top" />
-                <element signature="e#19009#19052#0" expanded="true" />
-                <element signature="e#25522#25673#0" />
-                <element signature="e#25734#27199#0" />
-                <element signature="e#25933#27183#0" expanded="true" />
-                <element signature="e#26237#27099#0" expanded="true" />
-                <element signature="e#26768#26977#0" expanded="true" />
-                <element signature="e#27261#28731#0" />
-                <element signature="e#27461#28715#0" expanded="true" />
-                <element signature="e#27767#28630#0" expanded="true" />
-                <element signature="e#28298#28507#0" expanded="true" />
-                <element signature="e#28778#40938#0" />
-                <element signature="e#28989#29139#0" expanded="true" />
-                <element signature="e#31034#31194#0" expanded="true" />
-                <element signature="e#33063#33219#0" expanded="true" />
-                <element signature="e#34647#34825#0" expanded="true" />
-                <element signature="e#36846#37005#0" expanded="true" />
-                <element signature="e#38888#38983#0" expanded="true" />
-                <element signature="e#40764#40922#0" expanded="true" />
-                <element signature="e#41005#42241#0" />
-                <element signature="e#41592#42225#0" expanded="true" />
-                <element signature="e#41822#42077#0" expanded="true" />
-                <element signature="e#44017#44446#0" expanded="true" />
+                <element signature="e#1084#1090#0" expanded="true" />
+                <element signature="e#1135#1141#0" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#2;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#2;n#div#2;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#3;n#div#2;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#3;n#div#2;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="e#19197#19240#0" expanded="true" />
+                <element signature="e#19703#19801#0" expanded="true" />
+                <element signature="e#26731#27981#0" expanded="true" />
+                <element signature="e#27035#27897#0" expanded="true" />
+                <element signature="e#27566#27775#0" expanded="true" />
+                <element signature="e#28259#29513#0" expanded="true" />
+                <element signature="e#28565#29428#0" expanded="true" />
+                <element signature="e#29096#29305#0" expanded="true" />
+                <element signature="e#29787#29937#0" expanded="true" />
+                <element signature="e#32019#32179#0" expanded="true" />
+                <element signature="e#34370#34919#0" expanded="true" />
+                <element signature="e#34651#34821#0" expanded="true" />
+                <element signature="e#37136#37295#0" expanded="true" />
+                <element signature="e#39365#39460#0" expanded="true" />
+                <element signature="e#45075#45238#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Form.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/js/components/DropPoint/Form.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="234">
+              <caret line="421" column="30" selection-start-line="421" selection-start-column="30" selection-end-line="421" selection-end-column="43" />
             </state>
           </provider>
         </entry>
@@ -92,7 +98,7 @@
       <file leaf-file-name="Booking.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/js/components/Report/Booking.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="325">
+            <state relative-caret-position="5888">
               <caret line="293" selection-start-line="293" selection-end-line="294" />
               <folding>
                 <element signature="n#template#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" />
@@ -108,39 +114,38 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>searchFeeder</find>
-      <find>selectFeeder</find>
-      <find>Feeder Distance Report</find>
-      <find>unselectFeeder</find>
-      <find>search_feeder_keyword</find>
-      <find>booking_charges</find>
-      <find>series</find>
-      <find>total_charges</find>
-      <find>Generate</find>
-      <find>currency_number</find>
-      <find>currency</find>
-      <find>formatMoney</find>
-      <find>total_distance</find>
       <find>result.data</find>
       <find>Booking Statistics</find>
       <find>getBookingStatistics</find>
       <find>chartOptions</find>
       <find>filter_dashboard.to_date</find>
       <find>seriesData</find>
-      <find>getBookingStatisticsByDate</find>
       <find>Total Booking</find>
-      <find>initCounter</find>
       <find>_to_date_format</find>
       <find>Total Charges</find>
       <find>total_data.booking_charges.data</find>
-      <find>getBookingStatisticsByMonth</find>
       <find>By Mon</find>
       <find>Booking Sta</find>
       <find>Filter</find>
       <find>Re</find>
+      <find>type=</find>
+      <find>getBookingStatisticsByMonth</find>
+      <find>color</find>
+      <find>line</find>
+      <find>chart</find>
+      <find>By Mont</find>
+      <find>Start Month</find>
+      <find>initCounter</find>
+      <find>month_range</find>
+      <find>by_month</find>
+      <find>getBooking</find>
+      <find>initCount</find>
+      <find>startOf</find>
+      <find>getB</find>
+      <find>swal</find>
+      <find>getBookingStatisticsByDate</find>
     </findStrings>
     <replaceStrings>
-      <replace>../</replace>
       <replace>rootInternal</replace>
       <replace>Rp.</replace>
       <replace>widget</replace>
@@ -170,6 +175,7 @@
       <replace>total_distance</replace>
       <replace>formatMoney</replace>
       <replace>getBookingStatisticsByMonth</replace>
+      <replace>by_month</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -348,7 +354,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -477,6 +482,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -566,14 +572,16 @@
       <workItem from="1562223444360" duration="13000" />
       <workItem from="1562570018077" duration="16423000" />
       <workItem from="1562860399346" duration="9726000" />
+      <workItem from="1563173509434" duration="7058000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="279897000" />
+    <option name="totallyTimeSpent" value="286955000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
@@ -581,9 +589,9 @@
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Run" order="2" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.15812592" />
+      <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.15812592" />
       <window_info anchor="right" id="Remote Host" order="3" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23221476" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23557048" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -599,7 +607,6 @@
       <window_info anchor="bottom" id="Find" order="1" />
     </layout>
     <layout-to-restore>
-      <window_info anchor="bottom" id="Version Control" order="12" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info id="npm" order="2" side_tool="true" />
@@ -612,12 +619,13 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="TypeScript" order="9" weight="0.3295129" />
       <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.16837482" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Version Control" order="12" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="right" id="Database" order="4" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -873,10 +881,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3174">
           <caret line="140" column="57" selection-start-line="140" selection-start-column="57" selection-end-line="140" selection-end-column="57" />
-          <folding>
-            <element signature="e#5207#5984#0" expanded="true" />
-            <element signature="e#5250#5976#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -887,13 +891,6 @@
           <folding>
             <element signature="e#12750#13499#0" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/DropPoint/Form.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="2" column="33" selection-start-line="2" selection-start-column="33" selection-end-line="2" selection-end-column="33" />
         </state>
       </provider>
     </entry>
@@ -919,9 +916,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="10" selection-start-column="10" selection-end-column="10" />
-          <folding>
-            <element signature="e#2888#3605#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -953,9 +947,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1288">
           <caret line="56" column="271" selection-start-line="56" selection-start-column="257" selection-end-line="56" selection-end-column="271" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#td#1;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -963,9 +954,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="19113">
           <caret line="843" column="23" selection-start-line="843" selection-start-column="12" selection-end-line="843" selection-end-column="23" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -973,11 +961,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="207">
           <caret line="31" selection-start-line="31" selection-end-line="31" />
-          <folding>
-            <element signature="n#!!block;n#formatMoney#0" expanded="true" />
-            <element signature="n#!!block;n#scrollTo#0" expanded="true" />
-            <element signature="n#!!block;n#printElem#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -994,7 +977,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/components/Report/Booking.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
+        <state relative-caret-position="5888">
           <caret line="293" selection-start-line="293" selection-end-line="294" />
           <folding>
             <element signature="n#template#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" />
@@ -1005,37 +988,40 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/DropPoint/Form.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="421" column="30" selection-start-line="421" selection-start-column="30" selection-end-line="421" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/components/DashboardComponent.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="940" column="46" selection-start-line="940" selection-start-column="46" selection-end-line="940" selection-end-column="46" />
+        <state relative-caret-position="234">
+          <caret line="898" column="51" lean-forward="true" selection-start-line="898" selection-start-column="51" selection-end-line="898" selection-end-column="51" />
           <folding>
-            <element signature="n#div#0;n#div#2;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#div#1;n#div#2;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#div#2;n#div#2;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#div#4;n#div#2;n#div#0;n#template#0;n#!!top" />
-            <element signature="e#19009#19052#0" expanded="true" />
-            <element signature="e#25522#25673#0" />
-            <element signature="e#25734#27199#0" />
-            <element signature="e#25933#27183#0" expanded="true" />
-            <element signature="e#26237#27099#0" expanded="true" />
-            <element signature="e#26768#26977#0" expanded="true" />
-            <element signature="e#27261#28731#0" />
-            <element signature="e#27461#28715#0" expanded="true" />
-            <element signature="e#27767#28630#0" expanded="true" />
-            <element signature="e#28298#28507#0" expanded="true" />
-            <element signature="e#28778#40938#0" />
-            <element signature="e#28989#29139#0" expanded="true" />
-            <element signature="e#31034#31194#0" expanded="true" />
-            <element signature="e#33063#33219#0" expanded="true" />
-            <element signature="e#34647#34825#0" expanded="true" />
-            <element signature="e#36846#37005#0" expanded="true" />
-            <element signature="e#38888#38983#0" expanded="true" />
-            <element signature="e#40764#40922#0" expanded="true" />
-            <element signature="e#41005#42241#0" />
-            <element signature="e#41592#42225#0" expanded="true" />
-            <element signature="e#41822#42077#0" expanded="true" />
-            <element signature="e#44017#44446#0" expanded="true" />
+            <element signature="e#1084#1090#0" expanded="true" />
+            <element signature="e#1135#1141#0" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#2;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#2;n#div#2;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#3;n#div#2;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#3;n#div#2;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="e#19197#19240#0" expanded="true" />
+            <element signature="e#19703#19801#0" expanded="true" />
+            <element signature="e#26731#27981#0" expanded="true" />
+            <element signature="e#27035#27897#0" expanded="true" />
+            <element signature="e#27566#27775#0" expanded="true" />
+            <element signature="e#28259#29513#0" expanded="true" />
+            <element signature="e#28565#29428#0" expanded="true" />
+            <element signature="e#29096#29305#0" expanded="true" />
+            <element signature="e#29787#29937#0" expanded="true" />
+            <element signature="e#32019#32179#0" expanded="true" />
+            <element signature="e#34370#34919#0" expanded="true" />
+            <element signature="e#34651#34821#0" expanded="true" />
+            <element signature="e#37136#37295#0" expanded="true" />
+            <element signature="e#39365#39460#0" expanded="true" />
+            <element signature="e#45075#45238#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -169,58 +169,22 @@
                         <div class="clearfix"></div>
                     </div>
                     <div class="widget-body">
-                        <div class="row">
-                            <div class="col-xl-6 col-md-6 col-sm-6">
-                                <div class="widget widget-12 has-shadow">
-                                    <div class="widget-body">
-                                        <div class="media">
-                                            <div class="align-self-center ml-5 mr-5">
-                                                <i class="ion-ios-list"></i>
-                                            </div>
-
-                                            <div class="media-body align-self-center">
-                                                <div class="title text-facebook">
-                                                    <span v-if="total_data.bookings.loading">Calculating...</span>
-                                                    <span v-if="!total_data.bookings.loading">{{ total_data.bookings.data }}</span>
-                                                </div>
-                                                <div class="" style="font-size:11pt">
-                                                    Total Booking
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-6 col-md-6 col-sm-6">
-                                <div class="widget widget-12 has-shadow">
-                                    <div class="widget-body">
-                                        <div class="media">
-                                            <div class="align-self-center ml-5 mr-5">
-                                                <i class="ion-cash"></i>
-                                            </div>
-
-                                            <div class="media-body align-self-center">
-                                                <div class="title text-facebook">
-                                                    <span v-if="total_data.bookings.loading">Calculating...</span>
-                                                    <span v-if="!total_data.bookings.loading">Rp. {{ currency(total_data.booking_charges.data) }}</span>
-                                                </div>
-                                                <div class="" style="font-size:11pt">
-                                                    Total Charges
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <vue-apex-charts v-if="filter_dashboard.method == 'by_year' || filter_dashboard.method == 'current_year' || filter_dashboard.method == 'date_range' || filter_dashboard.method == 'by_month'" width="100%" height="300" type="bar" :options="chartOptions" :series="series"></vue-apex-charts>
-                        <!--<GChart-->
-                        <!--style="height: 300px; width:100%"-->
-                        <!--type="ColumnChart"-->
-                        <!--:data="chartData"-->
-                        <!--:options="chartOptions"-->
-                        <!--/>-->
-
+                        <h4>
+                            Total Booking: &nbsp;
+                            <small>
+                                <span v-if="total_data.bookings.loading">Calculating...</span>
+                                <span v-if="!total_data.bookings.loading">{{ total_data.bookings.data }}</span>
+                            </small>
+                        </h4>
+                        <vue-apex-charts v-if="filter_dashboard.method == 'by_year' || filter_dashboard.method == 'current_year' || filter_dashboard.method == 'date_range' || filter_dashboard.method == 'by_month'" width="100%" height="300" type="bar" :options="totalBookingChartOptions" :series="totalBookingChartSeries"></vue-apex-charts>
+                        <br>
+                        <h4>Total Charges: &nbsp;
+                            <small>
+                                <span v-if="total_data.bookings.loading">Calculating...</span>
+                                <span v-if="!total_data.bookings.loading">Rp. {{ currency(total_data.booking_charges.data) }}</span>
+                            </small>
+                        </h4>
+                        <vue-apex-charts v-if="filter_dashboard.method == 'by_year' || filter_dashboard.method == 'current_year' || filter_dashboard.method == 'date_range' || filter_dashboard.method == 'by_month'" width="100%" height="300" type="bar" :options="chargesBookingChartOptions" :series="chargesBookingChartSeries"></vue-apex-charts>
                     </div>
                 </div>
                 <!-- End Vertical Bar 02 -->
@@ -347,9 +311,8 @@
         },
         data() {
             return {
-                chartOptions: {
+                totalBookingChartOptions: {
                     chart: {
-                        id: 'vuechart-example',
                         events: {
                             dataPointSelection: function(event, chartContext, config) {
                                 console.log(chartContext, config);
@@ -359,14 +322,43 @@
                     xaxis: {
                         categories: []
                     },
-                    colors: ["#002BFE"],
+
+                    colors: ["#002BFE", "#83fe48"],
                 },
-                series: [
+
+                chargesBookingChartOptions: {
+                    chart: {
+                        events: {
+                            dataPointSelection: function(event, chartContext, config) {
+                                console.log(chartContext, config);
+                            }
+                        }
+                    },
+                    xaxis: {
+                        categories: []
+                    },
+                    yaxis: {
+                        labels: {
+                            formatter: function (value) {
+                                return "Rp. " + func.currency_number(value);
+                            }
+                        },
+                    },
+                    colors: ["#9aca48"],
+                },
+
+                totalBookingChartSeries: [
                     {
-                        name: 'Complete',
-                        // data: [0,0,0,0,0,0,0,0,0,0,0,0]
+                        name: 'Total',
                         data: [0]
-                    }
+                    },
+                ],
+
+                chargesBookingChartSeries: [
+                    {
+                        name: 'Charges',
+                        data: [0]
+                    },
                 ],
 
                 filter_dashboard: {
@@ -853,14 +845,14 @@
             async getBookingStatisticsByMonth(year)
             {
                 let self = this;
-                self.chartOptions = {
+                self.totalBookingChartOptions = {
                     xaxis: {
                         categories: ['January','February','March','April','May','June','July','August','September','October','November','December']
                     }
                 };
 
-                let dataComplete = self.series[0].data;
-                // let dataProgress = self.series[1].data;
+                let dataComplete = self.totalBookingChartSeries[0].data;
+                // let dataProgress = self.totalBookingChartSeries[1].data;
 
                 year = year || moment().format("YYYY");
 
@@ -880,8 +872,8 @@
                             // dataProgress[data.month_index - 1] = data.total_process;
                         });
 
-                        self.series[0].data = dataComplete;
-                        // self.series[1].data = dataProgress;
+                        self.totalBookingChartSeries[0].data = dataComplete;
+                        // self.totalBookingChartSeries[1].data = dataProgress;
                     });
             },
 
@@ -889,12 +881,22 @@
             {
                 let self = this;
 
-                from_date = moment(from_date) || moment(this.filter_dashboard.from_date);
-                to_date = moment(to_date) || moment(this.filter_dashboard.to_date);
+                from_date = from_date || moment(this.filter_dashboard.from_date);
+                to_date = to_date || moment(this.filter_dashboard.to_date);
+
+                self.loadTotalBookingChart(from_date, to_date);
+                self.loadChargesBookingChart(from_date, to_date);
+            },
+
+            async loadTotalBookingChart(from_date, to_date)
+            {
+                let self = this;
+
+                from_date = from_date || moment(this.filter_dashboard.from_date);
+                to_date = to_date || moment(this.filter_dashboard.to_date);
 
                 let xaxisCategories = [];
-                let seriesData = [];
-                // let dataComplete = self.series[0].data;
+                let seriesDataTotal = [];
 
                 for (var m = moment(from_date); m.diff(to_date, 'days') <= 0; m.add(1, 'days'))
                 {
@@ -912,20 +914,72 @@
                         .where('status', '==', 1)
                         .orderBy("create_unix_time", "desc")
                         .get().then(async documentSnapshots => {
-                            totalBookingDaily = documentSnapshots.size;
-                            seriesData.push(totalBookingDaily);
+                        totalBookingDaily = documentSnapshots.size;
+                        seriesDataTotal.push(totalBookingDaily);
                     });
+
                     xaxisCategories.push(date_formatted);
                 }
 
-                self.series[0].data = seriesData;
+                self.totalBookingChartSeries[0].data = seriesDataTotal;
 
-                self.chartOptions = {
+                self.totalBookingChartOptions = {
                     xaxis: {
                         categories: xaxisCategories
                     }
                 };
-            }
+            },
+
+            async loadChargesBookingChart(from_date, to_date)
+            {
+                let self = this;
+
+                from_date = from_date || moment(this.filter_dashboard.from_date);
+                to_date = to_date || moment(this.filter_dashboard.to_date);
+
+                let xaxisCategories = [];
+                let seriesDataCharges = [];
+
+                for (var m = moment(from_date); m.diff(to_date, 'days') <= 0; m.add(1, 'days'))
+                {
+                    let date_formatted = m.format('DD MMMM YYYY');
+                    let startDay = new Date(m.format('YYYY-MM-DD'));
+                    startDay.setHours(0,0,0,0);
+                    let endDay = new Date(m.format('YYYY-MM-DD'));
+                    endDay.setHours(23,59,59,999);
+                    let totalBookingDaily = 0;
+
+                    db
+                        .collection("booking")
+                        .where("create_unix_time", ">=", startDay.valueOf())
+                        .where("create_unix_time", "<=", endDay.valueOf())
+                        .where('status', '==', 1)
+                        .orderBy("create_unix_time", "desc")
+                        .get().then(async documentSnapshots => {
+                        totalBookingDaily = documentSnapshots.size;
+
+                        let totalCharges = 0;
+
+                        await documentSnapshots.forEach(function(change)
+                        {
+                            let data = change.data();
+                            totalCharges += data.total_charges;
+                        });
+
+                        seriesDataCharges.push(totalCharges);
+                    });
+
+                    xaxisCategories.push(date_formatted);
+                }
+
+                self.chargesBookingChartSeries[0].data = seriesDataCharges;
+
+                self.chargesBookingChartOptions = {
+                    xaxis: {
+                        categories: xaxisCategories
+                    }
+                };
+            },
         },
 
         async mounted()

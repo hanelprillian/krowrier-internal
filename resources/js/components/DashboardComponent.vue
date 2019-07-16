@@ -176,7 +176,28 @@
                                 <span v-if="!total_data.bookings.loading">{{ total_data.bookings.data }}</span>
                             </small>
                         </h4>
-                        <vue-apex-charts v-if="filter_dashboard.method == 'by_year' || filter_dashboard.method == 'current_year' || filter_dashboard.method == 'date_range' || filter_dashboard.method == 'by_month'" width="100%" height="300" type="bar" :options="totalBookingChartOptions" :series="totalBookingChartSeries"></vue-apex-charts>
+                        <div class="row mt-3">
+                            <div class="col-lg-6">
+                                <div class="card">
+                                    <div class="card-header text-dark">
+                                        Summary
+                                    </div>
+                                    <div class="card-body">
+                                        <vue-apex-charts v-if="filter_dashboard.method == 'by_year' || filter_dashboard.method == 'current_year' || filter_dashboard.method == 'date_range' || filter_dashboard.method == 'by_month'" width="100%" height="300" type="bar" :options="totalBookingChartOptions" :series="totalBookingChartSeries"></vue-apex-charts>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="card">
+                                    <div class="card-header text-dark">
+                                        Growth Rate (%)
+                                    </div>
+                                    <div class="card-body">
+                                        <vue-apex-charts v-if="filter_dashboard.method == 'by_year' || filter_dashboard.method == 'current_year' || filter_dashboard.method == 'date_range' || filter_dashboard.method == 'by_month'" width="100%" height="300" type="area" :options="growthRateTotalBookingChartOptions" :series="growthRateTotalBookingChartSeries"></vue-apex-charts>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <br>
                         <h4>Total Charges: &nbsp;
                             <small>
@@ -184,11 +205,33 @@
                                 <span v-if="!total_data.bookings.loading">Rp. {{ currency(total_data.booking_charges.data) }}</span>
                             </small>
                         </h4>
-                        <vue-apex-charts v-if="filter_dashboard.method == 'by_year' || filter_dashboard.method == 'current_year' || filter_dashboard.method == 'date_range' || filter_dashboard.method == 'by_month'" width="100%" height="300" type="bar" :options="chargesBookingChartOptions" :series="chargesBookingChartSeries"></vue-apex-charts>
+                        <div class="row mt-3">
+                            <div class="col-lg-6">
+                                <div class="card">
+                                    <div class="card-header text-dark">
+                                        Summary
+                                    </div>
+                                    <div class="card-body">
+                                        <vue-apex-charts v-if="filter_dashboard.method == 'by_year' || filter_dashboard.method == 'current_year' || filter_dashboard.method == 'date_range' || filter_dashboard.method == 'by_month'" width="100%" height="300" type="bar" :options="chargesBookingChartOptions" :series="chargesBookingChartSeries"></vue-apex-charts>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="card">
+                                    <div class="card-header text-dark">
+                                        Growth Rate (%)
+                                    </div>
+                                    <div class="card-body">
+                                        <vue-apex-charts v-if="filter_dashboard.method == 'by_year' || filter_dashboard.method == 'current_year' || filter_dashboard.method == 'date_range' || filter_dashboard.method == 'by_month'" width="100%" height="300" type="area" :options="growthRateChargesBookingChartOptions" :series="growthRateChargesBookingChartSeries"></vue-apex-charts>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <!-- End Vertical Bar 02 -->
             </div>
+            <!--start request courier-->
             <div class="col-md-12 pb-3">
                 <h3>
                     New Request
@@ -292,6 +335,7 @@
                     </div>
                 </div>
             </div>
+            <!--end request courier-->
         </div>
 
         <div class="clearfix"></div>
@@ -323,8 +367,41 @@
                         categories: []
                     },
 
-                    colors: ["#002BFE", "#83fe48"],
+                    colors: ["#002BFE"],
                 },
+                totalBookingChartSeries: [
+                    {
+                        name: 'Total',
+                        data: [0]
+                    },
+                ],
+
+                growthRateTotalBookingChartOptions: {
+                    chart: {
+                        events: {
+                            dataPointSelection: function(event, chartContext, config) {
+                                console.log(chartContext, config);
+                            }
+                        }
+                    },
+                    xaxis: {
+                        categories: []
+                    },
+                    yaxis: {
+                        labels: {
+                            formatter: function (value) {
+                                return func.currency_number(value)+" %";
+                            }
+                        },
+                    },
+                    colors: ["#3884fe"],
+                },
+                growthRateTotalBookingChartSeries: [
+                    {
+                        name: 'Total',
+                        data: [0]
+                    },
+                ],
 
                 chargesBookingChartOptions: {
                     chart: {
@@ -344,19 +421,38 @@
                             }
                         },
                     },
-                    colors: ["#9aca48"],
+                    colors: ["#83ac3d"],
                 },
-
-                totalBookingChartSeries: [
+                chargesBookingChartSeries: [
                     {
-                        name: 'Total',
+                        name: 'Charges',
                         data: [0]
                     },
                 ],
 
-                chargesBookingChartSeries: [
+                growthRateChargesBookingChartOptions: {
+                    chart: {
+                        events: {
+                            dataPointSelection: function(event, chartContext, config) {
+                                console.log(chartContext, config);
+                            }
+                        }
+                    },
+                    xaxis: {
+                        categories: []
+                    },
+                    yaxis: {
+                        labels: {
+                            formatter: function (value) {
+                                return func.currency_number(value)+" %";
+                            }
+                        },
+                    },
+                    colors: ["#848527"],
+                },
+                growthRateChargesBookingChartSeries: [
                     {
-                        name: 'Charges',
+                        name: 'Total',
                         data: [0]
                     },
                 ],
@@ -850,7 +946,10 @@
                 year = year || moment().format("YYYY");
 
                 self.loadTotalBookingChartByMonth(year);
+                self.loadGrowthRateTotalBookingChartByMonth(year);
+
                 self.loadChargesBookingChartByMonth(year);
+                self.loadGrowthRateChargesBookingChartByMonth(year);
             },
 
             async loadTotalBookingChartByMonth(year)
@@ -867,7 +966,7 @@
 
                 for (var m = moment(from_date); m.isBefore(to_date); m.add(1, 'months'))
                 {
-                    let date_formatted = m.format('MMM YYYY');
+                    let date_formatted = m.format('MMM');
                     let startMonth = moment(m.format('YYYY-MM-DD')).startOf("month");
                     let endMonth = moment(m.format('YYYY-MM-DD')).endOf("month");
                     let totalBookingDaily = 0;
@@ -895,6 +994,61 @@
                 };
             },
 
+            async loadGrowthRateTotalBookingChartByMonth(year)
+            {
+                let self = this;
+
+                year = year || moment().format("YYYY");
+
+                let from_date = moment(year.toString()).startOf("year");
+                let to_date = moment(year.toString()).endOf("year");
+
+                let xaxisCategories = [];
+                let seriesDataTotal = [];
+
+                let index = 0;
+                let startValue = 0;
+
+                for (var m = moment(from_date); m.isBefore(to_date); m.add(1, 'months'))
+                {
+                    let date_formatted = m.format('MMM');
+                    let startMonth = moment(m.format('YYYY-MM-DD')).startOf("month");
+                    let endMonth = moment(m.format('YYYY-MM-DD')).endOf("month");
+                    let totalBookingDaily = 0;
+
+                    db
+                    .collection("booking")
+                    .where("create_unix_time", ">=", startMonth.valueOf())
+                    .where("create_unix_time", "<=", endMonth.valueOf())
+                    .where('status', '==', 1)
+                    .orderBy("create_unix_time", "desc")
+                    .get().then(async documentSnapshots => {
+                        totalBookingDaily = documentSnapshots.size;
+
+                        let result = startValue > 0 && totalBookingDaily > 0 ? ((totalBookingDaily - startValue) / startValue) * 100 : 0;
+
+                        if(totalBookingDaily > 0)
+                        {
+                            startValue = totalBookingDaily;
+                        }
+
+                        seriesDataTotal.push(Math.round(result));
+                    });
+
+                    xaxisCategories.push(date_formatted);
+
+                    index++;
+                }
+
+                self.growthRateTotalBookingChartSeries[0].data = seriesDataTotal;
+
+                self.growthRateTotalBookingChartOptions = {
+                    xaxis: {
+                        categories: xaxisCategories
+                    }
+                };
+            },
+
             async loadChargesBookingChartByMonth(year)
             {
                 let self = this;
@@ -909,7 +1063,7 @@
 
                 for (var m = moment(from_date); m.isBefore(to_date); m.add(1, 'months'))
                 {
-                    let date_formatted = m.format('MMM YYYY');
+                    let date_formatted = m.format('MMM');
                     let startMonth = moment(m.format('YYYY-MM-DD')).startOf("month");
                     let endMonth = moment(m.format('YYYY-MM-DD')).endOf("month");
                     let totalBookingDaily = 0;
@@ -946,6 +1100,69 @@
                 };
             },
 
+            async loadGrowthRateChargesBookingChartByMonth(year)
+            {
+                let self = this;
+
+                year = year || moment().format("YYYY");
+
+                let from_date = moment(year.toString()).startOf("year");
+                let to_date = moment(year.toString()).endOf("year");
+
+                let xaxisCategories = [];
+                let seriesDataTotal = [];
+
+                let index = 0;
+                let startValue = 0;
+
+                for (var m = moment(from_date); m.isBefore(to_date); m.add(1, 'months'))
+                {
+                    let date_formatted = m.format('MMM');
+                    let startMonth = moment(m.format('YYYY-MM-DD')).startOf("month");
+                    let endMonth = moment(m.format('YYYY-MM-DD')).endOf("month");
+                    let totalBookingDaily = 0;
+
+                    db
+                        .collection("booking")
+                        .where("create_unix_time", ">=", startMonth.valueOf())
+                        .where("create_unix_time", "<=", endMonth.valueOf())
+                        .where('status', '==', 1)
+                        .orderBy("create_unix_time", "desc")
+                        .get().then(async documentSnapshots => {
+
+                        let totalCharges = 0;
+
+                        await documentSnapshots.forEach(function(change)
+                        {
+                            let data = change.data();
+                            totalCharges += data.total_charges;
+                        });
+
+                        let result = startValue > 0 && totalCharges > 0 ? ((totalCharges - startValue) / startValue) * 100 : 0;
+
+                        if(totalCharges > 0)
+                        {
+                            startValue = totalCharges;
+                        }
+
+                        seriesDataTotal.push(Math.round(result));
+                    });
+
+                    xaxisCategories.push(date_formatted);
+
+                    index++;
+                }
+
+                self.growthRateChargesBookingChartSeries[0].data = seriesDataTotal;
+
+                self.growthRateChargesBookingChartOptions = {
+                    xaxis: {
+                        categories: xaxisCategories
+                    }
+                };
+            },
+
+
             async getBookingStatisticsByDate(from_date, to_date)
             {
                 let self = this;
@@ -955,6 +1172,9 @@
 
                 self.loadTotalBookingChartByDate(from_date, to_date);
                 self.loadChargesBookingChartByDate(from_date, to_date);
+
+                self.loadGrowthRateTotalBookingChartByDate(from_date, to_date);
+                self.loadGrowthRateChargesBookingChartByDate(from_date, to_date);
             },
 
             async loadTotalBookingChartByDate(from_date, to_date)
@@ -993,6 +1213,59 @@
                 self.totalBookingChartSeries[0].data = seriesDataTotal;
 
                 self.totalBookingChartOptions = {
+                    xaxis: {
+                        categories: xaxisCategories
+                    }
+                };
+            },
+
+            async loadGrowthRateTotalBookingChartByDate(from_date, to_date)
+            {
+                let self = this;
+
+                from_date = from_date || moment(this.filter_dashboard.from_date);
+                to_date = to_date || moment(this.filter_dashboard.to_date);
+
+                let xaxisCategories = [];
+                let seriesDataTotal = [];
+                let index = 0;
+                let startValue = 0;
+
+                for (var m = moment(from_date); m.diff(to_date, 'days') <= 0; m.add(1, 'days'))
+                {
+                    let date_formatted = m.format('DD MMMM YYYY');
+                    let startDay = new Date(m.format('YYYY-MM-DD'));
+                    startDay.setHours(0,0,0,0);
+                    let endDay = new Date(m.format('YYYY-MM-DD'));
+                    endDay.setHours(23,59,59,999);
+                    let totalBookingDaily = 0;
+
+                    db
+                    .collection("booking")
+                    .where("create_unix_time", ">=", startDay.valueOf())
+                    .where("create_unix_time", "<=", endDay.valueOf())
+                    .where('status', '==', 1)
+                    .orderBy("create_unix_time", "desc")
+                    .get().then(async documentSnapshots => {
+                        totalBookingDaily = documentSnapshots.size;
+                        let result = startValue > 0 && totalBookingDaily > 0 ? ((totalBookingDaily - startValue) / startValue) * 100 : 0;
+
+                        if(totalBookingDaily > 0)
+                        {
+                            startValue = totalBookingDaily;
+                        }
+
+                        seriesDataTotal.push(Math.round(result));
+                    });
+
+                    xaxisCategories.push(date_formatted);
+
+                    index++;
+                }
+
+                self.growthRateTotalBookingChartSeries[0].data = seriesDataTotal;
+
+                self.growthRateTotalBookingChartOptions = {
                     xaxis: {
                         categories: xaxisCategories
                     }
@@ -1044,6 +1317,66 @@
                 self.chargesBookingChartSeries[0].data = seriesDataCharges;
 
                 self.chargesBookingChartOptions = {
+                    xaxis: {
+                        categories: xaxisCategories
+                    }
+                };
+            },
+
+            async loadGrowthRateChargesBookingChartByDate(from_date, to_date)
+            {
+                let self = this;
+
+                from_date = from_date || moment(this.filter_dashboard.from_date);
+                to_date = to_date || moment(this.filter_dashboard.to_date);
+
+                let xaxisCategories = [];
+                let seriesDataTotal = [];
+                let index = 0;
+                let startValue = 0;
+
+                for (var m = moment(from_date); m.diff(to_date, 'days') <= 0; m.add(1, 'days'))
+                {
+                    let date_formatted = m.format('DD MMMM YYYY');
+                    let startDay = new Date(m.format('YYYY-MM-DD'));
+                    startDay.setHours(0,0,0,0);
+                    let endDay = new Date(m.format('YYYY-MM-DD'));
+                    endDay.setHours(23,59,59,999);
+                    let totalBookingDaily = 0;
+
+                    db
+                        .collection("booking")
+                        .where("create_unix_time", ">=", startDay.valueOf())
+                        .where("create_unix_time", "<=", endDay.valueOf())
+                        .where('status', '==', 1)
+                        .orderBy("create_unix_time", "desc")
+                        .get().then(async documentSnapshots => {
+                        let totalCharges = 0;
+
+                        await documentSnapshots.forEach(function(change)
+                        {
+                            let data = change.data();
+                            totalCharges += data.total_charges;
+                        });
+
+                        let result = startValue > 0 && totalCharges > 0 ? ((totalCharges - startValue) / startValue) * 100 : 0;
+
+                        if(totalCharges > 0)
+                        {
+                            startValue = totalCharges;
+                        }
+
+                        seriesDataTotal.push(Math.round(result));
+                    });
+
+                    xaxisCategories.push(date_formatted);
+
+                    index++;
+                }
+
+                self.growthRateChargesBookingChartSeries[0].data = seriesDataTotal;
+
+                self.growthRateChargesBookingChartOptions = {
                     xaxis: {
                         categories: xaxisCategories
                     }

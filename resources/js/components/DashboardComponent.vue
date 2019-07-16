@@ -703,7 +703,8 @@
                         .where("create_unix_time" ,'<=', endDay.valueOf());
                 }
 
-                queryBooking = queryBooking.where('status', '==', 1);
+                queryBooking = queryBooking.where('status', '==', 1)
+                ;
 
                 queryBooking.get()
                     .then(snap => {
@@ -845,36 +846,104 @@
             async getBookingStatisticsByMonth(year)
             {
                 let self = this;
-                self.totalBookingChartOptions = {
-                    xaxis: {
-                        categories: ['January','February','March','April','May','June','July','August','September','October','November','December']
-                    }
-                };
-
-                let dataComplete = self.totalBookingChartSeries[0].data;
-                // let dataProgress = self.totalBookingChartSeries[1].data;
 
                 year = year || moment().format("YYYY");
 
-                db
-                    .collection("booking_monthly_statistic")
-                    .where("year", "==", parseInt(year))
-                    .onSnapshot(async documentSnapshots => {
+                self.loadTotalBookingChartByMonth(year);
+                self.loadChargesBookingChartByMonth(year);
+            },
 
-                        dataComplete = [0,0,0,0,0,0,0,0,0,0,0,0];
-                        // dataProgress = [0,0,0,0,0,0,0,0,0,0,0,0];
+            async loadTotalBookingChartByMonth(year)
+            {
+                let self = this;
 
-                        documentSnapshots.forEach(function(change)
+                year = year || moment().format("YYYY");
+
+                let from_date = moment(year.toString()).startOf("year");
+                let to_date = moment(year.toString()).endOf("year");
+
+                let xaxisCategories = [];
+                let seriesDataTotal = [];
+
+                for (var m = moment(from_date); m.isBefore(to_date); m.add(1, 'months'))
+                {
+                    let date_formatted = m.format('MMM YYYY');
+                    let startMonth = moment(m.format('YYYY-MM-DD')).startOf("month");
+                    let endMonth = moment(m.format('YYYY-MM-DD')).endOf("month");
+                    let totalBookingDaily = 0;
+
+                    db
+                        .collection("booking")
+                        .where("create_unix_time", ">=", startMonth.valueOf())
+                        .where("create_unix_time", "<=", endMonth.valueOf())
+                        .where('status', '==', 1)
+                        .orderBy("create_unix_time", "desc")
+                        .get().then(async documentSnapshots => {
+                        totalBookingDaily = documentSnapshots.size;
+                        seriesDataTotal.push(totalBookingDaily);
+                    });
+
+                    xaxisCategories.push(date_formatted);
+                }
+
+                self.totalBookingChartSeries[0].data = seriesDataTotal;
+
+                self.totalBookingChartOptions = {
+                    xaxis: {
+                        categories: xaxisCategories
+                    }
+                };
+            },
+
+            async loadChargesBookingChartByMonth(year)
+            {
+                let self = this;
+
+                year = year || moment().format("YYYY");
+
+                let from_date = moment(year.toString()).startOf("year");
+                let to_date = moment(year.toString()).endOf("year");
+
+                let xaxisCategories = [];
+                let seriesDataTotal = [];
+
+                for (var m = moment(from_date); m.isBefore(to_date); m.add(1, 'months'))
+                {
+                    let date_formatted = m.format('MMM YYYY');
+                    let startMonth = moment(m.format('YYYY-MM-DD')).startOf("month");
+                    let endMonth = moment(m.format('YYYY-MM-DD')).endOf("month");
+                    let totalBookingDaily = 0;
+
+                    db
+                        .collection("booking")
+                        .where("create_unix_time", ">=", startMonth.valueOf())
+                        .where("create_unix_time", "<=", endMonth.valueOf())
+                        .where('status', '==', 1)
+                        .orderBy("create_unix_time", "desc")
+                        .get().then(async documentSnapshots => {
+                        totalBookingDaily = documentSnapshots.size;
+
+                        let totalCharges = 0;
+
+                        await documentSnapshots.forEach(function(change)
                         {
                             let data = change.data();
-
-                            dataComplete[data.month_index - 1] = data.total_success;
-                            // dataProgress[data.month_index - 1] = data.total_process;
+                            totalCharges += data.total_charges;
                         });
 
-                        self.totalBookingChartSeries[0].data = dataComplete;
-                        // self.totalBookingChartSeries[1].data = dataProgress;
+                        seriesDataTotal.push(totalCharges);
                     });
+
+                    xaxisCategories.push(date_formatted);
+                }
+
+                self.chargesBookingChartSeries[0].data = seriesDataTotal;
+
+                self.chargesBookingChartOptions = {
+                    xaxis: {
+                        categories: xaxisCategories
+                    }
+                };
             },
 
             async getBookingStatisticsByDate(from_date, to_date)
@@ -884,11 +953,11 @@
                 from_date = from_date || moment(this.filter_dashboard.from_date);
                 to_date = to_date || moment(this.filter_dashboard.to_date);
 
-                self.loadTotalBookingChart(from_date, to_date);
-                self.loadChargesBookingChart(from_date, to_date);
+                self.loadTotalBookingChartByDate(from_date, to_date);
+                self.loadChargesBookingChartByDate(from_date, to_date);
             },
 
-            async loadTotalBookingChart(from_date, to_date)
+            async loadTotalBookingChartByDate(from_date, to_date)
             {
                 let self = this;
 
@@ -930,7 +999,7 @@
                 };
             },
 
-            async loadChargesBookingChart(from_date, to_date)
+            async loadChargesBookingChartByDate(from_date, to_date)
             {
                 let self = this;
 

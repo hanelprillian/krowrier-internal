@@ -10,15 +10,6 @@
     background-repeat: no-repeat;
     background-position: center 0px;
     background-size: cover;
-
-    /*background: rgba(0,43,255,1);*/
-    /*background: -moz-linear-gradient(-45deg, rgba(0,43,255,1) 0%, rgba(81,111,245,1) 100%);*/
-    /*background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(0,43,255,1)), color-stop(100%, rgba(81,111,245,1)));*/
-    /*background: -webkit-linear-gradient(-45deg, rgba(0,43,255,1) 0%, rgba(81,111,245,1) 100%);*/
-    /*background: -o-linear-gradient(-45deg, rgba(0,43,255,1) 0%, rgba(81,111,245,1) 100%);*/
-    /*background: -ms-linear-gradient(-45deg, rgba(0,43,255,1) 0%, rgba(81,111,245,1) 100%);*/
-    /*background: linear-gradient(135deg, rgba(0,43,255,1) 0%, rgba(81,111,245,1) 100%);*/
-    /*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#002bff', endColorstr='#516ff5', GradientType=1 );*/
 }
 
 .text-banner-home
@@ -98,5 +89,117 @@
     background-color: #055ada;
     color: #fff;
 }
+
+.features-boxed {
+    color: #313437;
+    background-color: #eef4f7;
+}
+
+.features-boxed .banner-feature
+{
+    padding-top: 50px;
+    height: 400px;
+    background:
+            linear-gradient(
+                    rgba(83, 83, 83, 0.6),
+                    rgba(0, 43, 255, 0.40)
+            ),
+            url('../img/feature-banner.jpg');
+    object-fit: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    margin-bottom: -160px;
+}
+
+.features-boxed .banner-feature .intro
+{
+    color: #ffffff !important;
+}
+
+.features-boxed .banner-feature .intro p, .features-boxed .banner-feature .intro h2
+{
+    color: #ffffff !important;
+}
+
+.features-boxed p {
+    color: #b2b2b2;
+}
+
+.features-boxed h2 {
+    font-weight: bold;
+    margin-bottom: 40px;
+    padding-top: 40px;
+    color: inherit;
+}
+
+@media (max-width:767px) {
+    .features-boxed h2 {
+        margin-bottom: 25px;
+        padding-top: 25px;
+        font-size: 24px;
+    }
+}
+
+.features-boxed .intro {
+    font-size: 16px;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.features-boxed .intro p {
+    margin-bottom: 0;
+}
+
+.features-boxed .features {
+    padding: 50px 0;
+}
+
+.features-boxed .item {
+    text-align: center;
+}
+
+.features-boxed .item .box {
+    text-align: center;
+    padding: 30px;
+    background-color: #fff;
+    margin-bottom: 30px;
+    border-radius: 18px;
+    -moz-border-radius: 18px;
+    -webkit-border-radius: 18px;
+    border: 0px solid;
+    -moz-border-radius: 18px;
+    -webkit-border-radius: 18px;
+}
+
+.features-boxed .item .icon {
+    font-size: 60px;
+    color: rgba(0,43,255,1);
+    color: -moz-linear-gradient(-45deg, rgba(0,43,255,1) 0%, rgba(81,111,245,1) 100%);
+    color: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(0,43,255,1)), color-stop(100%, rgba(81,111,245,1)));
+    color: -webkit-linear-gradient(-45deg, rgba(0,43,255,1) 0%, rgba(81,111,245,1) 100%);
+    color: -o-linear-gradient(-45deg, rgba(0,43,255,1) 0%, rgba(81,111,245,1) 100%);
+    color: -ms-linear-gradient(-45deg, rgba(0,43,255,1) 0%, rgba(81,111,245,1) 100%);
+    color: linear-gradient(135deg, rgba(0,43,255,1) 0%, rgba(81,111,245,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#002bff', endColorstr='#516ff5', GradientType=1 );
+    margin-top: 20px;
+    margin-bottom: 35px;
+}
+
+.features-boxed .item .name {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 8px;
+    margin-top: 0;
+    color: inherit;
+}
+
+.features-boxed .item .description {
+    font-size: 15px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+
 
 

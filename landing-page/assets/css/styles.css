@@ -200,6 +200,69 @@
     margin-bottom: 20px;
 }
 
+.business-section
+{
+    color: #313437;
+    background-color: #EAE9EB;
+    padding: 50px 0 50px 0;
+}
+
+.business-section p {
+    color: #7d8285;
+}
+
+.business-section .business-box
+{
+
+}
+
+.business-section .business-box .box-left
+{
+    background-color: #1E4080;
+    color:#ffffff;
+    position: relative;
+}
+
+.business-section .business-box .box-left h2
+{
+    color:#ffffff !important;
+    font-weight: bold;
+}
+
+.business-section .business-box .box-left p
+{
+    color:#ffffff !important;
+    letter-spacing: 2px;
+}
+
+.business-section .business-box .box-left .picking-person
+{
+    background: url("../img/Illustrasi-Krowrier2.png");
+    height: 100%;
+    padding:40px 70px 40px 40px;
+    background-size: 385px 428px;
+    background-position: right -20px bottom -80px;
+    background-repeat: no-repeat;
+}
+
+
+.business-section .business-box .box-right
+{
+    padding:40px;
+    background-color: #FFFFFF;
+}
+
+.business-section .business-box .box-right h3
+{
+    font-weight: lighter;
+    margin-top: 10px;
+    margin-bottom: 40px;
+}
+
+.business-section .business-box .box-right p
+{
+    letter-spacing: 2px;
+}
 
 
 

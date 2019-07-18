@@ -1,10 +1,80 @@
+
+.text-banner-home
+{
+    font-size: 25pt !important;
+    margin-top:150px;
+    margin-bottom:150px;
+    font-weight: bold;
+}
+.about-us {
+    color: #313437;
+    background-color: #fff;
+    padding: 100px 0 0px 0px;
+    position: relative;
+}
+
+.about-us p {
+    color: #7d8285;
+}
+
+.about-us h2 {
+    font-weight: bold;
+    margin-bottom: 25px;
+    line-height: 1.5;
+    padding-top: 0;
+    margin-top: 0;
+    color: inherit;
+}
+
 .home-phone-krowrier {
     background: url("../img/min-phone-split.png");
     position: absolute;
-    width: 631px;
-    height: 612px;
+    width: 600px;
+    height: 486px;
     right: 0;
-    bottom: 10px;
-    background-size: 631px 612px;
+    bottom: 0px;
+    background-size: 600px 486px;
     background-repeat: no-repeat;
 }
+
+.about-us .intro {
+    font-size: 16px;
+    max-width: 500px;
+    margin: 0 auto 25px;
+}
+
+.about-us .buttons {
+    text-align: center;
+}
+
+.about-us .buttons .btn {
+    padding: 16px 32px;
+    margin: 6px;
+    border: none;
+    background: none;
+    box-shadow: none;
+    text-shadow: none;
+    opacity: 0.9;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 13px;
+    letter-spacing: 0.4px;
+    line-height: 1;
+    outline: none;
+    background-color: #ddd;
+}
+
+.about-us .buttons .btn:hover {
+    opacity: 1;
+}
+
+.about-us .buttons .btn:active {
+    transform: translateY(1px);
+}
+
+.about-us .buttons .btn-primary {
+    background-color: #055ada;
+    color: #fff;
+}
+
+

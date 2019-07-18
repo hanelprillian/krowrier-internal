@@ -129,7 +129,6 @@
   background: transparent;
   transition: background-color 0.25s;
   outline: none;
-  float: right;
 }
 
 .header-blue .action-button:hover {
@@ -164,7 +163,7 @@
 
 @media (min-width:768px) {
   .header-blue .hero {
-    margin-top: 60px;
+    /*margin-top: 60px;*/
     text-align: left;
   }
 }

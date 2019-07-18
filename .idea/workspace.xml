@@ -48,8 +48,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/landing-page/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="71">
-              <caret line="330" column="52" lean-forward="true" selection-start-line="330" selection-start-column="52" selection-end-line="330" selection-end-column="52" />
+            <state relative-caret-position="117">
+              <caret line="377" column="39" lean-forward="true" selection-start-line="377" selection-start-column="39" selection-end-line="377" selection-end-column="39" />
               <folding>
                 <element signature="n#style#0;n#a#0;n#div#0;n#nav#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -61,7 +61,7 @@
                 <element signature="n#div#3;n#body#0;n#html#0;n#!!top" />
                 <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#4;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#button#0;n#div#5;n#div#0;n#div#1;n#div#0;n#div#0;n#div#4;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#div#4;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#1;n#div#0;n#footer#0;n#div#5;n#body#0;n#html#0;n#!!top" />
               </folding>
             </state>
           </provider>
@@ -79,8 +79,8 @@
       <file leaf-file-name="styles.css" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/landing-page/assets/css/styles.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="370">
-              <caret line="243" column="33" selection-start-line="243" selection-start-column="33" selection-end-line="243" selection-end-column="33" />
+            <state relative-caret-position="185">
+              <caret line="176" column="29" lean-forward="true" selection-start-line="176" selection-start-column="29" selection-end-line="176" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -117,10 +117,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>dataComplete</find>
-      <find>set</find>
-      <find>totalBookingDaily</find>
-      <find>Total Booking</find>
       <find>loadGrowthRateTotalBookingChartByDate</find>
       <find>getBookingStatisticsByDate</find>
       <find>Growth Rate</find>
@@ -147,9 +143,12 @@
       <find>Mengapa harus pake Krowrier ?</find>
       <find>News</find>
       <find>home-</find>
+      <find>Services</find>
+      <find>#002BFF</find>
+      <find>rgba(0,43,255,1)</find>
+      <find>0,43,255</find>
     </findStrings>
     <replaceStrings>
-      <replace>Company</replace>
       <replace>active</replace>
       <replace>#2C304D</replace>
       <replace>Hans Cocolonel</replace>
@@ -179,6 +178,7 @@
       <replace>totalBookingChartSeries[</replace>
       <replace>about-us</replace>
       <replace>header-home</replace>
+      <replace>31,65,128</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -586,12 +586,12 @@
       <workItem from="1563315863683" duration="196000" />
       <workItem from="1563346773942" duration="211000" />
       <workItem from="1563427062128" duration="10153000" />
-      <workItem from="1563474728070" duration="5187000" />
+      <workItem from="1563474728070" duration="5518000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="315375000" />
+    <option name="totallyTimeSpent" value="315706000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -999,10 +999,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/landing-page/assets/img/Illustrasi-Krowrier2.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/landing-page/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="71">
-          <caret line="330" column="52" lean-forward="true" selection-start-line="330" selection-start-column="52" selection-end-line="330" selection-end-column="52" />
+        <state relative-caret-position="117">
+          <caret line="377" column="39" lean-forward="true" selection-start-line="377" selection-start-column="39" selection-end-line="377" selection-end-column="39" />
           <folding>
             <element signature="n#style#0;n#a#0;n#div#0;n#nav#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -1014,18 +1017,15 @@
             <element signature="n#div#3;n#body#0;n#html#0;n#!!top" />
             <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#4;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#button#0;n#div#5;n#div#0;n#div#1;n#div#0;n#div#0;n#div#4;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#div#4;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#1;n#div#0;n#footer#0;n#div#5;n#body#0;n#html#0;n#!!top" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/landing-page/assets/img/Illustrasi-Krowrier2.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/landing-page/assets/css/styles.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="370">
-          <caret line="243" column="33" selection-start-line="243" selection-start-column="33" selection-end-line="243" selection-end-column="33" />
+        <state relative-caret-position="185">
+          <caret line="176" column="29" lean-forward="true" selection-start-line="176" selection-start-column="29" selection-end-line="176" selection-end-column="29" />
         </state>
       </provider>
     </entry>

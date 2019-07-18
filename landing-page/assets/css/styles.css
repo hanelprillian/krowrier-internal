@@ -174,13 +174,13 @@
 
 .features-boxed .item .icon {
     font-size: 60px;
-    color: rgba(0,43,255,1);
-    color: -moz-linear-gradient(-45deg, rgba(0,43,255,1) 0%, rgba(81,111,245,1) 100%);
-    color: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(0,43,255,1)), color-stop(100%, rgba(81,111,245,1)));
-    color: -webkit-linear-gradient(-45deg, rgba(0,43,255,1) 0%, rgba(81,111,245,1) 100%);
-    color: -o-linear-gradient(-45deg, rgba(0,43,255,1) 0%, rgba(81,111,245,1) 100%);
-    color: -ms-linear-gradient(-45deg, rgba(0,43,255,1) 0%, rgba(81,111,245,1) 100%);
-    color: linear-gradient(135deg, rgba(0,43,255,1) 0%, rgba(81,111,245,1) 100%);
+    color: rgba(31,65,128,1);
+    color: -moz-linear-gradient(-45deg, rgba(31,65,128,1) 0%, rgba(81,111,245,1) 100%);
+    color: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(31,65,128,1)), color-stop(100%, rgba(81,111,245,1)));
+    color: -webkit-linear-gradient(-45deg, rgba(31,65,128,1) 0%, rgba(81,111,245,1) 100%);
+    color: -o-linear-gradient(-45deg, rgba(31,65,128,1) 0%, rgba(81,111,245,1) 100%);
+    color: -ms-linear-gradient(-45deg, rgba(31,65,128,1) 0%, rgba(81,111,245,1) 100%);
+    color: linear-gradient(135deg, rgba(31,65,128,1) 0%, rgba(81,111,245,1) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#002bff', endColorstr='#516ff5', GradientType=1 );
     margin-top: 20px;
     margin-bottom: 35px;
@@ -218,7 +218,7 @@
 
 .business-section .business-box .box-left
 {
-    background-color: #1E4080;
+    background-color: #1e4080;
     color:#ffffff;
     position: relative;
 }

@@ -176,11 +176,6 @@
         <div class="container">
             <div class="intro">
                 <h2 class="text-center">Mengapa harus Krowrier ?</h2>
-                <p class="text-center">
-                    Nunc luctus in metus eget fringilla. Aliquam sed justo
-                    ligula. Vestibulum nibh erat, pellentesque ut laoreet
-                    vitae.
-                </p>
             </div>
         </div>
     </div>
@@ -189,73 +184,38 @@
             <div class="col-sm-6 col-md-5 col-lg-4 item">
                 <div class="box">
                     <i class="fa fa-map-marker icon"></i>
-                    <h3 class="name">Kirim Kemana Saja</h3>
+                    {{--<h3 class="name">Kirim Kemana Saja</h3>--}}
                     <p class="description">
-                        Aenean tortor est, vulputate quis leo in,
-                        vehicula rhoncus lacus. Praesent aliquam in
-                        tellus eu.
+                        Kurir yang kami berdayakan berada pada radius kurang dari 5 km sehingga akan dengan cepat
+                        menjemput paket milik Anda. Dilengkapi
+                        dengan fitur tracking sehingga Anda dapat
+                        mengetahui posisi paket secara real-time
                     </p>
-                    <a href="#" class="learn-more">Learn more »</a>
+                    {{--<a href="#" class="learn-more">Learn more »</a>--}}
                 </div>
             </div>
             <div class="col-sm-6 col-md-5 col-lg-4 item">
                 <div class="box">
                     <i class="fa fa-clock-o icon"></i>
-                    <h3 class="name">Jadwal Pengiriman Fleksibel</h3>
+                    {{--<h3 class="name">Jadwal Pengiriman Fleksibel</h3>--}}
                     <p class="description">
-                        Aenean tortor est, vulputate quis leo in,
-                        vehicula rhoncus lacus. Praesent aliquam in
-                        tellus eu.
+                        Kami melakukan pengiriman dengan waktu
+                        yang cepat. Memanfaatkan multiple-chain
+                        sehingga pengiriman menjadi lebih efisien.
                     </p>
-                    <a href="#" class="learn-more">Learn more »</a>
+                    {{--<a href="#" class="learn-more">Learn more »</a>--}}
                 </div>
             </div>
             <div class="col-sm-6 col-md-5 col-lg-4 item">
                 <div class="box">
-                    <i class="fa fa-money icon"></i>
-                    <h3 class="name">Raih Penghasilan Tambahan</h3>
+                    <i class="fa fa-shield icon"></i>
+                    {{--<h3 class="name">Raih Penghasilan Tambahan</h3>--}}
                     <p class="description">
-                        Aenean tortor est, vulputate quis leo in,
-                        vehicula rhoncus lacus. Praesent aliquam in
-                        tellus eu.
+                        Keamanan paket dijamin dengan fitur pendukung termasuk live-chat yang tersedia 24 jam
+                        sehingga Anda selalu terhubung dengan tim
+                        kami kapanpun dan dimanapun
                     </p>
-                    <a href="#" class="learn-more">Learn more »</a>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-5 col-lg-4 item">
-                <div class="box">
-                    <i class="fa fa-users icon"></i>
-                    <h3 class="name">Siapa Saja Bisa Berkontribusi</h3>
-                    <p class="description">
-                        Aenean tortor est, vulputate quis leo in,
-                        vehicula rhoncus lacus. Praesent aliquam in
-                        tellus eu.
-                    </p>
-                    <a href="#" class="learn-more">Learn more »</a>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-5 col-lg-4 item">
-                <div class="box">
-                    <i class="fa fa-plane icon"></i>
-                    <h3 class="name">Memanfaatkan Transportasi Umum</h3>
-                    <p class="description">
-                        Aenean tortor est, vulputate quis leo in,
-                        vehicula rhoncus lacus. Praesent aliquam in
-                        tellus eu.
-                    </p>
-                    <a href="#" class="learn-more">Learn more »</a>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-5 col-lg-4 item">
-                <div class="box">
-                    <i class="fa fa-phone icon"></i>
-                    <h3 class="name">Mobile-first</h3>
-                    <p class="description">
-                        Aenean tortor est, vulputate quis leo in,
-                        vehicula rhoncus lacus. Praesent aliquam in
-                        tellus eu.
-                    </p>
-                    <a href="#" class="learn-more">Learn more »</a>
+                    {{--<a href="#" class="learn-more">Learn more »</a>--}}
                 </div>
             </div>
         </div>
@@ -269,7 +229,7 @@
         <div class="row articles">
             <div class="col-sm-6 col-md-4 item">
                 <a href="#"
-                ><img class="img-fluid" src="assets/img/auhtor-1.jpg"
+                ><img class="img-fluid" src="images/wahyu.png"
                     /></a>
                 <h3 class="name">Wahyu Dwi Jatmiko</h3>
                 <p class="description">
@@ -278,7 +238,7 @@
             </div>
             <div class="col-sm-6 col-md-4 item">
                 <a href="#"
-                ><img class="img-fluid" src="assets/img/auhtor-1.jpg"
+                ><img class="img-fluid" src="images/said.png"
                     /></a>
                 <h3 class="name">Said Romadlon</h3>
                 <p class="description">
@@ -287,7 +247,7 @@
             </div>
             <div class="col-sm-6 col-md-4 item">
                 <a href="#"
-                ><img class="img-fluid" src="assets/img/auhtor-1.jpg"
+                ><img class="img-fluid" src="images/arif.png"
                     /></a>
                 <h3 class="name">Arief Hakim Askar</h3>
                 <p class="description">
@@ -296,7 +256,7 @@
             </div>
             <div class="col-sm-6 col-md-4 item">
                 <a href="#"
-                ><img class="img-fluid" src="assets/img/auhtor-1.jpg"
+                ><img class="img-fluid" src="images/jundi.png"
                     /></a>
                 <h3 class="name">Izzuddin Jundi Robbani</h3>
                 <p class="description">
@@ -305,7 +265,7 @@
             </div>
             <div class="col-sm-6 col-md-4 item">
                 <a href="#"
-                ><img class="img-fluid" src="assets/img/auhtor-1.jpg"
+                ><img class="img-fluid" src="images/aldi.png"
                     /></a>
                 <h3 class="name">Laelnaldi Saputra</h3>
                 <p class="description">
@@ -314,7 +274,7 @@
             </div>
             <div class="col-sm-6 col-md-4 item">
                 <a href="#"
-                ><img class="img-fluid" src="assets/img/auhtor-1.jpg"
+                ><img class="img-fluid" src="images/1hanel.png"
                     /></a>
                 <h3 class="name">Hanel Prillian</h3>
                 <p class="description">

@@ -6,7 +6,7 @@
             name="viewport"
             content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
     />
-    <title>Krowrier Landing Page</title>
+    <title>Krowrier</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" href="assets/fonts/font-awesome.min.css" />
     <link rel="stylesheet" href="assets/fonts/ionicons.min.css" />
@@ -74,13 +74,16 @@
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="nav navbar-nav" id="top-menu">
                     <li class="nav-item" role="presentation">
-                        <a class="nav-link active" href="#">Home</a>
+                        <a class="nav-link" href="#home-section">Home</a>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <a class="nav-link" href="#">Tentang Kami</a>
+                        <a class="nav-link" href="#about-us-section">Tentang Kami</a>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <a class="nav-link" href="#">Contact</a>
+                        <a class="nav-link" href="#team-section">Tim Kreatif</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" href="#contact-section">Contact</a>
                     </li>
                 </ul>
                 <div class="dropdown ml-auto">
@@ -111,7 +114,7 @@
         </div>
     </nav>
 
-    <div
+    <div id="home-section"
             class="header-home"
             style="font-family: Questrial, sans-serif;"
     >
@@ -137,7 +140,7 @@
     </div>
 </div>
 
-<div class="about-us">
+<div class="about-us" id="about-us-section">
     <div class="container">
         <div class="row">
             <div class="col-md-6">
@@ -221,70 +224,153 @@
         </div>
     </div>
 </div>
-<div class="article-list">
+<div id="team-section" class="article-list">
+    <!-- The Modal profiles -->
+    <div class="modal fade" id="profileSaidModal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Biography</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h3>Said Romadlon</h3>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum delectus et nam quas quo rerum sunt velit. Accusantium asperiores beatae corporis dicta dignissimos dolore eaque, eius ipsa laboriosam minima molestiae.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="profileAriefModal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Biography</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h3>Arief Hakim Askar</h3>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum delectus et nam quas quo rerum sunt velit. Accusantium asperiores beatae corporis dicta dignissimos dolore eaque, eius ipsa laboriosam minima molestiae.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="profileDavynModal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Biography</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h3>Davyn Sudirdjo</h3>
+                            <p>
+                                Davyn Sudirdjo is an undergraduate student at Stanford University majoring in Computer Science with a specialisation in Artificial Intelligence. He is a passionate innovator and social entrepreneur, having founded eTani Agro Nusantara, a startup that empowers Indonesian farmers. As a proactive advocate for environmental sustainability, he co-founded Krowrier and is now the commissioner of the company.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
     <div class="container">
         <div class="intro">
             <h2 class="text-center">Our Team</h2>
         </div>
         <div class="row articles">
             <div class="col-sm-6 col-md-4 item">
+                <a href="#" data-toggle="modal" data-target="#profileSaidModal"
+                ><img class="img-fluid" src="images/said.png"
+                    /></a>
+                <h3 class="name" data-toggle="modal" data-target="#profileSaidModal">Said Romadlon</h3>
+                <p class="description">
+                    President Director and Chief Executive Officer
+                </p>
+            </div>
+            <div class="col-sm-6 col-md-4 item">
+                <a href="#" data-toggle="modal" data-target="#profileAriefModal"
+                ><img class="img-fluid" src="images/arif.png"
+                    /></a>
+                <h3 class="name" data-toggle="modal" data-target="#profileAriefModal">Arief Hakim Askar</h3>
+                <p class="description">
+                    Co-Founder and Chief Technology Officer
+                </p>
+            </div>
+            <div class="col-sm-6 col-md-4 item">
+                <a href="#" data-toggle="modal" data-target="#profileDavynModal"
+                ><img class="img-fluid" src="images/davin.png"
+                    /></a>
+                <h3 class="name">Davyn Sudirdjo</h3>
+                <p class="description">
+                    Co-Founder
+                </p>
+            </div>
+            <div class="col-sm-6 col-md-4 item">
+                <a href="#"
+                ><img class="img-fluid" src="images/auhtor-1.jpg"
+                    /></a>
+                <h3 class="name">Hasto Kristiyono</h3>
+                <p class="description">
+                    Co-Founder & Commissioner
+                </p>
+            </div>
+            <div class="col-sm-6 col-md-4 item">
                 <a href="#"
                 ><img class="img-fluid" src="images/wahyu.png"
                     /></a>
                 <h3 class="name">Wahyu Dwi Jatmiko</h3>
                 <p class="description">
-                    Chief Operational Officer
-                </p>
-            </div>
-            <div class="col-sm-6 col-md-4 item">
-                <a href="#"
-                ><img class="img-fluid" src="images/said.png"
-                    /></a>
-                <h3 class="name">Said Romadlon</h3>
-                <p class="description">
-                    Chief Executive Officer
-                </p>
-            </div>
-            <div class="col-sm-6 col-md-4 item">
-                <a href="#"
-                ><img class="img-fluid" src="images/arif.png"
-                    /></a>
-                <h3 class="name">Arief Hakim Askar</h3>
-                <p class="description">
-                    Chief Technology Officer
-                </p>
-            </div>
-            <div class="col-sm-6 col-md-4 item">
-                <a href="#"
-                ><img class="img-fluid" src="images/jundi.png"
-                    /></a>
-                <h3 class="name">Izzuddin Jundi Robbani</h3>
-                <p class="description">
-                    Corporate Communication Officer
-                </p>
-            </div>
-            <div class="col-sm-6 col-md-4 item">
-                <a href="#"
-                ><img class="img-fluid" src="images/aldi.png"
-                    /></a>
-                <h3 class="name">Laelnaldi Saputra</h3>
-                <p class="description">
-                    Mobile Developer
-                </p>
-            </div>
-            <div class="col-sm-6 col-md-4 item">
-                <a href="#"
-                ><img class="img-fluid" src="images/1hanel.png"
-                    /></a>
-                <h3 class="name">Hanel Prillian</h3>
-                <p class="description">
-                    Web Developer
+                    Co-Founder & Commissioner
                 </p>
             </div>
         </div>
     </div>
 </div>
-<div class="business-section">
+<div id="contact-section" class="business-section">
     <div class="container">
         <div class="row business-box">
             <div class="col-md-6 box-left">
@@ -354,5 +440,20 @@
 </div>
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $('#top-menu li a').click(function(e) {
+
+            var targetHref = $(this).attr('href');
+
+            $('html, body').animate({
+                scrollTop: $(targetHref).offset().top
+            }, 1000);
+
+            e.preventDefault();
+        });
+    });
+</script>
 </body>
 </html>

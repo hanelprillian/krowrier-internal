@@ -83,15 +83,15 @@
 			</li>
 			<li class="nav-item">
 				<a
-					class="nav-link"
-					id="base-tab-2"
-					data-toggle="tab"
-					href="#tab-2"
-					role="tab"
-					@click.prevent="loadSchedule()"
-					aria-controls="tab-2"
-					aria-selected="false"
-				>Schedules</a>
+						class="nav-link"
+						id="base-tab-2"
+						data-toggle="tab"
+						href="#tab-2"
+						role="tab"
+						@click.prevent="loadTask()"
+						aria-controls="tab-2"
+						aria-selected="false"
+				>Tasks</a>
 			</li>
 			<li class="nav-item">
 				<a
@@ -237,7 +237,7 @@
 						<div class="widget widget-07 has-shadow">
 							<!-- Begin Widget Header -->
 							<div class="widget-header bordered d-flex align-items-center">
-								<h2>List Schedule</h2>
+								<h2>List Task</h2>
 							</div>
 							<!-- End Widget Header -->
 							<!-- Begin Widget Body -->
@@ -245,24 +245,52 @@
 								<div class="table-responsive table-scroll padding-right-10" style="max-height:520px;">
 									<table class="table table-hover mb-0">
 										<thead>
-											<tr>
-												<th>Drop Point</th>
-												<th>Location Stay Time</th>
-											</tr>
+										<tr>
+											<th width="12%">Date</th>
+											<th width="8%">Status</th>
+											<th width="15%">Task</th>
+											<th width="25%">Booking</th>
+											<th width="15%">Distance</th>
+										</tr>
 										</thead>
 										<tbody>
-											<tr class="alert-warning" v-if="dataSchedule.length == 0">
-												<td colspan="2">Schedule empty!</td>
-											</tr>
-											<tr v-for="d in dataSchedule">
-												<td>{{ d.drop_point.name }}</td>
-												<td>{{ d.stay_location_time }}</td>
-											</tr>
-											<tr v-if="!pagingSchedule.end">
-												<td colspan="2">
-													<button class="btn btn-block" @click.prevent="loadMoreSchedule()">Load more</button>
-												</td>
-											</tr>
+										<tr v-for="result in dataTask">
+											<td>{{ result.create_date }}</td>
+											<td>
+												<span v-if="result.task_status == 1" class="badge badge-success">Completed</span>
+												<span v-if="result.task_status == 0" class="badge badge-primary">Progress</span>
+											</td>
+											<td>
+												<span v-if="result.type && result.type == 0">Pickup</span>
+												<span v-if="result.type && result.type == 1">Delivery</span>
+											</td>
+											<td>
+												<small>
+													Code: {{result.booking_code}}
+												</small>
+												<br>
+												<small>
+													<strong>
+														{{result.type && result.type == 0 ? 'Pickup Address' : 'Destination Address'}}
+													</strong>
+												</small>
+												<br>
+												<span>
+                                                {{result.type && result.type == 0 ? result.pickup_address : result.destination_address}}
+                                            </span>
+											</td>
+											<td>{{$parent.formatMoney(result.distance, 2)}} Km</td>
+										</tr>
+										<tr v-if="dataTask.length == 0">
+											<td colspan="5" class="bg-warning">
+												Data Empty
+											</td>
+										</tr>
+										<tr v-if="!pagingTask.end">
+											<td colspan="5">
+												<button class="btn btn-block" @click.prevent="loadMoreTask()">Load more</button>
+											</td>
+										</tr>
 										</tbody>
 									</table>
 								</div>
@@ -271,7 +299,7 @@
 							<!-- Begin Widget Footer -->
 							<div class="widget-footer d-flex align-items-center">
 								<div class="mr-auto p-2">
-									<span class="display-items">Showing 1-{{data.length}} Results</span>
+									<span class="display-items">Showing 1-{{dataTask.length}} Results</span>
 								</div>
 							</div>
 							<!-- End Widget Footer -->
@@ -352,7 +380,7 @@
 	export default {
 		data() {
 			return {
-				dataSchedule: [],
+                dataTask: [],
 				allowEdit: false,
 				dataLoaded: false,
 				dataUserLoaded: false,
@@ -368,17 +396,17 @@
 						address: ""
 					}
 				},
-				pagingSchedule: {
-					total_data: 0,
-					data_per_page: 10,
-					end: false,
-					loading: false
-				},
+                pagingTask: {
+                    total_data: 0,
+                    data_per_page: 10,
+                    end: false,
+                    loading: false
+                },
 
-				refSchedule: {
-					data: null,
-					dataNext: null
-				}
+                refTask: {
+                    data: null,
+                    dataNext: null
+                }
 			};
 		},
 		props: ["mode"],
@@ -411,98 +439,81 @@
 			}
 		},
 		methods: {
-			loadSchedule() {
-				let self = this;
+            loadTask() {
+                let self = this;
 
-				self.dataSchedule = [];
+                self.dataTask = [];
 
-				this.refSchedule.data = db
-					.collection("courier_schedule")
-					.where("courier_id", "==", self.$route.params.id);
-				this.refSchedule.data.orderBy("created_at", "desc");
+                this.refTask.data = db
+                    .collection("courier_task")
+                    .where("courier_id", "==", self.$route.params.id);
+                this.refTask.data.orderBy("create_unix_time", "desc");
 
-				const firstPage = this.refSchedule.data.limit(
-					this.pagingSchedule.data_per_page
-				);
-				this.handledataSchedule(firstPage);
-			},
+                const firstPage = this.refTask.data.limit(
+                    this.pagingTask.data_per_page
+                );
+                this.handledataTask(firstPage);
+            },
 
-			loadMoreSchedule() {
-				let self = this;
+            loadMoreTask() {
+                let self = this;
 
-				if (self.pagingSchedule.end) {
-					return;
-				}
+                if (self.pagingTask.end) {
+                    return;
+                }
 
-				this.pagingSchedule.loading = true;
-				this.handledataSchedule(this.refSchedule.dataNext).then(
-					documentSnapshots => {
-						self.pagingSchedule.loading = false;
+                this.pagingTask.loading = true;
+                this.handledataTask(this.refTask.dataNext).then(
+                    documentSnapshots => {
+                        self.pagingTask.loading = false;
 
-						if (documentSnapshots.empty) self.pagingSchedule.end = true;
-					}
-				);
-			},
+                        if (documentSnapshots.empty) self.pagingTask.end = true;
+                    }
+                );
+            },
 
-			handledataSchedule(ref) {
-				return new Promise((resolve, reject) => {
-					swal.fire({
-						title: "Loading Schedule...",
-						text: "Please waiting",
-						allowOutsideClick: false,
-						allowEscapeKey: false,
-						onOpen: () => {
-							swal.showLoading();
-						}
-					});
+            handledataTask(ref) {
+                return new Promise((resolve, reject) => {
+                    swal.fire({
+                        title: "Loading Task...",
+                        text: "Please waiting",
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                        onOpen: () => {
+                            swal.showLoading();
+                        }
+                    });
 
-					ref.get().then(documentSnapshots => {
-						if (documentSnapshots.empty) {
-							this.pagingSchedule.end = true;
-							resolve(documentSnapshots);
+                    ref.get().then(documentSnapshots => {
+                        if (documentSnapshots.empty) {
+                            this.pagingTask.end = true;
+                            resolve(documentSnapshots);
 
-							swal.close();
-						}
+                            swal.close();
+                        }
 
-						documentSnapshots.forEach(async doc => {
-							let data = doc.data();
-							data.id = doc.id;
-							data.stay_location_time = moment(
-								data.stay_location_time
-							).format("dddd, DD MMMM YYYY, HH:mm");
-							if (
-								data.drop_point_id != "" &&
-								typeof data.drop_point_id !== "undefined"
-							) {
-								await db
-									.collection("drop_point")
-									.doc(data.drop_point_id)
-									.get()
-									.then(doc1 => {
-										if (doc1.exists) {
-											data.drop_point = doc1.data();
-										}
-									});
-							}
+                        documentSnapshots.forEach(async doc => {
+                            let data = doc.data();
+                            data.id = doc.id;
+                            this.dataTask.push(data);
+                        });
 
-							this.dataSchedule.push(data);
-						});
+                        const lastVisible =
+                            documentSnapshots.docs[documentSnapshots.size - 1];
 
-						const lastVisible =
-							documentSnapshots.docs[documentSnapshots.size - 1];
+                        if (!lastVisible) return;
 
-						if (!lastVisible) return;
 
-						this.refSchedule.dataNext = this.refSchedule.data
-							.startAfter(lastVisible)
-							.limit(this.pagingSchedule.data_per_page);
+                        this.refTask.dataNext = this.refTask.data
+                            .startAfter(lastVisible)
+                            .limit(this.pagingTask.data_per_page);
 
-						resolve(documentSnapshots);
+                        resolve(documentSnapshots);
 
-						swal.close();
-					});
-				});
-			},
+                        swal.close();
+                    });
+                });
+            },
 
 			async FetchData(id) {
 				swal.fire({

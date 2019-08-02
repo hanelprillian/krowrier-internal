@@ -23,6 +23,13 @@
 					<!-- End Widget Header -->
 					<!-- Begin Widget Body -->
 					<div class="widget-body">
+                        <div class="row mb-4">
+                            <div class="col-md-12">
+                                <div class="form-inline">
+                                    <input type="text" v-model="search.keyword" placeholder="Search..." class="form-control">
+                                </div>
+                            </div>
+                        </div>
 						<div class="table-responsive table-scroll padding-right-10" style="max-height:520px;">
 							<table class="table table-bordered table-hover mb-0">
 								<thead>
@@ -34,6 +41,7 @@
 											</div>
 										</th>
 										<th style="width:10%">No Booking</th>
+										<th style="width:10%">Unique Code</th>
 										<th style="width:10%">Date</th>
 										<th style="width:20%">Customer</th>
 										<!-- <th>Service</th> -->
@@ -56,8 +64,9 @@
 											<small v-if="d.status == 0" class="badge-text info badge-text-small">Progress</small>
 											<small v-if="d.status == 1" class="badge-text success badge-text-small">Complete</small>
 										</td>
+										<td class="valign-top">{{ d.unique_code }}</td>
 										<td class="valign-top">{{ d.create_date }}</td>
-										<td class="valign-top">{{ d.user.name }}</td>
+										<td class="valign-top">{{ d.user ? d.user.name : 'loading...' }}</td>
 										<!-- <td class="valign-top">One day service</td> -->
 										<td class="valign-top">{{ d.pickup_address }}</td>
 										<td class="valign-top">{{ d.destination_address }}</td>
@@ -79,8 +88,13 @@
 											</div>
 										</td>
 									</tr>
-									<tr v-if="!paging.end">
-										<td colspan="9">
+                                    <tr v-if="paging.loading">
+                                        <td colspan="10">
+                                            Loading...
+                                        </td>
+                                    </tr>
+									<tr v-if="!paging.end && search.keyword.length == 0">
+										<td colspan="10">
 											<button class="btn btn-block" @click.prevent="loadMore()">Load more</button>
 										</td>
 									</tr>
@@ -111,9 +125,10 @@
 			return {
 				data: [],
 
-				search: {
-					keyword: ""
-				},
+                search: {
+                    keyword: '',
+                    result: []
+                },
 
 				paging: {
 					total_data: 0,
@@ -128,10 +143,66 @@
 			};
 		},
 
+		watch: {
+            "search.keyword": _.debounce(async function(newVal)
+            {
+                let self = this;
+
+                if(self.search.keyword.length > 0)
+                {
+                    await self.searchBooking();
+                }
+                else
+                {
+                    self.loadData();
+                }
+
+            }, 500),
+		},
+
 		methods: {
 			searchLoad: _.debounce(function() {
 				this.loadData();
 			}, 500),
+
+            async searchBooking()
+            {
+                let self = this;
+
+                self.data = [];
+                self.paging.loading = true;
+
+                let ref = db.collection("booking");
+
+                await ref.get().then(async documentSnapshots =>
+                {
+                    let num = 1;
+                    await documentSnapshots.forEach(async doc =>
+                    {
+                        let data = doc.data();
+                        data.id = doc.id;
+
+                        if((data.code_booking.toLowerCase().indexOf(self.search.keyword.toLowerCase()) !== -1 || data.pickup_address.toLowerCase().indexOf(self.search.keyword.toLowerCase()) !== -1) && num <= 10)
+                        {
+                            data.user = null;
+                            db
+                                .collection("user")
+                                .doc(data.user_id)
+                                .get()
+                                .then(doc1 => {
+                                    if (doc1.exists) {
+                                        data.user = doc1.data();
+                                    }
+                                });
+
+                            self.data.push(data);
+                            num++;
+                        }
+                    });
+
+                    self.paging.loading = false;
+                });
+            },
 
 			loadData() {
 				let self = this;
@@ -180,7 +251,8 @@
 						documentSnapshots.forEach(async doc => {
 							let data = doc.data();
 							data.id = doc.id;
-							await db
+                            data.user = null;
+                            db
 								.collection("user")
 								.doc(data.user_id)
 								.get()

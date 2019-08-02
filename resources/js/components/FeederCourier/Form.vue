@@ -84,18 +84,18 @@
 					aria-selected="true"
 				>General</a>
 			</li>
-			<!--<li class="nav-item">-->
-				<!--<a-->
-					<!--class="nav-link"-->
-					<!--id="base-tab-2"-->
-					<!--data-toggle="tab"-->
-					<!--href="#tab-2"-->
-					<!--role="tab"-->
-					<!--@click.prevent="loadTask()"-->
-					<!--aria-controls="tab-2"-->
-					<!--aria-selected="false"-->
-				<!--&gt;Tasks</a>-->
-			<!--</li>-->
+			<li class="nav-item">
+				<a
+					class="nav-link"
+					id="base-tab-2"
+					data-toggle="tab"
+					href="#tab-2"
+					role="tab"
+					@click.prevent="loadTask()"
+					aria-controls="tab-2"
+					aria-selected="false"
+				>Tasks</a>
+			</li>
 			<li class="nav-item">
 				<a
 					:class="{'disabled': !data.current_latitude || !data.current_longitude }"
@@ -314,20 +314,48 @@
 									<table class="table table-hover mb-0">
 										<thead>
 											<tr>
-												<th>Drop Point</th>
-												<th>Location Stay Time</th>
+												<th width="12%">Date</th>
+												<th width="8%">Status</th>
+												<th width="15%">Task</th>
+												<th width="25%">Booking</th>
+												<th width="15%">Distance</th>
 											</tr>
 										</thead>
 										<tbody>
-											<tr class="alert-warning" v-if="dataTask.length == 0">
-												<td colspan="2">Task empty!</td>
-											</tr>
-											<tr v-for="d in dataTask">
-												<td>{{ d.drop_point.name }}</td>
-												<td>{{ d.stay_location_time }}</td>
-											</tr>
+                                        <tr v-for="result in dataTask">
+                                            <td>{{ result.create_date }}</td>
+                                            <td>
+                                                <span v-if="result.task_status == 1" class="badge badge-success">Completed</span>
+                                                <span v-if="result.task_status == 0" class="badge badge-primary">Progress</span>
+                                            </td>
+                                            <td>
+                                                <span v-if="result.type && result.type == 0">Pickup</span>
+                                                <span v-if="result.type && result.type == 1">Delivery</span>
+                                            </td>
+                                            <td>
+                                                <small>
+                                                    Code: {{result.booking_code}}
+                                                </small>
+                                                <br>
+                                                <small>
+                                                    <strong>
+                                                        {{result.type && result.type == 0 ? 'Pickup Address' : 'Destination Address'}}
+                                                    </strong>
+                                                </small>
+                                                <br>
+                                                <span>
+                                                {{result.type && result.type == 0 ? result.pickup_address : result.destination_address}}
+                                            </span>
+                                            </td>
+                                            <td>{{$parent.formatMoney(result.distance, 2)}} Km</td>
+                                        </tr>
+                                        <tr v-if="dataTask.length == 0">
+                                            <td colspan="5" class="bg-warning">
+                                                Data Empty
+                                            </td>
+                                        </tr>
 											<tr v-if="!pagingTask.end">
-												<td colspan="2">
+												<td colspan="5">
 													<button class="btn btn-block" @click.prevent="loadMoreTask()">Load more</button>
 												</td>
 											</tr>
@@ -339,7 +367,7 @@
 							<!-- Begin Widget Footer -->
 							<div class="widget-footer d-flex align-items-center">
 								<div class="mr-auto p-2">
-									<span class="display-items">Showing 1-{{data.length}} Results</span>
+									<span class="display-items">Showing 1-{{dataTask.length}} Results</span>
 								</div>
 							</div>
 							<!-- End Widget Footer -->
@@ -493,7 +521,7 @@
 				this.refTask.data = db
 					.collection("feeder_task")
 					.where("feeder_id", "==", self.$route.params.id);
-				this.refTask.data.orderBy("created_at", "desc");
+				this.refTask.data.orderBy("create_unix_time", "desc");
 
 				const firstPage = this.refTask.data.limit(
 					this.pagingTask.data_per_page
@@ -541,24 +569,6 @@
 						documentSnapshots.forEach(async doc => {
 							let data = doc.data();
 							data.id = doc.id;
-							data.stay_location_time = moment(
-								data.stay_location_time
-							).format("dddd, DD MMMM YYYY, HH:mm");
-							if (
-								data.drop_point_id != "" &&
-								typeof data.drop_point_id !== "undefined"
-							) {
-								await db
-									.collection("drop_point")
-									.doc(data.drop_point_id)
-									.get()
-									.then(doc1 => {
-										if (doc1.exists) {
-											data.drop_point = doc1.data();
-										}
-									});
-							}
-
 							this.dataTask.push(data);
 						});
 
@@ -577,6 +587,7 @@
 					});
 				});
 			},
+
 			async getVehicleType(id)
             {
 				const ref = await db.collection("feeder_vehicle_type");

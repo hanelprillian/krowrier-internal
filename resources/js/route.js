@@ -1,5 +1,6 @@
 Vue.use(VueRouter);
 const rootInternal = "/internal";
+const rotoFron = "/";
 
 function loadView(view) {
     return () => import(/* webpackChunkName: "view-[request]" */ `./components/${view}.vue`)

@@ -3,7 +3,18 @@
   <component name="ChangeListManager">
     <list default="true" id="c83c229e-a460-4b06-aa34-53bdc3cf4928" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/aldi.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/aldi.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/jundi.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/jundi.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/said.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/said.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/mix-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/view-Booking-Index-vue.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/view-Booking-Index-vue.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/view-Courier-Form-vue.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/view-Courier-Form-vue.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/view-FeederCourier-Form-vue.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/view-FeederCourier-Form-vue.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/Booking/Index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Booking/Index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/Courier/Form.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Courier/Form.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/FeederCourier/Form.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/FeederCourier/Form.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/Report/Booking.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Report/Booking.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/route.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/route.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -18,102 +29,51 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="Booking.vue" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/js/components/Report/Booking.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-52">
+              <caret line="322" column="12" lean-forward="true" selection-start-line="322" selection-start-column="12" selection-end-line="322" selection-end-column="12" />
+              <folding>
+                <element signature="e#13037#16652#0" />
+                <element signature="e#15674#16605#0" expanded="true" />
+                <element signature="e#15806#16528#0" expanded="true" />
+                <element signature="e#18356#18715#0" />
+                <element signature="e#18783#20380#0" />
+                <element signature="e#20458#22453#0" />
+                <element signature="e#22523#24413#0" />
+                <element signature="e#24493#26721#0" />
+                <element signature="e#26802#27315#0" />
+                <element signature="e#27396#29031#0" />
+                <element signature="e#29122#31153#0" />
+                <element signature="e#31236#33170#0" />
+                <element signature="e#33263#35527#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="DashboardComponent.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/js/components/DashboardComponent.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="24518">
-              <caret line="1339" column="62" selection-start-line="1339" selection-start-column="62" selection-end-line="1339" selection-end-column="62" />
+            <state relative-caret-position="-313">
+              <caret line="513" lean-forward="true" selection-start-line="513" selection-end-line="513" />
               <folding>
-                <element signature="e#1084#1090#0" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#2;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#2;n#div#2;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="e#10005#10011#0" expanded="true" />
-                <element signature="n#div#4;n#div#2;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#div#5;n#div#2;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#div#6;n#div#2;n#div#0;n#template#0;n#!!top" />
+                <element signature="e#30059#30636#0" />
+                <element signature="e#30697#32162#0" />
+                <element signature="e#32224#33694#0" />
+                <element signature="e#33741#45784#0" />
+                <element signature="e#45851#46210#0" />
+                <element signature="e#46278#47875#0" />
+                <element signature="e#47953#49948#0" />
+                <element signature="e#50018#51908#0" />
+                <element signature="e#51988#54216#0" />
+                <element signature="e#54297#54810#0" />
+                <element signature="e#54891#56526#0" />
+                <element signature="e#56617#58648#0" />
+                <element signature="e#58731#60665#0" />
+                <element signature="e#60758#63022#0" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/js/app.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="437">
-              <caret line="19" column="3" selection-start-line="19" selection-start-column="3" selection-end-line="19" selection-end-column="3" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/landing-page/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6762">
-              <caret line="356" column="42" selection-end-line="398" />
-              <folding>
-                <element signature="n#style#0;n#a#0;n#div#0;n#nav#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#p#0;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#div#3;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#4;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#button#0;n#div#5;n#div#0;n#div#1;n#div#0;n#div#0;n#div#4;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="welcome.blade.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/views/welcome.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="211">
-              <caret line="276" column="53" selection-start-line="276" selection-start-column="53" selection-end-line="276" selection-end-column="53" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="styles.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/assets/css/styles.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="257">
-              <caret line="100" column="13" selection-start-line="100" selection-start-column="13" selection-end-line="100" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Article-List.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/landing-page/assets/css/Article-List.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="161">
-              <caret line="7" column="1" selection-end-line="7" selection-end-column="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="styles.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/landing-page/assets/css/styles.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4002">
-              <caret line="174" column="29" selection-start-line="174" selection-start-column="29" selection-end-line="174" selection-end-column="29" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Header-Blue.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/landing-page/assets/css/Header-Blue.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2852">
-              <caret line="124" column="17" selection-start-line="124" selection-start-column="17" selection-end-line="124" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="_navbar.scss" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/node_modules/bootstrap/scss/_navbar.scss">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5612">
-              <caret line="244" column="1" selection-start-line="244" selection-start-column="1" selection-end-line="244" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -122,40 +82,38 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>growthRateChargesBookingChartOptions</find>
-      <find>loadGrowthRateChargesBookingChartByMonth</find>
-      <find>totalCharges</find>
-      <find>loadGrowthRateChargesBookingChartByDate</find>
-      <find>Mau ngirim barang ? Sekalian aja!</find>
-      <find>top</find>
-      <find>Home</find>
-      <find>assets/img/logo_white.png</find>
-      <find>Log</find>
-      <find>Berg</find>
-      <find>Apa itu</find>
-      <find>highlight-clean</find>
-      <find>Bergabunglah</find>
-      <find>header</find>
-      <find>header-blue</find>
-      <find>hero p</find>
-      <find>Apa t</find>
-      <find>Pelaja</find>
-      <find>hero</find>
-      <find>Apa</find>
-      <find>Mengapa harus pake Krowrier ?</find>
-      <find>News</find>
-      <find>home-</find>
-      <find>Services</find>
-      <find>#002BFF</find>
-      <find>rgba(0,43,255,1)</find>
-      <find>0,43,255</find>
-      <find>pa Saja Bisa Berkontribusi</find>
       <find>banner-fea</find>
       <find>Wahyu</find>
+      <find>loadTask</find>
+      <find>loadTas</find>
+      <find>dataTask</find>
+      <find>loadMoreTask</find>
+      <find>Task</find>
+      <find>load</find>
+      <find>loadSta</find>
+      <find>data()</find>
+      <find>refTask</find>
+      <find>user.</find>
+      <find>searchBooking</find>
+      <find>search.keyword</find>
+      <find>Load</find>
+      <find>Co-founder</find>
+      <find>Davyn</find>
+      <find>Hasto</find>
+      <find>Cofounder</find>
+      <find>CEO</find>
+      <find>Krowrier</find>
+      <find>Apa</find>
+      <find>main-nav</find>
+      <find>navbar-nav</find>
+      <find>top-menu</find>
+      <find>Home</find>
+      <find>Said</find>
+      <find>getBookingStatisticsByMonth</find>
+      <find>loadTotalBookingChartByMonth</find>
+      <find>loadGrowthRateChargesBookingChartByMonth</find>
     </findStrings>
     <replaceStrings>
-      <replace>active</replace>
-      <replace>#2C304D</replace>
       <replace>Hans Cocolonel</replace>
       <replace>&quot;chat&quot;</replace>
       <replace>booking_id</replace>
@@ -184,6 +142,8 @@
       <replace>about-us</replace>
       <replace>header-home</replace>
       <replace>31,65,128</replace>
+      <replace>Co-founder</replace>
+      <replace>Co-Founder</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -210,8 +170,6 @@
         <option value="$PROJECT_DIR$/resources/js/components/Hub/Index.vue" />
         <option value="$PROJECT_DIR$/resources/js/components/SupportRoom/Index.vue" />
         <option value="$PROJECT_DIR$/resources/js/components/Dashboard.js" />
-        <option value="$PROJECT_DIR$/resources/js/components/Courier/Form.vue" />
-        <option value="$PROJECT_DIR$/resources/js/components/Booking/Index.vue" />
         <option value="$PROJECT_DIR$/resources/js/components/Booking/Form.vue" />
         <option value="$PROJECT_DIR$/resources/js/components/Login.vue" />
         <option value="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" />
@@ -227,9 +185,6 @@
         <option value="$PROJECT_DIR$/resources/js/app.js" />
         <option value="$PROJECT_DIR$/resources/js/components/_Widget/MapsPicker.vue" />
         <option value="$PROJECT_DIR$/resources/js/components/Report/Index.vue" />
-        <option value="$PROJECT_DIR$/resources/js/components/FeederCourier/Form.vue" />
-        <option value="$PROJECT_DIR$/resources/js/route.js" />
-        <option value="$PROJECT_DIR$/resources/js/components/Report/Booking.vue" />
         <option value="$PROJECT_DIR$/resources/sass/app.scss" />
         <option value="$PROJECT_DIR$/resources/js/lib/func.js" />
         <option value="$PROJECT_DIR$/resources/js/components/App.vue" />
@@ -242,7 +197,12 @@
         <option value="$PROJECT_DIR$/landing-page/index.html" />
         <option value="$PROJECT_DIR$/landing-page/assets/css/styles.css" />
         <option value="$PROJECT_DIR$/public/assets/css/styles.css" />
+        <option value="$PROJECT_DIR$/resources/js/components/FeederCourier/Form.vue" />
+        <option value="$PROJECT_DIR$/resources/js/components/Courier/Form.vue" />
+        <option value="$PROJECT_DIR$/resources/js/components/Booking/Index.vue" />
+        <option value="$PROJECT_DIR$/resources/js/route.js" />
         <option value="$PROJECT_DIR$/resources/views/welcome.blade.php" />
+        <option value="$PROJECT_DIR$/resources/js/components/Report/Booking.vue" />
       </list>
     </option>
   </component>
@@ -362,6 +322,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -378,6 +339,12 @@
               <item name="krowrier-internal" type="b2602c69:ProjectViewProjectNode" />
               <item name="krowrier-internal" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="landing-page" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="krowrier-internal" type="b2602c69:ProjectViewProjectNode" />
+              <item name="krowrier-internal" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="landing-page" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="assets" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
               <item name="krowrier-internal" type="b2602c69:ProjectViewProjectNode" />
@@ -489,6 +456,13 @@
             <path>
               <item name="krowrier-internal" type="b2602c69:ProjectViewProjectNode" />
               <item name="krowrier-internal" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="resources" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="internal" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="krowrier-internal" type="b2602c69:ProjectViewProjectNode" />
+              <item name="krowrier-internal" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="routes" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
@@ -501,7 +475,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -599,12 +572,20 @@
       <workItem from="1563427062128" duration="10153000" />
       <workItem from="1563474728070" duration="6230000" />
       <workItem from="1563516209627" duration="63000" />
-      <workItem from="1563985796097" duration="1980000" />
+      <workItem from="1563985796097" duration="2588000" />
+      <workItem from="1564020372469" duration="597000" />
+      <workItem from="1564093525802" duration="2047000" />
+      <workItem from="1564112207634" duration="9000" />
+      <workItem from="1564453725582" duration="1346000" />
+      <workItem from="1564456551339" duration="2367000" />
+      <workItem from="1564544927866" duration="1000000" />
+      <workItem from="1564553132956" duration="521000" />
+      <workItem from="1564634700543" duration="7881000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="318461000" />
+    <option name="totallyTimeSpent" value="334837000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -614,11 +595,11 @@
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info id="npm" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Run" order="2" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.1566618" />
+      <window_info id="npm" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.15329513" />
       <window_info anchor="right" id="Remote Host" order="3" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2624161" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2946309" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -670,28 +651,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/node_modules/bootstrap/scss/_navbar.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5612">
-          <caret line="244" column="1" selection-start-line="244" selection-start-column="1" selection-end-line="244" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/welcome.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8602">
-          <caret line="374" column="6" lean-forward="true" selection-start-line="374" selection-start-column="6" selection-end-line="374" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/Dashboard.js" />
-    <entry file="file://$PROJECT_DIR$/resources/js/components/Customer/Index.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2622">
-          <caret line="114" column="31" selection-start-line="114" selection-start-column="31" selection-end-line="115" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/css/app.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="161598">
@@ -825,13 +784,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/Courier/Form.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="82">
-          <caret line="340" column="18" lean-forward="true" selection-start-line="340" selection-start-column="18" selection-end-line="340" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/form-utill.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="161">
@@ -853,31 +805,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/Booking/Index.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3174">
-          <caret line="140" column="57" selection-start-line="140" selection-start-column="57" selection-end-line="140" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/components/DropPoint/Index.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4738">
           <caret line="253" selection-start-line="253" selection-end-line="253" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/Login.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="10" selection-start-column="10" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/route.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6233">
-          <caret line="273" column="9" selection-start-line="273" selection-start-column="9" selection-end-line="273" selection-end-column="9" />
         </state>
       </provider>
     </entry>
@@ -909,55 +840,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/Report/Booking.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5888">
-          <caret line="293" selection-start-line="293" selection-end-line="294" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/components/DropPoint/Form.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="9246">
           <caret line="421" column="30" selection-start-line="421" selection-start-column="30" selection-end-line="421" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/Report/FeederDIstance.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="69">
-          <caret line="180" selection-start-line="180" selection-end-line="180" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/App.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4117">
-          <caret line="179" column="47" selection-start-line="179" selection-start-column="44" selection-end-line="179" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/FeederCourier/Form.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="101">
-          <caret line="389" lean-forward="true" selection-start-line="389" selection-end-line="389" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/DashboardComponent.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="24518">
-          <caret line="1339" column="62" selection-start-line="1339" selection-start-column="62" selection-end-line="1339" selection-end-column="62" />
-          <folding>
-            <element signature="e#1084#1090#0" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#2;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#2;n#div#2;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="e#10005#10011#0" expanded="true" />
-            <element signature="n#div#4;n#div#2;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#div#5;n#div#2;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#div#6;n#div#2;n#div#0;n#template#0;n#!!top" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1014,29 +900,168 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="6762">
           <caret line="356" column="42" selection-end-line="398" />
-          <folding>
-            <element signature="n#style#0;n#a#0;n#div#0;n#nav#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#0;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#div#3;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#4;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#div#5;n#div#0;n#div#1;n#div#0;n#div#0;n#div#4;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/assets/css/styles.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="257">
+        <state relative-caret-position="2300">
           <caret line="100" column="13" selection-start-line="100" selection-start-column="13" selection-end-line="100" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/Report/FeederDIstance.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4830">
+          <caret line="242" column="24" selection-start-line="242" selection-start-column="20" selection-end-line="242" selection-end-column="24" />
+          <folding>
+            <element signature="n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#tr#1;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#template#0;n#!!top" />
+            <element signature="e#22371#23000#0" expanded="true" />
+            <element signature="e#22550#22855#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/FeederCourier/Form.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8947">
+          <caret line="467" column="4" selection-start-line="467" selection-start-column="4" selection-end-line="477" selection-end-column="17" />
+          <folding>
+            <element signature="n#div#0;n#div#1;n#div#2;n#div#0;n#template#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/Courier/Form.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7498">
+          <caret line="404" selection-start-line="404" selection-end-line="404" />
+          <folding>
+            <element signature="e#1966#1972#0" expanded="true" />
+            <element signature="e#1973#1979#0" expanded="true" />
+            <element signature="n#div#0;n#div#1;n#div#2;n#div#0;n#template#0;n#!!top" />
+            <element signature="e#11940#11947#1" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/Booking/Index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret line="168" column="13" lean-forward="true" selection-start-line="168" selection-start-column="13" selection-end-line="168" selection-end-column="13" />
+          <folding>
+            <element signature="n#style#0;n#th#2;n#tr#0;n#thead#0;n#table#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="e#5808#6922#0" expanded="true" />
+            <element signature="e#5928#6852#0" expanded="true" />
+            <element signature="e#6523#6716#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/App.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="1" column="31" lean-forward="true" selection-start-line="1" selection-start-column="31" selection-end-line="1" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/Login.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1708">
+          <caret column="10" selection-start-column="10" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/route.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="13" column="26" lean-forward="true" selection-start-line="13" selection-start-column="26" selection-end-line="13" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="14" column="27" lean-forward="true" selection-start-line="14" selection-start-column="27" selection-end-line="14" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/Internal/master.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Internal/MainCtrl.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/Internal/main.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="12" column="17" lean-forward="true" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/welcome.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="276" column="53" selection-start-line="276" selection-start-column="53" selection-end-line="276" selection-end-column="53" />
+        <state relative-caret-position="155">
+          <caret line="297" lean-forward="true" selection-start-line="297" selection-end-line="297" />
+          <folding>
+            <element signature="n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#2;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" />
+            <element signature="e#9356#9363#1#HTML" expanded="true" />
+            <element signature="n#div#1;n#div#3;n#body#0;n#html#0;n#!!top" />
+            <element signature="e#10637#10644#1#HTML" expanded="true" />
+            <element signature="e#11896#11903#1#HTML" expanded="true" />
+            <element signature="n#div#4;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#5;n#body#0;n#html#0;n#!!top" />
+            <element signature="e#13763#14030#0#HTML" expanded="true" />
+            <element signature="e#13811#14022#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/DashboardComponent.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-313">
+          <caret line="513" lean-forward="true" selection-start-line="513" selection-end-line="513" />
+          <folding>
+            <element signature="e#30059#30636#0" />
+            <element signature="e#30697#32162#0" />
+            <element signature="e#32224#33694#0" />
+            <element signature="e#33741#45784#0" />
+            <element signature="e#45851#46210#0" />
+            <element signature="e#46278#47875#0" />
+            <element signature="e#47953#49948#0" />
+            <element signature="e#50018#51908#0" />
+            <element signature="e#51988#54216#0" />
+            <element signature="e#54297#54810#0" />
+            <element signature="e#54891#56526#0" />
+            <element signature="e#56617#58648#0" />
+            <element signature="e#58731#60665#0" />
+            <element signature="e#60758#63022#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/Report/Booking.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-52">
+          <caret line="322" column="12" lean-forward="true" selection-start-line="322" selection-start-column="12" selection-end-line="322" selection-end-column="12" />
+          <folding>
+            <element signature="e#13037#16652#0" />
+            <element signature="e#15674#16605#0" expanded="true" />
+            <element signature="e#15806#16528#0" expanded="true" />
+            <element signature="e#18356#18715#0" />
+            <element signature="e#18783#20380#0" />
+            <element signature="e#20458#22453#0" />
+            <element signature="e#22523#24413#0" />
+            <element signature="e#24493#26721#0" />
+            <element signature="e#26802#27315#0" />
+            <element signature="e#27396#29031#0" />
+            <element signature="e#29122#31153#0" />
+            <element signature="e#31236#33170#0" />
+            <element signature="e#33263#35527#0" />
+          </folding>
         </state>
       </provider>
     </entry>
